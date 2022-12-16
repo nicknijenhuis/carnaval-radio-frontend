@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import logo from "../public/assets/logo.png";
+import logo from "../public/assets/logo-2.png";
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between px-10 py-5 bg-green-500">
+    <nav className="hidden md:flex items-center justify-between px-32 py-1 bg-[#FFFFD0] text-black">
       {/* Site logo */}
       <Link href="/">
-        <Image src={logo} width={200} height={200} alt="Logo" />
+        <Image src={logo} width={120} height={120} alt="Logo" />
       </Link>
       {/* Navlinks */}
       <div>
