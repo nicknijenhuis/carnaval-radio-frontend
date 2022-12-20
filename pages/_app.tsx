@@ -1,11 +1,11 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import StrapiApolloProvider from "../graphql/apollo";
+import Layout from "../components/Layout";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <StrapiApolloProvider>
-      <Component {...pageProps} />
-    </StrapiApolloProvider>
+    <Layout>
+      <Component {...pageProps} className="max-w-[1280px] m-auto" />
+    </Layout>
   );
 }

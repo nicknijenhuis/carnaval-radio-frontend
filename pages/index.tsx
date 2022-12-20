@@ -1,10 +1,10 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import Hero from "../components/Hero";
-import Layout from "../components/Layout";
 import Sponsors from "../components/Sponsors";
 import { GET_ALL_ARTICLES} from "../graphql/quries"
 import { Post } from "../typings";
 import Link from "next/link";
+import Tweet from "../components/Tweet";
 
 interface Props {
   posts: [Post]
@@ -12,16 +12,14 @@ interface Props {
 
 
 export default function Home({posts}: Props) {
-  console.log(posts)
   return (
-    <Layout>
       <main>
         <Hero />
         <Sponsors />
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
-       gap-3 md:gap-6 p-2 md:p-6'>
+       gap-3 md:gap-6 p-2 md:p-6 max-w-[1280px] m-auto'>
         {posts.map((post, i) => (
-          <Link key={i} href={`/post/${post.attributes.Slug}`}>
+          <Link key={i} href={`/articles/${post.attributes.Slug}`}>
             <div className='rounded-lg group cursor-pointer overflow-hidden'>
               <img
                 className='h-60 w-full object-cover'
@@ -36,8 +34,8 @@ export default function Home({posts}: Props) {
           </Link>
         ))}
       </div>
+      <Tweet />
       </main>
-    </Layout>
   );
 }
 

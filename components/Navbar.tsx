@@ -1,34 +1,44 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState} from "react";
 import logo from "../public/assets/logo-2.png";
+import { HiOutlineMenuAlt2} from "react-icons/hi"
+import { GrClose } from "react-icons/gr";
 
 const Navbar = () => {
+    let navLinks =[
+      {name:"Sponsors",link:"/sponsors"},
+      {name:"Listen",link:"/listen"},
+      {name:"News",link:"/news"},
+      {name:"Contact",link:"/contact"},
+    ];
+    let [open,setOpen]=useState(false);
   return (
-    <nav className="hidden md:flex items-center justify-between px-32 py-1 bg-[#FFFFD0] text-black">
-      {/* Site logo */}
+    <div className='w-full fixed top-0 left-0 bg-yellow-400 z-10'>
+      <div className='md:flex items-center justify-between text-black py-4 md:px-20 px-7 max-w-[1280px] m-auto'>
       <Link href="/">
-        <Image src={logo} width={120} height={120} alt="Logo" />
-      </Link>
-      {/* Navlinks */}
-      <div>
-        <ul className="flex space-x-10 text-lg font-semibold">
-          <li>
-            <Link href="/sponsors">Sponsors</Link>
-          </li>
-          <li>
-            <Link href="/listen">Listen</Link>
-          </li>
-          <li>
-            <Link href="/news">News</Link>
-          </li>
-          <li>
-            <Link href="/contact">Contact</Link>
-          </li>
-        </ul>
+         <Image src={logo} width={120} height={120} alt="Logo" />
+       </Link>
+      
+      <div onClick={()=>setOpen(!open)} className='text-3xl absolute right-8 top-6 cursor-pointer md:hidden'>
+        {
+          open? <GrClose /> : <HiOutlineMenuAlt2 />
+        }
       </div>
-    </nav>
-  );
-};
 
-export default Navbar;
+      <ul className={`flex flex-col md:flex-row md:items-center md:pb-0 pb-12 absolute bg-yellow-400 md:bg-transparent md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-20 ':'top-[-490px]'}`}>
+        {
+          navLinks.map((link)=>(
+            <Link href={link.link} key={link.name} className='md:ml-8 text-xl md:text-base md:my-0 my-7'>
+              {link.name}
+            </Link>
+          ))
+        }
+      </ul>
+      </div>
+    </div>
+  )
+}
+
+export default Navbar
+
