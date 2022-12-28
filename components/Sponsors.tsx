@@ -26,8 +26,7 @@ const sponsorsData = [
 
 const Sponsors = () => {
   return (
-    <section className="bg-white text-black py-10">
-      <h1 className="text-center text-[#DC3535] text-2xl">Our Sponsors</h1>
+    <section className=" text-black">
       <div className="flex flex-row items-center justify-center space-x-16 md:space-x-20 px-10 md:px-32 pt-10">
         {sponsorsData.map((sponsor) => (
           <div> 
