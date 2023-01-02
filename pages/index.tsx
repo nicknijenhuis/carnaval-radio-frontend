@@ -47,7 +47,6 @@ export default function Home({ posts }: Props) {
         ))}
       </div>
       </div>
-      <MusicComponent />
       <Instagram />
     </main>
   );

@@ -6,7 +6,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Kanit', sans-serif;
 }
 
 a {
@@ -15,7 +15,7 @@ a {
 }
 
 .bg-image{
-  background: url(../public/assets/bg.png);
+  background: url(../public/assets/bg-2.png);
   background-size: cover
 }
 

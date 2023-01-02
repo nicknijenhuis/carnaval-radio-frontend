@@ -32,7 +32,7 @@ const HomeHeader = () => {
         </div>
       </div>
       <div className="bg-transparent">
-        <div className="bg-white h-[12rem] md:w-[50rem] md:h-[15rem] overflow-hidden">
+        <div className=" h-[12rem] md:w-[50rem] md:h-[15rem]">
           <Sponsors />
         </div>
       </div>

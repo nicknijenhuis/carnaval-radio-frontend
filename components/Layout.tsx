@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Head from "next/head";
+import Player from "./Music/Player/Player";
 
 interface Props {
   // ReactNode represents any props that come into the children component
@@ -25,6 +26,7 @@ const Layout = ({ title, children }: Props) => {
       </Head>
       <Navbar />
       {children}
+      <Player />
       <Footer />
     </>
   );
