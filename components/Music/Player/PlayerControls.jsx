@@ -11,10 +11,9 @@ const PlayerControls = ({
   audioElem,
   isPlaying,
   setIsPlaying,
-  currentTrackIndex,
-  setCurrentTrackIndex,
+  currentTrack,
+  setCurrentTrack,
   tracks,
-  track
 }) => {
   const clickRef = useRef();
   const PlayPause = () => {
@@ -37,22 +36,18 @@ const PlayerControls = ({
       setCurrentTrack(tracks[index - 1]);
     }
 
-    //audioElem.current.currentTime = 0;
+    audioElem.current.currentTime = 0;
   };
 
   const skipNext = () => {
-     setCurrentTrackIndex(() => {
-      let temp = currentTrackIndex;
-      temp++;
+    const index = tracks.findIndex((x) => x.url == currentTrack.url);
+    if (index == tracks.length - 1) {
+      setCurrentTrack(tracks[0]);
+    } else {
+      setCurrentTrack(tracks[index + 1]);
+    }
 
-      if (temp > tracks.length - 1){
-        temp = 0;
-      }
-      
-      return temp;
-     })
-
-    //audioElem.current.currentTime = 0;
+    audioElem.current.currentTime = 0;
   };
 
   return (
@@ -61,14 +56,14 @@ const PlayerControls = ({
         <FiRepeat size={30} />
       </div>
       <div className="flex flex-col items-center justify-center space-y-2">
-        {/* <div className="min-w-[100%] h-[5px] rounded-[30px] cursor-pointer bg-black">
+        <div className="min-w-[100%] h-[5px] rounded-[30px] cursor-pointer bg-black">
           <div
             onClick={forwardSeekBar}
             ref={clickRef}
             className=" h-[100%] bg-yellow-400 rounded-[30px]"
             style={{ width: `${currentTrack.progress + "%"}` }}
           ></div>
-        </div> */}
+        </div>
         <div className="flex space-x-10 items-center justify-center">
           <FiRewind size={40} onClick={skipBack} />
           <div onClick={PlayPause}>
@@ -77,7 +72,7 @@ const PlayerControls = ({
           <FiFastForward size={40} onClick={skipNext} />
         </div>
       </div>
-      <div>{track.title}</div>
+      <div>{currentTrack.title}</div>
     </div>
   );
 };

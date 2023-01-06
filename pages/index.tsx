@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 import Hero from "../components/Hero";
 import Sponsors from "../components/Sponsors";
 import { GET_ALL_ARTICLES } from "../graphql/quries";
