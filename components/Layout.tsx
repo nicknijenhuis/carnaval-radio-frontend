@@ -26,10 +26,13 @@ const Layout = ({ title, children }: Props) => {
       </Head>
       <main className="min-h-screen flex max-w-[1500px]">
         <Sidebar />
+        <div>
         {children}
+        <Footer />
+        </div>
       </main>
       <Player />
-      <Footer />
+      
     </>
   );
 };
