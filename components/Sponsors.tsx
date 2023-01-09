@@ -29,14 +29,14 @@ const Sponsors = () => {
   const slideLeft = () => {
     let slider = document.getElementById("slider");
     if (slider != null) {
-      slider.scrollLeft = slider.scrollLeft - 500;
+      slider.scrollLeft = slider.scrollLeft - 90;
     }
   };
 
   const slideRight = () => {
     let slider = document.getElementById("slider");
     if (slider != null) {
-      slider.scrollLeft = slider.scrollLeft + 500;
+      slider.scrollLeft = slider.scrollLeft + 90;
     }
   };
   return (
@@ -45,7 +45,7 @@ const Sponsors = () => {
         <MdChevronLeft
           onClick={slideLeft}
           size={40}
-          className="cursor-pointer opacity-50 hover:opacity-100 text-white"
+          className="cursor-pointer opacity-50 hover:opacity-100 text-black"
         />
         <div
           id="slider"
@@ -53,8 +53,8 @@ const Sponsors = () => {
         >
           {sponsorsData.map((sponsor) => (
             <Image
-              width={200}
-              height={200}
+              width={150}
+              height={150}
               className=" inline-block cursor-pointer"
               src={sponsor.sponsorImage}
               alt={sponsor.sponsorName}
@@ -64,7 +64,7 @@ const Sponsors = () => {
         <MdChevronRight
           onClick={slideRight}
           size={40}
-          className="cursor-pointer opacity-50 hover:opacity-100 text-white"
+          className="cursor-pointer opacity-50 hover:opacity-100 text-black"
         />
       </div>
     </div>

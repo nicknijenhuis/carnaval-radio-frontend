@@ -51,16 +51,16 @@ const PlayerControls = ({
   };
 
   return (
-    <div className="flex flex-row items-center justify-between bg-[#E63A3A] w-full h-[6rem] px-10 fixed bottom-0">
+    <div className="flex flex-row items-center justify-between bg-[#1DC724] w-full h-[6rem] px-10 fixed bottom-0">
       <div>
         <FiRepeat size={30} />
       </div>
       <div className="flex flex-col items-center justify-center space-y-2">
-        <div className="min-w-[100%] h-[5px] rounded-[30px] cursor-pointer bg-black">
+        <div className="min-w-[100%] h-[5px] rounded-[30px] cursor-pointer bg-white">
           <div
             onClick={forwardSeekBar}
             ref={clickRef}
-            className=" h-[100%] bg-yellow-400 rounded-[30px]"
+            className=" h-[100%] bg-red-400 rounded-[30px]"
             style={{ width: `${currentTrack.progress + "%"}` }}
           ></div>
         </div>

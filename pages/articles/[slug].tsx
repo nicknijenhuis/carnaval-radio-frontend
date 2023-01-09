@@ -47,7 +47,7 @@ const Post = ({ post }: Props) => {
 
 export default Post;
 
-const GRAPHQL_ENDPOINT = "http://localhost:1337/graphql";
+const GRAPHQL_ENDPOINT = process.env.NEXT_PUBLIC_STRAPI_URL;
 const client = new ApolloClient({
   uri: GRAPHQL_ENDPOINT,
   cache: new InMemoryCache(),
