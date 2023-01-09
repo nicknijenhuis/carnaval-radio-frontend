@@ -83,7 +83,7 @@ const Footer = () => {
           <Socials />
         </div>
       </div>
-      <div className="flex flex-col-reverse md:flex-row mb-32  items-center justify-between space-y-5 px-10">
+      <div className="flex flex-col-reverse md:flex-row py-20  items-center justify-between space-y-5 px-10">
         <p>2023 Copyright Carnival-Radio. All rights Reserved.</p>
         <div className="pb-5">
           <ul className="flex space-x-5">
