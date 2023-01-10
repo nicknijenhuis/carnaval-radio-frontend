@@ -1,14 +1,14 @@
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 export interface Post {
   attributes: {
-    coverPhoto: {
+    coverImage: {
         data: {
             attributes: {
                 url: string;
             }
         }
     };
-    title: string;
+    Title: string;
     publishedAt: string;
     Slug: string;
     content: string;

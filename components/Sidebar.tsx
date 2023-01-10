@@ -3,8 +3,9 @@ import React from "react";
 
 import logo from "../public/assets/logo-2.png";
 import SidebarLinks from "./SidebarLinks";
+import SidebarPlayer from "./SidebarPlayer";
 import Socials from "./Socials";
-import Sponsors from "./Sponsors";
+import SidebarSponsors from "./Sponsors/SidebarSponsors";
 
 const Sidebar = () => {
   return (
@@ -12,11 +13,14 @@ const Sidebar = () => {
       <div className="flex items-center justify-center w-50 h-50 p-0">
         <Image src={logo} width={200} height={200} alt="Logo" />
       </div>
+      <div>
+        <SidebarPlayer />
+      </div>
       <div className="min-w-full">
         <SidebarLinks />
       </div>
       <div className="w-50 h-50">
-        <Sponsors />
+        <SidebarSponsors />
       </div>
       <div>
         <Socials />

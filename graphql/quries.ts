@@ -14,23 +14,23 @@ query{
 
 export const GET_ALL_ARTICLES = gql`
 query{
-    articles{
-      data{
-        attributes{
-          coverPhoto{
-              data{
-              attributes{
-                url
-              }
+  articles{
+    data{
+      attributes{
+        Title
+        Slug
+        publishedAt
+        CoverImage{
+          data{
+            attributes{
+              url
             }
           }
-          title
-          publishedAt
-          Slug
         }
       }
     }
   }
+}
 `;
 
 export const GET_SINGLE_ARTICLE = gql`
@@ -60,8 +60,8 @@ query($slugUrl: String!)
   articles(filters: { Slug: { eq: $slugUrl }}){
     data{
       attributes{
-        title
-        content
+        Title
+        Content
         publishedAt
         author{
           data{
@@ -70,7 +70,7 @@ query($slugUrl: String!)
             }
           }
         }
-        coverPhoto{
+        CoverImage{
           data{
             attributes{
               url

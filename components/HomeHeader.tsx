@@ -1,5 +1,5 @@
 import React from "react";
-import Sponsors from "./Sponsors";
+import Sponsors from "./Sponsors/Sponsors";
 import { AiFillPlayCircle, AiOutlinePlayCircle } from "react-icons/ai";
 const HomeHeader = () => {
   return (

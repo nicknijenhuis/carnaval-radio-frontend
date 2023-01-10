@@ -40,7 +40,8 @@ const Sponsors = () => {
     }
   };
   return (
-    <div className=" text-black">
+    <div className=" text-black py-10 px-10">
+      <h2 className="text-2xl">Our Trusted Partners</h2>
       <div className="relative flex items-center pt-10">
         <MdChevronLeft
           onClick={slideLeft}
