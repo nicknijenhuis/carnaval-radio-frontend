@@ -9,7 +9,7 @@ import SidebarSponsors from "./Sponsors/SidebarSponsors";
 
 const Sidebar = () => {
   return (
-    <div className="hidden sm:flex flex-col items-center xl:items-start xl:w-[240px] py-2 border-r-2 shadow-2xl">
+    <div className="hidden sm:flex flex-col items-center xl:items-start xl:w-[240px] pt-2 pb-10 border-r-2 shadow-2xl h-full">
       <div className="flex items-center justify-center w-50 h-50 p-0">
         <Image src={logo} width={200} height={200} alt="Logo" />
       </div>

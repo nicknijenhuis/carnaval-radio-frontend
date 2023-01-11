@@ -11,7 +11,7 @@ export interface Post {
     Title: string;
     publishedAt: string;
     Slug: string;
-    content: string;
+    Content: string;
   };
 }
 

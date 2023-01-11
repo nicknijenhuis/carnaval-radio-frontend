@@ -19,6 +19,7 @@ query{
       attributes{
         Title
         Slug
+        Content
         publishedAt
         CoverImage{
           data{

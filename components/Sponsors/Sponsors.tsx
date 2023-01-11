@@ -58,9 +58,9 @@ const Sponsors = () => {
           {sponsorsData.map((sponsor, i) => (
             <Image
               key={i}
-              width={150}
-              height={150}
-              className=" inline-block cursor-pointer"
+              width={200}
+              height={200}
+              className=" inline-block cursor-pointer border-2 border-[#FFA500] p-4 rounded-lg"
               src={sponsor.sponsorImage}
               alt={sponsor.sponsorName}
             />
