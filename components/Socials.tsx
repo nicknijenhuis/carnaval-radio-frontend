@@ -27,7 +27,7 @@ const Socials = () => {
       <h2>Follow Us On</h2>
       <div className='flex space-x-5'>
         {socialsData.map((icon, i) => (
-          <Link href="/">
+          <Link href="/" key={i}>
             <Image src={icon.iconImg} alt={icon.iconName} width={30} height={30} />
           </Link>
         ))}

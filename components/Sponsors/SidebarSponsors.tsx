@@ -51,8 +51,9 @@ const SidebarSponsors = () => {
           id="sidebar-slider"
           className="w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth space-x-10 scrollbar-hide"
         >
-          {sponsorsData.map((sponsor) => (
+          {sponsorsData.map((sponsor, i) => (
             <Image
+              key={i}
               width={150}
               height={150}
               className=" inline-block cursor-pointer"

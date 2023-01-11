@@ -63,13 +63,6 @@ query($slugUrl: String!)
         Title
         Content
         publishedAt
-        author{
-          data{
-            attributes{
-              name
-            }
-          }
-        }
         CoverImage{
           data{
             attributes{

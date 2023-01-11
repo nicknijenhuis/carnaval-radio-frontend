@@ -1,7 +1,13 @@
 import React from 'react'
 import Link from 'next/link'
 
-const PostCard = ({posts}) => {
+import { Post } from '../typings'
+
+interface Props {
+  posts: [Post];
+}
+
+const PostCard = ({posts}: Props) => {
   return (
     <div
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3

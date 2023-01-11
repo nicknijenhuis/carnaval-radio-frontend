@@ -1,43 +1,45 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import React from "react";
 import Navbar from "../../components/Navbar";
-import { GET_ALL_SLUGS, GET_SINGLE_POST } from "../../graphql/quries";
-import { singlePost, Post } from "../../typings";
+import { GET_ALL_SLUGS, GET_SINGLE_ARTICLE, GET_SINGLE_POST } from "../../graphql/quries";
+import { Post, singlePost } from "../../typings";
 import ReactMarkdown from "react-markdown";
 
 interface Props {
   post: singlePost;
   params: {
-    slug: string;
+    Slug: string;
   };
 }
 
-//className="text-xl font-light text-gray-500 mb-2"
+const client = new ApolloClient({
+  uri: process.env.NEXT_PUBLIC_STRAPI_URL,
+  cache: new InMemoryCache(),
+});
 
 const Post = ({ post }: Props) => {
   return (
     <div>
       <main>
-        <Navbar />
         <img
           className="w-full h-40 md:h-80 object-cover"
-          src={post.coverPhoto}
-          alt={post.title}
+          src={post.CoverImage}
+          alt={post.Title}
         />
         <article className="max-w-3xl mx-auto p-5 space-y-10">
-          <h1 className="text-3xl mt-10 mb-3">{post.title}</h1>
+          <h1 className="text-3xl mt-10 mb-3">{post.Title}</h1>
           <div className="flex items-center space-x-2">
             <img
               className="h-10 w-10 rounded-full"
-              src={post.coverPhoto}
+              src={post.CoverImage}
               alt=""
             />
             <p className="font-extraLight text-sm">
-              Blog post by <span className="text-green-600">{post.author}</span>{" "}
+              Blog post by <span className="text-green-600">Carnaval Radio</span>{" "}
               - Published at {new Date(post.publishedAt).toLocaleString()!}
             </p>
           </div>
-          <ReactMarkdown className=" mb-2">{post.content}</ReactMarkdown>
+          <ReactMarkdown className=" mb-2">{post.Content}</ReactMarkdown>
           <div className="mt-10"></div>
         </article>
       </main>
@@ -47,33 +49,24 @@ const Post = ({ post }: Props) => {
 
 export default Post;
 
-const GRAPHQL_ENDPOINT = process.env.NEXT_PUBLIC_STRAPI_URL;
-const client = new ApolloClient({
-  uri: GRAPHQL_ENDPOINT,
-  cache: new InMemoryCache(),
-});
+export async function getStaticPaths(){
+  const { data} = await client.query({query: GET_ALL_SLUGS});
 
-export async function getStaticPaths() {
-  const { data } = await client.query({
-    query: GET_ALL_SLUGS,
-  });
+  const paths = data.articles.data.map((post: Post) => {
+    return { params: { Slug: post.attributes.Slug}}
+  })
 
-  const paths = data.articles.data.map((post: Post) => ({
-    params: {
-      slug: post.attributes.Slug,
-    },
-  }));
 
   return {
     paths,
-    fallback: false,
-  };
-}
+    fallback: false
+  }
+};
 
-export async function getStaticProps({ params }: Props) {
+export async function getStaticProps({ params} : Props){
   const { data } = await client.query({
     query: GET_SINGLE_POST,
-    variables: { slugUrl: params.slug },
+    variables: { slugUrl: params.Slug}
   });
 
   const attrs = data.articles.data[0].attributes;
@@ -81,12 +74,12 @@ export async function getStaticProps({ params }: Props) {
   return {
     props: {
       post: {
-        title: attrs.title,
-        content: attrs.content,
-        coverPhoto: attrs.coverPhoto.data.attributes.url,
-        author: attrs.author.data.attributes.name,
+        Title: attrs.Title,
+        Content: attrs.Content,
+        CoverImage: attrs.CoverImage.data.attributes.url,
         publishedAt: attrs.publishedAt,
-      },
-    },
-  };
+      }
+    }
+  }
+
 }
