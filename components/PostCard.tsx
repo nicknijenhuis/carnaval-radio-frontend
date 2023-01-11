@@ -12,7 +12,10 @@ const PostCard = ({ posts }: Props) => {
   return (
     <div className="px-10 space-y-10 md:space-y-0">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl">News</h2>
+        <div className="flex space-x-4 items-center">
+          <div className="h-5 w-5 bg-[#FFA500]"></div>
+          <h2 className="text-2xl">News</h2>
+        </div>
         <button className="self-end flex items-center space-x-1 bg-[#FFA500] px-2 rounded-full">
           <p>See More</p> <MdKeyboardArrowRight />
         </button>
