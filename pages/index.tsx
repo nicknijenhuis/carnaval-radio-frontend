@@ -5,6 +5,7 @@ import { Post } from "../typings";
 import Hero from "../components/Hero/Hero";
 import Sponsors from "../components/Sponsors/Sponsors";
 import PostCard from "../components/PostCard";
+import Instagram from "../components/Instagram";
 
 interface Props {
   posts: [Post];
@@ -16,6 +17,7 @@ export default function Home({ posts }: Props) {
       <Hero />
       <Sponsors />
       <PostCard posts={posts} />
+      <Instagram />
     </div>
   );
 }
