@@ -10,7 +10,7 @@ interface Props {
 
 const PostCard = ({ posts }: Props) => {
   return (
-    <div className="px-10">
+    <div className="px-10 space-y-10 md:space-y-0">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl">News</h2>
         <button className="self-end flex items-center space-x-1 bg-[#FFA500] px-2 rounded-full">
