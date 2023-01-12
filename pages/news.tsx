@@ -1,7 +1,7 @@
 import React from "react";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
-import { GET_ALL_ARTICLES } from "../graphql/quries";
+import { GET_ALL_ARTICLES } from "../graphql/queries";
 import { Post } from "../typings";
 import Link from "next/link";
 import { TwitterTweetEmbed } from "react-twitter-embed";
@@ -26,22 +26,22 @@ gap-3 md:gap-6 p-2 md:p-6 max-w-[1280px] m-auto"
                   <div className="rounded-lg group cursor-pointer overflow-hidden bg-yellow-100">
                     <img
                       className="h-60 w-full object-cover"
-                      src={post.attributes.coverPhoto.data.attributes.url}
+                      src={post.attributes.CoverImage.data.attributes.url}
                       alt=""
                     />
                     <div className="flex justify-between pt-5 px-2 pb-2">
                       <div>
                         <p className="text-lg font-bold">
-                          {post.attributes.title}
+                          {post.attributes.Title}
                         </p>
                         <p className="text-sm">
-                          {post.attributes.title} by {post.attributes.title}
+                          {post.attributes.Title} by {post.attributes.Title}
                         </p>
                       </div>
                       <div>
                         <img
                           className="h-10 w-10 rounded-full"
-                          src={post.attributes.coverPhoto.data.attributes.url}
+                          src={post.attributes.CoverImage.data.attributes.url}
                           alt=""
                         />
                       </div>
@@ -99,9 +99,4 @@ export async function getServerSideProps() {
       posts: data.articles.data,
     },
   };
-}
-
-{
-  /*
-   */
 }

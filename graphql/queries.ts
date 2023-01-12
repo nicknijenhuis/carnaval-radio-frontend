@@ -34,27 +34,6 @@ query{
 }
 `;
 
-export const GET_SINGLE_ARTICLE = gql`
-query{
-  articles(filters: {Slug: { in: "second-post"}}){
-    data{
-      attributes{
-        title
-        content
-        publishedAt
-        coverPhoto{
-          data{
-            attributes{
-              url
-            }
-          }
-        }
-      }
-    }
-  }
-}
-`
-
 export const GET_SINGLE_POST = gql`
 query($slugUrl: String!)
 {

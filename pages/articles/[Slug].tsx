@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import React from "react";
 import Navbar from "../../components/Navbar";
-import { GET_ALL_SLUGS, GET_SINGLE_ARTICLE, GET_SINGLE_POST } from "../../graphql/quries";
+import { GET_ALL_SLUGS, GET_SINGLE_ARTICLE, GET_SINGLE_POST } from "../../graphql/queries";
 import { Post, singlePost } from "../../typings";
 import ReactMarkdown from "react-markdown";
 
@@ -50,12 +50,11 @@ const Post = ({ post }: Props) => {
 export default Post;
 
 export async function getStaticPaths(){
-  const { data} = await client.query({query: GET_ALL_SLUGS});
+  const { data } = await client.query({query: GET_ALL_SLUGS});
 
   const paths = data.articles.data.map((post: Post) => {
     return { params: { Slug: post.attributes.Slug}}
   })
-
 
   return {
     paths,
@@ -63,7 +62,7 @@ export async function getStaticPaths(){
   }
 };
 
-export async function getStaticProps({ params} : Props){
+export async function getStaticProps({params} : Props){
   const { data } = await client.query({
     query: GET_SINGLE_POST,
     variables: { slugUrl: params.Slug}
