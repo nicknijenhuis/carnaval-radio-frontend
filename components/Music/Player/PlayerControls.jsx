@@ -77,7 +77,6 @@ const PlayerControls = ({
           <FiFastForward size={40} onClick={skipNext} />
         </div>
       </div>
-      <div>{currentTrack.title}</div>
     </div>
   );
 };
