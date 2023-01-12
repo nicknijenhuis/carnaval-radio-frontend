@@ -43,7 +43,7 @@ const Sponsors = () => {
     <div className=" text-black py-10 px-10">
       <div className="flex space-x-4 items-center">
           <div className="h-5 w-5 bg-[#FFA500]"></div>
-          <h2 className="text-2xl">Our Trusted Partners</h2>
+          <h2 className="text-2xl">Onze sponsoren</h2>
         </div>
       <div className="relative flex items-center pt-10">
         <MdChevronLeft
