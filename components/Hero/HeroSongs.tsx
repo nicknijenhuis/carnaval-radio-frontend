@@ -37,7 +37,7 @@ const recentSongs = [
 
 const HeroSongs = () => {
   return (
-    <div className="flex flex-col space-y-5 px-4 min-w-[30vw] shadow-xl md:ml-5">
+    <div className="flex flex-col space-y-4 px-4 py-3 w-[90vw] md:w-0 min-w-[30vw] shadow-xl md:ml-5">
       <h2 className="text-center">Recent Songs</h2>
       <div className="space-y-2">
         {recentSongs.map((recentSong) => (

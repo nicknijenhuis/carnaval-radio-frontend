@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import Image from "next/image";
 import {
   FiRepeat,
   FiPlayCircle,
@@ -51,9 +52,13 @@ const PlayerControls = ({
   };
 
   return (
-    <div className="flex flex-row items-center justify-between bg-[#FFA500] w-full h-[6rem] px-10 fixed bottom-0">
-      <div>
-        <FiRepeat size={30} />
+    <div className="flex flex-row items-center justify-between bg-[#1DC724] w-full h-[5rem] px-2 md:px-10 fixed bottom-0 z-20 md:z-50">
+      <div className="flex items-center space-x-2">
+        <Image src={currentTrack.trackCoverImage} alt={currentTrack.title} width={120} height={70} />
+        <div>
+          <h2 className="text-xl font-bold">{currentTrack.title}</h2>
+          <p>{currentTrack.artist}</p>
+        </div>
       </div>
       <div className="flex flex-col items-center justify-center space-y-2">
         <div className="min-w-[100%] h-[5px] rounded-[30px] cursor-pointer bg-white">

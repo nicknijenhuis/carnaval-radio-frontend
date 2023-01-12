@@ -1,17 +1,23 @@
 export const tracksData = [
     {
       url: "https://audioplayer.madza.dev/Madza-Chords_of_Life.mp3",
-      title: "Madza - Chords of Life",
+      title: "Chords of Life",
+      artist: "Madza",
+      trackCoverImage: "/assets/showcase-1.jpg",
       tags: ["house"],
     },
     {
       url: "https://audioplayer.madza.dev/Madza-Late_Night_Drive.mp3",
-      title: "Madza - Late Night Drive",
+      title: "Late Night Drive",
+      artist: "Madza",
+      trackCoverImage: "/assets/showcase-2.jpg",
       tags: ["dnb"],
     },
     {
       url: "https://audioplayer.madza.dev/Madza-Persistence.mp3",
-      title: "Madza - Persistence",
+      title: "Persistence",
+      artist: "Madza",
+      trackCoverImage: "/assets/showcase-3.jpg",
       tags: ["dubstep"],
     },
   ];
