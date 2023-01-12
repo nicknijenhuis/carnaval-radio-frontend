@@ -11,7 +11,7 @@ interface Props {
 
 const PostCard = ({ posts }: Props) => {
   return (
-    <div className="px-10 space-y-10 md:space-y-0">
+    <div className="px-10 space-y-10 md:space-y-0 py-10">
       <div className="flex justify-between items-center">
         <div className="flex space-x-4 items-center">
           <div className="h-5 w-5 bg-[#FFA500]"></div>
@@ -24,7 +24,7 @@ const PostCard = ({ posts }: Props) => {
 
       <div
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
-       gap-3 md:gap-6 p-2 md:p-6 max-w-[1280px] m-auto"
+       gap-3 md:gap-6 max-w-[1280px] m-auto pt-10"
       >
         {posts.map((post, i) => (
           <Link key={i} href={`/articles/${post.attributes.Slug}`}>

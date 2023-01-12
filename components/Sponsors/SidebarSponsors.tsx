@@ -41,7 +41,7 @@ const SidebarSponsors = () => {
   };
   return (
     <div className=" text-black">
-      <div className="relative flex items-center pt-10">
+      <div className="relative flex items-center py-5">
         <MdChevronLeft
           onClick={slideLeft}
           size={40}
@@ -54,8 +54,8 @@ const SidebarSponsors = () => {
           {sponsorsData.map((sponsor, i) => (
             <Image
               key={i}
-              width={150}
-              height={150}
+              width={100}
+              height={100}
               className=" inline-block cursor-pointer"
               src={sponsor.sponsorImage}
               alt={sponsor.sponsorName}

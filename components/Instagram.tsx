@@ -19,7 +19,7 @@ const instagramUrl = [
 
 const Instagram = () => {
   return (
-    <div className="px-10 hidden md:flex md:flex-col">
+    <div className="px-10 py-10 hidden md:flex md:flex-col">
       <div className="flex justify-between items-center">
       <div className="flex space-x-4 items-center">
           <div className="h-5 w-5 bg-[#FFA500]"></div>

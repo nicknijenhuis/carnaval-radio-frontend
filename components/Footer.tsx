@@ -15,7 +15,7 @@ const Footer = () => {
             <Image src={logo} width={200} height={200} alt="Logo" />
           </Link>
         </div>
-        <div className="flex flex-row items-center justify-between space-x-10 flex-grow">
+        <div className="flex flex-row items-start justify-between space-x-10 flex-grow">
           <div>
             <h2 className="font-bold">Quick Links</h2>
             <ul className="text-sm space-y-4">

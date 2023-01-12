@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useRef } from "react";
 import {
   FiRepeat,
@@ -51,12 +52,16 @@ const PlayerControls = ({
   };
 
   return (
-    <div className="flex flex-row items-center justify-between bg-[#1DC724] w-full h-[6rem] px-10 fixed bottom-0">
-      <div>
-        <FiRepeat size={30} />
+    <div className="flex flex-row items-center justify-between bg-[#1DC724] w-full h-[5rem] px-2 md:px-10 fixed bottom-0 z-20">
+      <div className="flex items-center space-x-2">
+        <Image src={currentTrack.trackCoverImage} alt={currentTrack.title} width={120} height={70} />
+        <div>
+          <h2 className="text-xl font-bold">{currentTrack.title}</h2>
+          <p>{currentTrack.artist}</p>
+        </div>
       </div>
       <div className="flex flex-col items-center justify-center space-y-2">
-        <div className="min-w-[100%] h-[5px] rounded-[30px] cursor-pointer bg-white">
+        <div className="hidden md:flex min-w-[100%] h-[5px] rounded-[30px] cursor-pointer bg-white">
           <div
             onClick={forwardSeekBar}
             ref={clickRef}
@@ -65,14 +70,16 @@ const PlayerControls = ({
           ></div>
         </div>
         <div className="flex space-x-10 items-center justify-center">
-          <FiRewind size={40} onClick={skipBack} />
+          <FiRewind size={30} onClick={skipBack} />
           <div onClick={PlayPause}>
-            {isPlaying ? <FiPause size={60} /> : <FiPlayCircle size={60} />}
+            {isPlaying ? <FiPause size={50} /> : <FiPlayCircle size={50} />}
           </div>
-          <FiFastForward size={40} onClick={skipNext} />
+          <FiFastForward size={30} onClick={skipNext} />
         </div>
       </div>
-      <div>{currentTrack.title}</div>
+      <div className="hidden md:flex">
+      <input type="range" id="volume-slider" max="100" value="100" />
+      </div>
     </div>
   );
 };
