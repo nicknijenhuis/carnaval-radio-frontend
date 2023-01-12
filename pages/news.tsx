@@ -1,8 +1,8 @@
 import React from "react";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
-import { GET_ALL_ARTICLES } from "../graphql/queries";
-import { Post } from "../typings";
+import { GET_ALL_ARTICLES } from "../graphql/article_queries";
+import { Post } from "../types/articleTypes";
 import Link from "next/link";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 

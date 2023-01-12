@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { GET_ALL_ARTICLES } from "../graphql/queries";
-import { Post } from "../typings";
+import { GET_ALL_ARTICLES } from "../graphql/article_queries";
+import { Post } from "../types/articleTypes";
 
 import Hero from "../components/Hero/Hero";
 import Sponsors from "../components/Sponsors/Sponsors";

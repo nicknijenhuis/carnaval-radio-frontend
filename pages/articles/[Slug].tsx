@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import React from "react";
-import { GET_ALL_SLUGS, GET_SINGLE_POST } from "../../graphql/queries";
-import { Post, singlePost } from "../../typings";
+import { GET_ALL_SLUGS, GET_SINGLE_POST } from "../../graphql/article_queries";
+import { Post, singlePost } from "../../types/articleTypes";
 import ReactMarkdown from "react-markdown";
 
 interface Props {

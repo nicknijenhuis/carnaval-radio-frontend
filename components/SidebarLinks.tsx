@@ -39,7 +39,7 @@ const SidebarLinks = () => {
             <MdApi size={30} className='mr-2' /> Overig
           </li>
         </Link>
-        <Link href="/" className="border-[1px] border-[#9F9F9F] py-2">
+        <Link href="/pages/contact" className="border-[1px] border-[#9F9F9F] py-2">
           <li className="flex flex-row pl-14">
             <MdPhoneEnabled size={30} className='mr-2' /> Contact
           </li>

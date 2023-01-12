@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 
-import { Post } from "../typings";
+import { Post } from "../types/articleTypes";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
 interface Props {
