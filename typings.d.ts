@@ -26,11 +26,5 @@ export interface singlePost {
       }
     }
   }
-  CoverImage: {
-    data: {
-        attributes: {
-            url: string;
-        }
-    }
-};
+  CoverImage: string;
 }

@@ -83,7 +83,7 @@ gap-3 md:gap-6 p-2 md:p-6 max-w-[1280px] m-auto"
 
 export default news;
 
-const GRAPHQL_ENDPOINT = "http://localhost:1337/graphql";
+const GRAPHQL_ENDPOINT = process.env.NEXT_PUBLIC_STRAPI_UR;
 
 export async function getServerSideProps() {
   const client = new ApolloClient({

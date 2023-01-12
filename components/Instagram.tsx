@@ -32,7 +32,7 @@ const Instagram = () => {
 
       <div className="md:grid md:grid-cols-2 py-10">
         {instagramUrl.map((igPost) => (
-          <div>
+          <div key={igPost.instaLink}>
             <InstagramEmbed url={igPost.instaLink} width={500} height={600} />
           </div>
         ))}

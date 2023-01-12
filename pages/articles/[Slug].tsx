@@ -1,7 +1,6 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import React from "react";
-import Navbar from "../../components/Navbar";
-import { GET_ALL_SLUGS, GET_SINGLE_ARTICLE, GET_SINGLE_POST } from "../../graphql/queries";
+import { GET_ALL_SLUGS, GET_SINGLE_POST } from "../../graphql/queries";
 import { Post, singlePost } from "../../typings";
 import ReactMarkdown from "react-markdown";
 

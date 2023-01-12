@@ -41,7 +41,7 @@ const HeroSongs = () => {
       <h2 className="text-center">Recent Songs</h2>
       <div className="space-y-2">
         {recentSongs.map((recentSong) => (
-          <div className="flex items-center justify-between">
+          <div key={recentSong.songArtist+recentSong.songTitle} className="flex items-center justify-between">
             <div className="flex space-x-5">
               <Image
                 src={recentSong.songImg}
