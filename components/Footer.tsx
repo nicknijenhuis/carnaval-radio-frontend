@@ -40,7 +40,7 @@ const Footer = () => {
             <h2 className="font-bold">Home</h2>
             <ul className="text-sm space-y-4">
               <li>
-                <Link href="/">About Us</Link>
+                <Link href="/">Over ons</Link>
               </li>
               <li>
                 <Link href="/">Luisteren</Link>
@@ -84,7 +84,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex flex-col-reverse md:flex-row py-20  items-center justify-between space-y-5 px-10">
-        <p>2023 Copyright Carnival-Radio. All rights Reserved.</p>
+        <p>2023 Copyright Carnaval-Radio. All rights Reserved.</p>
         <div className="pb-5">
           <ul className="flex space-x-5">
             <li>

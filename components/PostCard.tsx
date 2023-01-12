@@ -17,7 +17,7 @@ const PostCard = ({ posts }: Props) => {
           <div className="h-5 w-5 bg-[#FFA500]"></div>
           <h2 className="text-2xl">News</h2>
         </div>
-        <button className="self-end flex items-center space-x-1 bg-[#FFA500] px-2 rounded-full">
+        <button className="self-end flex items-center space-x-1 bg-[#1DC724] px-2 rounded-full">
           <p>See More</p> <MdKeyboardArrowRight />
         </button>
       </div>

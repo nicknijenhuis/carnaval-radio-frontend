@@ -51,7 +51,7 @@ const PlayerControls = ({
   };
 
   return (
-    <div className="flex flex-row items-center justify-between bg-[#1DC724] w-full h-[6rem] px-10 fixed bottom-0">
+    <div className="flex flex-row items-center justify-between bg-[#FFA500] w-full h-[6rem] px-10 fixed bottom-0">
       <div>
         <FiRepeat size={30} />
       </div>

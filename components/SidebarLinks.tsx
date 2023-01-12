@@ -21,12 +21,12 @@ const SidebarLinks = () => {
         </Link>
         <Link href="/" className="border-[1px] border-[#9F9F9F] py-2">
           <li className="flex flex-row pl-14">
-            <MdError size={30} className='mr-2' /> About Us
+            <MdError size={30} className='mr-2' /> Over ons
           </li>
         </Link>
         <Link href="/" className="border-[1px] border-[#9F9F9F] py-2">
           <li className="flex flex-row pl-14">
-            <MdMusicNote size={30} className='mr-2' /> Listen
+            <MdMusicNote size={30} className='mr-2' /> Luisteren
           </li>
         </Link>
         <Link href="/" className="border-[1px] border-[#9F9F9F] py-2">
@@ -41,7 +41,7 @@ const SidebarLinks = () => {
         </Link>
         <Link href="/" className="border-[1px] border-[#9F9F9F] py-2">
           <li className="flex flex-row pl-14">
-            <MdPhoneEnabled size={30} className='mr-2' /> Contact Us
+            <MdPhoneEnabled size={30} className='mr-2' /> Contact
           </li>
         </Link>
       </ul>

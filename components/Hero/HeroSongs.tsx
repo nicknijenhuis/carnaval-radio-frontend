@@ -63,7 +63,7 @@ const HeroSongs = () => {
           </div>
         ))}
       </div>
-      <button className="self-end flex items-center space-x-1 bg-[#FFA500] px-2 rounded-full">
+      <button className="self-end flex items-center space-x-1 bg-[#1DC724] px-2 rounded-full">
         <p>View More</p> <MdKeyboardArrowRight />
       </button>
     </div>
