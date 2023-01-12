@@ -18,7 +18,7 @@ export default function Sidebar() {
   }
 
   return (
-    <div className="max-h-screen md:sticky md:top-0 z-30">
+    <div className="max-h-screen md:sticky md:top-0 z-30 border-r-2 h-full">
       {/* MOBILE SIDEBAR */}
       <div className="md:hidden flex justify-between p-2 items-center sticky top-0 z-30">
       <Image src={logo} width={150} height={150} alt="Logo" />
@@ -33,7 +33,7 @@ export default function Sidebar() {
       {/* MAIN SIDEBAR */}
       <div
         ref={sideBarRef}
-        className=" bg-white w-[240px] space-y-10 py-3  absolute inset-y-0 left-0 transform -translate-x-full
+        className=" bg-white w-[240px] space-y-10 py-3  absolute inset-y-0 left-0 transform -translate-x-full shadow-[0_35px_70px_-15px_rgba(0,0,0,0.7)]
          md:translate-x-0 z-30 transition duration-200 ease-in-out flex flex-col child:transition-all md:max-h-screen md:min-h-screen md:sticky md:top-0"
       >
         <div className="flex items-center justify-center w-50 h-50 p-0">
