@@ -77,6 +77,7 @@ const PlayerControls = ({
           <FiFastForward size={40} onClick={skipNext} />
         </div>
       </div>
+      <div className="hidden md:flex">Volume</div>
     </div>
   );
 };

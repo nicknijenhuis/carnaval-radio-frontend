@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import { MdMusicNote, MdKeyboardArrowRight } from "react-icons/md";
+import { MdMusicNote } from "react-icons/md";
+import Button from "../constants/Button";
 
 const recentSongs = [
   {
@@ -40,8 +41,8 @@ const HeroSongs = () => {
     <div className="flex flex-col space-y-4 px-4 py-3 w-[90vw] md:w-0 min-w-[30vw] shadow-xl md:ml-5">
       <h2 className="text-center">Recent Songs</h2>
       <div className="space-y-2">
-        {recentSongs.map((recentSong) => (
-          <div key={recentSong.songArtist+recentSong.songTitle} className="flex items-center justify-between">
+        {recentSongs.map((recentSong, i) => (
+          <div key={i} className="flex items-center justify-between">
             <div className="flex space-x-5">
               <Image
                 src={recentSong.songImg}
@@ -63,9 +64,7 @@ const HeroSongs = () => {
           </div>
         ))}
       </div>
-      <button className="self-end flex items-center space-x-1 bg-[#1DC724] px-2 rounded-full">
-        <p>View More</p> <MdKeyboardArrowRight />
-      </button>
+       <Button text="View More" />
     </div>
   );
 };

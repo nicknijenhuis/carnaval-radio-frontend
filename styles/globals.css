@@ -6,7 +6,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Dosis', sans-serif;
 }
 
 a {
@@ -14,17 +14,12 @@ a {
   text-decoration: none;
 }
 
-.bg-image{
-  background: url(../public/assets/bg-2.png);
-  background-size: cover
-}
-.herobg-image{
-  background: url(../public/assets/showcase-4.jpg);
-  background-size: cover
-}
-
 h1 {
   @apply font-bold text-5xl;
+}
+
+h2{
+  font-family: 'Indie Flower', cursive;
 }
 
 p {

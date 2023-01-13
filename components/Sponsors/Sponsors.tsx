@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import SectionTitle from "../constants/SectionTitle";
+import { RxDotFilled} from "react-icons/rx"
 
 const sponsorsData = [
   {
@@ -39,12 +41,16 @@ const Sponsors = () => {
       slider.scrollLeft = slider.scrollLeft + 90;
     }
   };
+
+  // const goToSponsor = (sponsorIndex) => {
+  //   let slider = document.getElementById("slider");
+  //   if (slider != null) {
+  //     slider.scrollLeft = slider.scrollLeft + 90;
+  //   }
+  // }
   return (
     <div className=" text-black py-10 px-10">
-      <div className="flex space-x-4 items-center">
-          <div className="h-5 w-5 bg-[#FFA500]"></div>
-          <h2 className="text-2xl">Onze sponsoren</h2>
-        </div>
+      <SectionTitle title="Onze sponsoren" />
       <div className="relative flex items-center pt-10">
         <MdChevronLeft
           onClick={slideLeft}
@@ -71,6 +77,13 @@ const Sponsors = () => {
           size={40}
           className="cursor-pointer opacity-50 hover:opacity-100 text-black"
         />
+      </div>
+      <div className="flex top-4 justify-center py-2">
+        {sponsorsData.map((sponsor, SponsorIndex) => (
+          <div className="text-2xl cursor-pointer">
+            <RxDotFilled />
+          </div>
+        ))}
       </div>
     </div>
   );
