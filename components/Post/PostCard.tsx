@@ -22,7 +22,7 @@ const PostCard = ({ posts }: Props) => {
        gap-3 md:gap-6 max-w-[1280px] m-auto pt-10"
       >
         {posts.map((post, i) => (
-           <PostDetails post={post} i={i} />
+           <PostDetails key={`post${i}`} post={post} i={i} />
         ))}
       </div>
     </div>

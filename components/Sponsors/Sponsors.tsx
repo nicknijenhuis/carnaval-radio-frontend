@@ -80,7 +80,7 @@ const Sponsors = () => {
       </div>
       <div className="flex top-4 justify-center py-2">
         {sponsorsData.map((sponsor, SponsorIndex) => (
-          <div className="text-2xl cursor-pointer">
+          <div key={SponsorIndex} className="text-2xl cursor-pointer">
             <RxDotFilled />
           </div>
         ))}
