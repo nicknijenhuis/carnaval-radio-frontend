@@ -11,10 +11,13 @@ import SidebarSponsors from "./Sponsors/SidebarSponsors";
 
 export default function Sidebar() {
 
-  const sideBarRef = useRef()
+  const sideBarRef = useRef<HTMLDivElement>(null)
 
   function toogleSideBar() {
-    sideBarRef.current.classList.toggle('-translate-x-full')
+    if(sideBarRef.current)
+    {
+      sideBarRef.current.classList.toggle('-translate-x-full')
+    }
   }
 
   return (
