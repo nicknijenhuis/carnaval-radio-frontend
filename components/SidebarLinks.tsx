@@ -51,11 +51,11 @@ const SidebarLinks = () => {
     <div className="text-[#9F9F9F]">
       <ul className="flex flex-col">
         {data.map((link) => {
-          const className = "border-t border-[#9F9F9F] py-2 " + link.className
+          const className = "md:border-t border-[#9F9F9F] py-2 " + link.className
           
           return (
           <Link key={link.text} href={link.src} className={className}>
-            <li className="flex flex-row pl-14">
+            <li className="flex flex-row md:pl-14 justify-center md:justify-start">
               {link.icon} {link.text}
             </li>
           </Link>

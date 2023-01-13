@@ -1,33 +1,12 @@
-import React from "react";
-import Link from "next/link";
+import Link from 'next/link'
+import React from 'react'
 import ReactMarkdown from "react-markdown";
+import { MdKeyboardArrowRight } from 'react-icons/md'
 
-import { Post } from "../types/articleTypes";
-import { MdKeyboardArrowRight } from "react-icons/md";
-
-interface Props {
-  posts: [Post];
-}
-
-const PostCard = ({ posts }: Props) => {
+const PostDetails = ({post, i} : {post: any, i: Number}) => {
+    let index = '' + i
   return (
-    <div className="px-10 space-y-10 md:space-y-0 py-10">
-      <div className="flex justify-between items-center">
-        <div className="flex space-x-4 items-center">
-          <div className="h-5 w-5 bg-[#FFA500]"></div>
-          <h2 className="text-2xl">Nieuws</h2>
-        </div>
-        <button className="self-end flex items-center space-x-1 bg-[#1DC724] px-2 rounded-full">
-          <p>See More</p> <MdKeyboardArrowRight />
-        </button>
-      </div>
-
-      <div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
-       gap-3 md:gap-6 max-w-[1280px] m-auto pt-10"
-      >
-        {posts.map((post, i) => (
-          <Link key={i} href={`/articles/${post.attributes.Slug}`}>
+    <Link key={index} href={`/articles/${post.attributes.Slug}`}>
             <div className="cursor-pointer overflow-hidden space-y-5">
               <div className="border-2 border-[#FFA500] text-center rounded py-3">
                 <p className="text-lg font-bold">{post.attributes.Title}</p>
@@ -50,10 +29,7 @@ const PostCard = ({ posts }: Props) => {
               </div>
             </div>
           </Link>
-        ))}
-      </div>
-    </div>
-  );
-};
+  )
+}
 
-export default PostCard;
+export default PostDetails

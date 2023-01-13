@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import SectionTitle from "../constants/SectionTitle";
 
 const sponsorsData = [
   {
@@ -41,10 +42,7 @@ const Sponsors = () => {
   };
   return (
     <div className=" text-black py-10 px-10">
-      <div className="flex space-x-4 items-center">
-          <div className="h-5 w-5 bg-[#FFA500]"></div>
-          <h2 className="text-2xl">Onze sponsoren</h2>
-        </div>
+      <SectionTitle title="Onze sponsoren" />
       <div className="relative flex items-center pt-10">
         <MdChevronLeft
           onClick={slideLeft}

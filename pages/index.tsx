@@ -4,7 +4,7 @@ import { Post } from "../types/articleTypes";
 
 import Hero from "../components/Hero/Hero";
 import Sponsors from "../components/Sponsors/Sponsors";
-import PostCard from "../components/PostCard";
+import PostCard from "../components/Post/PostCard";
 import Instagram from "../components/Instagram";
 
 interface Props {
