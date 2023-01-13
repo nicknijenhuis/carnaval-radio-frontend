@@ -7,6 +7,7 @@ import {
   FiFastForward,
   FiRewind,
 } from "react-icons/fi";
+import NowPlaying from "../Songs/NowPlaying";
 
 const PlayerControls = ({
   audioElem,
@@ -58,6 +59,7 @@ const PlayerControls = ({
         <div>
           <h2 className="text-xl font-bold">{currentTrack.title}</h2>
           <p>{currentTrack.artist}</p>
+          <NowPlaying />
         </div>
       </div>
       <div className="flex flex-col items-center justify-center space-y-2">
