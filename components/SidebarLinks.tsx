@@ -11,39 +11,55 @@ import {
 import { RiErrorWarningFill } from "react-icons/ri";
 
 const SidebarLinks = () => {
+  const data = [
+    {
+      text: "Home",
+      src: "/",
+      icon: <MdHome size={30} className="mr-2" />
+    },
+    {
+      text: "Over ons",
+      src: "/",
+      icon: <MdError size={30} className="mr-2" />
+    },
+    {
+      text: "Luisteren",
+      src: "/",
+      icon: <MdMusicNote size={30} className="mr-2" />
+    },
+    {
+      text: "Gastenboek",
+      src: "/",
+      icon: <MdAssignmentInd size={30} className="mr-2" />
+    },
+    {
+      text: "Overig",
+      src: "/",
+      icon: <MdApi size={30} className="mr-2" />
+    },
+    {
+      text: "Contact",
+      src: "/pages/contact",
+      icon: <MdPhoneEnabled size={30} className="mr-2" />,
+      className: "border-b"
+    },
+  ];
+
+
   return (
+
     <div className="text-[#9F9F9F]">
       <ul className="flex flex-col">
-        <Link href="/" className="border-[1px] border-[#9F9F9F] py-2">
-          <li className="flex flex-row pl-14">
-            <MdHome size={30} className='mr-2' /> Home
-          </li>
-        </Link>
-        <Link href="/" className="border-[1px] border-[#9F9F9F] py-2">
-          <li className="flex flex-row pl-14">
-            <MdError size={30} className='mr-2' /> Over ons
-          </li>
-        </Link>
-        <Link href="/" className="border-[1px] border-[#9F9F9F] py-2">
-          <li className="flex flex-row pl-14">
-            <MdMusicNote size={30} className='mr-2' /> Luisteren
-          </li>
-        </Link>
-        <Link href="/" className="border-[1px] border-[#9F9F9F] py-2">
-          <li className="flex flex-row pl-14">
-            <MdAssignmentInd size={30} className='mr-2' /> Gastenboek
-          </li>
-        </Link>
-        <Link href="/" className="border-[1px] border-[#9F9F9F] py-2">
-          <li className="flex flex-row pl-14">
-            <MdApi size={30} className='mr-2' /> Overig
-          </li>
-        </Link>
-        <Link href="/pages/contact" className="border-[1px] border-[#9F9F9F] py-2">
-          <li className="flex flex-row pl-14">
-            <MdPhoneEnabled size={30} className='mr-2' /> Contact
-          </li>
-        </Link>
+        {data.map((link) => {
+          const className = "border-t border-[#9F9F9F] py-2 " + link.className
+          
+          return (
+          <Link key={link.text} href={link.src} className={className}>
+            <li className="flex flex-row pl-14">
+              {link.icon} {link.text}
+            </li>
+          </Link>
+        )})}
       </ul>
     </div>
   );
