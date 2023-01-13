@@ -59,9 +59,11 @@ const SidebarLinks = () => {
           
           return (
           <Link key={link.text} href={link.src} className={className}>
+            <div className=" mr-4 hover:rounded-r-lg hover:shadow-md hover:shadow-gray-400 hover:text-[#FFA500]">
             <li className="flex flex-row md:pl-14 justify-center md:justify-start">
-              {link.icon} {link.text}
+              <div>{link.icon}</div> <p>{link.text}</p>
             </li>
+            </div>
           </Link>
         )})}
       </ul>
