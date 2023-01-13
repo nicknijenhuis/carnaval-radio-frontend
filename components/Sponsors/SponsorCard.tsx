@@ -2,12 +2,13 @@
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { Sponsor, SponsorType } from "../../types/sponsorTypes";
 
-interface sponsorType {
-  sponsorName: string;
-  sponsorImage: string;
+interface Props {
+  sponsorTypes: SponsorType[];
+  sponsors: Sponsor[];
 }
- 
+
 
 const sponsorsData = [
   {
@@ -32,9 +33,9 @@ const sponsorsData = [
   },
 ];
 
-export default function SponsorCard() {
-  
- const responsive = {
+export default function SponsorCard({ sponsorTypes, sponsors }: Props) {
+
+  const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 1024 },
@@ -57,22 +58,36 @@ export default function SponsorCard() {
   return (
     <div className="md:max-w-[72vw]">
       <Carousel showDots={true} responsive={responsive}>
-      {sponsorsData.map((sponsor, i) => (
-           <div className="mx-5 my-10 max-w-[320px]">
-             <Image
-              key={i}
-              width={200}
-              height={200}
-              className="inline-block cursor-pointer border-2 border-[#FFA500] p-4 rounded-lg"
-              src={sponsor.sponsorImage}
-              alt={sponsor.sponsorName}
-            />
-           </div>
-          ))}
+        {sponsors.map((x) => {
+          return (
+            <li key={x.Name} className="mx-5 my-10 max-w-[320px]">
+              <Image
+                className="inline-block cursor-pointer border-2 border-[#FFA500] p-4 rounded-lg"
+                src={x.Logo.Url}
+                width={x.Logo.Width}
+                height={x.Logo.Height}
+                alt={`Logo van ${x.Name}`}
+              />
+            </li>
+          );
+        })}
       </Carousel>
     </div>
   );
 }
 
 
-{/*  */}
+// {sponsors.map((x) => {
+//   return (
+//     <li key={x.Name} className="mx-5 my-10 max-w-[320px]">
+//       <Image
+//         className="inline-block cursor-pointer border-2 border-[#FFA500] p-4 rounded-lg"
+//         src={x.Logo.Url}
+//         width={x.Logo.Width}
+//         height={x.Logo.Height}
+//         alt={`Logo van ${x.Name}`}
+//       />
+//       {x.Name}
+//     </li>
+//   );
+// })}

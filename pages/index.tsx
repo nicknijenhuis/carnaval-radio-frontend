@@ -1,21 +1,30 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { GET_ALL_ARTICLES } from "../graphql/article_queries";
 import { Post } from "../types/articleTypes";
+import {
+  Sponsor,
+  SponsorType,
+  GraphQLSponsor,
+  GraphQLSponsorType,
+} from "../types/sponsorTypes";
 
 import Hero from "../components/Hero/Hero";
 import Sponsors from "../components/Sponsors/Sponsors";
 import PostCard from "../components/Post/PostCard";
 import Instagram from "../components/Instagram";
+import { GET_ALL_SPONSORS } from "../graphql/sponsor_queries";
 
 interface Props {
   posts: [Post];
+  sponsorTypes: SponsorType[];
+  sponsors: Sponsor[];
 }
 
-export default function Home({ posts }: Props) {
+export default function Home({ posts, sponsorTypes, sponsors }: Props) {
   return (
     <div className="flex-grow">
       <Hero />
-      <Sponsors />
+      <Sponsors sponsorTypes={sponsorTypes} sponsors={sponsors} />
       <PostCard posts={posts} />
       <Instagram />
     </div>
@@ -23,19 +32,53 @@ export default function Home({ posts }: Props) {
 }
 
 const GRAPHQL_ENDPOINT = process.env.NEXT_PUBLIC_STRAPI_URL;
+const client = new ApolloClient({
+  uri: GRAPHQL_ENDPOINT,
+  cache: new InMemoryCache(),
+});
 
 export async function getServerSideProps() {
-  const client = new ApolloClient({
-    uri: GRAPHQL_ENDPOINT,
-    cache: new InMemoryCache(),
-  });
+
+
+  //Get Posts from Strapi
+  
   const { data } = await client.query({
     query: GET_ALL_ARTICLES,
   });
 
+
+  //Get Sponsors from Strapi
+  const { data: sponsorData } = await client.query({ query: GET_ALL_SPONSORS });
+
+  const sponsors: Sponsor[] = sponsorData.sponsors.data.map((x: GraphQLSponsor) => {
+    return {
+      Name: x.attributes.Name,
+      Logo: {
+        Width: x.attributes.Logo.data.attributes.width,
+        Height: x.attributes.Logo.data.attributes.height,
+        Url: x.attributes.Logo.data.attributes.url,
+      },
+      TypeID: x.attributes.Type.data.id,
+    } as Sponsor;
+  });
+
+  const sponsorTypes: SponsorType[] = sponsorData.sponsorTypes.data.map(
+    (x: GraphQLSponsorType) => {
+      return {
+        Id: x.id,
+        Name: x.attributes.Name,
+        Order: x.attributes.Order,
+        LogoSize: x.attributes.LogoSize,
+      } as SponsorType;
+    }
+  );
+
+  //Return Content from Strapi Queries
   return {
     props: {
       posts: data.articles.data,
+      sponsorTypes,
+      sponsors,
     },
   };
 }

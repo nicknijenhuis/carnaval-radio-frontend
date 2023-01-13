@@ -26,7 +26,7 @@ export default function Sidebar() {
       <Image src={logo} width={200} height={200} alt="Logo" />
         <button
 
-          className="rounded focus:bg-yellow-800"
+          className="rounded"
           onClick={toogleSideBar}
         >
           <MdMenu size={32} />

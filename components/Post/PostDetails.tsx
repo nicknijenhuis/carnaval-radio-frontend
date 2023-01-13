@@ -3,10 +3,10 @@ import React from 'react'
 import ReactMarkdown from "react-markdown";
 import { MdKeyboardArrowRight } from 'react-icons/md'
 
-const PostDetails = ({post, i} : {post: any, i: Number}) => {
-    let index = '' + i
+const PostDetails = ({post} : {post: any}) => {
+
   return (
-    <Link key={index} href={`/articles/${post.attributes.Slug}`}>
+    <Link href={`/articles/${post.attributes.Slug}`}>
             <div className="cursor-pointer overflow-hidden space-y-5">
               <div className="border-2 border-[#FFA500] text-center rounded py-3">
                 <p className="text-lg font-bold">{post.attributes.Title}</p>
