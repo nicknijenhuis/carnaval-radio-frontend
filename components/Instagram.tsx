@@ -30,7 +30,7 @@ const Instagram = () => {
       <div className="md:grid md:grid-cols-2 py-10 gap-y-8">
         {instagramUrl.map((igPost) => (
           <div key={igPost.instaLink}>
-            <InstagramEmbed url={igPost.instaLink} width={600} height={500} />
+            <InstagramEmbed url={igPost.instaLink} width={500} height={500} />
           </div>
         ))}
       </div>
