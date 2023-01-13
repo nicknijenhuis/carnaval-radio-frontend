@@ -7,6 +7,7 @@ import {
   MdApi,
   MdAssignmentInd,
   MdMusicNote,
+  MdBusiness,
 } from "react-icons/md";
 import { RiErrorWarningFill } from "react-icons/ri";
 
@@ -26,6 +27,11 @@ const SidebarLinks = () => {
       text: "Luisteren",
       src: "/",
       icon: <MdMusicNote size={30} className="mr-2" />
+    },
+    {
+      text: "Sponsoren",
+      src: "/",
+      icon: <MdBusiness size={30} className="mr-2" />
     },
     {
       text: "Gastenboek",
