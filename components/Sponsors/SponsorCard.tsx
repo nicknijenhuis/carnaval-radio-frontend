@@ -58,9 +58,8 @@ export default function SponsorCard() {
     <div className="md:max-w-[72vw]">
       <Carousel showDots={true} responsive={responsive}>
       {sponsorsData.map((sponsor, i) => (
-           <div className="mx-5 my-10 max-w-[320px]">
-             <Image
-              key={i}
+           <div key={i} className="mx-5 my-10 max-w-[320px]">
+             <Image              
               width={200}
               height={200}
               className="inline-block cursor-pointer border-2 border-[#FFA500] p-4 rounded-lg"
