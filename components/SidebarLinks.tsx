@@ -9,7 +9,6 @@ import {
   MdMusicNote,
   MdBusiness,
 } from "react-icons/md";
-import { RiErrorWarningFill } from "react-icons/ri";
 
 const SidebarLinks = () => {
   const data = [
@@ -30,7 +29,7 @@ const SidebarLinks = () => {
     },
     {
       text: "Sponsoren",
-      src: "/",
+      src: "/sponsors",
       icon: <MdBusiness size={30} className="mr-2" />
     },
     {
@@ -53,7 +52,6 @@ const SidebarLinks = () => {
 
 
   return (
-
     <div className="text-[#9F9F9F]">
       <ul className="flex flex-col">
         {data.map((link) => {
