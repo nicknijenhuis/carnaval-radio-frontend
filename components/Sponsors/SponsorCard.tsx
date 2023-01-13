@@ -58,17 +58,19 @@ export default function SponsorCard({ sponsorTypes, sponsors }: Props) {
   return (
     <div className="md:max-w-[72vw]">
       <Carousel showDots={true} responsive={responsive}>
-      {sponsorsData.map((sponsor, i) => (
-           <div key={i} className="mx-5 my-10 max-w-[320px]">
-             <Image              
-              width={200}
-              height={200}
-              className="inline-block cursor-pointer border-2 border-[#FFA500] p-4 rounded-lg"
-              src={sponsor.sponsorImage}
-              alt={sponsor.sponsorName}
-            />
-           </div>
-          ))}
+        {sponsors.map((x) => {
+          return (
+            <li key={x.Name} className="mx-5 my-10 max-w-[320px]">
+              <Image
+                className="inline-block cursor-pointer border-2 border-[#FFA500] p-4 rounded-lg"
+                src={x.Logo.Url}
+                width={x.Logo.Width}
+                height={x.Logo.Height}
+                alt={`Logo van ${x.Name}`}
+              />
+            </li>
+          );
+        })}
       </Carousel>
     </div>
   );
