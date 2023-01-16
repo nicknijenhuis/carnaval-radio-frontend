@@ -10,31 +10,7 @@ interface Props {
 }
 
 
-const sponsorsData = [
-  {
-    sponsorName: "Plus",
-    sponsorImage: "/assets/sponsors/sponsor-1.png",
-  },
-  {
-    sponsorName: "Heijnens",
-    sponsorImage: "/assets/sponsors/sponsor-2.png",
-  },
-  {
-    sponsorName: "Brikke Oave",
-    sponsorImage: "/assets/sponsors/sponsor-3.png",
-  },
-  {
-    sponsorName: "Rumpener hof",
-    sponsorImage: "/assets/sponsors/sponsor-4.png",
-  },
-  {
-    sponsorName: "Ops Advies",
-    sponsorImage: "/assets/sponsors/sponsor-5.png",
-  },
-];
-
 export default function SponsorCard({ sponsorTypes, sponsors }: Props) {
-
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.

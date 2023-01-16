@@ -20,55 +20,60 @@ interface Props {
 }
 
 const logoSizeMapping: {
-  [id: string]: string
+  [id: string]: string;
 } = {
-  'S': 'w-16',
-  'M': 'w-24',
-  'L': 'w-32',
-  'XL': 'w-40',
-  'XXL': 'w-48',
-}
+  S: "w-16",
+  M: "w-24",
+  L: "w-32",
+  XL: "w-40",
+  XXL: "w-48",
+};
 
-const LogosPerType = ({ sponsors, logoSize }: { sponsors: Sponsor[], logoSize: string }) => {
-  const logoSizeClass = logoSizeMapping[logoSize]; 
-  
+const LogosPerType = ({
+  sponsors,
+  logoSize,
+}: {
+  sponsors: Sponsor[];
+  logoSize: string;
+}) => {
+  const logoClassName = `${logoSizeMapping[logoSize]} border border-[#FFA500]`;
+
   return (
-    <ul>
+    <div className="flex flex-wrap gap-4">
       {sponsors.map((x) => {
         return (
-          <li key={x.Name}>
+          <>
             <Image
-              className={logoSizeClass}
+              key={x.Name}
+              className={logoClassName}
               src={x.Logo.Url}
               width={x.Logo.Width}
               height={x.Logo.Height}
               alt={`Logo van ${x.Name}`}
             />
-            {x.Name}
-          </li>
+          </>
         );
       })}
-    </ul>
+    </div>
   );
 };
 
-const Sponsors = ({ sponsorTypes, sponsors }: Props) => {
-  return (
-    <ul>
-      {sponsorTypes
-        .sort((st) => st.Order)
-        .map((st) => {
-          const sponsorsPerType = sponsors.filter((x) => x.TypeID === st.Id);
-          return (
-            <div key={st.Name}>
-              <h1>{st.Name}</h1>
-              <LogosPerType sponsors={sponsorsPerType} logoSize={st.LogoSize} />
-            </div>
-          );
-        })}
-    </ul>
-  );
-};
+const Sponsors = ({ sponsorTypes, sponsors }: Props) => (
+  <div className="m-10">
+    <h1>Sponsoren</h1>
+    {sponsorTypes
+      .sort((st) => st.Order)
+      .map((st) => {
+        const sponsorsPerType = sponsors.filter((x) => x.TypeID === st.Id);
+        return (
+          <div key={st.Name}>
+            <h2 className="my-3 text-lg">{st.Name}</h2>
+            <LogosPerType sponsors={sponsorsPerType} logoSize={st.LogoSize} />
+          </div>
+        );
+      })}
+  </div>
+);
 
 export async function getStaticProps() {
   const { data } = await client.query({ query: GET_ALL_SPONSORS });
