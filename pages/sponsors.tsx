@@ -30,10 +30,10 @@ const logoSizeMapping: {
 }
 
 const LogosPerType = ({ sponsors, logoSize }: { sponsors: Sponsor[], logoSize: string }) => {
-  const logoSizeClass = logoSizeMapping[logoSize]; 
-  
+  const logoSizeClass = logoSizeMapping[logoSize];
+
   return (
-    <ul>
+    <ul className="grid grid-cols-2 md:grid-cols-4 2xl:grid-cols-6 md:space-x-10">
       {sponsors.map((x) => {
         return (
           <li key={x.Name}>
@@ -60,7 +60,7 @@ const Sponsors = ({ sponsorTypes, sponsors }: Props) => {
         .map((st) => {
           const sponsorsPerType = sponsors.filter((x) => x.TypeID === st.Id);
           return (
-            <div key={st.Name}>
+            <div key={st.Name} className=" pt-12 px-5">
               <h1>{st.Name}</h1>
               <LogosPerType sponsors={sponsorsPerType} logoSize={st.LogoSize} />
             </div>
