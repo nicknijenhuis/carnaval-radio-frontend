@@ -12,7 +12,7 @@ interface Props {
 const Sponsors = ({sponsorTypes, sponsors}: Props) => {
 
   return (
-    <div className=" text-black py-10 px-10">
+    <div className=" text-black px-10">
       <SectionTitle title="Onze sponsoren" />
       <SponsorCard sponsorTypes={sponsorTypes} sponsors={sponsors} />
     </div>
