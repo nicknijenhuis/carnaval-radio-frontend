@@ -16,7 +16,10 @@ const PlayerControls = ({
   currentTrack,
   setCurrentTrack,
   tracks,
+  themeData,
 }) => {
+  const bg = themeData.attributes.BaseColor
+  console.log(bg)
   const clickRef = useRef();
   const PlayPause = () => {
     setIsPlaying(!isPlaying);

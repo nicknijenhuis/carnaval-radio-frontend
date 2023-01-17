@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import PlayerControls from "./PlayerControls";
 import { tracksData } from "./Tracks";
 
-const Player = () => {
+const Player = ({themeData}) => {
   const [tracks, setTracks] = useState(tracksData);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(tracksData[0]);
@@ -34,6 +34,7 @@ const Player = () => {
         audioElem={audioElem}
         currentTrack={currentTrack}
         setCurrentTrack={setCurrentTrack}
+        themeData={themeData}
       />
     </div>
   );

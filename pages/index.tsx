@@ -13,14 +13,17 @@ import Sponsors from "../components/Sponsors/Sponsors";
 import PostCard from "../components/Post/PostCard";
 import Instagram from "../components/Instagram";
 import { GET_ALL_SPONSORS } from "../graphql/sponsor_queries";
+import { GET_THEME_DATA } from "../graphql/theme_queries";
+import { ThemeType } from "../types/themeTypes";
 
 interface Props {
   posts: [Post];
   sponsorTypes: SponsorType[];
   sponsors: Sponsor[];
+  theme: ThemeType;
 }
 
-export default function Home({ posts, sponsorTypes, sponsors }: Props) {
+export default function Home({ posts, sponsorTypes, sponsors, theme }: Props) {
   return (
     <div className="flex-grow">
       <Hero />
@@ -39,9 +42,15 @@ const client = new ApolloClient({
 
 export async function getServerSideProps() {
 
+  //Get Theme from Strapi
+
+  const { data: themeData } = await client.query({
+    query: GET_THEME_DATA,
+  });
+
 
   //Get Posts from Strapi
-  
+
   const { data } = await client.query({
     query: GET_ALL_ARTICLES,
   });
@@ -79,6 +88,7 @@ export async function getServerSideProps() {
       posts: data.articles.data,
       sponsorTypes,
       sponsors,
+      theme: themeData.theme.data
     },
   };
 }

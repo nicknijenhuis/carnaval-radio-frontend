@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
+    <Layout themeData={pageProps.theme}>
       <Component {...pageProps} className="max-w-[1280px] m-auto" />
     </Layout>
   );
