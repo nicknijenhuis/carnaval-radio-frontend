@@ -18,7 +18,7 @@ const PlayerControls = ({
   tracks,
   themeData,
 }) => {
-  const bg = themeData.attributes.BaseColor
+  const bg = themeData?.attributes?.BaseColor
   console.log(bg)
   const clickRef = useRef();
   const PlayPause = () => {

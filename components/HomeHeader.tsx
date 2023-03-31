@@ -33,7 +33,7 @@ const HomeHeader = () => {
       </div>
       <div className="bg-transparent">
         <div className=" h-[12rem] md:w-[50rem] md:h-[15rem]">
-          <Sponsors />
+          <Sponsors sponsorTypes={[]} sponsors={[]} />
         </div>
       </div>
     </div>
