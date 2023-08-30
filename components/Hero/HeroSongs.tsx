@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { MdMusicNote } from "react-icons/md";
 import { recentSongs } from "../../public/ProjectData/recentsongs";
-import { recentTacks } from "../Music/Player/Tracks";
+import { recentTracks } from "../Music/Player/Tracks";
 
 const HeroSongs = () => {
   const calcDate = (date: any) => {
@@ -25,7 +25,7 @@ const HeroSongs = () => {
     <div className="flex flex-col space-y-4 p-8 rounded-xl min-w-[30vw] shadow-xl md:ml-5">
       <h2 className="text-center">Recent Songs</h2>
       <div className="space-y-2">
-        {recentTacks.items.map((recentSong: any, i: any) => (
+        {recentTracks.items.map((recentSong: any, i: any) => (
           <>
             {i < 4 && (
               <div key={i} className="flex items-center justify-between p-2">

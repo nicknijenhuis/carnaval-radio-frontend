@@ -2,14 +2,14 @@ export const tracksData = [
   {
     url: "https://audioplayer.madza.dev/Madza-Chords_of_Life.mp3",
     title: "Chords of Life",
-    artist: "Ali",
+    artist: "Bjorn",
     trackCoverImage: "/assets/showcase-1.jpg",
     tags: ["house"],
   },
   {
     url: "https://audioplayer.madza.dev/Madza-Late_Night_Drive.mp3",
     title: "Late Night Drive",
-    artist: "Khan",
+    artist: "Mieke",
     trackCoverImage: "/assets/showcase-2.jpg",
     tags: ["dnb"],
   },
@@ -22,7 +22,7 @@ export const tracksData = [
   },
 ];
 
-export const recentTacks = {
+export const recentTracks = {
   title: "Carnaval-Radio.nl 24/7 Vastelaovend muzieek! Recent Tracks",
   description: "",
   link: "http://www.carnaval-radio.nl",

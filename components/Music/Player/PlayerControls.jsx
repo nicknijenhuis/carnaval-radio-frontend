@@ -69,7 +69,7 @@ const PlayerControls = ({
           height={70}
         />
         <div className="flex items-start flex-col sm:hidden md::hidden lg:hidden xl:hidden">
-          <h2 className="text-xl font-bold font-sans uppercase">
+          <h2 className="text-xl font-semibold font-sans uppercase">
             {currentTrack.title}
           </h2>
           <p className="text-xs">{currentTrack.artist}</p>
@@ -211,21 +211,19 @@ const PlayerControls = ({
                 />
               )}
 
-              {showVolume && (
-                <section className="">
-                  <input
-                    className="cursor-pointer"
-                    type="range"
-                    min={0}
-                    max={100}
-                    step={0.02}
-                    value={volume}
-                    onChange={(event) => {
-                      setVolume(event.target.valueAsNumber);
-                    }}
-                  />
-                </section>
-              )}
+              <section className="">
+                <input
+                  className="cursor-pointer"
+                  type="range"
+                  min={0}
+                  max={100}
+                  step={0.02}
+                  value={volume}
+                  onChange={(event) => {
+                    setVolume(event.target.valueAsNumber);
+                  }}
+                />
+              </section>
             </div>
           </div>
         </div>

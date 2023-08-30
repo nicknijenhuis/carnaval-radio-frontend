@@ -27,7 +27,7 @@ const SidebarPlayer = () => {
       <p>{songTitle}</p>
       <div
         onClick={() => dispatch(setPlay())}
-        className="hidden sm:flex md::flex lg:flex xl:flex items-center justify-center p-[2px] bg-black rounded-full text-seconday text-secondary cursor-pointer"
+        className="sm:flex md::flex lg:flex xl:flex items-center justify-center p-[2px] bg-black rounded-full text-seconday text-secondary cursor-pointer"
       >
         {isPlaying ? (
           <BsFillPauseFill size={18} />
