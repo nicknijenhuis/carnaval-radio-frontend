@@ -1,11 +1,14 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Layout from "../components/Layout";
-
+import { Provider } from "react-redux";
+import { store } from "../GlobalState/store";
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Layout themeData={pageProps.theme}>
-      <Component {...pageProps} className="max-w-[1280px] m-auto" />
-    </Layout>
+    <Provider store={store}>
+      <Layout themeData={pageProps.theme}>
+        <Component {...pageProps} className="max-w-[1280px] m-auto" />
+      </Layout>
+    </Provider>
   );
 }

@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
+import React, { useState } from "react";
+import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 
 function HeroSlider() {
   const slides = [
     {
-      url: '/assets/showcase-1.jpg',
+      url: "/assets/showcase-1.jpg",
     },
     {
-      url: '/assets/showcase-2.jpg',
+      url: "/assets/showcase-2.jpg",
     },
     {
-      url: '/assets/showcase-3.jpg',
+      url: "/assets/showcase-3.jpg",
     },
 
     {
-      url: '/assets/showcase-4.jpg',
+      url: "/assets/showcase-4.jpg",
     },
     {
-      url: '/assets/showcase-1.jpg',
+      url: "/assets/showcase-1.jpg",
     },
   ];
 
@@ -35,33 +35,25 @@ function HeroSlider() {
     setCurrentIndex(newIndex);
   };
 
-  
-
   return (
-    <div className='min-w-[35vw] w-[90vw] md:w-full relative group'>
+    <div className="min-w-[35vw] relative group">
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-        className=' h-[40vh] md:w-full md:h-full rounded-2xl bg-center bg-cover duration-500'
+        className=" h-[40vh] md:w-full md:h-full rounded-2xl bg-center bg-cover duration-500"
       ></div>
       {/* Left Arrow */}
-      <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-        <BsChevronCompactLeft onClick={prevSlide} size={30} />
+      <div className="absolute top-[50%] -translate-x-0 translate-y-[-50%] -left-7 text-2xl rounded-full p-2 text-white cursor-pointer bg-green border-4 border-white">
+        <BsChevronCompactLeft onClick={prevSlide} size={25} />
       </div>
       {/* Right Arrow */}
-      <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-        <BsChevronCompactRight onClick={nextSlide} size={30} />
+      <div className="absolute top-[50%] -translate-x-0 translate-y-[-50%] -right-7 text-2xl rounded-full p-2  text-white cursor-pointer bg-green border-4 border-white">
+        <BsChevronCompactRight onClick={nextSlide} size={25} />
       </div>
-       
     </div>
   );
 }
 
-export default HeroSlider
-
-
-
-
-
+export default HeroSlider;
 
 // import React from 'react'
 

@@ -4,18 +4,19 @@ import React from "react";
 import logo from "../public/assets/logo-3.png";
 import Socials from "./Socials";
 
-import { TbMinusVertical} from "react-icons/tb";
+import { TbMinusVertical } from "react-icons/tb";
 
 const Footer = () => {
   return (
-    <footer className="py-10 text-black">
+    <footer className="pt-10 text-black">
       <div className="flex flex-col items-center space-y-10 md:space-y-0 md:flex-row md:space-x-20 py-10 md:px-10">
         <div className="max-w-[30vw] md:max-w-[15vw]">
           <Link href="/">
             <Image src={logo} width={200} height={200} alt="Logo" />
           </Link>
+          <Socials options="footer" />
         </div>
-        <div className="flex flex-row items-start justify-between space-x-10 flex-grow">
+        <div className="flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row flex-wrap items-start gap-4 sm:gap-16 md:gap-24 lg:gap-32 xl:gap-44 flex-grow">
           <div>
             <h2 className="font-bold">Quick Links</h2>
             <ul className="text-sm space-y-4">
@@ -75,29 +76,34 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between py-10 px-10 border-2">
-        <div>
-          <h2>Language</h2>
-        </div>
-        <div>
-          <Socials />
-        </div>
+      <div className="flex items-center gap-4 py-10 pl-10 border-2">
+        <label htmlFor="languages">Language</label>
+        <select
+          name="languages"
+          id="languages"
+          className="px-2 outline-none bg-white text-semibold"
+        >
+          <option value="rigatoni">Rigatoni</option>
+          <option value="dave">Dave</option>
+        </select>
       </div>
-      <div className="flex flex-col-reverse md:flex-row py-20  items-center justify-between space-y-5 px-10">
+      <div className="flex flex-col-reverse md:flex-row py-4 items-center justify-between px-10">
         <p>2023 Copyright Carnaval-Radio. All rights Reserved.</p>
-        <div className="pb-5">
-          <ul className="flex space-x-5">
-            <li>
-              <Link href="/">Privacy Policy</Link>
-            </li>
-            <li>
-              <Link href="/" className="flex items-center justify-center"> <TbMinusVertical /> <p> Terms & Condition</p></Link>
-            </li>
-            <li>
-              <Link href="/" className="flex items-center justify-center"><TbMinusVertical /> <p> Cookies Policy</p></Link>
-            </li>
-          </ul>
-        </div>
+        <ul className="flex space-x-5">
+          <li>
+            <Link href="/">Privacy Policy</Link>
+          </li>
+          <li>
+            <Link href="/" className="flex items-center justify-center">
+              <TbMinusVertical /> <p> Terms & Condition</p>
+            </Link>
+          </li>
+          <li>
+            <Link href="/" className="flex items-center justify-center">
+              <TbMinusVertical /> <p> Cookies Policy</p>
+            </Link>
+          </li>
+        </ul>
       </div>
     </footer>
   );

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const SidebarPlayer = () => {
-  return (
-    <div className='py-10'>SidebarPlayer</div>
-  )
-}
+  return <div className="">SidebarPlayer</div>;
+};
 
-export default SidebarPlayer
+export default SidebarPlayer;

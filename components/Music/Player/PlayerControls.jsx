@@ -18,8 +18,8 @@ const PlayerControls = ({
   tracks,
   themeData,
 }) => {
-  const bg = themeData?.attributes?.BaseColor
-  console.log(bg)
+  const bg = themeData?.attributes?.BaseColor;
+  console.log(bg);
   const clickRef = useRef();
   const PlayPause = () => {
     setIsPlaying(!isPlaying);
@@ -56,10 +56,16 @@ const PlayerControls = ({
   };
 
   return (
-    <div className="flex flex-row items-center justify-between bg-[#FFA500] w-full h-[5rem] px-2 md:px-10 fixed bottom-0 z-20 md:z-50">
-      <div className="flex items-center space-x-2">
-        <Image src={currentTrack.trackCoverImage} alt={currentTrack.title} width={120} height={70} />
-        <div>
+    <div className="flex flex-row items-center justify-between bg-activeTab w-full h-[5rem] px-2 md:px-10 fixed bottom-0 z-20 md:z-50">
+      <div className="flex items-center space-x-4">
+        <Image
+          src={currentTrack.trackCoverImage}
+          alt={currentTrack.title}
+          className="h-16 w-24 rounded-lg"
+          width={120}
+          height={70}
+        />
+        <div className="hidden sm:block md:block lg:block">
           <h2 className="text-xl font-bold">{currentTrack.title}</h2>
           <p>{currentTrack.artist}</p>
           <NowPlaying />
@@ -75,11 +81,11 @@ const PlayerControls = ({
           ></div>
         </div>
         <div className="flex space-x-10 items-center justify-center">
-          <FiRewind size={40} onClick={skipBack} />
+          <FiRewind size={30} onClick={skipBack} />
           <div onClick={PlayPause}>
-            {isPlaying ? <FiPause size={60} /> : <FiPlayCircle size={60} />}
+            {isPlaying ? <FiPause size={40} /> : <FiPlayCircle size={40} />}
           </div>
-          <FiFastForward size={40} onClick={skipNext} />
+          <FiFastForward size={30} onClick={skipNext} />
         </div>
       </div>
       <div className="hidden md:flex">Volume</div>

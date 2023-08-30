@@ -29,7 +29,7 @@ export default function Home({ posts, sponsorTypes, sponsors, theme }: Props) {
       <Hero />
       <Sponsors sponsorTypes={sponsorTypes} sponsors={sponsors} />
       <PostCard posts={posts} />
-      <Instagram />
+      {/* <Instagram /> */}
     </div>
   );
 }
@@ -41,13 +41,11 @@ const client = new ApolloClient({
 });
 
 export async function getServerSideProps() {
-
   //Get Theme from Strapi
 
   const { data: themeData } = await client.query({
     query: GET_THEME_DATA,
   });
-
 
   //Get Posts from Strapi
 
@@ -55,21 +53,22 @@ export async function getServerSideProps() {
     query: GET_ALL_ARTICLES,
   });
 
-
   //Get Sponsors from Strapi
   const { data: sponsorData } = await client.query({ query: GET_ALL_SPONSORS });
 
-  const sponsors: Sponsor[] = sponsorData.sponsors.data.map((x: GraphQLSponsor) => {
-    return {
-      Name: x.attributes.Name,
-      Logo: {
-        Width: x.attributes.Logo.data.attributes.width,
-        Height: x.attributes.Logo.data.attributes.height,
-        Url: x.attributes.Logo.data.attributes.url,
-      },
-      TypeID: x.attributes.Type.data.id,
-    } as Sponsor;
-  });
+  const sponsors: Sponsor[] = sponsorData.sponsors.data.map(
+    (x: GraphQLSponsor) => {
+      return {
+        Name: x.attributes.Name,
+        Logo: {
+          Width: x.attributes.Logo.data.attributes.width,
+          Height: x.attributes.Logo.data.attributes.height,
+          Url: x.attributes.Logo.data.attributes.url,
+        },
+        TypeID: x.attributes.Type.data.id,
+      } as Sponsor;
+    }
+  );
 
   const sponsorTypes: SponsorType[] = sponsorData.sponsorTypes.data.map(
     (x: GraphQLSponsorType) => {
@@ -88,7 +87,7 @@ export async function getServerSideProps() {
       posts: data.articles.data,
       sponsorTypes,
       sponsors,
-      theme: themeData.theme.data
+      theme: themeData.theme.data,
     },
   };
 }

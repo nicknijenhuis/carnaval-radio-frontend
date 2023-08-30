@@ -1,12 +1,12 @@
-import React from 'react'
-
-const SectionTitle = ({ title }: { title: String }) => {
+import React from "react";
+import Image from "next/image";
+const SectionTitle = ({ title, icon }: { title: String; icon: any }) => {
   return (
     <div className="flex space-x-4 items-center">
-      <div className="h-5 w-5 bg-[#FFA500]"></div>
-      <h2 className="text-2xl">{title}</h2>
+      <Image src={icon} height={100} width={100} className="h-8 w-8" alt="" />
+      <h2 className="text-3xl">{title}</h2>
     </div>
-  )
-}
+  );
+};
 
-export default SectionTitle
+export default SectionTitle;

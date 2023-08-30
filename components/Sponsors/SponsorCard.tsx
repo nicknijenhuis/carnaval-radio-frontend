@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -8,7 +7,6 @@ interface Props {
   sponsorTypes: SponsorType[];
   sponsors: Sponsor[];
 }
-
 
 export default function SponsorCard({ sponsorTypes, sponsors }: Props) {
   const responsive = {
@@ -34,11 +32,14 @@ export default function SponsorCard({ sponsorTypes, sponsors }: Props) {
   return (
     <div className="md:max-w-[72vw]">
       <Carousel showDots={true} responsive={responsive}>
-        {sponsors.map((x) => {
+        {sponsors.map((x, i) => {
           return (
-            <li key={x.Name} className="mx-5 my-10 max-w-[320px]">
+            <li
+              key={i}
+              className="mx-5 my-10 max-w-[320px] p-8 bg-white rounded-xl"
+            >
               <Image
-                className="inline-block cursor-pointer border-2 border-[#FFA500] p-4 rounded-lg"
+                className="inline-block cursor-pointer rounded-lg"
                 src={x.Logo.Url}
                 width={x.Logo.Width}
                 height={x.Logo.Height}
@@ -51,7 +52,6 @@ export default function SponsorCard({ sponsorTypes, sponsors }: Props) {
     </div>
   );
 }
-
 
 // {sponsors.map((x) => {
 //   return (
