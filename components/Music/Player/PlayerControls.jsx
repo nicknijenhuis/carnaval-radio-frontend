@@ -2,24 +2,21 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { GiSpeaker, GiSpeakerOff } from "react-icons//gi";
+import { useDispatch, useSelector } from "react-redux";
+import { setPlay, setMuted } from "../../../GlobalState/features/PlayerSlice";
 import NowPlaying from "../Songs/NowPlaying";
 
 const PlayerControls = ({
-  audioElem,
-  isPlaying,
-  setIsPlaying,
   currentTrack,
+  audioElem,
   setCurrentTrack,
   tracks,
   themeData,
-  muted,
-  setMuted,
 }) => {
+  const dispatch = useDispatch();
+  const { isPlaying, muted } = useSelector((state) => state.Player);
   const bg = themeData?.attributes?.BaseColor;
   const clickRef = useRef();
-  const PlayPause = () => {
-    setIsPlaying(!isPlaying);
-  };
 
   const forwardSeekBar = (e) => {
     let width = clickRef.current.clientWidth;
@@ -79,8 +76,8 @@ const PlayerControls = ({
           {/* <NowPlaying /> */}
         </div>
         <div
-          className="hidden sm:flex md::flex lg:flex xl:flex items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white"
-          onClick={PlayPause}
+          className="hidden sm:flex md::flex lg:flex xl:flex items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white cursor-pointer"
+          onClick={() => dispatch(setPlay())}
         >
           {isPlaying ? (
             <BsFillPauseFill size={35} />
@@ -98,7 +95,7 @@ const PlayerControls = ({
           {/* <NowPlaying /> */}
         </div>
         <div className="hidden sm:flex md::flex lg:flex xl:flex items-center gap-8">
-          <div className="flex  items-center gap-2">
+          <div className="flex  items-center gap-2 cursor-pointer">
             <Image
               className="rotate-180"
               src="/skip.png"
@@ -126,13 +123,13 @@ const PlayerControls = ({
           <div className="flex">
             {muted ? (
               <GiSpeakerOff
-                onClick={() => setMuted((m) => !m)}
+                onClick={() => dispatch(setMuted())}
                 onMouseMove={() => setShowVolume(!showVolume)}
                 className="text-2xl text-[#64748b] cursor-pointer"
               />
             ) : (
               <GiSpeaker
-                onClick={() => setMuted((m) => !m)}
+                onClick={() => dispatch(setMuted())}
                 onMouseMove={() => setShowVolume(!showVolume)}
                 className="text-2xl text-[#64748b] cursor-pointer"
               />
@@ -161,8 +158,8 @@ const PlayerControls = ({
       <div className="flex items-start gap-4 sm:hidden md::hidden lg:hidden xl:hidden">
         {/* play button */}
         <div
-          className="flex items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white"
-          onClick={PlayPause}
+          className="flex items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white cursor-pointer"
+          onClick={() => dispatch(setPlay())}
         >
           {isPlaying ? (
             <BsFillPauseFill size={35} />
@@ -182,7 +179,7 @@ const PlayerControls = ({
             ></div>
           </div>
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 cursor-pointer">
               <Image
                 className="rotate-180"
                 src="/skip.png"
@@ -202,13 +199,13 @@ const PlayerControls = ({
             <div className="flex">
               {muted ? (
                 <GiSpeakerOff
-                  onClick={() => setMuted((m) => !m)}
+                  onClick={() => dispatch(setMuted())}
                   onMouseMove={() => setShowVolume(!showVolume)}
                   className="text-2xl text-[#64748b] cursor-pointer"
                 />
               ) : (
                 <GiSpeaker
-                  onClick={() => setMuted((m) => !m)}
+                  onClick={() => dispatch(setMuted())}
                   onMouseMove={() => setShowVolume(!showVolume)}
                   className="text-2xl text-[#64748b] cursor-pointer"
                 />

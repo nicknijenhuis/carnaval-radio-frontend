@@ -1,17 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import PlayerControls from "./PlayerControls";
 import { tracksData } from "./Tracks";
-import { setAudioElem } from "../../../GlobalState/features/PlayerSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setsSongTitle } from "../../../GlobalState/features/PlayerSlice";
 
 const Player = ({ themeData }) => {
+  const dispatch = useDispatch();
   const [tracks, setTracks] = useState(tracksData);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const { isPlaying, muted } = useSelector((state) => state.Player);
   const [currentTrack, setCurrentTrack] = useState(tracksData[0]);
-  const [muted, setMuted] = useState(false);
   const audioElem = useRef();
 
+  dispatch(setsSongTitle(currentTrack.title));
+
   useEffect(() => {
-    setAudioElem(audioElem);
     if (isPlaying) {
       audioElem.current.play();
     } else {
@@ -40,12 +42,8 @@ const Player = ({ themeData }) => {
       />
       <PlayerControls
         tracks={tracks}
-        muted={muted}
-        setMuted={setMuted}
-        setTracks={setTracks}
-        isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
         audioElem={audioElem}
+        setTracks={setTracks}
         currentTrack={currentTrack}
         setCurrentTrack={setCurrentTrack}
         themeData={themeData}
