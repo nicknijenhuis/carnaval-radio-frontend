@@ -1,3 +1,4 @@
+import { SocialPosts } from "../components/SocialPosts";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { GET_ALL_ARTICLES } from "../graphql/article_queries";
 import { Post } from "../types/articleTypes";
@@ -11,7 +12,6 @@ import {
 import Hero from "../components/Hero/Hero";
 import Sponsors from "../components/Sponsors/Sponsors";
 import PostCard from "../components/Post/PostCard";
-import Instagram from "../components/Instagram";
 import { GET_ALL_SPONSORS } from "../graphql/sponsor_queries";
 import { GET_THEME_DATA } from "../graphql/theme_queries";
 import { ThemeType } from "../types/themeTypes";
@@ -29,7 +29,7 @@ export default function Home({ posts, sponsorTypes, sponsors, theme }: Props) {
       <Hero />
       <Sponsors sponsorTypes={sponsorTypes} sponsors={sponsors} />
       <PostCard posts={posts} />
-      {/* <Instagram /> */}
+      <SocialPosts />
     </div>
   );
 }
