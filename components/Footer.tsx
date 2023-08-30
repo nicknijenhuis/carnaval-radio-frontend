@@ -8,7 +8,7 @@ import { TbMinusVertical } from "react-icons/tb";
 
 const Footer = () => {
   return (
-    <footer className="pt-10 text-black">
+    <footer className="pt-10 pb-20 text-black">
       <div className="flex flex-col items-center space-y-10 md:space-y-0 md:flex-row md:space-x-20 py-10 md:px-10">
         <div className="max-w-[30vw] md:max-w-[15vw]">
           <Link href="/">

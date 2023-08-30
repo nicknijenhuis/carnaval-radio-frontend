@@ -27,7 +27,7 @@ export default function Sidebar({ themeData }: { themeData: any }) {
           alt="Logo"
         />
         <button className="rounded" onClick={toogleSideBar}>
-          <MdMenu size={32} />
+          <MdMenu size={50} />
         </button>
       </div>
       {/* MAIN SIDEBAR */}
@@ -52,7 +52,7 @@ export default function Sidebar({ themeData }: { themeData: any }) {
               className="block sm:hidden md:hidden lg:hidden  rounded"
               onClick={toogleSideBar}
             >
-              <MdMenu size={32} />
+              <MdMenu size={50} />
             </button>
           </div>
           <div className="flex items-center justify-between mt-4 mx-2">
