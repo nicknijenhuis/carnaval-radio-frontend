@@ -1,40 +1,14 @@
 import Image from "next/image";
 import React from "react";
 import { MdMusicNote } from "react-icons/md";
-
-const recentSongs = [
-  {
-    songImg: "/assets/showcase-1.jpg",
-    songTitle: "1000 Sterre",
-    songArtist: "Bjorn & Mieke",
-    songUpload: "2",
-  },
-  {
-    songImg: "/assets/showcase-1.jpg",
-    songTitle: "1000 Sterre",
-    songArtist: "Bjorn & Mieke",
-    songUpload: "2",
-  },
-  {
-    songImg: "/assets/showcase-1.jpg",
-    songTitle: "1000 Sterre",
-    songArtist: "Bjorn & Mieke",
-    songUpload: "2",
-  },
-  {
-    songImg: "/assets/showcase-1.jpg",
-    songTitle: "1000 Sterre",
-    songArtist: "Bjorn & Mieke",
-    songUpload: "2",
-  },
-];
+import { recentSongs } from "../../public/ProjectData/recentsongs";
 
 const HeroSongs = () => {
   return (
     <div className="flex flex-col space-y-4 p-8 rounded-xl min-w-[30vw] shadow-xl md:ml-5">
       <h2 className="text-center">Recent Songs</h2>
       <div className="space-y-2">
-        {recentSongs.map((recentSong, i) => (
+        {recentSongs.map((recentSong: any, i: any) => (
           <div key={i} className="flex items-center justify-between p-2">
             <div className="flex space-x-3">
               <Image

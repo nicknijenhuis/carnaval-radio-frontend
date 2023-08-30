@@ -4,58 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { setActiveTab } from "../GlobalState/features/TabSlice";
 import Image from "next/image";
 import sideCone from "../public/sideCone.png";
-import {
-  MdHome,
-  MdError,
-  MdPhoneEnabled,
-  MdApi,
-  MdAssignmentInd,
-  MdMusicNote,
-  MdBusiness,
-} from "react-icons/md";
+import { navBarData } from "../public/ProjectData/navBarData";
+
 import { RootState } from "../GlobalState/store";
 const SidebarLinks = () => {
   const dispatch = useDispatch();
   const activeTab = useSelector((state: RootState) => state.Tab);
-
-  const data = [
-    {
-      text: "Home",
-      src: "/",
-      icon: <MdHome />,
-    },
-    {
-      text: "Over ons",
-      src: "/",
-      icon: <MdError />,
-    },
-    {
-      text: "Luisteren",
-      src: "/",
-      icon: <MdMusicNote />,
-    },
-    {
-      text: "Sponsoren",
-      src: "/sponsors",
-      icon: <MdBusiness />,
-    },
-    {
-      text: "Gastenboek",
-      src: "/",
-      icon: <MdAssignmentInd />,
-    },
-    {
-      text: "Overig",
-      src: "/",
-      icon: <MdApi />,
-    },
-    {
-      text: "Contact",
-      src: "/pages/contact",
-      icon: <MdPhoneEnabled />,
-      className: "border-b",
-    },
-  ];
 
   const handleNavigate = (index: any) => {
     dispatch(setActiveTab(index));
@@ -63,7 +17,7 @@ const SidebarLinks = () => {
   return (
     <div className="text-[#9F9F9F]">
       <ul className="flex flex-col">
-        {data.map((link, index) => {
+        {navBarData.map((link, index) => {
           return (
             <Link
               onClick={() => handleNavigate(index)}

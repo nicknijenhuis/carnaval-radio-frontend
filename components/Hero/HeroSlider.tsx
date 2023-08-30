@@ -1,26 +1,8 @@
 import React, { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
+import { slides } from "../../public/ProjectData/slides";
 
 function HeroSlider() {
-  const slides = [
-    {
-      url: "/assets/showcase-1.jpg",
-    },
-    {
-      url: "/assets/showcase-2.jpg",
-    },
-    {
-      url: "/assets/showcase-3.jpg",
-    },
-
-    {
-      url: "/assets/showcase-4.jpg",
-    },
-    {
-      url: "/assets/showcase-1.jpg",
-    },
-  ];
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
