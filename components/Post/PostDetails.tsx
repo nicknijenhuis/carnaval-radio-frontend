@@ -4,29 +4,28 @@ import ReactMarkdown from "react-markdown";
 import { MdKeyboardArrowRight } from "react-icons/md";
 let Bg: any;
 Bg = {
-  Sports: "greenShade_1",
-  Music: "secondayShade_1",
-  Events: "primaryShade_1",
+  0: "greenShade_1",
+  1: "secondayShade_1",
+  2: "primaryShade_1",
 };
 
 let Text: any;
 Text = {
-  Sports: "green",
-  Music: "secondary",
-  Events: "primary",
+  0: "green",
+  1: "secondary",
+  2: "primary",
 };
 
-const PostDetails = ({ post }: { post: any }) => {
-  const bgClass = Bg[post?.attributes?.Tag];
-  const textClass = Text[post?.attributes?.Tag];
-  console.log(post);
+const PostDetails = ({ post, i }: { post: any; i: any }) => {
+  const bgClass = Bg[i];
+  const textClass = Text[i];
   return (
     <Link href={`/articles/${post.attributes.Slug}`}>
       <div
         className={`${
-          post.attributes.Tag === "Sports"
+          i == 0
             ? "bg-greenShade_2"
-            : post.attributes.Tag === "Music"
+            : post.attributes.Tag == 1
             ? "bg-secondayShade_2"
             : "bg-primaryShade_3"
         } rounded-xl p-5 cursor-pointer overflow-hidden space-y-5`}
@@ -42,11 +41,11 @@ const PostDetails = ({ post }: { post: any }) => {
             ? `${post.attributes.Content.substring(0, 200)}...`
             : post.attributes?.Content?.substring(0, 200)}
         </ReactMarkdown>
-        <p
+        {/* <p
           className={`mt-2 text-xl py-1 px-2 w-fit rounded-md bg-${bgClass} text-${textClass}`}
         >
           {post.attributes.Tag}
-        </p>
+        </p> */}
         <button
           className={`flex items-center justify-center bg-white w-full border-2 border-${textClass} text-${textClass}  rounded-md p-2`}
         >

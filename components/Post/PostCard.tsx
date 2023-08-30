@@ -22,8 +22,8 @@ const PostCard = ({ posts }: Props) => {
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3
        gap-3 md:gap-6 max-w-[1280px] m-auto pt-10"
       >
-        {dummyposts.map((post: any, i: any) => (
-          <PostDetails key={i} post={post} />
+        {posts.map((post: any, i: any) => (
+          <PostDetails key={i} post={post} i={i} />
         ))}
       </div>
       <div className="flex items-center justify-center pt-8">
