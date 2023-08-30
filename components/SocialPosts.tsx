@@ -3,7 +3,7 @@ export function SocialPosts({}) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 p-10">
       <div className="w-full p-10 lg:col-span-3">
-        <figure data-behold-id="VhMnukPNNK2LVEcM1Afc"></figure>
+        <figure data-behold-id="9YqTdtEgY1ojzREvfnbF"></figure>
         <script src="https://w.behold.so/widget.js" type="module"></script>
       </div>
       <div className="w-full p-10 lg:grid-cols-2">

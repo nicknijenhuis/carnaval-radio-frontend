@@ -1,5 +1,4 @@
 import React from "react";
-import { MdKeyboardArrowRight } from "react-icons/md";
 import { InstagramEmbed } from "react-social-media-embed";
 import Button from "./constants/Button";
 import SectionTitle from "./constants/SectionTitle";
@@ -23,7 +22,7 @@ const Instagram = () => {
   return (
     <div className="px-10 py-10 hidden md:flex md:flex-col">
       <div className="flex justify-between items-center">
-       <SectionTitle title="Instagram Stories" />
+        <SectionTitle title="Instagram Stories" icon={undefined} />
         <Button text="See More" />
       </div>
 
