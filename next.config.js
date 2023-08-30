@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["res.cloudinary.com"],
+    domains: ["res.cloudinary.com", "ams1.reliastream.com"],
   },
   webpack(config) {
     config.module.rules.push({

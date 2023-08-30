@@ -1,10 +1,12 @@
 "use client";
 import { configureStore } from "@reduxjs/toolkit";
 import TabReducer from "../GlobalState/features/TabSlice";
+import PlayerReducer from "../GlobalState/features/PlayerSlice";
 
 export const store = configureStore({
   reducer: {
     Tab: TabReducer,
+    Player: PlayerReducer,
   },
 });
 

@@ -16,7 +16,7 @@ const SidebarLinks = () => {
   };
   return (
     <div className="text-[#9F9F9F]">
-      <ul className="flex flex-col">
+      <ul className="flex flex-col gap-3">
         {navBarData.map((link, index) => {
           return (
             <Link
@@ -31,7 +31,7 @@ const SidebarLinks = () => {
                   }`}
                 >
                   <Image
-                    className="h-12 w-3"
+                    className="h-10 w-2"
                     src={sideCone}
                     height={100}
                     width={20}
@@ -40,22 +40,22 @@ const SidebarLinks = () => {
                 </div>
               )}
               <div
-                className={`flex items-center justify-start hover:rounded-r-lg w-[300px] sm:w-[350px] md:w-[200px] lg:w-[200px] py-2 px-4 ml-7 rounded-xl ${
+                className={`flex items-center justify-start w-[300px] sm:w-[350px] md:w-[190px] lg:w-[200px] xl:w-[200px] py-2 px-4 ml-7 mr-2 rounded-xl ${
                   index === activeTab.index && "bg-primaryShade_2"
                 }`}
               >
                 <li className="flex items-center gap-2">
                   <span
-                    className={`text-3xl ${
+                    className={`text-2xl ${
                       index === activeTab.index && "text-secondary"
                     } `}
                   >
                     {link.icon}
                   </span>
                   <span
-                    className={`text-[16px] font-semibold hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary ${
+                    className={`text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary ${
                       index === activeTab.index &&
-                      "text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
+                      "font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
                     }`}
                   >
                     {link.text}

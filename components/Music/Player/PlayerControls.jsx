@@ -1,12 +1,7 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import {
-  FiRepeat,
-  FiPlayCircle,
-  FiPause,
-  FiFastForward,
-  FiRewind,
-} from "react-icons/fi";
+import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
+import { GiSpeaker, GiSpeakerOff } from "react-icons//gi";
 import NowPlaying from "../Songs/NowPlaying";
 
 const PlayerControls = ({
@@ -17,9 +12,10 @@ const PlayerControls = ({
   setCurrentTrack,
   tracks,
   themeData,
+  muted,
+  setMuted,
 }) => {
   const bg = themeData?.attributes?.BaseColor;
-  console.log(bg);
   const clickRef = useRef();
   const PlayPause = () => {
     setIsPlaying(!isPlaying);
@@ -55,9 +51,19 @@ const PlayerControls = ({
     audioElem.current.currentTime = 0;
   };
 
+  // handle volume
+  const [showVolume, setShowVolume] = useState(false);
+  const [volume, setVolume] = useState(30);
+
+  useEffect(() => {
+    if (audioElem) {
+      audioElem.current.volume = volume / 100;
+      audioElem.current.mute = muted;
+    }
+  }, [volume, muted]);
   return (
-    <div className="flex flex-row items-center justify-between bg-activeTab w-full h-[5rem] px-2 md:px-10 fixed bottom-0 z-20 md:z-50">
-      <div className="flex items-center space-x-4">
+    <div className="flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row items-start sm:items-center gap-2 sm:gap-8 md:gap-8 lg:gap-8 xl:gap-8">
+      <div className="flex items-center space-x-6">
         <Image
           src={currentTrack.trackCoverImage}
           alt={currentTrack.title}
@@ -65,30 +71,168 @@ const PlayerControls = ({
           width={120}
           height={70}
         />
-        <div className="hidden sm:block md:block lg:block">
-          <h2 className="text-xl font-bold">{currentTrack.title}</h2>
-          <p>{currentTrack.artist}</p>
-          <NowPlaying />
+        <div className="flex items-start flex-col sm:hidden md::hidden lg:hidden xl:hidden">
+          <h2 className="text-xl font-bold font-sans uppercase">
+            {currentTrack.title}
+          </h2>
+          <p className="text-xs">{currentTrack.artist}</p>
+          {/* <NowPlaying /> */}
+        </div>
+        <div
+          className="hidden sm:flex md::flex lg:flex xl:flex items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white"
+          onClick={PlayPause}
+        >
+          {isPlaying ? (
+            <BsFillPauseFill size={35} />
+          ) : (
+            <BsFillPlayFill size={35} />
+          )}
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center space-y-2">
-        <div className="min-w-[100%] h-[5px] rounded-[30px] cursor-pointer bg-white">
-          <div
-            onClick={forwardSeekBar}
-            ref={clickRef}
-            className=" h-[100%] bg-red-400 rounded-[30px]"
-            style={{ width: `${currentTrack.progress + "%"}` }}
-          ></div>
+      <div className="flex flex-col gap-1">
+        <div className="hidden items-start flex-col sm:flex md::flex lg:flex xl:flex">
+          <h2 className="text-xl font-bold font-sans uppercase">
+            {currentTrack.title}
+          </h2>
+          <p className="text-xs">{currentTrack.artist}</p>
+          {/* <NowPlaying /> */}
         </div>
-        <div className="flex space-x-10 items-center justify-center">
-          <FiRewind size={30} onClick={skipBack} />
-          <div onClick={PlayPause}>
-            {isPlaying ? <FiPause size={40} /> : <FiPlayCircle size={40} />}
+        <div className="hidden sm:flex md::flex lg:flex xl:flex items-center gap-8">
+          <div className="flex  items-center gap-2">
+            <Image
+              className="rotate-180"
+              src="/skip.png"
+              onClick={skipBack}
+              height={12}
+              width={12}
+              alt="skip"
+            />
+            <Image
+              src="/skip.png"
+              onClick={skipNext}
+              height={12}
+              width={12}
+              alt="skip"
+            />
           </div>
-          <FiFastForward size={30} onClick={skipNext} />
+          <div className="min-w-[200px] sm:w-[250px] md:w-[300px] lg:w-[450px] xl:w-[500px] h-[6px] rounded-xl cursor-pointer bg-[#e3e3e3]">
+            <div
+              onClick={forwardSeekBar}
+              ref={clickRef}
+              className=" h-[100%] bg-[#64748b] rounded-xl"
+              style={{ width: `${currentTrack.progress + "%"}` }}
+            ></div>
+          </div>
+          <div className="flex">
+            {muted ? (
+              <GiSpeakerOff
+                onClick={() => setMuted((m) => !m)}
+                onMouseMove={() => setShowVolume(!showVolume)}
+                className="text-2xl text-[#64748b] cursor-pointer"
+              />
+            ) : (
+              <GiSpeaker
+                onClick={() => setMuted((m) => !m)}
+                onMouseMove={() => setShowVolume(!showVolume)}
+                className="text-2xl text-[#64748b] cursor-pointer"
+              />
+            )}
+
+            {showVolume && (
+              <section className="">
+                <input
+                  className="cursor-pointer"
+                  type="range"
+                  min={0}
+                  max={100}
+                  step={0.02}
+                  value={volume}
+                  onChange={(event) => {
+                    setVolume(event.target.valueAsNumber);
+                  }}
+                />
+              </section>
+            )}
+          </div>
         </div>
       </div>
-      <div className="hidden md:flex">Volume</div>
+
+      {/* for mobile view */}
+      <div className="flex items-start gap-4 sm:hidden md::hidden lg:hidden xl:hidden">
+        {/* play button */}
+        <div
+          className="flex items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white"
+          onClick={PlayPause}
+        >
+          {isPlaying ? (
+            <BsFillPauseFill size={35} />
+          ) : (
+            <BsFillPlayFill size={35} />
+          )}
+        </div>
+
+        {/* progress track and sound for mobile */}
+        <div className="flex flex-col gap-2 mt-4">
+          <div className="w-[280px] h-[6px] rounded-xl cursor-pointer bg-[#e3e3e3]">
+            <div
+              onClick={forwardSeekBar}
+              ref={clickRef}
+              className="h-[100%] bg-[#64748b] rounded-xl"
+              style={{ width: `${currentTrack.progress + "%"}` }}
+            ></div>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Image
+                className="rotate-180"
+                src="/skip.png"
+                onClick={skipBack}
+                height={12}
+                width={12}
+                alt="skip"
+              />
+              <Image
+                src="/skip.png"
+                onClick={skipNext}
+                height={12}
+                width={12}
+                alt="skip"
+              />
+            </div>
+            <div className="flex">
+              {muted ? (
+                <GiSpeakerOff
+                  onClick={() => setMuted((m) => !m)}
+                  onMouseMove={() => setShowVolume(!showVolume)}
+                  className="text-2xl text-[#64748b] cursor-pointer"
+                />
+              ) : (
+                <GiSpeaker
+                  onClick={() => setMuted((m) => !m)}
+                  onMouseMove={() => setShowVolume(!showVolume)}
+                  className="text-2xl text-[#64748b] cursor-pointer"
+                />
+              )}
+
+              {showVolume && (
+                <section className="">
+                  <input
+                    className="cursor-pointer"
+                    type="range"
+                    min={0}
+                    max={100}
+                    step={0.02}
+                    value={volume}
+                    onChange={(event) => {
+                      setVolume(event.target.valueAsNumber);
+                    }}
+                  />
+                </section>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

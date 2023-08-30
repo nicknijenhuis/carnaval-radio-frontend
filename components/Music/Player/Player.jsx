@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import PlayerControls from "./PlayerControls";
 import { tracksData } from "./Tracks";
+import { setAudioElem } from "../../../GlobalState/features/PlayerSlice";
 
 const Player = ({ themeData }) => {
   const [tracks, setTracks] = useState(tracksData);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(tracksData[0]);
+  const [muted, setMuted] = useState(false);
   const audioElem = useRef();
 
   useEffect(() => {
+    setAudioElem(audioElem);
     if (isPlaying) {
       audioElem.current.play();
     } else {
@@ -28,10 +31,17 @@ const Player = ({ themeData }) => {
   };
 
   return (
-    <div>
-      <audio src={currentTrack.url} ref={audioElem} onTimeUpdate={onPlaying} />
+    <div className="z-50 bg-[#f6f6f6] w-full h-fit sm:h-[5rem] md:h-[5rem] lg:h-[5rem] xl:h-[5rem] fixed bottom-0 px-4 sm:px-4 md:px-20 lg-px-24 xl:px-24 py-1">
+      <audio
+        src={currentTrack.url}
+        ref={audioElem}
+        muted={muted}
+        onTimeUpdate={onPlaying}
+      />
       <PlayerControls
         tracks={tracks}
+        muted={muted}
+        setMuted={setMuted}
         setTracks={setTracks}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}

@@ -31,7 +31,6 @@ const Layout = ({ title, children, themeData }: Props) => {
           <Footer />
         </div>
       </main>
-      <Player themeData={themeData} />
     </>
   );
 };

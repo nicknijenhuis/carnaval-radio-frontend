@@ -26,12 +26,12 @@ const Socials = ({ options }: any) => {
     <div
       className={`${
         options === "sidebar"
-          ? "ml-5 mr-2 bg-[#f7f6f9] p-3 border-3 border-white rounded-lg"
+          ? "ml-5 mt-8 mr-2 bg-[#f7f6f9] p-4 border-3 border-white rounded-lg"
           : "mt-8"
       }`}
     >
       {options === "sidebar" && <h2 className="font-semibold">Volg ons op:</h2>}
-      <div className=" mt-1 flex items-center justify-between">
+      <div className=" mt-3 flex items-center justify-between">
         {socialsData.map((icon, i) => (
           <Link
             href="/"

@@ -15,6 +15,7 @@ import Instagram from "../components/Instagram";
 import { GET_ALL_SPONSORS } from "../graphql/sponsor_queries";
 import { GET_THEME_DATA } from "../graphql/theme_queries";
 import { ThemeType } from "../types/themeTypes";
+import Player from "../components/Music/Player/Player";
 
 interface Props {
   posts: [Post];
@@ -28,6 +29,7 @@ export default function Home({ posts, sponsorTypes, sponsors, theme }: Props) {
     <div className="flex-grow">
       <Hero />
       <Sponsors sponsorTypes={sponsorTypes} sponsors={sponsors} />
+      <Player themeData={theme} />
       <PostCard posts={posts} />
       {/* <Instagram /> */}
     </div>

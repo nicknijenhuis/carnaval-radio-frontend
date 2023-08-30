@@ -25,18 +25,18 @@ const PostDetails = ({ post, i }: { post: any; i: any }) => {
         className={`${
           i == 0
             ? "bg-greenShade_2"
-            : post.attributes.Tag == 1
+            : i == 1
             ? "bg-secondayShade_2"
             : "bg-primaryShade_3"
-        } rounded-xl p-5 cursor-pointer overflow-hidden space-y-5`}
+        }  rounded-xl p-5 cursor-pointer overflow-hidden space-y-5`}
       >
         <img
           className="h-60 w-[98%] object-cover rounded-xl"
           src={post?.attributes?.CoverImage?.data?.attributes?.url}
           alt=""
         />
-        <p className="text-lg font-bold">{post.attributes.Title}</p>
-        <ReactMarkdown className="mb-2">
+        <p className="text-2xl font-bold">{post.attributes.Title}</p>
+        <ReactMarkdown className="text-[#868986] mb-2">
           {post.attributes?.Content?.length > 200
             ? `${post.attributes.Content.substring(0, 200)}...`
             : post.attributes?.Content?.substring(0, 200)}
