@@ -10,6 +10,7 @@ export type GraphQLSponsor = {
         };
       };
     };
+    Link: string;
     Type: { data: { id: string } };
   };
 };
@@ -32,7 +33,8 @@ export interface SponsorType {
 
 export interface Sponsor {
   Name: string;
-  Logo: Image;
+  Logo?: Image;
+  Link?: string;
   TypeID: string;
 }
 
