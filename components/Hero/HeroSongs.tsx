@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { Fragment } from "react";
 import { MdMusicNote } from "react-icons/md";
 import { BsFileMusicFill } from "react-icons/bs";
 import { recentTracks } from "../Music/Player/Tracks";
@@ -7,8 +7,6 @@ import { recentTracks } from "../Music/Player/Tracks";
 const HeroSongs = () => {
   const calcDate = (date: any) => {
     let milliseconds = date * 1000;
-    console.log(date, milliseconds);
-
     var newDate = new Date(milliseconds);
 
     const year = newDate.getFullYear();
@@ -22,8 +20,6 @@ const HeroSongs = () => {
 
   const calcTime = (date: any) => {
     let milliseconds = date * 1000;
-    console.log(date, milliseconds);
-
     var newDate = new Date(milliseconds);
 
     const hours = newDate.getHours();
@@ -42,7 +38,7 @@ const HeroSongs = () => {
       </div>
       <div className="space-y-2">
         {recentTracks.items.map((recentSong: any, i: any) => (
-          <>
+          <Fragment key={recentSong.title}>
             {i < 4 && (
               <div className="flex flex-col">
                 <div className="flex items-center justify-between p-2">
@@ -79,7 +75,7 @@ const HeroSongs = () => {
                 <div className="w-full h-[1px] bg-gray-200"></div>
               </div>
             )}
-          </>
+          </Fragment>
         ))}
       </div>
       <button className="bg-gradient-to-r from-primary to-secondary rounded-lg py-3 px-4 text-white font-semibold">
