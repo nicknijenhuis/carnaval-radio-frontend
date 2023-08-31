@@ -1,4 +1,3 @@
-import { SocialPosts } from "../components/SocialPosts";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { GET_ALL_ARTICLES } from "../graphql/article_queries";
 import { Post } from "../types/articleTypes";
@@ -29,7 +28,6 @@ export default function Home({ posts, sponsorTypes, sponsors, theme }: Props) {
       <Hero />
       <Sponsors sponsorTypes={sponsorTypes} sponsors={sponsors} />
       <PostCard posts={posts} />
-      <SocialPosts />
     </div>
   );
 }
