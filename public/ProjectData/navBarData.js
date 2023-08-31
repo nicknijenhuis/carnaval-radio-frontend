@@ -27,7 +27,7 @@ export const navBarData = [
   },
   {
     text: "Over ons",
-    src: "/",
+    src: "pages/over-ons",
     icon: <MdError />,
   },
   {
