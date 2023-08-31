@@ -42,7 +42,7 @@ export default function Sidebar({ themeData }: { themeData: any }) {
         justify-between"
           >
             <Image
-              className="h-[100px] sm:h-[150px] md:h-[150px] lg:h-[120px] w-[150px] sm:w-[330px] md:w-[200px] lg:w-[200px]"
+              className="h-[100px] sm:h-[150px] md:h-[150px] lg:h-[120px] w-[150px] sm:w-[330px] md:w-[200px] lg:w-[200px] ml-2"
               src={themeData?.attributes?.Logo?.data?.attributes?.url}
               width={200}
               height={200}
