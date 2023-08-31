@@ -7,13 +7,12 @@ import {
   MdMusicNote,
   MdBusiness,
 } from "react-icons/md";
-import { AiFillHome } from "react-icons/ai";
 
 export const navBarData = [
   {
     text: "Home",
     src: "/",
-    icon: <AiFillHome />,
+    icon: <MdHome />,
   },
   {
     text: "Luisteren",
