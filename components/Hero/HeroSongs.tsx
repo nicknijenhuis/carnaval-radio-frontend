@@ -1,11 +1,10 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import { MdMusicNote } from "react-icons/md";
 import { BsFileMusicFill } from "react-icons/bs";
 import { recentTracks } from "../Music/Player/Tracks";
 
 const HeroSongs = () => {
-  const [timeplayed, setTimePlayed] = useState([0, 0, 0, 0]);
   const calcDate = (date: any) => {
     let milliseconds = date * 1000;
     console.log(date, milliseconds);
@@ -18,16 +17,21 @@ const HeroSongs = () => {
 
     const formattedDate = `${day}/${month}/${year}`;
 
-    console.log(formattedDate);
-
     return formattedDate;
   };
 
-  const counter = (i: any) => {
-    const count = { ...timeplayed };
-    if (count[i] >= 3) return;
-    count[i] += 1;
-    setTimePlayed(count);
+  const calcTime = (date: any) => {
+    let milliseconds = date * 1000;
+    console.log(date, milliseconds);
+
+    var newDate = new Date(milliseconds);
+
+    const hours = newDate.getHours();
+    const minutes = newDate.getMinutes() + 1;
+
+    const formattedDate = `${hours}:${minutes}`;
+
+    return formattedDate;
   };
 
   return (
@@ -40,7 +44,7 @@ const HeroSongs = () => {
         {recentTracks.items.map((recentSong: any, i: any) => (
           <>
             {i < 4 && (
-              <div onClick={() => counter(i)} className="flex flex-col">
+              <div className="flex flex-col">
                 <div className="flex items-center justify-between p-2">
                   <div className="flex space-x-3">
                     <Image
@@ -68,7 +72,7 @@ const HeroSongs = () => {
                         i % 2 !== 0 ? "text-green" : "text-secondary"
                       }`}
                     >
-                      Played {timeplayed[i]}
+                      {calcTime(recentSong.date)}
                     </p>
                   </div>
                 </div>
