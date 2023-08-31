@@ -32,7 +32,7 @@ export default function Home({ posts, sponsorTypes, sponsors, theme }: Props) {
   );
 }
 
-const GRAPHQL_ENDPOINT = process.env.NEXT_PUBLIC_STRAPI_URL;
+const GRAPHQL_ENDPOINT = process.env.NEXT_PUBLIC_STRAPI_URL_comment;
 const client = new ApolloClient({
   uri: GRAPHQL_ENDPOINT,
   cache: new InMemoryCache(),
