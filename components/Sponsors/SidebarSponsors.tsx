@@ -45,7 +45,7 @@ const SidebarSponsors = () => {
         <MdChevronLeft
           onClick={slideLeft}
           size={40}
-          className="cursor-pointer opacity-50 hover:opacity-100 text-black"
+          className="cursor-pointer opacity-50 hover:opacity-100 text-green"
         />
         <div
           id="sidebar-slider"
@@ -65,7 +65,7 @@ const SidebarSponsors = () => {
         <MdChevronRight
           onClick={slideRight}
           size={40}
-          className="cursor-pointer opacity-50 hover:opacity-100 text-black"
+          className="cursor-pointer opacity-50 hover:opacity-100 text-green"
         />
       </div>
     </div>

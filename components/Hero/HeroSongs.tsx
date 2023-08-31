@@ -1,10 +1,11 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { MdMusicNote } from "react-icons/md";
-import { recentSongs } from "../../public/ProjectData/recentsongs";
+import { BsFileMusicFill } from "react-icons/bs";
 import { recentTracks } from "../Music/Player/Tracks";
 
 const HeroSongs = () => {
+  const [timeplayed, setTimePlayed] = useState([0, 0, 0, 0]);
   const calcDate = (date: any) => {
     let milliseconds = date * 1000;
     console.log(date, milliseconds);
@@ -21,14 +22,25 @@ const HeroSongs = () => {
 
     return formattedDate;
   };
+
+  const counter = (i: any) => {
+    const count = { ...timeplayed };
+    if (count[i] >= 3) return;
+    count[i] += 1;
+    setTimePlayed(count);
+  };
+
   return (
     <div className="flex flex-col space-y-4 p-8 rounded-xl min-w-[30vw] shadow-xl md:ml-5">
-      <h2 className="text-center text-lg">Gedraaide nummers</h2>
+      <div className="flex items-center justify-center gap-2">
+        <BsFileMusicFill className="text-2xl text-secondary" />
+        <h2 className="text-center text-2xl">Gedraaide nummers</h2>
+      </div>
       <div className="space-y-2">
         {recentTracks.items.map((recentSong: any, i: any) => (
           <>
             {i < 4 && (
-              <div className="flex flex-col">
+              <div onClick={() => counter(i)} className="flex flex-col">
                 <div className="flex items-center justify-between p-2">
                   <div className="flex space-x-3">
                     <Image
@@ -56,7 +68,7 @@ const HeroSongs = () => {
                         i % 2 !== 0 ? "text-green" : "text-secondary"
                       }`}
                     >
-                      {recentSong.artist}
+                      Played {timeplayed[i]}
                     </p>
                   </div>
                 </div>

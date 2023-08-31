@@ -5,9 +5,10 @@ import { useRef } from "react";
 import SidebarLinks from "./SidebarLinks";
 import SidebarPlayer from "./SidebarPlayer";
 import Socials from "./Socials";
-import carnival_logo from "../public/carnival_logo.png";
+import { useSelector } from "react-redux";
+import { RootState } from "../GlobalState/store";
 
-export default function Sidebar({ themeData }: { themeData: any }) {
+export default function Sidebar({ themeData }: any) {
   const sideBarRef = useRef<HTMLDivElement>(null);
 
   function toogleSideBar() {
@@ -15,6 +16,7 @@ export default function Sidebar({ themeData }: { themeData: any }) {
       sideBarRef.current.classList.toggle("-translate-y-full");
     }
   }
+  console.log(themeData);
 
   return (
     <div className="max-h-screen md:sticky md:top-0 z-30 h-full bg-sideBbarBackground">

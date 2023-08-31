@@ -15,7 +15,6 @@ import PostCard from "../components/Post/PostCard";
 import { GET_ALL_SPONSORS } from "../graphql/sponsor_queries";
 import { GET_THEME_DATA } from "../graphql/theme_queries";
 import { ThemeType } from "../types/themeTypes";
-import Player from "../components/Music/Player/Player";
 
 interface Props {
   posts: [Post];
@@ -29,7 +28,6 @@ export default function Home({ posts, sponsorTypes, sponsors, theme }: Props) {
     <div className="flex-grow">
       <Hero />
       <Sponsors sponsorTypes={sponsorTypes} sponsors={sponsors} />
-      <Player themeData={theme} />
       <PostCard posts={posts} />
       <SocialPosts />
     </div>
@@ -44,13 +42,11 @@ const client = new ApolloClient({
 
 export async function getServerSideProps() {
   //Get Theme from Strapi
-
   const { data: themeData } = await client.query({
     query: GET_THEME_DATA,
   });
 
   //Get Posts from Strapi
-
   const { data } = await client.query({
     query: GET_ALL_ARTICLES,
   });

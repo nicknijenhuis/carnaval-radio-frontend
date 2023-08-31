@@ -28,8 +28,9 @@ const Layout = ({ title, children, themeData }: Props) => {
         <Sidebar themeData={themeData} />
         <div>
           {children}
-          <Footer />
+          <Footer themeData={themeData} />
         </div>
+        <Player themeData={themeData} />
       </main>
     </>
   );

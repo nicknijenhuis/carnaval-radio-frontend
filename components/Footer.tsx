@@ -6,13 +6,18 @@ import Socials from "./Socials";
 
 import { TbMinusVertical } from "react-icons/tb";
 
-const Footer = () => {
+const Footer = ({ themeData }: any) => {
   return (
     <footer className="pt-10 pb-20 text-black">
       <div className="flex flex-col items-center space-y-10 md:space-y-0 md:flex-row md:space-x-20 py-10 md:px-10">
         <div className="max-w-[30vw] md:max-w-[15vw]">
           <Link href="/">
-            <Image src={logo} width={200} height={200} alt="Logo" />
+            <Image
+              src={themeData?.attributes?.Logo?.data?.attributes?.url}
+              width={200}
+              height={200}
+              alt="Logo"
+            />
           </Link>
           <Socials options="footer" />
         </div>
