@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const GET_ALL_SPONSORS = gql`
   query {
-    sponsorTypes {
+    sponsorTypes(sort: "Order:asc") {
       data {
         id
         attributes {
@@ -13,10 +13,11 @@ export const GET_ALL_SPONSORS = gql`
       }
     }
     # filters: { ActiveFrom: { gt: $now }, ActiveUntil: { lt: $now } }
-    sponsors {
+    sponsors(pagination: { limit: 100 }) {
       data {
         attributes {
           Name
+          Link
           Logo {
             data {
               attributes {

@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import Image from "next/image";
-import React from "react";
+import React, { Fragment } from "react";
 import { GET_ALL_SPONSORS } from "../graphql/sponsor_queries";
 import {
   Sponsor,
@@ -42,16 +42,20 @@ const LogosPerType = ({
     <div className="flex flex-wrap gap-4">
       {sponsors.map((x) => {
         return (
-          <>
-            <Image
-              key={x.Name}
-              className={logoClassName}
-              src={x.Logo.Url}
-              width={x.Logo.Width}
-              height={x.Logo.Height}
-              alt={`Logo van ${x.Name}`}
-            />
-          </>
+          <a href={x.Link} target="_blank" key={x.Name}>
+            {x.Logo ? (
+              <Image
+                key={x.Name}
+                className={logoClassName}
+                src={x.Logo.Url}
+                width={x.Logo.Width}
+                height={x.Logo.Height}
+                alt={`Logo van ${x.Name}`}
+              />
+            ) : (
+              <div className="p-2 border border-[#FFA500]">{x.Name}</div>
+            )}
+          </a>
         );
       })}
     </div>
@@ -61,17 +65,15 @@ const LogosPerType = ({
 const Sponsors = ({ sponsorTypes, sponsors }: Props) => (
   <div className="m-10">
     <h1>Sponsoren</h1>
-    {sponsorTypes
-      .sort((st) => st.Order)
-      .map((st) => {
-        const sponsorsPerType = sponsors.filter((x) => x.TypeID === st.Id);
-        return (
-          <div key={st.Name}>
-            <h2 className="my-3 text-lg">{st.Name}</h2>
-            <LogosPerType sponsors={sponsorsPerType} logoSize={st.LogoSize} />
-          </div>
-        );
-      })}
+    {sponsorTypes.map((st) => {
+      const sponsorsPerType = sponsors.filter((x) => x.TypeID === st.Id);
+      return (
+        <div key={st.Name}>
+          <h2 className="my-3 text-lg">{st.Name}</h2>
+          <LogosPerType sponsors={sponsorsPerType} logoSize={st.LogoSize} />
+        </div>
+      );
+    })}
   </div>
 );
 
@@ -81,11 +83,14 @@ export async function getStaticProps() {
   const sponsors: Sponsor[] = data.sponsors.data.map((x: GraphQLSponsor) => {
     return {
       Name: x.attributes.Name,
-      Logo: {
-        Width: x.attributes.Logo.data.attributes.width,
-        Height: x.attributes.Logo.data.attributes.height,
-        Url: x.attributes.Logo.data.attributes.url,
-      },
+      Link: x.attributes.Link,
+      Logo: x.attributes.Logo.data
+        ? {
+            Width: x.attributes.Logo.data.attributes.width,
+            Height: x.attributes.Logo.data.attributes.height,
+            Url: x.attributes.Logo.data.attributes.url,
+          }
+        : null,
       TypeID: x.attributes.Type.data.id,
     } as Sponsor;
   });

@@ -8,8 +8,8 @@ import { BsFileMusicFill } from "react-icons/bs";
 import axios from "axios";
 
 const HeroSongs = () => {
-  const [timeplayed, setTimePlayed] = useState([0, 0, 0, 0]);
   const [recentTracks, setRecentTracks] = useState([]);
+
   const calcDate = (date: any) => {
     let milliseconds = date * 1000;
 
@@ -19,15 +19,20 @@ const HeroSongs = () => {
     const month = newDate.getMonth() + 1;
     const day = newDate.getDate();
 
-    const formattedDate = `${day}/${month}/${year}`;
+    const formattedDate = `${day}-${month}-${year}`;
     return formattedDate;
   };
 
-  const counter = (i: any) => {
-    const count = { ...timeplayed };
-    if (count[i] >= 3) return;
-    count[i] += 1;
-    setTimePlayed(count);
+  const calcTime = (date: any) => {
+    let milliseconds = date * 1000;
+
+    var newDate = new Date(milliseconds);
+
+    const hours = newDate.getHours() - 6;
+    const minutes = newDate.getMinutes() + 1;
+
+    const formattedTime = `${hours}:${minutes}`;
+    return formattedTime;
   };
 
   const fetchTracks = () => {
@@ -51,7 +56,7 @@ const HeroSongs = () => {
         {recentTracks?.map((recentSong: any, i: any) => (
           <Fragment key={i}>
             {i < 4 && (
-              <div onClick={() => counter(i)} className="flex flex-col">
+              <div className="flex flex-col">
                 <div className="flex items-center justify-between p-2">
                   <div className="flex space-x-3">
                     <Image
@@ -79,7 +84,7 @@ const HeroSongs = () => {
                         i % 2 !== 0 ? "text-green" : "text-secondary"
                       }`}
                     >
-                      Played {timeplayed[i]}
+                      {calcTime(recentSong.date)}
                     </p>
                   </div>
                 </div>
