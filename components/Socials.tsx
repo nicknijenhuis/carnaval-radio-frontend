@@ -26,7 +26,7 @@ const Socials = ({ options }: any) => {
     <div
       className={`${
         options === "sidebar"
-          ? "ml-5 mt-8 mr-2 bg-[#f7f6f9] p-4 border-3 border-white rounded-lg"
+          ? "ml-5 mt-8 mr-5 bg-[#f7f6f9] p-4 border-3 border-white rounded-lg"
           : "mt-8"
       }`}
     >

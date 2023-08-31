@@ -30,11 +30,11 @@ export default function SponsorCard({ sponsorTypes, sponsors }: Props) {
     },
   };
   return (
-    <div className="md:max-w-[72vw]">
+    <div className="md:max-w-[72vw] ">
       <Carousel showDots={true} responsive={responsive}>
         {sponsors.map((x, i) => {
           return (
-            <li
+            <div
               key={i}
               className="mx-5 my-10 max-w-[320px] p-8 bg-white rounded-xl"
             >
@@ -45,7 +45,7 @@ export default function SponsorCard({ sponsorTypes, sponsors }: Props) {
                 height={x.Logo.Height}
                 alt={`Logo van ${x.Name}`}
               />
-            </li>
+            </div>
           );
         })}
       </Carousel>

@@ -5,8 +5,6 @@ import { useRef } from "react";
 import SidebarLinks from "./SidebarLinks";
 import SidebarPlayer from "./SidebarPlayer";
 import Socials from "./Socials";
-import { useSelector } from "react-redux";
-import { RootState } from "../GlobalState/store";
 
 export default function Sidebar({ themeData }: any) {
   const sideBarRef = useRef<HTMLDivElement>(null);
@@ -16,7 +14,6 @@ export default function Sidebar({ themeData }: any) {
       sideBarRef.current.classList.toggle("-translate-y-full");
     }
   }
-  console.log(themeData);
 
   return (
     <div className="max-h-screen md:sticky md:top-0 z-30 h-full bg-sideBbarBackground">
@@ -66,12 +63,7 @@ export default function Sidebar({ themeData }: any) {
         <div className="min-w-full mt-8">
           <SidebarLinks />
         </div>
-        {/* <div className="">
-          <SidebarSponsors />
-        </div> */}
-        <div>
-          <Socials options="sidebar" />
-        </div>
+        <Socials options="sidebar" />
       </div>
     </div>
   );

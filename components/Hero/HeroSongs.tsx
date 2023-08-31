@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import React, { useEffect, useState, Fragment } from "react";
 import { MdMusicNote } from "react-icons/md";
@@ -10,7 +12,6 @@ const HeroSongs = () => {
   const [recentTracks, setRecentTracks] = useState([]);
   const calcDate = (date: any) => {
     let milliseconds = date * 1000;
-    console.log(date, milliseconds);
 
     var newDate = new Date(milliseconds);
 

@@ -11,7 +11,7 @@ interface Props {
 
 const Sponsors = ({ sponsorTypes, sponsors }: Props) => {
   return (
-    <div className="text-black px-10 bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9]">
+    <div className="text-black px-10 py-2 bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9]">
       <SectionTitle title="sponsoren" icon={sponsors_icon} />
       <SponsorCard sponsorTypes={sponsorTypes} sponsors={sponsors} />
     </div>
