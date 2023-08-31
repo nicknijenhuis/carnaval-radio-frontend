@@ -7,29 +7,32 @@ import { BsFillPauseFill, BsFillPlayFill } from "react-icons/bs";
 import { setMuted, setPlay } from "../GlobalState/features/PlayerSlice";
 
 const SidebarPlayer = () => {
-  const dispatch = useDispatch();
-  const { isPlaying, muted, songTitle } = useSelector(
-    (state: RootState) => state.Player
-  );
+  // const dispatch = useDispatch();
+  // const { isPlaying, muted, songTitle } = useSelector(
+  //   (state: RootState) => state.Player
+  // );
+  const isPlaying = true;
+  const muted = false;
+  const songTitle = "songs";
   return (
     <>
-      {songTitle && (
+      {true && (
         <div className="flex items-center justify-between mt-4 border-[3px] border-white rounded-2xl  py-2 px-4 bg-gradient-to-r to-secondayShade_1 from-greenShade_2">
           {muted ? (
             <GiSpeakerOff
-              onClick={() => dispatch(setMuted())}
+              // onClick={() => dispatch(setMuted())}
               className="text-3xl text-black cursor-pointer"
             />
           ) : (
             <GiSpeaker
-              onClick={() => dispatch(setMuted())}
+              // onClick={() => dispatch(setMuted())}
               className="text-3xl text-black cursor-pointer"
             />
           )}
 
           <p>{songTitle}</p>
           <div
-            onClick={() => dispatch(setPlay())}
+            // onClick={() => dispatch(setPlay())}
             className="sm:flex md::flex lg:flex xl:flex items-center justify-center p-[2px] bg-black rounded-full text-seconday text-secondary cursor-pointer"
           >
             {isPlaying ? (
