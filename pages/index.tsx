@@ -14,6 +14,7 @@ import PostCard from "../components/Post/PostCard";
 import { GET_ALL_SPONSORS } from "../graphql/sponsor_queries";
 import { GET_THEME_DATA } from "../graphql/theme_queries";
 import { ThemeType } from "../types/themeTypes";
+import { SocialPosts } from "../components/SocialPosts";
 
 interface Props {
   posts: [Post];
