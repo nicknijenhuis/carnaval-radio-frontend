@@ -16,20 +16,20 @@ export const navBarData = [
     icon: <AiFillHome />,
   },
   {
-    text: "Over ons",
-    src: "/",
-    icon: <MdError />,
-  },
-  {
     text: "Luisteren",
     src: "/",
     icon: <MdMusicNote />,
   },
-  // {
-  //   text: "Sponsoren",
-  //   src: "/sponsors",
-  //   icon: <MdBusiness />,
-  // },
+  {
+    text: "Sponsoren",
+    src: "/sponsors",
+    icon: <MdBusiness />,
+  },
+  {
+    text: "Over ons",
+    src: "/",
+    icon: <MdError />,
+  },
   {
     text: "Gastenboek",
     src: "/",
