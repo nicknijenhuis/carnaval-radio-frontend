@@ -1,11 +1,13 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdMusicNote } from "react-icons/md";
 import { BsFileMusicFill } from "react-icons/bs";
-import { recentTracks } from "../Music/Player/Tracks";
+// import { recentTracks } from "../Music/Player/Tracks";
+import axios from "axios";
 
 const HeroSongs = () => {
   const [timeplayed, setTimePlayed] = useState([0, 0, 0, 0]);
+  const [recentTracks, setRecentTracks] = useState([]);
   const calcDate = (date: any) => {
     let milliseconds = date * 1000;
     console.log(date, milliseconds);
@@ -17,9 +19,6 @@ const HeroSongs = () => {
     const day = newDate.getDate();
 
     const formattedDate = `${day}/${month}/${year}`;
-
-    console.log(formattedDate);
-
     return formattedDate;
   };
 
@@ -30,6 +29,17 @@ const HeroSongs = () => {
     setTimePlayed(count);
   };
 
+  const fetchTracks = () => {
+    axios
+      .get("https://ams1.reliastream.com/recentfeed/scarna00/json")
+      .then((response) => setRecentTracks(response.data.items));
+  };
+  useEffect(() => {
+    fetchTracks();
+    const interval = setInterval(fetchTracks, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="flex flex-col space-y-4 p-8 rounded-xl min-w-[30vw] shadow-xl md:ml-5">
       <div className="flex items-center justify-center gap-2">
@@ -37,7 +47,7 @@ const HeroSongs = () => {
         <h2 className="text-center text-2xl">Gedraaide nummers</h2>
       </div>
       <div className="space-y-2">
-        {recentTracks.items.map((recentSong: any, i: any) => (
+        {recentTracks?.map((recentSong: any, i: any) => (
           <>
             {i < 4 && (
               <div onClick={() => counter(i)} className="flex flex-col">
