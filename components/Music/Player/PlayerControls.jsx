@@ -6,7 +6,6 @@ import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { GiSpeaker, GiSpeakerOff } from "react-icons//gi";
 import { useDispatch, useSelector } from "react-redux";
 import { setPlay, setMuted } from "../../../GlobalState/features/PlayerSlice";
-import NowPlaying from "../Songs/NowPlaying";
 
 const PlayerControls = ({
   currentTrack,
@@ -26,28 +25,6 @@ const PlayerControls = ({
 
     const trackProgress = (offset / width) * 100;
     audioElem.current.currentTime = (trackProgress / 100) * currentTrack.length;
-  };
-
-  const skipBack = () => {
-    const index = tracks.findIndex((x) => x.url == currentTrack.url);
-    if (index == 0) {
-      setCurrentTrack(tracks[tracks.length - 1]);
-    } else {
-      setCurrentTrack(tracks[index - 1]);
-    }
-
-    audioElem.current.currentTime = 0;
-  };
-
-  const skipNext = () => {
-    const index = tracks.findIndex((x) => x.url == currentTrack.url);
-    if (index == tracks.length - 1) {
-      setCurrentTrack(tracks[0]);
-    } else {
-      setCurrentTrack(tracks[index + 1]);
-    }
-
-    audioElem.current.currentTime = 0;
   };
 
   // handle volume
@@ -97,23 +74,6 @@ const PlayerControls = ({
           {/* <NowPlaying /> */}
         </div>
         <div className="hidden sm:flex md::flex lg:flex xl:flex items-center gap-8">
-          <div className="flex  items-center gap-2 cursor-pointer">
-            <Image
-              className="rotate-180"
-              src="/skip.png"
-              onClick={skipBack}
-              height={12}
-              width={12}
-              alt="skip"
-            />
-            <Image
-              src="/skip.png"
-              onClick={skipNext}
-              height={12}
-              width={12}
-              alt="skip"
-            />
-          </div>
           <div className="min-w-[200px] sm:w-[250px] md:w-[300px] lg:w-[450px] xl:w-[500px] h-[6px] rounded-xl cursor-pointer bg-[#e3e3e3]">
             <div
               onClick={forwardSeekBar}
@@ -181,23 +141,6 @@ const PlayerControls = ({
             ></div>
           </div>
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 cursor-pointer">
-              <Image
-                className="rotate-180"
-                src="/skip.png"
-                onClick={skipBack}
-                height={12}
-                width={12}
-                alt="skip"
-              />
-              <Image
-                src="/skip.png"
-                onClick={skipNext}
-                height={12}
-                width={12}
-                alt="skip"
-              />
-            </div>
             <div className="flex">
               {muted ? (
                 <GiSpeakerOff
