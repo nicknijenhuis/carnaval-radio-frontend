@@ -4,9 +4,10 @@ import React, { useState, useEffect, useRef } from "react";
 import PlayerControls from "./PlayerControls";
 import { tracksData } from "./Tracks";
 import { useDispatch, useSelector } from "react-redux";
-import { setsSongTitle } from "../../../GlobalState/features/PlayerSlice";
+import { setsSongTitle } from "@/GlobalState/features/PlayerSlice";
 
-const Player = ({ themeData }) => {
+const Player = () => {
+  const themeData = useSelector((state) => state.Theme.themeData);
   const dispatch = useDispatch();
   const [tracks, setTracks] = useState(tracksData);
   const { isPlaying, muted } = useSelector((state) => state.Player);
@@ -35,8 +36,7 @@ const Player = ({ themeData }) => {
   };
 
   return (
-    <div className="ml-0 sm:ml-0 md:ml-[240px] lg:ml-[250px] xl:ml-[250px] z-50 bg-[#f6f6f6] w-full h-fit sm:h-[5rem] md:h-[5rem] lg:h-[5rem] xl:h-[5rem] fixed bottom-0 px-4 sm:px-4 md:px-20 lg-px-24 xl:px-24 py-1">
-     
+    <div className="z-40 bg-[#f6f6f6] w-full h-fit sm:h-[5rem] md:h-[5rem] lg:h-[5rem] xl:h-[5rem] fixed bottom-0 px-4 sm:px-4 md:px-20 lg-px-24 xl:px-24 py-1">
       <audio
         src={currentTrack.url}
         ref={audioElem}
@@ -48,8 +48,6 @@ const Player = ({ themeData }) => {
         audioElem={audioElem}
         setTracks={setTracks}
         currentTrack={currentTrack}
-        setCurrentTrack={setCurrentTrack}
-        themeData={themeData}
       />
     </div>
   );

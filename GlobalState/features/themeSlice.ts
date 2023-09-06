@@ -4,14 +4,14 @@ import { createSlice } from "@reduxjs/toolkit";
 const themeSlice = createSlice({
   name: "theme",
   initialState: {
-    themeData: {},
+    themeData: <any>{},
   },
   reducers: {
-    setThemeData: (state, action) => {
+    getThemeData: (state, action) => {
       state.themeData = action.payload;
     },
   },
 });
 
-export const { setThemeData } = themeSlice.actions;
+export const { getThemeData } = themeSlice.actions;
 export default themeSlice.reducer;

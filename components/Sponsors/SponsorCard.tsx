@@ -4,11 +4,10 @@ import "react-multi-carousel/lib/styles.css";
 import { Sponsor, SponsorType } from "../../types/sponsorTypes";
 
 interface Props {
-  sponsorTypes: SponsorType[];
-  sponsors: Sponsor[];
+  sponsors: any;
 }
 
-export default function SponsorCard({ sponsorTypes, sponsors }: Props) {
+export default function SponsorCard({ sponsors }: Props) {
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -29,10 +28,12 @@ export default function SponsorCard({ sponsorTypes, sponsors }: Props) {
       items: 1,
     },
   };
+
+  console.log(sponsors);
   return (
     <div className="md:max-w-[72vw] ">
       <Carousel showDots={true} responsive={responsive}>
-        {sponsors.map((x, i) => {
+        {sponsors.map((x: any, i: any) => {
           return (
             x.Logo && (
               <div

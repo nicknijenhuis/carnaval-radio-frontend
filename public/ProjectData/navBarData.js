@@ -16,8 +16,11 @@ export const navBarData = [
   },
   {
     text: "Luisteren",
-    src: "/",
     icon: <MdMusicNote />,
+    subMenu: [
+      { text: "Mobile Apps", src: "/mobileapps" },
+      { text: "Nu luisteren", src: "/luisteren" },
+    ],
   },
   {
     text: "Sponsoren",
@@ -36,8 +39,11 @@ export const navBarData = [
   },
   {
     text: "Overig",
-    src: "/",
     icon: <MdApi />,
+    subMenu: [
+      { text: "Help", src: "/help" },
+      { text: "Links", src: "/links" },
+    ],
   },
   {
     text: "Contact",

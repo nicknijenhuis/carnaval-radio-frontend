@@ -28,8 +28,8 @@ const HeroSongs = () => {
 
     var newDate = new Date(milliseconds);
 
-    const hours = newDate.getHours() - 6;
-    const minutes = newDate.getMinutes() + 1;
+    const hours = newDate.getHours();
+    const minutes = newDate.getMinutes();
 
     const formattedTime = `${hours}:${minutes}`;
     return formattedTime;
@@ -47,7 +47,7 @@ const HeroSongs = () => {
   }, []);
 
   return (
-    <div className="flex flex-col space-y-4 p-8 rounded-xl min-w-[30vw] shadow-xl md:ml-5">
+    <div className="flex flex-col space-y-4 p-8 rounded-xl min-w-[30vw] shadow-lg md:ml-5">
       <div className="flex items-center justify-center gap-2">
         <BsFileMusicFill className="text-2xl text-secondary" />
         <h2 className="text-center text-2xl">Gedraaide nummers</h2>

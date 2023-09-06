@@ -5,27 +5,11 @@ import Image from "next/image";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { GiSpeaker, GiSpeakerOff } from "react-icons//gi";
 import { useDispatch, useSelector } from "react-redux";
-import { setPlay, setMuted } from "../../../GlobalState/features/PlayerSlice";
+import { setPlay, setMuted } from "../../GlobalState/features/PlayerSlice";
 
-const PlayerControls = ({
-  currentTrack,
-  audioElem,
-  setCurrentTrack,
-  tracks,
-  themeData,
-}) => {
+const PlayerControls = ({ currentTrack, audioElem }) => {
   const dispatch = useDispatch();
   const { isPlaying, muted } = useSelector((state) => state.Player);
-  const bg = themeData?.attributes?.BaseColor;
-  const clickRef = useRef();
-
-  const forwardSeekBar = (e) => {
-    let width = clickRef.current.clientWidth;
-    const offset = e.nativeEvent.offsetX;
-
-    const trackProgress = (offset / width) * 100;
-    audioElem.current.currentTime = (trackProgress / 100) * currentTrack.length;
-  };
 
   // handle volume
   const [showVolume, setShowVolume] = useState(false);
@@ -74,15 +58,7 @@ const PlayerControls = ({
           {/* <NowPlaying /> */}
         </div>
         <div className="hidden sm:flex md::flex lg:flex xl:flex items-center gap-8">
-          <div className="min-w-[200px] sm:w-[250px] md:w-[300px] lg:w-[450px] xl:w-[500px] h-[6px] rounded-xl cursor-pointer bg-[#e3e3e3]">
-            <div
-              onClick={forwardSeekBar}
-              ref={clickRef}
-              className=" h-[100%] bg-[#64748b] rounded-xl"
-              style={{ width: `${currentTrack.progress + "%"}` }}
-            ></div>
-          </div>
-          <div className="flex">
+          <div className="flex items-center">
             {muted ? (
               <GiSpeakerOff
                 onClick={() => dispatch(setMuted())}
@@ -96,22 +72,19 @@ const PlayerControls = ({
                 className="text-2xl text-[#64748b] cursor-pointer"
               />
             )}
-
-            {showVolume && (
-              <section className="">
-                <input
-                  className="cursor-pointer"
-                  type="range"
-                  min={0}
-                  max={100}
-                  step={0.02}
-                  value={volume}
-                  onChange={(event) => {
-                    setVolume(event.target.valueAsNumber);
-                  }}
-                />
-              </section>
-            )}
+            <section className="">
+              <input
+                className="cursor-pointer"
+                type="range"
+                min={0}
+                max={100}
+                step={0.02}
+                value={volume}
+                onChange={(event) => {
+                  setVolume(event.target.valueAsNumber);
+                }}
+              />
+            </section>
           </div>
         </div>
       </div>
@@ -132,14 +105,6 @@ const PlayerControls = ({
 
         {/* progress track and sound for mobile */}
         <div className="flex flex-col gap-2 mt-4">
-          <div className="w-[280px] h-[6px] rounded-xl cursor-pointer bg-[#e3e3e3]">
-            <div
-              onClick={forwardSeekBar}
-              ref={clickRef}
-              className="h-[100%] bg-[#64748b] rounded-xl"
-              style={{ width: `${currentTrack.progress + "%"}` }}
-            ></div>
-          </div>
           <div className="flex items-center justify-between">
             <div className="flex">
               {muted ? (
