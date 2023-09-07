@@ -2,11 +2,7 @@ import { gql } from "@apollo/client";
 
 export const GET_UI_NAVIGATION = gql`
   query {
-    renderNavigation(
-      navigationIdOrSlug: "main-navigation"
-      type: TREE
-      menuOnly: false
-    ) {
+    renderNavigation(navigationIdOrSlug: "1", type: TREE, menuOnly: false) {
       id
       title
       path

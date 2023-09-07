@@ -45,10 +45,10 @@ const SidebarLinks = () => {
   };
 
   useEffect(() => {
-    fetchNavigation();
+    // fetchNavigation();
   }, []);
 
-  console.log(menu);
+  // console.log(menu);
 
   return (
     <div className="flex flex-col gap-3 text-[#9F9F9F]">

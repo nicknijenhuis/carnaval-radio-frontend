@@ -18,8 +18,11 @@ export const navBarData = [
     text: "Luisteren",
     icon: <MdMusicNote />,
     subMenu: [
-      { text: "Mobile Apps", src: "/mobileapps" },
+      { text: "Mobiele apps", src: "/mobileapps" },
       { text: "Nu luisteren", src: "/luisteren" },
+      { text: "Programma live-uitzendingen", src: "/liveUitzendingen" },
+      { text: "Recente nummers", src: "/recentnumbers" },
+      { text: "Verzoekjes", src: "/verzoekjes" },
     ],
   },
   {
@@ -29,12 +32,12 @@ export const navBarData = [
   },
   {
     text: "Over ons",
-    src: "pages/over-ons",
+    src: "/over-ons",
     icon: <MdError />,
   },
   {
     text: "Gastenboek",
-    src: "/",
+    src: "/gastenboek",
     icon: <MdAssignmentInd />,
   },
   {
@@ -43,11 +46,12 @@ export const navBarData = [
     subMenu: [
       { text: "Help", src: "/help" },
       { text: "Links", src: "/links" },
+      { text: "Privacy beleid", src: "/privacypolicy" },
     ],
   },
   {
     text: "Contact",
-    src: "/pages/contact",
+    src: "/contact",
     icon: <MdPhoneEnabled />,
     className: "border-b",
   },
