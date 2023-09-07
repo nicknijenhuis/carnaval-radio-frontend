@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setActiveTab } from "../../GlobalState/features/TabSlice";
 import Image from "next/image";
@@ -9,11 +9,14 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 
 import { RootState } from "../../GlobalState/store";
 import { useRouter } from "next/navigation";
-import { spawn } from "child_process";
 import Link from "next/link";
+import { client } from "@/GlobalState/ApiCalls/api.config";
+import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
+
 const SidebarLinks = () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const [menu, setMenu] = useState();
   const [toggleMenu, setToggleMenu] = useState(null);
   const [subMenu_one, setToggleMenu_one] = useState(false);
   const [subMenu_two, setToggleMenu_two] = useState(false);
@@ -32,6 +35,20 @@ const SidebarLinks = () => {
       setToggleMenu_two(!subMenu_two);
     }
   };
+
+  const fetchNavigation = async () => {
+    const { data } = await client.query({
+      query: GET_UI_NAVIGATION,
+    });
+
+    setMenu(data);
+  };
+
+  useEffect(() => {
+    fetchNavigation();
+  }, []);
+
+  console.log(menu);
 
   return (
     <div className="flex flex-col gap-3 text-[#9F9F9F]">
