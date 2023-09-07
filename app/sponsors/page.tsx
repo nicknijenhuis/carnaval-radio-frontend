@@ -101,7 +101,7 @@ const page = () => {
   };
 
   useEffect(() => {
-    document.title = "sponsoren | 24/7 Vasteloavend Muzieek";
+    document.title = "Sponsoren | 24/7 Vasteloavend Muzieek";
     fetchSponsors();
   }, []);
   return (

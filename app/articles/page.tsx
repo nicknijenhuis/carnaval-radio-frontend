@@ -17,6 +17,7 @@ const page = () => {
   };
 
   useEffect(() => {
+    document.title = "Articles | 24/7 Vasteloavend Muzieek";
     fetchPosts();
   }, []);
   return (
