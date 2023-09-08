@@ -6,6 +6,14 @@ import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_SINGLE_POST } from "@/GlobalState/ApiCalls/graphql/article_queries";
 import { singlePost } from "@/types/articleTypes";
 import Image from "next/image";
+import {
+  FacebookShareButton,
+  WhatsappShareButton,
+  TwitterShareButton,
+  EmailShareButton,
+} from "react-share";
+import { HiMail } from "react-icons/hi";
+import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 
 const page = () => {
   const params = useParams();
@@ -59,6 +67,41 @@ const page = () => {
             height={1000}
             alt={post.Title}
           />
+          <div className="flex items-center gap-4">
+            <h3 className="text-lg font-semibold">Share:</h3>
+            <div className="flex space-x-4 items-center">
+              {/* facebook site */}
+              <FacebookShareButton
+                url={`https://carnavalsradio.nl/articles/${params.slug}`}
+              >
+                <FaFacebook className="text-3xl text-blue-500" />
+              </FacebookShareButton>
+
+              {/* whatsapp */}
+              <WhatsappShareButton
+                url={`https://carnavalsradio.nl/articles/${params.slug}`}
+              >
+                <FaWhatsapp className="text-4xl text-green-500" />
+              </WhatsappShareButton>
+              {/* Twitter */}
+              <TwitterShareButton
+                url={`https://carnavalsradio.nl/articles/${params.slug}`}
+                title={"WSSCs"}
+              >
+                <FaTwitter className="text-3xl text-blue-400" />
+              </TwitterShareButton>
+              {/* email */}
+              <EmailShareButton
+                url={`https://carnavalsradio.nl/articles/${params.slug}`}
+                subject={`Carnaval Radio Post ${params.slug}`}
+                body={
+                  "Hey there I am sharing a Carnaval Radio Post with you, have a look at it."
+                }
+              >
+                <HiMail className="text-4xl text-red-500" />
+              </EmailShareButton>
+            </div>
+          </div>
         </div>
       )}
     </div>
