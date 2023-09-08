@@ -33,7 +33,6 @@ const Sponsors = () => {
         } as Sponsor;
       }
     );
-    console.log(sponsors);
     setSponsors(sponsors);
   };
 

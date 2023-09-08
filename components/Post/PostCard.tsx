@@ -37,7 +37,7 @@ const PostCard = () => {
        gap-3 md:gap-6 max-w-[1280px] m-auto pt-10"
         >
           {posts.map((post: any, i: any) => (
-            <PostDetails key={i} post={post} i={i} />
+            <>{i < 3 && <PostDetails key={i} post={post} i={i} />}</>
           ))}
         </div>
       )}

@@ -29,7 +29,6 @@ export default function SponsorCard({ sponsors }: Props) {
     },
   };
 
-  console.log(sponsors);
   return (
     <div className="md:max-w-[72vw] ">
       <Carousel showDots={true} responsive={responsive}>

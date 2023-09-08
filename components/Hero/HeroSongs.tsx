@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useState, Fragment } from "react";
 import { MdMusicNote } from "react-icons/md";
 import { BsFileMusicFill } from "react-icons/bs";
-// import { recentTracks } from "../Music/Player/Tracks";
+import Link from "next/link";
 import axios from "axios";
 
 const HeroSongs = () => {
@@ -94,9 +94,12 @@ const HeroSongs = () => {
           </Fragment>
         ))}
       </div>
-      <button className="bg-gradient-to-r from-primary to-secondary rounded-lg py-3 px-4 text-white font-semibold">
+      <Link
+        href="/recentSongs"
+        className="bg-gradient-to-r text-center from-primary to-secondary rounded-lg py-3 px-4 text-white font-semibold"
+      >
         Alle gedraaide nummers
-      </button>
+      </Link>
     </div>
   );
 };
