@@ -10,7 +10,7 @@ export default function Home() {
   const themeData = useSelector((state: RootState) => state.Theme.themeData);
 
   useEffect(() => {
-    document.title = `${themeData?.attributes?.Name} | 24/7 Vasteloavend Muzieek`;
+    document.title = `Carnaval Radio | 24/7 Vasteloavend Muzieek`;
   }, []);
   return (
     <section className="flex-grow">

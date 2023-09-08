@@ -18,11 +18,14 @@ export const navBarData = [
     text: "Luisteren",
     icon: <MdMusicNote />,
     subMenu: [
-      { text: "Mobiele apps", src: "/mobileapps" },
-      { text: "Nu luisteren", src: "/luisteren" },
-      { text: "Programma live-uitzendingen", src: "/liveUitzendingen" },
-      { text: "Recente nummers", src: "/recentnumbers" },
-      { text: "Verzoekjes", src: "/verzoekjes" },
+      { text: "Mobiele apps", src: "page/mobiele-apps" },
+      { text: "Nu luisteren", src: "/page" },
+      {
+        text: "Programma live-uitzendingen",
+        src: "page/live-uitzendingen",
+      },
+      { text: "Recente nummers", src: "page/recentenummers" },
+      { text: "Verzoekjes", src: "page/verzoekjes" },
     ],
   },
   {
@@ -44,9 +47,9 @@ export const navBarData = [
     text: "Overig",
     icon: <MdApi />,
     subMenu: [
-      { text: "Help", src: "/help" },
-      { text: "Links", src: "/links" },
-      { text: "Privacy beleid", src: "/privacypolicy" },
+      { text: "Help", src: "page/help" },
+      { text: "Links", src: "page/links" },
+      { text: "Privacy beleid", src: "page/privacy-beleid" },
     ],
   },
   {
