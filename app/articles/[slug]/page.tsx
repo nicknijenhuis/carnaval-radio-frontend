@@ -14,6 +14,7 @@ import {
 } from "react-share";
 import { HiMail } from "react-icons/hi";
 import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import ReactMarkdown from "react-markdown";
 
 const page = () => {
   const params = useParams();
@@ -39,7 +40,6 @@ const page = () => {
     const month = date.toLocaleString("en-US", { month: "long" }); // Get the month name
     const year = date.getUTCFullYear();
 
-    // Create the "day/month/year" formatted string
     const formattedDate = `${day} ${month}, ${year}`;
 
     return <span className="text-sm">{formattedDate}</span>;
@@ -55,7 +55,7 @@ const page = () => {
             </h2>
             {formatDate(post.publishedAt)}
           </div>
-          <p>{post.Content}</p>
+          <ReactMarkdown>{post.Content}</ReactMarkdown>
           {/* <div className="flex items-center gap-2">
             <span>Author</span>
             <span>{post.author.data.attributes.name}</span>

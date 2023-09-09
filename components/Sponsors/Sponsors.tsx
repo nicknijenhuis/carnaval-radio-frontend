@@ -10,13 +10,17 @@ import { GET_ALL_SPONSORS } from "@/GlobalState/ApiCalls/graphql/sponsor_queries
 import { GraphQLSponsor } from "../../types/sponsorTypes";
 
 const Sponsors = () => {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<any>();
   const [sponsorsAll, setSponsors] = useState<Sponsor[]>();
   const fetchSponsors = async () => {
-    const { data: sponsorData } = await client.query({
+    const {
+      loading,
+      error,
+      data: sponsorData,
+    } = await client.query({
       query: GET_ALL_SPONSORS,
     });
-
-    console.log(sponsorData);
     const sponsors: Sponsor[] = sponsorData.sponsors.data.map(
       (x: GraphQLSponsor) => {
         return {
@@ -33,17 +37,32 @@ const Sponsors = () => {
         } as Sponsor;
       }
     );
+    setLoading(loading);
+    setError(error);
     setSponsors(sponsors);
   };
 
   useEffect(() => {
     fetchSponsors();
-  }, []);
+  }, [error]);
+
+  const arr = [1, 2, 3];
 
   return (
     <div className="text-black px-10 py-2 bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9]">
       <SectionTitle title="sponsoren" icon={sponsors_icon} />
-      {sponsorsAll && <SponsorCard sponsors={sponsorsAll} />}
+      {!loading ? (
+        <SponsorCard sponsors={sponsorsAll} />
+      ) : (
+        <div className="flex items-center gap-4 my-6 ">
+          {arr.map((_, index) => (
+            <div
+              key={index}
+              className="h-[150px] w-[250px] bg-gray-300 rounded-lg animate-pulse"
+            ></div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

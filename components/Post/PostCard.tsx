@@ -9,21 +9,26 @@ import { dummyposts } from "../../public/ProjectData/posts";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_ALL_ARTICLES } from "@/GlobalState/ApiCalls/graphql/article_queries";
 import { useRouter } from "next/navigation";
+import PostsSkeleten from "../LoadingSkeleten/PostsSkeleten";
 
 const PostCard = () => {
   const router = useRouter();
   const [posts, setPosts] = useState<any>();
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<any>();
 
   const fetchPosts = async () => {
-    const { data } = await client.query({
+    const { loading, error, data } = await client.query({
       query: GET_ALL_ARTICLES,
     });
     setPosts(data.articles.data);
+    setLoading(loading);
+    setError(error);
   };
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [error]);
 
   return (
     <div className="px-10 space-y-10 md:space-y-0 py-10">
@@ -31,16 +36,21 @@ const PostCard = () => {
         <SectionTitle title="Nieuws" icon={news} />
       </div>
 
-      {posts && (
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3
+      <div
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3
        gap-3 md:gap-6 max-w-[1280px] m-auto pt-10"
-        >
-          {posts.map((post: any, i: any) => (
-            <>{i < 3 && <PostDetails key={i} post={post} i={i} />}</>
-          ))}
-        </div>
-      )}
+      >
+        {!loading ? (
+          <>
+            {posts.map((post: any, i: any) => (
+              <>{i < 3 && <PostDetails key={i} post={post} i={i} />}</>
+            ))}
+          </>
+        ) : (
+          <PostsSkeleten />
+        )}
+      </div>
+
       <div className="flex items-center justify-center pt-8">
         <button
           onClick={() => router.push("/articles")}

@@ -6,9 +6,12 @@ import { MdMusicNote } from "react-icons/md";
 import { BsFileMusicFill } from "react-icons/bs";
 import Link from "next/link";
 import axios from "axios";
+import RecentSongsLoading from "../LoadingSkeleten/RecentSongsLoading";
 
 const HeroSongs = () => {
   const [recentTracks, setRecentTracks] = useState([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<Boolean>(false);
 
   const calcDate = (date: any) => {
     let milliseconds = date * 1000;
@@ -35,16 +38,23 @@ const HeroSongs = () => {
     return formattedTime;
   };
 
-  const fetchTracks = () => {
-    axios
-      .get("https://ams1.reliastream.com/recentfeed/scarna00/json")
-      .then((response) => setRecentTracks(response.data.items));
+  const fetchTracks = async () => {
+    try {
+      const response = await axios.get(
+        "https://ams1.reliastream.com/recentfeed/scarna00/json"
+      );
+
+      setRecentTracks(response.data.items);
+      setLoading(false);
+    } catch (error) {
+      setError(true);
+    }
   };
   useEffect(() => {
     fetchTracks();
     const interval = setInterval(fetchTracks, 60000);
     return () => clearInterval(interval);
-  }, []);
+  }, [error]);
 
   return (
     <div className="flex flex-col space-y-4 p-8 rounded-xl min-w-[30vw] shadow-lg md:ml-5">
@@ -53,46 +63,53 @@ const HeroSongs = () => {
         <h2 className="text-center text-2xl">Gedraaide nummers</h2>
       </div>
       <div className="space-y-2">
-        {recentTracks?.map((recentSong: any, i: any) => (
-          <Fragment key={i}>
-            {i < 4 && (
-              <div className="flex flex-col">
-                <div className="flex items-center justify-between p-2">
-                  <div className="flex space-x-3">
-                    <Image
-                      className="h-9 w-9 rounded-full"
-                      src={recentSong.enclosure.url}
-                      alt={recentSong.title}
-                      height={100}
-                      width={100}
-                    />
-                    <div className="flex flex-col">
-                      <div className="flex">
-                        <MdMusicNote size={20} />
-                        <p>{recentSong.title}</p>
+        {!loading ? (
+          <>
+            {" "}
+            {recentTracks?.map((recentSong: any, i: any) => (
+              <Fragment key={i}>
+                {i < 4 && (
+                  <div className="flex flex-col">
+                    <div className="flex items-center justify-between p-2">
+                      <div className="flex space-x-3">
+                        <Image
+                          className="h-9 w-9 rounded-full"
+                          src={recentSong.enclosure.url}
+                          alt={recentSong.title}
+                          height={100}
+                          width={100}
+                        />
+                        <div className="flex flex-col">
+                          <div className="flex">
+                            <MdMusicNote size={20} />
+                            <p>{recentSong.title}</p>
+                          </div>
+                          {calcDate(recentSong.date)}
+                        </div>
                       </div>
-                      {calcDate(recentSong.date)}
+                      <div
+                        className={`py-2 px-4 rounded-full ${
+                          i % 2 !== 0 ? "bg-greenShade_1" : "bg-secondayShade_1"
+                        }`}
+                      >
+                        <p
+                          className={`text-sm ${
+                            i % 2 !== 0 ? "text-green" : "text-secondary"
+                          }`}
+                        >
+                          {calcTime(recentSong.date)}
+                        </p>
+                      </div>
                     </div>
+                    <div className="w-full h-[1px] bg-gray-200"></div>
                   </div>
-                  <div
-                    className={`py-2 px-4 rounded-full ${
-                      i % 2 !== 0 ? "bg-greenShade_1" : "bg-secondayShade_1"
-                    }`}
-                  >
-                    <p
-                      className={`text-sm ${
-                        i % 2 !== 0 ? "text-green" : "text-secondary"
-                      }`}
-                    >
-                      {calcTime(recentSong.date)}
-                    </p>
-                  </div>
-                </div>
-                <div className="w-full h-[1px] bg-gray-200"></div>
-              </div>
-            )}
-          </Fragment>
-        ))}
+                )}
+              </Fragment>
+            ))}
+          </>
+        ) : (
+          <RecentSongsLoading />
+        )}
       </div>
       <Link
         href="/recentSongs"
