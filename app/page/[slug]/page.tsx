@@ -5,11 +5,12 @@ import { useParams } from "next/navigation";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_SINGLE_PAGE } from "@/GlobalState/ApiCalls/graphql/page_queries";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { SingleContentPage } from "@/types/pageTypes";
 
 const page = () => {
   const params = useParams();
   const slug = params.slug;
-  const [page, setPage] = useState<any>();
+  const [page, setPage] = useState<SingleContentPage>();
 
   const fetchData = async () => {
     const { data } = await client.query({
@@ -22,7 +23,10 @@ const page = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+    if (page) {
+      document.title = `${page.Title} | 24/7 Vasteloavend Muzieek`;
+    }
+  }, [page]);
 
   return (
     <div className="p-10">

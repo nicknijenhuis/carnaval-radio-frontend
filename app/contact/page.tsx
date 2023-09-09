@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 
 const page = () => {
+  useEffect(() => {
+    document.title = "Contact | 24/7 Vasteloavend Muzieek";
+  }, []);
   return (
     <div className="p-10">
       <h2 className="text-3xl font-bold text-primary">Contact</h2>
