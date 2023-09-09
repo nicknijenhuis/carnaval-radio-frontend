@@ -13,7 +13,7 @@ import PostsSkeleten from "../LoadingSkeleten/PostsSkeleten";
 
 const PostCard = () => {
   const router = useRouter();
-  const [posts, setPosts] = useState<any>();
+  const [posts, setPosts] = useState<Post[]>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>();
 
@@ -42,9 +42,10 @@ const PostCard = () => {
       >
         {!loading ? (
           <>
-            {posts.map((post: any, i: any) => (
-              <>{i < 3 && <PostDetails key={i} post={post} i={i} />}</>
-            ))}
+            {posts &&
+              posts.map((post: any, i: any) => (
+                <>{i < 3 && <PostDetails key={i} post={post} i={i} />}</>
+              ))}
           </>
         ) : (
           <PostsSkeleten />

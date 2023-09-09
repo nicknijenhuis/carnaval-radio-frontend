@@ -52,7 +52,7 @@ const Sponsors = () => {
     <div className="text-black px-10 py-2 bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9]">
       <SectionTitle title="sponsoren" icon={sponsors_icon} />
       {!loading ? (
-        <SponsorCard sponsors={sponsorsAll} />
+        <> {sponsorsAll && <SponsorCard sponsors={sponsorsAll} />}</>
       ) : (
         <div className="flex items-center gap-4 my-6 ">
           {arr.map((_, index) => (

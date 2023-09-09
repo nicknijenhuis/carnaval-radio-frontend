@@ -1,8 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import { Post } from "@/types/articleTypes";
 
-const PostDetails = ({ post, i }: { post: any; i: any }) => {
+const PostDetails = ({ post, i }: { post: Post; i: any }) => {
   return (
     <Link href={`/articles/${post.attributes.Slug}`}>
       <div

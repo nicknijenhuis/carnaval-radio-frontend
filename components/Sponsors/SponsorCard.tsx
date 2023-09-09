@@ -4,7 +4,7 @@ import "react-multi-carousel/lib/styles.css";
 import { Sponsor, SponsorType } from "../../types/sponsorTypes";
 
 interface Props {
-  sponsors: any;
+  sponsors: Sponsor[];
 }
 
 export default function SponsorCard({ sponsors }: Props) {
