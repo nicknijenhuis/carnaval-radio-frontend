@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { slides } from "../../public/ProjectData/slides";
