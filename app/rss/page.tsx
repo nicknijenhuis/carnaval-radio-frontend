@@ -55,11 +55,9 @@ function generateRssFeed(allPosts: Post[]) {
     });
   
     const rss = feed.rss2();
-    console.log(rss);
     fs.writeFileSync('./public/feed/rss.xml', rss);
   
     // write other feed formats to public folder
-    fs.writeFileSync('./public/feed/rss.json', feed.json1());
     fs.writeFileSync('./public/feed/atom.xml', feed.atom1());
   
     return rss;

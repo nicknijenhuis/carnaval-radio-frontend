@@ -11,7 +11,7 @@ import { RootState } from "../../GlobalState/store";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { client } from "@/GlobalState/ApiCalls/api.config";
-import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
+import { GET_FOOTER_NAVIGATION, GET_MAIN_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
 
 const SidebarLinks = () => {
   const router = useRouter();
@@ -38,17 +38,30 @@ const SidebarLinks = () => {
 
   const fetchNavigation = async () => {
     const { data } = await client.query({
-      query: GET_UI_NAVIGATION,
+      query: GET_MAIN_NAVIGATION,
     });
+
+    console.log(data);
+
+
+    const { data: footerData } = await client.query({
+      query: GET_FOOTER_NAVIGATION,
+    });
+
+    console.log(footerData);
+
 
     setMenu(data);
   };
 
   useEffect(() => {
-    // fetchNavigation();
+    fetchNavigation().then((res) => {
+      console.log('test');
+      console.log(menu);
+    });
   }, []);
 
-  // console.log(menu);
+  
 
   return (
     <div className="flex flex-col gap-3 text-[#9F9F9F]">
