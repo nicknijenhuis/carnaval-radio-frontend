@@ -16,12 +16,24 @@ export const GET_SINGLE_PAGE = gql`
 query($slugUrl: String!)
 {
   pages(filters: { Slug: { eq: $slugUrl }}){
-    data{
-      attributes{
+    data {
+      id
+      attributes {
         Title
-        Content
+        Content # This is now HTML
+				Slug
+        Slider {
+          data {
+            attributes {
+              name
+              url
+              # Have a look inside the graphQL playground to see what other attributes you can get from the Slider
+            }
+          }
+        }
       }
     }
+  }
   }
 }
 `
