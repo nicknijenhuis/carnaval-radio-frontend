@@ -10,7 +10,6 @@ interface Props {
 export default function SponsorCard({ sponsors }: Props) {
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 1024 },
       items: 4,
       slidesToSlide: 2,

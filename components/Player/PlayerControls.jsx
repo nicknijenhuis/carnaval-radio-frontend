@@ -11,7 +11,6 @@ const PlayerControls = ({ currentTrack, audioElem }) => {
   const dispatch = useDispatch();
   const { isPlaying, muted } = useSelector((state) => state.Player);
 
-  // handle volume
   const [showVolume, setShowVolume] = useState(false);
   const [volume, setVolume] = useState(30);
 
@@ -36,7 +35,6 @@ const PlayerControls = ({ currentTrack, audioElem }) => {
             {currentTrack.title}
           </h2>
           <p className="text-xs">{currentTrack.artist}</p>
-          {/* <NowPlaying /> */}
         </div>
         <div
           className="hidden sm:flex md::flex lg:flex xl:flex items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white cursor-pointer"
@@ -55,7 +53,6 @@ const PlayerControls = ({ currentTrack, audioElem }) => {
             {currentTrack.title}
           </h2>
           <p className="text-xs">{currentTrack.artist}</p>
-          {/* <NowPlaying /> */}
         </div>
         <div className="hidden sm:flex md::flex lg:flex xl:flex items-center gap-8">
           <div className="flex items-center">

@@ -7,7 +7,6 @@ import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_THEME_DATA } from "@/GlobalState/ApiCalls/graphql/theme_queries";
 import { useDispatch } from "react-redux";
 import { getThemeData } from "@/GlobalState/features/themeSlice";
-import { spawn } from "child_process";
 
 const SideBar = () => {
   const dispatch = useDispatch();
@@ -57,7 +56,6 @@ const SideBar = () => {
           <p>Nu Op De Radio</p>
           <Image src="/radio.png" height={20} width={20} alt="" />
         </div>
-        {/* <SidebarPlayer /> */}
       </div>
       <div className="mt-8">
         <SidebarLinks />

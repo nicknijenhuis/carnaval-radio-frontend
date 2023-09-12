@@ -1,5 +1,4 @@
 "use client";
-import { gql } from "@apollo/client";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { client } from "@/GlobalState/ApiCalls/api.config";
@@ -37,7 +36,7 @@ const page = () => {
   const formatDate = (inputDate: any) => {
     const date = new Date(inputDate);
     const day = date.getUTCDate();
-    const month = date.toLocaleString("en-US", { month: "long" }); // Get the month name
+    const month = date.toLocaleString("en-US", { month: "long" });
     const year = date.getUTCFullYear();
 
     const formattedDate = `${day} ${month}, ${year}`;
@@ -56,10 +55,6 @@ const page = () => {
             {formatDate(post.publishedAt)}
           </div>
           <ReactMarkdown>{post.Content}</ReactMarkdown>
-          {/* <div className="flex items-center gap-2">
-            <span>Author</span>
-            <span>{post.author.data.attributes.name}</span>
-          </div> */}
           <Image
             src={post.CoverImage.data.attributes.url}
             className="h-96 w-full rounded-lg"

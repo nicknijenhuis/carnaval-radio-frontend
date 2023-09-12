@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setsSongTitle } from "@/GlobalState/features/PlayerSlice";
 
 const Player = () => {
-  const themeData = useSelector((state) => state.Theme.themeData);
   const dispatch = useDispatch();
   const [tracks, setTracks] = useState(tracksData);
   const { isPlaying, muted } = useSelector((state) => state.Player);
