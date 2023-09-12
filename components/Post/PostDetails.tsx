@@ -26,11 +26,6 @@ const PostDetails = ({ post, i }: { post: Post; i: any }) => {
             ? `${post.attributes.Content.substring(0, 200)}...`
             : post.attributes?.Content?.substring(0, 200)}
         </ReactMarkdown>
-        {/* <p
-          className={`mt-2 text-xl py-1 px-2 w-fit rounded-md bg-${bgClass} text-${textClass}`}
-        >
-          {post.attributes.Tag}
-        </p> */}
         <button
           className={`flex items-center justify-center bg-white w-full border-2 ${
             i == 0

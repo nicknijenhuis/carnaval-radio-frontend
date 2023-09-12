@@ -76,17 +76,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center gap-4 py-10 pl-10 border-2">
-        <label htmlFor="languages">Language</label>
-        <select
-          name="languages"
-          id="languages"
-          className="px-2 outline-none bg-white text-semibold"
-        >
-          <option value="rigatoni">Rigatoni</option>
-          <option value="dave">Dave</option>
-        </select>
-      </div>
       <div className="flex flex-col-reverse md:flex-row py-4 items-center justify-between px-10">
         <p>2023 Copyright Carnaval-Radio. All rights Reserved.</p>
         <ul className="flex space-x-5">

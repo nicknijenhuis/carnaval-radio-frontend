@@ -1,15 +1,28 @@
 "use client";
 import { RootState } from "@/GlobalState/store";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { MdMenu } from "react-icons/md";
 import SidebarLinks from "./Sidebar/SidebarLinks";
 import Socials from "./Socials";
+import { client } from "@/GlobalState/ApiCalls/api.config";
+import { GET_THEME_DATA } from "@/GlobalState/ApiCalls/graphql/theme_queries";
 
 const MobileHeader = () => {
-  const themeData = useSelector((state: RootState) => state.Theme.themeData);
   const sideBarRef = useRef<HTMLDivElement>(null);
+  const [themeData, setThemeData] = useState<any>();
+
+  const fetchTheme = async () => {
+    const { loading, error, data } = await client.query({
+      query: GET_THEME_DATA,
+    });
+    setThemeData(data.theme.data);
+  };
+
+  useEffect(() => {
+    fetchTheme();
+  }, []);
 
   function toogleSideBar() {
     if (sideBarRef.current) {

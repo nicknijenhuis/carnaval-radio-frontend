@@ -1,7 +1,5 @@
-"use client";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import Image from "next/image";
-import React, { useEffect, Fragment, useState } from "react";
 import { GET_ALL_SPONSORS } from "@/GlobalState/ApiCalls/graphql/sponsor_queries";
 import {
   Sponsor,
@@ -22,9 +20,34 @@ const logoSizeMapping: {
   XXL: "w-48",
 };
 
-const page = () => {
-  const [sponsors, setSponsors] = useState<Sponsor[]>();
-  const [sponsorTypes, setSponsorsTypes] = useState<SponsorType[]>();
+const page = async () => {
+  const { data } = await client.query({ query: GET_ALL_SPONSORS });
+
+  const sponsors: Sponsor[] = data.sponsors.data.map((x: GraphQLSponsor) => {
+    return {
+      Name: x.attributes.Name,
+      Link: x.attributes.Link,
+      Logo: x.attributes.Logo.data
+        ? {
+            Width: x.attributes.Logo.data.attributes.width,
+            Height: x.attributes.Logo.data.attributes.height,
+            Url: x.attributes.Logo.data.attributes.url,
+          }
+        : null,
+      TypeID: x.attributes.Type.data.id,
+    } as Sponsor;
+  });
+
+  const sponsorTypes: SponsorType[] = data.sponsorTypes.data.map(
+    (x: GraphQLSponsorType) => {
+      return {
+        Id: x.id,
+        Name: x.attributes.Name,
+        Order: x.attributes.Order,
+        LogoSize: x.attributes.LogoSize,
+      } as SponsorType;
+    }
+  );
 
   const LogosPerType = ({
     sponsor,
@@ -66,48 +89,10 @@ const page = () => {
     );
   };
 
-  const fetchSponsors = async () => {
-    const { data } = await client.query({ query: GET_ALL_SPONSORS });
-
-    const sponsors: Sponsor[] = data.sponsors.data.map((x: GraphQLSponsor) => {
-      return {
-        Name: x.attributes.Name,
-        Link: x.attributes.Link,
-        Logo: x.attributes.Logo.data
-          ? {
-              Width: x.attributes.Logo.data.attributes.width,
-              Height: x.attributes.Logo.data.attributes.height,
-              Url: x.attributes.Logo.data.attributes.url,
-            }
-          : null,
-        TypeID: x.attributes.Type.data.id,
-      } as Sponsor;
-    });
-
-    setSponsors(sponsors);
-
-    const sponsorTypes: SponsorType[] = data.sponsorTypes.data.map(
-      (x: GraphQLSponsorType) => {
-        return {
-          Id: x.id,
-          Name: x.attributes.Name,
-          Order: x.attributes.Order,
-          LogoSize: x.attributes.LogoSize,
-        } as SponsorType;
-      }
-    );
-
-    setSponsorsTypes(sponsorTypes);
-  };
-
-  useEffect(() => {
-    document.title = "Sponsoren | 24/7 Vasteloavend Muzieek";
-    fetchSponsors();
-  }, []);
   return (
     <div className="p-10 bg-gray-100">
       <div className="flex justify-between items-center mb-4">
-        <SectionTitle title="sponsoren" icon={sponsors_icon} />
+        <SectionTitle title="Sponsoren" icon={sponsors_icon} />
       </div>
       {sponsorTypes?.map((st) => {
         const sponsorsPerType = sponsors?.filter((x) => x.TypeID === st.Id);

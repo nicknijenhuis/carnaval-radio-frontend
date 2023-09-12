@@ -1,6 +1,5 @@
 "use client";
 import { useParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_SINGLE_POST } from "@/GlobalState/ApiCalls/graphql/article_queries";
 import { singlePost } from "@/types/articleTypes";
@@ -15,23 +14,15 @@ import { HiMail } from "react-icons/hi";
 import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
 
-const page = () => {
+const page = async () => {
   const params = useParams();
-  const [post, setPost] = useState<singlePost>();
 
-  const fetchPost = async () => {
-    const { data } = await client.query({
-      query: GET_SINGLE_POST,
-      variables: { slugUrl: params.slug },
-    });
+  const { data } = await client.query({
+    query: GET_SINGLE_POST,
+    variables: { slugUrl: params.slug },
+  });
 
-    setPost(data.articles.data[0].attributes);
-  };
-
-  useEffect(() => {
-    fetchPost();
-  }, []);
-  console.log(post);
+  let post = data.articles.data[0].attributes;
 
   const formatDate = (inputDate: any) => {
     const date = new Date(inputDate);

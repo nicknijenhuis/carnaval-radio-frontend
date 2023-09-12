@@ -1,25 +1,17 @@
-"use client";
-import React, { useState, useEffect } from "react";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_ALL_ARTICLES } from "@/GlobalState/ApiCalls/graphql/article_queries";
 import PostDetails from "@/components/Post/PostDetails";
 import SectionTitle from "@/components/constants/SectionTitle";
 import news from "../../public/news.png";
+import { Post } from "@/types/articleTypes";
 
-const page = () => {
-  const [posts, setPosts] = useState<any>();
+const page = async () => {
+  const { data } = await client.query({
+    query: GET_ALL_ARTICLES,
+  });
+  let posts: Post[];
+  posts = data.articles.data;
 
-  const fetchPosts = async () => {
-    const { data } = await client.query({
-      query: GET_ALL_ARTICLES,
-    });
-    setPosts(data.articles.data);
-  };
-
-  useEffect(() => {
-    document.title = "Articles | 24/7 Vasteloavend Muzieek";
-    fetchPosts();
-  }, []);
   return (
     <div className="px-10 space-y-10 md:space-y-0 py-10">
       <div className="flex justify-between items-center">
