@@ -35,4 +35,5 @@ yarn-error.log*
 next-env.d.ts
 
 # ignore generated rss feeds
-/public/feed*
+/public/feed/*
+!public/feed/.gitkeep 
