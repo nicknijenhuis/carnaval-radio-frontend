@@ -16,6 +16,7 @@ export const GET_ALL_ARTICLES = gql`
 query{
   articles{
     data{
+      id,
       attributes{
         Title
         Slug
