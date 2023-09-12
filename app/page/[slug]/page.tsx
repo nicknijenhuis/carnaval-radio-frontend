@@ -2,10 +2,9 @@ import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_SINGLE_PAGE } from "@/GlobalState/ApiCalls/graphql/page_queries";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { SingleContentPage } from "@/types/pageTypes";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
-const page = async ({ params }: Params) => {
-  const slug = params.slug;
+const page = async ({ params }: { params: { Slug: string } }) => {
+  const slug = params.Slug;
   const { data } = await client.query({
     query: GET_SINGLE_PAGE,
     variables: { slugUrl: slug },
