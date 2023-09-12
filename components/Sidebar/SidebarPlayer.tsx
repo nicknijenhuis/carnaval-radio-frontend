@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { GiSpeaker, GiSpeakerOff } from "react-icons/gi";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../GlobalState/store";
+// import { useDispatch, useSelector } from "react-redux";
+// import { RootState } from "../GlobalState/store";
 import { BsFillPauseFill, BsFillPlayFill } from "react-icons/bs";
-import { setMuted, setPlay } from "../GlobalState/features/PlayerSlice";
+// import { setMuted, setPlay } from "../GlobalState/features/PlayerSlice";
 
 const SidebarPlayer = () => {
   // const dispatch = useDispatch();
