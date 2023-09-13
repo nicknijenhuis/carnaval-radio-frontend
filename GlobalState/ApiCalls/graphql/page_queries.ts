@@ -20,16 +20,7 @@ export const GET_SINGLE_PAGE = gql`
         attributes {
           Title
           Content # This is now HTML
-          Slug
-          Slider {
-            data {
-              attributes {
-                name
-                url
-                # Have a look inside the graphQL playground to see what other attributes you can get from the Slider
-              }
-            }
-          }
+          Slug          
         }
       }
     }

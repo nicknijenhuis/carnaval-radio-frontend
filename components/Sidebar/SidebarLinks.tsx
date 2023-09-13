@@ -11,7 +11,7 @@ import { RootState } from "../../GlobalState/store";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { client } from "@/GlobalState/ApiCalls/api.config";
-import { GET_FOOTER_NAVIGATION, GET_MAIN_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
+import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
 
 const SidebarLinks = () => {
   const router = useRouter();
@@ -38,25 +38,23 @@ const SidebarLinks = () => {
 
   const fetchNavigation = async () => {
     const { data } = await client.query({
-      query: GET_MAIN_NAVIGATION,
+      query: GET_UI_NAVIGATION,
+      variables: { menuName: "main" },
     });
-
-    console.log(data);
-
-
     const { data: footerData } = await client.query({
-      query: GET_FOOTER_NAVIGATION,
+      query: GET_UI_NAVIGATION,
+      variables: { menuName: "footer" },
     });
 
+    console.log('footer:')
     console.log(footerData);
-
 
     setMenu(data);
   };
 
   useEffect(() => {
     fetchNavigation().then((res) => {
-      console.log('test');
+      console.log('mainNavigation:');
       console.log(menu);
     });
   }, []);
