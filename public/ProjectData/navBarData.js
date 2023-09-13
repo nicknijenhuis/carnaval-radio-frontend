@@ -54,7 +54,7 @@ export const navBarData = [
   },
   {
     text: "Contact",
-    src: "/contact",
+    src: "page/contact",
     icon: <MdPhoneEnabled />,
     className: "border-b",
   },
