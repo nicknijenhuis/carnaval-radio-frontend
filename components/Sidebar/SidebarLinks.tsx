@@ -41,6 +41,12 @@ const SidebarLinks = () => {
       query: GET_UI_NAVIGATION,
       variables: { menuName: "main" },
     });
+
+    
+    setMenu(data);
+    console.log('main:')
+    console.log(data);
+
     const { data: footerData } = await client.query({
       query: GET_UI_NAVIGATION,
       variables: { menuName: "footer" },
@@ -49,17 +55,11 @@ const SidebarLinks = () => {
     console.log('footer:')
     console.log(footerData);
 
-    setMenu(data);
   };
 
   useEffect(() => {
-    fetchNavigation().then((res) => {
-      console.log('mainNavigation:');
-      console.log(menu);
-    });
-  }, []);
-
-  
+    fetchNavigation();
+  }, []);  
 
   return (
     <div className="flex flex-col gap-3 text-[#9F9F9F]">
