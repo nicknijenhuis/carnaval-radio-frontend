@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { GiSpeaker, GiSpeakerOff } from "react-icons//gi";
 import { useDispatch, useSelector } from "react-redux";
 import { setPlay, setMuted } from "../../GlobalState/features/PlayerSlice";
 
-const PlayerControls = ({ currentTrack, audioElem }) => {
+const PlayerControls = ({ currentTrack, audioElem, loading }) => {
   const dispatch = useDispatch();
   const { isPlaying, muted } = useSelector((state) => state.Player);
 
@@ -23,19 +23,32 @@ const PlayerControls = ({ currentTrack, audioElem }) => {
   return (
     <div className="flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row items-start sm:items-center gap-2 sm:gap-8 md:gap-8 lg:gap-8 xl:gap-8">
       <div className="flex items-center space-x-6">
-        <Image
-          src={currentTrack.trackCoverImage}
-          alt={currentTrack.title}
-          className="h-16 w-24 rounded-lg"
-          width={120}
-          height={70}
-        />
-        <div className="flex items-start flex-col sm:hidden md::hidden lg:hidden xl:hidden">
-          <h2 className="text-xl font-semibold font-sans uppercase">
-            {currentTrack.title}
-          </h2>
-          <p className="text-xs">{currentTrack.artist}</p>
-        </div>
+        {!loading ? (
+          <Image
+            src={currentTrack.imageurl}
+            alt={currentTrack.title}
+            className="h-16 w-24 rounded-lg"
+            width={120}
+            height={70}
+          />
+        ) : (
+          <div className="h-16 w-24 rounded-lg animate-pulse bg-white"></div>
+        )}
+        <>
+          {!loading ? (
+            <div className="flex items-start flex-col sm:hidden md::hidden lg:hidden xl:hidden">
+              <h2 className="text-xl font-semibold font-sans uppercase">
+                {currentTrack.title}
+              </h2>
+              <p className="text-xs">{currentTrack.artist}</p>
+            </div>
+          ) : (
+            <div className="flex items-start flex-col sm:hidden md::hidden lg:hidden xl:hidden">
+              <span className="p-2 h-3 w-4 bg-white rounded-lg"></span>
+              <span className="p-2 h-2 w-2 bg-white rounded-lg"></span>
+            </div>
+          )}
+        </>
         <div
           className="hidden sm:flex md::flex lg:flex xl:flex items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white cursor-pointer"
           onClick={() => dispatch(setPlay())}
@@ -48,12 +61,19 @@ const PlayerControls = ({ currentTrack, audioElem }) => {
         </div>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="hidden items-start flex-col sm:flex md::flex lg:flex xl:flex">
-          <h2 className="text-xl font-bold font-sans uppercase">
-            {currentTrack.title}
-          </h2>
-          <p className="text-xs">{currentTrack.artist}</p>
-        </div>
+        {!loading ? (
+          <div className="hidden items-start flex-col sm:flex md::flex lg:flex xl:flex">
+            <h2 className="text-xl font-bold font-sans uppercase">
+              {currentTrack.title}
+            </h2>
+            <p className="text-xs">{currentTrack.artist}</p>
+          </div>
+        ) : (
+          <div className="hidden items-start flex-col sm:flex md::flex lg:flex xl:flex">
+            <span className="p-2 h-3 w-4 bg-white rounded-lg"></span>
+            <span className="p-2 h-2 w-2 bg-white rounded-lg"></span>
+          </div>
+        )}
         <div className="hidden sm:flex md::flex lg:flex xl:flex items-center gap-8">
           <div className="flex items-center">
             {muted ? (

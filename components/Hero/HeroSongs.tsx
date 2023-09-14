@@ -52,7 +52,7 @@ const HeroSongs = () => {
   };
   useEffect(() => {
     fetchTracks();
-    const interval = setInterval(fetchTracks, 60000);
+    const interval = setInterval(fetchTracks, 30000);
     return () => clearInterval(interval);
   }, [error]);
 

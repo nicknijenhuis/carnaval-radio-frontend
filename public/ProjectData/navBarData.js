@@ -40,7 +40,7 @@ export const navBarData = [
   },
   {
     text: "Gastenboek",
-    src: "/gastenboek",
+    src: "page/gastenboek",
     icon: <MdAssignmentInd />,
   },
   {

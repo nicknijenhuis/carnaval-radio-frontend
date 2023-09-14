@@ -1,53 +1,64 @@
 "use client";
-
 import React, { useState, useEffect, useRef } from "react";
 import PlayerControls from "./PlayerControls";
-import { tracksData } from "./Tracks";
 import { useDispatch, useSelector } from "react-redux";
-import { setsSongTitle } from "@/GlobalState/features/PlayerSlice";
+import axios from "axios";
+import { client } from "@/GlobalState/ApiCalls/api.config";
+import { GET_STREAM_DATA } from "@/GlobalState/ApiCalls/graphql/stream_queries";
 
 const Player = () => {
-  const dispatch = useDispatch();
-  const [tracks, setTracks] = useState(tracksData);
   const { isPlaying, muted } = useSelector((state) => state.Player);
-  const [currentTrack, setCurrentTrack] = useState(tracksData[0]);
+  const [trackUrl, setTrackUrl] = useState(null);
+  const [currentTrack, setCurrentTrack] = useState(null);
   const audioElem = useRef();
+  const [loading, setLoading] = useState(true);
 
-  dispatch(setsSongTitle(currentTrack.title));
+  const fetchStream = async () => {
+    const { data } = await client.query({
+      query: GET_STREAM_DATA,
+    });
+
+    setTrackUrl(data.streams.data[0].attributes.Link);
+  };
+
+  const fetchTrackData = async () => {
+    try {
+      const response = await axios.get(
+        "https://ams1.reliastream.com/rpc/scarna00/streaminfo.get"
+      );
+      setCurrentTrack(response.data.data[0].track);
+      setLoading(false);
+    } catch (error) {
+      console.log("something went wrong");
+    }
+  };
+  useEffect(() => {
+    fetchStream();
+    fetchTrackData();
+    const interval = setInterval(fetchTrackData, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (isPlaying) {
-      audioElem.current.play();
+      audioElem.current?.play();
     } else {
-      audioElem.current.pause();
+      audioElem.current?.pause();
     }
   });
 
-  const onPlaying = () => {
-    const duration = audioElem.current.duration;
-    const currentTime = audioElem.current.currentTime;
-
-    setCurrentTrack({
-      ...currentTrack,
-      progress: (currentTime / duration) * 100,
-      length: duration,
-    });
-  };
-
   return (
     <div className="z-40 bg-[#f6f6f6] w-full h-fit sm:h-[5rem] md:h-[5rem] lg:h-[5rem] xl:h-[5rem] fixed bottom-0 px-4 sm:px-4 md:px-20 lg-px-24 xl:px-24 py-1">
-      <audio
-        src={currentTrack.url}
-        ref={audioElem}
-        muted={muted}
-        onTimeUpdate={onPlaying}
-      />
-      <PlayerControls
-        tracks={tracks}
-        audioElem={audioElem}
-        setTracks={setTracks}
-        currentTrack={currentTrack}
-      />
+      {trackUrl && (
+        <>
+          <audio src={trackUrl} ref={audioElem} muted={muted} />
+          <PlayerControls
+            audioElem={audioElem}
+            currentTrack={currentTrack}
+            loading={loading}
+          />
+        </>
+      )}
     </div>
   );
 };

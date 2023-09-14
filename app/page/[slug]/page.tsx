@@ -1,6 +1,5 @@
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_SINGLE_PAGE } from "@/GlobalState/ApiCalls/graphql/page_queries";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { SingleContentPage } from "@/types/pageTypes";
 import ReactHtmlParser from "html-react-parser";
 
@@ -20,7 +19,6 @@ const page = async ({ params }: { params: { slug: string } }) => {
         <div className="p-8 rounded-3xl bg-white max-w-3xl">
           <h1 className="text-3xl font-bold text-primary mb-5">{page.Title}</h1>
           <div className="mb-4">{ReactHtmlParser(page.Content)}</div>
-          {/* <ReactMarkdown className="mb-2">{page.Content}</ReactMarkdown> */}
         </div>
       )}
     </div>
