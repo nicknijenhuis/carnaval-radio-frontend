@@ -37,7 +37,7 @@ const PlayerControls = ({ currentTrack, audioElem, loading }) => {
         <>
           {!loading ? (
             <div className="flex items-start flex-col sm:hidden md::hidden lg:hidden xl:hidden">
-              <h2 className="text-xl font-semibold font-sans uppercase">
+              <h2 className="text-xl font-semibold uppercase">
                 {currentTrack.title}
               </h2>
               <p className="text-xs">{currentTrack.artist}</p>
@@ -60,7 +60,7 @@ const PlayerControls = ({ currentTrack, audioElem, loading }) => {
           )}
         </div>
       </div>
-      <div className="flex flex-col gap-1">
+      <div className="flex gap-4 items-end">
         {!loading ? (
           <div className="hidden items-start flex-col sm:flex md::flex lg:flex xl:flex">
             <h2 className="text-xl font-bold font-sans uppercase">
@@ -89,19 +89,17 @@ const PlayerControls = ({ currentTrack, audioElem, loading }) => {
                 className="text-2xl text-[#64748b] cursor-pointer"
               />
             )}
-            <section className="">
-              <input
-                className="cursor-pointer"
-                type="range"
-                min={0}
-                max={100}
-                step={0.02}
-                value={volume}
-                onChange={(event) => {
-                  setVolume(event.target.valueAsNumber);
-                }}
-              />
-            </section>
+            <input
+              className="cursor-pointer"
+              type="range"
+              min={0}
+              max={100}
+              step={0.02}
+              value={volume}
+              onChange={(event) => {
+                setVolume(event.target.valueAsNumber);
+              }}
+            />
           </div>
         </div>
       </div>

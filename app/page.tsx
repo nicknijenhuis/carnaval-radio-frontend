@@ -7,8 +7,6 @@ import Sponsors from "@/components/Sponsors/Sponsors";
 import PostCard from "@/components/Post/PostCard";
 
 export default function Home() {
-  const themeData = useSelector((state: RootState) => state.Theme.themeData);
-
   useEffect(() => {
     document.title = `Carnaval Radio | 24/7 Vasteloavend Muzieek`;
   }, []);

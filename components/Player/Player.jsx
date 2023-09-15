@@ -48,7 +48,7 @@ const Player = () => {
   });
 
   return (
-    <div className="z-40 bg-[#f6f6f6] w-full h-fit sm:h-[5rem] md:h-[5rem] lg:h-[5rem] xl:h-[5rem] fixed bottom-0 px-4 sm:px-4 md:px-20 lg-px-24 xl:px-24 py-1">
+    <div className="z-40 bg-[#f6f6f6] w-full h-fit sm:h-[5rem] md:h-[5rem] lg:h-[5rem] xl:h-[5rem] fixed bottom-0 px-4 sm:px-4 md:px-20 lg-px-24 xl:px-24 py-3">
       {trackUrl && (
         <>
           <audio src={trackUrl} ref={audioElem} muted={muted} />
