@@ -14,9 +14,7 @@ import { HiMail } from "react-icons/hi";
 import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
 
-const page = async () => {
-  const params = useParams();
-
+const page = async ({ params }: { params: { slug: string } }) => {
   const { data } = await client.query({
     query: GET_SINGLE_POST,
     variables: { slugUrl: params.slug },

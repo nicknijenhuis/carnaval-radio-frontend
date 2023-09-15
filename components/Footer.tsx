@@ -5,8 +5,18 @@ import logo from "../public/assets/logo-3.png";
 import Socials from "./Socials";
 
 import { TbMinusVertical } from "react-icons/tb";
+import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
+import { client } from "@/GlobalState/ApiCalls/api.config";
 
-const Footer = () => {
+const Footer = async () => {
+  const { data: footerData } = await client.query({
+    query: GET_UI_NAVIGATION,
+    variables: { menuName: "footer" },
+  });
+
+  // console.log("footer:");
+  // console.log(footerData);
+
   return (
     <footer className="pt-10 text-black">
       <div className="flex flex-col items-center space-y-10 md:space-y-0 md:flex-row md:space-x-20 py-10 md:px-10">
