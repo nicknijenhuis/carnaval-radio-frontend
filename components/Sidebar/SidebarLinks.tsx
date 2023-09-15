@@ -30,7 +30,7 @@ const IconMapping: any = {
 };
 
 interface props {
-  menu: any;
+  menu?: any;
 }
 const SidebarLinks = ({ menu }: props) => {
   const router = useRouter();
