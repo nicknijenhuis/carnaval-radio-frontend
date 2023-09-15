@@ -10,7 +10,7 @@ const SideBar = async () => {
     query: GET_THEME_DATA,
   });
 
-  const { data } = await client.query({
+  const { data: menu } = await client.query({
     query: GET_UI_NAVIGATION,
     variables: { menuName: "main" },
   });
@@ -39,7 +39,7 @@ const SideBar = async () => {
         </div>
       </div>
       <div className="mt-8">
-        <SidebarLinks menu={data.renderNavigation} />
+        <SidebarLinks menu={menu.renderNavigation} />
       </div>
       <Socials options="sidebar" />
     </div>

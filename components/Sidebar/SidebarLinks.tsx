@@ -29,7 +29,10 @@ const IconMapping: any = {
   "<MdBusiness />": <MdBusiness />,
 };
 
-const SidebarLinks = ({ menu }: { menu: any }) => {
+interface props {
+  menu: any;
+}
+const SidebarLinks = ({ menu }: props) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [toggleMenu, setToggleMenu] = useState(null);
