@@ -19,7 +19,7 @@ export const navBarData = [
     icon: <MdMusicNote />,
     subMenu: [
       { text: "Mobiele apps", src: "page/mobiele-apps" },
-      { text: "Nu luisteren", src: "/page" },
+      { text: "Nu luisteren", src: "/" },
       {
         text: "Programma live-uitzendingen",
         src: "page/live-uitzendingen",
@@ -40,7 +40,7 @@ export const navBarData = [
   },
   {
     text: "Gastenboek",
-    src: "page/gastenboek",
+    src: "/gastenboek",
     icon: <MdAssignmentInd />,
   },
   {
@@ -54,7 +54,7 @@ export const navBarData = [
   },
   {
     text: "Contact",
-    src: "page/contact",
+    src: "/contact",
     icon: <MdPhoneEnabled />,
     className: "border-b",
   },
