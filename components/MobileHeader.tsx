@@ -1,27 +1,36 @@
 "use client";
-import { RootState } from "@/GlobalState/store";
 import Image from "next/image";
 import React, { useRef, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { MdMenu } from "react-icons/md";
 import SidebarLinks from "./Sidebar/SidebarLinks";
 import Socials from "./Socials";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_THEME_DATA } from "@/GlobalState/ApiCalls/graphql/theme_queries";
+import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
 
 const MobileHeader = () => {
   const sideBarRef = useRef<HTMLDivElement>(null);
   const [themeData, setThemeData] = useState<any>();
+  const [menu, setMenu] = useState<any>();
 
   const fetchTheme = async () => {
-    const { loading, error, data } = await client.query({
+    const { data } = await client.query({
       query: GET_THEME_DATA,
     });
     setThemeData(data.theme.data);
   };
 
+  const fetchMenu = async () => {
+    const { data } = await client.query({
+      query: GET_UI_NAVIGATION,
+      variables: { menuName: "main" },
+    });
+    setMenu(data.renderNavigation);
+  };
+
   useEffect(() => {
     fetchTheme();
+    fetchMenu();
   }, []);
 
   function toogleSideBar() {
@@ -46,17 +55,16 @@ const MobileHeader = () => {
       <div
         ref={sideBarRef}
         className="w-ful absolute top-25 left-0 transform -translate-y-[120%] md:shadow-[0_35px_70px_-15px_rgba(0,0,0,0.1)]
-       z-50 transition duration-500 ease-in-out flex flex-col child:transition-all md:max-h-screen md:min-h-screen bg-white"
+       z-50 transition duration-500 ease-in-out flex flex-col child:transition-all  bg-white w-full pb-2"
       >
         <div className="flex flex-col p-4 bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9]">
           <div className="flex items-center justify-between mt-4 mx-2">
             <p>Nu Op De Radio</p>
             <Image src="/radio.png" height={20} width={20} alt="" />
           </div>
-          {/* <SidebarPlayer /> */}
         </div>
         <div className="mt-8 bg-white">
-          <SidebarLinks />
+          <SidebarLinks menu={menu} />
         </div>
         <Socials options="sidebar" />
       </div>

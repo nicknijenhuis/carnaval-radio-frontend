@@ -24,8 +24,8 @@ const PostCard = async () => {
       </div>
 
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3
-       gap-3 md:gap-6 max-w-[1280px] m-auto pt-10"
+        className="flex justify-start flex-wrap
+       gap-3 md:gap-6 m-auto pt-2 sm:pt-2 md:pt-6 lg:pt-10 xl:pt-10"
       >
         {!isLoading ? (
           <>

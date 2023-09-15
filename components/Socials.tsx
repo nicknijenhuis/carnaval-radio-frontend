@@ -31,12 +31,12 @@ const Socials = ({ options }: any) => {
       }`}
     >
       {options === "sidebar" && <h2 className="font-semibold">Volg ons op:</h2>}
-      <div className=" mt-3 flex items-center justify-between">
+      <div className="mt-3 flex items-center justify-between gap-1">
         {socialsData.map((icon, i) => (
           <Link
             href="/"
             key={i}
-            className={`p-2 rounded-full ${
+            className={`p-3 rounded-full ${
               options === "footer" ? "bg-[#eff0f2]" : "bg-white"
             } `}
           >
@@ -44,8 +44,8 @@ const Socials = ({ options }: any) => {
               className={`${options === "footer" && "filter grayscale"}`}
               src={icon.iconImg}
               alt={icon.iconName}
-              width={18}
-              height={18}
+              width={30}
+              height={30}
             />
           </Link>
         ))}
