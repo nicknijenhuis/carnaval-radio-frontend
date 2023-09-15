@@ -17,7 +17,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
     <div className="p-10 bg-heroBackground">
       {!error && page && (
         <div className="p-8 rounded-3xl bg-white max-w-3xl">
-          <h1 className="text-3xl font-bold text-primary mb-5">{page.Title}</h1>
+          <h2 className="text-3xl text-primary mb-5">{page.Title}</h2>
           <div className="mb-4">{ReactHtmlParser(page.Content)}</div>
         </div>
       )}
