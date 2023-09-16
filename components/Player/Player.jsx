@@ -35,7 +35,7 @@ const Player = () => {
   useEffect(() => {
     fetchStream();
     fetchTrackData();
-    const interval = setInterval(fetchTrackData, 60000);
+    const interval = setInterval(fetchTrackData, 30000);
     return () => clearInterval(interval);
   }, []);
 

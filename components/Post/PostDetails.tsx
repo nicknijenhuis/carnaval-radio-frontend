@@ -5,7 +5,7 @@ import { Post } from "@/types/articleTypes";
 
 const PostDetails = ({ post, i }: { post: Post; i: any }) => {
   return (
-    <Link href={`/articles/${post.attributes.Slug}`} className="w-[350px]">
+    <Link href={`/articles/${post.attributes.Slug}`} className="w-[370px]">
       <div
         className={`${
           i == 0

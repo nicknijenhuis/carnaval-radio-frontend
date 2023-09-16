@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -11,15 +10,10 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Dosis";
 }
 
 h1 {
   @apply font-bold text-5xl;
-}
-
-h2 {
-  font-family: "Indie Flower", cursive;
 }
 
 @media (prefers-color-scheme: dark) {

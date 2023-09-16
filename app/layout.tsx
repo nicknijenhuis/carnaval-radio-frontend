@@ -1,15 +1,13 @@
 import { Providers } from "@/GlobalState/Providers";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Dosis } from "next/font/google";
 import SideBar from "@/components/Sidebar/SideBar";
 import MobileHeader from "@/components/MobileHeader";
 import Player from "@/components/Player/Player";
 import Footer from "@/components/Footer";
-import Head from "next/head";
 import { fetchThemeData } from "@/GlobalState/ApiCalls/fetchTheme";
-
-const inter = Inter({ subsets: ["latin"] });
+import { dosis } from "./fonts/font";
 
 export const metadata: Metadata = {
   title: "Carnaval Radio | 24/7 Vasteloavend Muzieek",
@@ -27,23 +25,7 @@ export default async function RootLayout({
   const themeData = await fetchThemeData();
   return (
     <html lang="nl">
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-      <body className={inter.className}>
+      <body className={dosis.className}>
         <Providers>
           {themeData && (
             <>

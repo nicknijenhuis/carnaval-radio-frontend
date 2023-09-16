@@ -7,6 +7,7 @@ import { BsFileMusicFill } from "react-icons/bs";
 import Link from "next/link";
 import axios from "axios";
 import RecentSongsLoading from "../LoadingSkeleten/RecentSongsLoading";
+import { Indie } from "@/app/fonts/font";
 
 const HeroSongs = () => {
   const [recentTracks, setRecentTracks] = useState([]);
@@ -57,11 +58,14 @@ const HeroSongs = () => {
   }, [error]);
 
   return (
-    <div className="flex flex-col space-y-4 p-8 rounded-xl min-w-[30vw] shadow-lg md:ml-5">
-      <div className="flex items-center justify-center gap-2">
+    <div className="flex flex-col py-8 px-2 sm:px-4 md:px-8 lg:px-8 xl:px-8 rounded-xl min-w-[30vw] shadow-lg md:ml-5">
+      <div className="flex items-center justify-center gap-2 mb-4">
         <BsFileMusicFill className="text-2xl text-secondary" />
-        <h2 className="text-center text-2xl">Gedraaide nummers</h2>
+        <h2 className={`text-center text-2xl font-semibold ${Indie.className}`}>
+          Gedraaide nummers
+        </h2>
       </div>
+
       <div className="space-y-2">
         {!loading ? (
           <>
@@ -113,7 +117,7 @@ const HeroSongs = () => {
       </div>
       <Link
         href="/recentSongs"
-        className="bg-gradient-to-r text-center from-primary to-secondary rounded-lg py-3 px-4 text-white font-semibold"
+        className="bg-gradient-to-r text-center from-primary to-secondary rounded-lg mt-8 py-3 px-4 text-white font-semibold"
       >
         Alle gedraaide nummers
       </Link>

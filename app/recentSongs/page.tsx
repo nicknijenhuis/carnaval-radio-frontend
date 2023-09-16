@@ -5,6 +5,7 @@ import React, { useEffect, useState, Fragment } from "react";
 import { MdMusicNote } from "react-icons/md";
 import { BsFileMusicFill } from "react-icons/bs";
 import RecentSongsLoading from "@/components/LoadingSkeleten/RecentSongsLoading";
+import { Indie } from "../fonts/font";
 
 const page = () => {
   const [recentTracks, setRecentTracks] = useState([]);
@@ -58,7 +59,9 @@ const page = () => {
     <div className="p-10">
       <div className="flex items-center gap-2 mb-4">
         <BsFileMusicFill className="text-2xl text-secondary" />
-        <h2 className="text-center text-2xl">Gedraaide nummers</h2>
+        <h2 className={`text-center text-2xl font-semibold ${Indie.className}`}>
+          Gedraaide nummers
+        </h2>
       </div>{" "}
       <div className="space-y-2">
         {!loading ? (

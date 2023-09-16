@@ -27,7 +27,7 @@ const PlayerControls = ({ currentTrack, audioElem, loading }) => {
           <Image
             src={currentTrack.imageurl}
             alt={currentTrack.title}
-            className="h-16 w-24 rounded-lg"
+            className="h-12 w-16 sm:h-16 md:h-16 lg:h-16 xl:h-16 sm:w-24 md:w-24 lg:w-24 xl:w-24 rounded-lg"
             width={120}
             height={70}
           />
@@ -37,7 +37,7 @@ const PlayerControls = ({ currentTrack, audioElem, loading }) => {
         <>
           {!loading ? (
             <div className="flex items-start flex-col sm:hidden md::hidden lg:hidden xl:hidden">
-              <h2 className="text-xl font-semibold uppercase">
+              <h2 className="text-xl font-semibold uppercase text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
                 {currentTrack.title}
               </h2>
               <p className="text-xs">{currentTrack.artist}</p>
@@ -63,7 +63,7 @@ const PlayerControls = ({ currentTrack, audioElem, loading }) => {
       <div className="flex gap-4 items-end">
         {!loading ? (
           <div className="hidden items-start flex-col sm:flex md::flex lg:flex xl:flex">
-            <h2 className="text-xl font-bold  uppercase">
+            <h2 className="text-2xl font-bold  uppercase text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
               {currentTrack.title}
             </h2>
             <p className="text-xs">{currentTrack.artist}</p>
@@ -112,9 +112,15 @@ const PlayerControls = ({ currentTrack, audioElem, loading }) => {
           onClick={() => dispatch(setPlay())}
         >
           {isPlaying ? (
-            <BsFillPauseFill size={35} />
+            <BsFillPauseFill
+              size={35}
+              className="h-6 w-6 sm:h-8 md:h-8 lg:h-8 xl:h-8 sm:w-8 md:w-8 lg:w-8 xl:w-8"
+            />
           ) : (
-            <BsFillPlayFill size={35} />
+            <BsFillPlayFill
+              size={35}
+              className="h-6 w-6 sm:h-8 md:h-8 lg:h-8 xl:h-8 sm:w-8 md:w-8 lg:w-8 xl:w-8"
+            />
           )}
         </div>
 
