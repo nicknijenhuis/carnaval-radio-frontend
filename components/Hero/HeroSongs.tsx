@@ -47,17 +47,28 @@ const HeroSongs = () => {
 
   const splitTitle = (title: string) => {
     const parts = title.split(" - ");
+    let song;
     if (parts.length === 2) {
-      return {
+      song = {
         artist: parts[0],
         song: parts[1],
       };
     } else {
-      return {
+      song = {
         artist: "Unknown",
         song: title,
       };
     }
+
+    if (song.artist === "Unknown") {
+      song.artist = "Wete veer neet";
+    }
+
+    if (song.song === "Unknown") {
+      song.song = "Wete veer neet";
+    }
+
+    return song;
   };
 
   const fetchTracks = async () => {
@@ -105,15 +116,18 @@ const HeroSongs = () => {
                           height={100}
                           width={100}
                         />
-                        <div className="flex flex-col">
-                          <div className="flex">
-                            <MdMusicNote size={20} />
-                            <p>{recentSong.titleParts.song}</p>
-                          </div>
-                          <span className="text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-                            {recentSong.titleParts.artist}
-                          </span>
-                        </div>
+<div className="flex flex-col">
+  <div className="flex items-center">
+    <MdMusicNote size={24} className="mr-2" /> {/* Larger music note */}
+    <div>
+      <p>{recentSong.titleParts.song}</p>
+      <span className="text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+        {recentSong.titleParts.artist}
+      </span>
+    </div>
+  </div>
+</div>
+
                       </div>
                       <div
                         className={`py-2 px-4 rounded-full ${
