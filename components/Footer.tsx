@@ -14,19 +14,20 @@ const Footer = async () => {
     variables: { menuName: "footer" },
   });
 
-  // console.log("footer:");
-  // console.log(footerData);
+  console.log("footer:");
+  console.log(footerData.renderNavigation);
 
   return (
     <footer className="pt-10 text-black">
-      <div className="flex flex-col items-center space-y-10 md:space-y-0 md:flex-row md:space-x-20 py-10 md:px-10">
-        <div className="max-w-[30vw] md:max-w-[15vw]">
+      <div className="flex flex-col items-center md:flex-row py-10 md:px-10 gap-7">
+        <div className="">
           <Link href="/">
             <Image src={logo} width={200} height={200} alt="Logo" />
           </Link>
           <Socials options="footer" />
         </div>
-        <div className="flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row flex-wrap items-start gap-4 sm:gap-16 md:gap-24 lg:gap-32 xl:gap-44 flex-grow">
+
+        <div className="flex flex-wrap items-start gap-14 sm:gap-16 md:gap-16 lg:gap-16 xl:gap-44 px-10">
           <div>
             <h2 className="font-bold">Quick Links</h2>
             <ul className="text-sm space-y-4">
@@ -86,11 +87,13 @@ const Footer = async () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col-reverse md:flex-row py-4 items-center justify-between px-10">
-        <p>2023 Copyright Carnaval-Radio. All rights Reserved.</p>
-        <ul className="flex space-x-5">
+      <div className="flex flex-col-reverse md:flex-row pt-8 pb-28 sm:pb-16 md:pb-10 lg:pb-8 xl:pb-8 items-center justify-between px-10 gap-2 ">
+        <p className=" text-sm sm:text-lg md:text-lg lg:text-lg xl:text-lg">
+          2023 Copyright Carnaval-Radio. All rights Reserved.
+        </p>
+        <ul className="flex gap-2 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg">
           <li>
-            <Link href="/">Privacy Policy</Link>
+            <Link href="/privacy-beleid">Privacy Policy</Link>
           </li>
           <li>
             <Link href="/" className="flex items-center justify-center">

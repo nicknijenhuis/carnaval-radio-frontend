@@ -44,8 +44,8 @@ const Socials = ({ options }: any) => {
               className={`${options === "footer" && "filter grayscale"}`}
               src={icon.iconImg}
               alt={icon.iconName}
-              width={30}
-              height={30}
+              width={25}
+              height={25}
             />
           </Link>
         ))}

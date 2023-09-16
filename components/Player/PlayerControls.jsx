@@ -63,7 +63,7 @@ const PlayerControls = ({ currentTrack, audioElem, loading }) => {
       <div className="flex gap-4 items-end">
         {!loading ? (
           <div className="hidden items-start flex-col sm:flex md::flex lg:flex xl:flex">
-            <h2 className="text-xl font-bold font-sans uppercase">
+            <h2 className="text-xl font-bold  uppercase">
               {currentTrack.title}
             </h2>
             <p className="text-xs">{currentTrack.artist}</p>

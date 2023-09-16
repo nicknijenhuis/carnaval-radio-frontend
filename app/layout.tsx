@@ -7,6 +7,7 @@ import MobileHeader from "@/components/MobileHeader";
 import Player from "@/components/Player/Player";
 import Footer from "@/components/Footer";
 import Head from "next/head";
+import { fetchThemeData } from "@/GlobalState/ApiCalls/fetchTheme";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,11 +19,12 @@ export const metadata: Metadata = {
     : "noindex, nofollow",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const themeData = await fetchThemeData();
   return (
     <html lang="nl">
       <Head>
@@ -43,18 +45,22 @@ export default function RootLayout({
       </Head>
       <body className={inter.className}>
         <Providers>
-          <MobileHeader />
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-6 gap-0">
-            <div className="col-span-1">
-              <SideBar />
-            </div>
+          {themeData && (
+            <>
+              <MobileHeader />
+              <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-6 gap-0">
+                <div className="col-span-1">
+                  <SideBar />
+                </div>
 
-            <div className="col-span-1 sm:col-span-1 md:col-span-4 lg:col-span-4 xl:col-span-5 pb-20">
-              {children}
-              <Footer />
-              <Player />
-            </div>
-          </div>
+                <div className="col-span-1 sm:col-span-1 md:col-span-4 lg:col-span-4 xl:col-span-5 pb-20">
+                  {children}
+                  <Footer />
+                  <Player />
+                </div>
+              </div>
+            </>
+          )}
         </Providers>
       </body>
     </html>

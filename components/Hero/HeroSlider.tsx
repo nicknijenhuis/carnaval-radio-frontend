@@ -6,8 +6,6 @@ import { fetchThemeData } from "@/GlobalState/ApiCalls/fetchTheme";
 
 function HeroSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const themeData = fetchThemeData();
-  console.log(themeData);
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;

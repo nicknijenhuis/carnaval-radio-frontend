@@ -9,11 +9,7 @@ import { GraphQLSponsor } from "../../types/sponsorTypes";
 const Sponsors = async () => {
   let isLoading = true;
 
-  const {
-    loading,
-    error,
-    data: sponsorData,
-  } = await client.query({
+  const { loading, data: sponsorData } = await client.query({
     query: GET_ALL_SPONSORS,
   });
 
