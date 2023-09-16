@@ -34,9 +34,9 @@ const page = async ({ params }: { params: { slug?: string } }) => {
   };
 
   return (
-    <div className="max-w-3xl py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8">
+    <div className="py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8 bg-heroBackground">
       {post && (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 max-w-3xl p-8 rounded-3xl bg-white">
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-semibold text-primary">
               {post.Title}
@@ -65,7 +65,7 @@ const page = async ({ params }: { params: { slug?: string } }) => {
               <WhatsappShareButton
                 url={`https://carnavalsradio.nl/articles/${params.slug}`}
               >
-                <FaWhatsapp className="text-4xl text-green-500" />
+                <FaWhatsapp className="text-3xl text-green" />
               </WhatsappShareButton>
               {/* Twitter */}
               <TwitterShareButton

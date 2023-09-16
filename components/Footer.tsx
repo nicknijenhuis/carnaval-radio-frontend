@@ -44,7 +44,7 @@ const Footer = async () => {
               <h2 className="font-bold">{item.title}</h2>
               <ul className="text-sm space-y-4">
                 {item.items.map((item: any, index: any) => (
-                  <li>
+                  <li key={index}>
                     <Link href={item.path}>{item.title}</Link>
                   </li>
                 ))}
