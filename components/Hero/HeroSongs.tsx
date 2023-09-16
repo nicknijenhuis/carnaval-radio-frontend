@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import React, { useEffect, useState, Fragment } from "react";
 import { MdMusicNote } from "react-icons/md";
@@ -13,29 +11,53 @@ const HeroSongs = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Boolean>(false);
 
-  const calcDate = (date: any) => {
-    let milliseconds = date * 1000;
+  const formatDateTime = (timestamp: number) => {
+    const CET_OFFSET = 6 * 3600; // 6 hours in seconds
+    const currentDate = new Date();
+    const formattedTimestamp = new Date((timestamp - CET_OFFSET) * 1000);
 
-    var newDate = new Date(milliseconds);
+    const options: Intl.DateTimeFormatOptions = {
+      hour: "numeric",
+      minute: "numeric",
+    };
 
-    const year = newDate.getFullYear();
-    const month = newDate.getMonth() + 1;
-    const day = newDate.getDate();
+    const isToday =
+      currentDate.getDate() === formattedTimestamp.getDate() &&
+      currentDate.getMonth() === formattedTimestamp.getMonth() &&
+      currentDate.getFullYear() === formattedTimestamp.getFullYear();
 
-    const formattedDate = `${day}-${month}-${year}`;
-    return formattedDate;
+    if (isToday) {
+      return "Vandaag om " + formattedTimestamp.toLocaleTimeString("nl-NL", options); // Today
+    }
+
+    const isYesterday =
+      currentDate.getDate() - 1 === formattedTimestamp.getDate() &&
+      currentDate.getMonth() === formattedTimestamp.getMonth() &&
+      currentDate.getFullYear() === formattedTimestamp.getFullYear();
+
+    if (isYesterday) {
+      return "Gisteren om " + formattedTimestamp.toLocaleTimeString("nl-NL", options); // Yesterday
+    }
+
+    options.day = "numeric";
+    options.month = "long"; // Display full month name (e.g., "september")
+
+    return formattedTimestamp.toLocaleTimeString("nl-NL", options);
   };
 
-  const calcTime = (date: any) => {
-    let milliseconds = date * 1000;
-
-    var newDate = new Date(milliseconds);
-
-    const hours = newDate.getHours();
-    const minutes = newDate.getMinutes();
-
-    const formattedTime = `${hours}:${minutes}`;
-    return formattedTime;
+  const splitTitle = (title: string) => {
+    const parts = title.split(" - ");
+    if (parts.length === 2) {
+      return {
+        artist: parts[0],
+        song: parts[1],
+      };
+    } else {
+      return {
+        artist: "Unknown",
+        song: title,
+      };
+    }
   };
 
   const fetchTracks = async () => {
@@ -44,7 +66,12 @@ const HeroSongs = () => {
         "https://ams1.reliastream.com/recentfeed/scarna00/json"
       );
 
-      setRecentTracks(response.data.items);
+      const modifiedTracks = response.data.items.map((item: any) => ({
+        ...item,
+        titleParts: splitTitle(item.title),
+      }));
+
+      setRecentTracks(modifiedTracks);
       setLoading(false);
     } catch (error) {
       setError(true);
@@ -65,7 +92,6 @@ const HeroSongs = () => {
       <div className="space-y-2">
         {!loading ? (
           <>
-            {" "}
             {recentTracks?.map((recentSong: any, i: any) => (
               <Fragment key={i}>
                 {i < 4 && (
@@ -75,16 +101,18 @@ const HeroSongs = () => {
                         <Image
                           className="h-9 w-9 rounded-full"
                           src={recentSong.enclosure.url}
-                          alt={recentSong.title}
+                          alt={recentSong.titleParts.song}
                           height={100}
                           width={100}
                         />
                         <div className="flex flex-col">
                           <div className="flex">
                             <MdMusicNote size={20} />
-                            <p>{recentSong.title}</p>
+                            <p>{recentSong.titleParts.song}</p>
                           </div>
-                          {calcDate(recentSong.date)}
+                          <span className="text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                            {recentSong.titleParts.artist}
+                          </span>
                         </div>
                       </div>
                       <div
@@ -97,7 +125,7 @@ const HeroSongs = () => {
                             i % 2 !== 0 ? "text-green" : "text-secondary"
                           }`}
                         >
-                          {calcTime(recentSong.date)}
+                          {formatDateTime(recentSong.date)}
                         </p>
                       </div>
                     </div>
@@ -115,7 +143,7 @@ const HeroSongs = () => {
         href="/recentSongs"
         className="bg-gradient-to-r text-center from-primary to-secondary rounded-lg py-3 px-4 text-white font-semibold"
       >
-        Alle gedraaide nummers
+        Meer gedraaide nummers
       </Link>
     </div>
   );
