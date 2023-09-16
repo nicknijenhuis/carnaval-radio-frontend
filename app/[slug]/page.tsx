@@ -15,7 +15,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
   page = data.pages.data[0].attributes;
 
   return (
-    <div className="p-10 bg-heroBackground">
+    <div className="py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8 bg-heroBackground">
       {!error && page && (
         <div className="p-8 rounded-3xl bg-white max-w-3xl">
           <h2

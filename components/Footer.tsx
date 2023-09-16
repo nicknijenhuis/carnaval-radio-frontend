@@ -14,7 +14,6 @@ const Footer = async () => {
     variables: { menuName: "footer" },
   });
 
-  console.log("footer:");
   console.log(footerData.renderNavigation);
 
   return (
@@ -28,63 +27,18 @@ const Footer = async () => {
         </div>
 
         <div className="flex flex-wrap items-start gap-14 sm:gap-16 md:gap-16 lg:gap-16 xl:gap-44 px-10">
-          <div>
-            <h2 className="font-bold">Quick Links</h2>
-            <ul className="text-sm space-y-4">
-              <li>
-                <Link href="/">About</Link>
-              </li>
-              <li>
-                <Link href="/">Attractions</Link>
-              </li>
-              <li>
-                <Link href="/">Ticket Packages</Link>
-              </li>
-              <li>
-                <Link href="/">Blog</Link>
-              </li>
-              <li>
-                <Link href="/">Contact</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="font-bold">Home</h2>
-            <ul className="text-sm space-y-4">
-              <li>
-                <Link href="/">Over ons</Link>
-              </li>
-              <li>
-                <Link href="/">Luisteren</Link>
-              </li>
-              <li>
-                <Link href="/">Gastenboek</Link>
-              </li>
-              <li>
-                <Link href="/">Overig</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="font-bold">Resources</h2>
-            <ul className="text-sm space-y-4">
-              <li>
-                <Link href="/">Webinars</Link>
-              </li>
-              <li>
-                <Link href="/">Podcasts</Link>
-              </li>
-              <li>
-                <Link href="/">Newsletters</Link>
-              </li>
-              <li>
-                <Link href="/">Upcoming</Link>
-              </li>
-              <li>
-                <Link href="/">Partner Benchmarks</Link>
-              </li>
-            </ul>
-          </div>
+          {footerData.renderNavigation.map((item: any, index: any) => (
+            <div key={index}>
+              <h2 className="font-bold">{item.title}</h2>
+              <ul className="text-sm space-y-4">
+                {item.items.map((item: any, index: any) => (
+                  <li>
+                    <Link href={item.path}>{item.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
       <div className="flex flex-col-reverse md:flex-row pt-8 pb-28 sm:pb-16 md:pb-10 lg:pb-8 xl:pb-8 items-center justify-between px-10 gap-2 ">

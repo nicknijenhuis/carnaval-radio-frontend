@@ -43,7 +43,7 @@ const MobileHeader = () => {
       <div className="bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9] md:hidden lg:hidden xl:hidden flex sm:flex justify-between p-2 pb-4 items-center sticky top-0 z-30">
         <Image
           src={themeData?.attributes?.Logo?.data?.attributes?.url}
-          className="h-20"
+          className="h-24 w-44"
           width={200}
           height={200}
           alt="Logo"
