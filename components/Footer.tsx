@@ -6,12 +6,16 @@ import Socials from "./Socials";
 
 import { TbMinusVertical } from "react-icons/tb";
 import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
+import { GET_THEME_DATA } from "@/GlobalState/ApiCalls/graphql/theme_queries";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 
 const Footer = async () => {
   const { data: footerData } = await client.query({
     query: GET_UI_NAVIGATION,
     variables: { menuName: "footer" },
+  });
+  const { data: themeDataStrapi } = await client.query({
+    query: GET_THEME_DATA,
   });
 
   console.log(footerData.renderNavigation);
@@ -21,7 +25,15 @@ const Footer = async () => {
       <div className="flex flex-col items-center md:flex-row py-10 md:px-10 gap-7">
         <div className="">
           <Link href="/">
-            <Image src={logo} width={200} height={200} alt="Logo" />
+            <Image
+              src={
+                themeDataStrapi?.theme?.data?.attributes?.Logo?.data?.attributes
+                  ?.url
+              }
+              width={200}
+              height={200}
+              alt="Logo"
+            />
           </Link>
           <Socials options="footer" />
         </div>

@@ -21,13 +21,13 @@ const PlayerControls = ({ currentTrack, audioElem, loading }) => {
     }
   }, [volume, muted]);
   return (
-    <div className="flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row items-start sm:items-center gap-2 sm:gap-8 md:gap-8 lg:gap-8 xl:gap-8">
+    <div className="flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row items-start sm:items-center gap-[2px] sm:gap-8 md:gap-8 lg:gap-8 xl:gap-8">
       <div className="flex items-center space-x-6">
         {!loading ? (
           <Image
             src={currentTrack.imageurl}
             alt={currentTrack.title}
-            className="h-12 w-16 sm:h-16 md:h-16 lg:h-16 xl:h-16 sm:w-24 md:w-24 lg:w-24 xl:w-24 rounded-lg"
+            className="h-10 w-14 sm:h-16 md:h-16 lg:h-16 xl:h-16 sm:w-24 md:w-24 lg:w-24 xl:w-24 rounded-lg"
             width={120}
             height={70}
           />

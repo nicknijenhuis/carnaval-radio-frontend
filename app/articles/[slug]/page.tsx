@@ -14,7 +14,7 @@ import { HiMail } from "react-icons/hi";
 import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
 
-const page = async ({ params }: { params: { slug: string } }) => {
+const page = async ({ params }: { params: { slug?: string } }) => {
   const { data } = await client.query({
     query: GET_SINGLE_POST,
     variables: { slugUrl: params.slug },
@@ -34,7 +34,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
   };
 
   return (
-    <div className="max-w-3xl pl-8 mt-10">
+    <div className="max-w-3xl py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8">
       {post && (
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between">
