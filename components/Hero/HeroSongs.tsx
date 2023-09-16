@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React, { useEffect, useState, Fragment } from "react";
 import { MdMusicNote } from "react-icons/md";
@@ -28,7 +29,9 @@ const HeroSongs = () => {
       currentDate.getFullYear() === formattedTimestamp.getFullYear();
 
     if (isToday) {
-      return "Vandaag om " + formattedTimestamp.toLocaleTimeString("nl-NL", options); // Today
+      return (
+        "Vandaag om " + formattedTimestamp.toLocaleTimeString("nl-NL", options)
+      ); // Today
     }
 
     const isYesterday =
@@ -37,7 +40,9 @@ const HeroSongs = () => {
       currentDate.getFullYear() === formattedTimestamp.getFullYear();
 
     if (isYesterday) {
-      return "Gisteren om " + formattedTimestamp.toLocaleTimeString("nl-NL", options); // Yesterday
+      return (
+        "Gisteren om " + formattedTimestamp.toLocaleTimeString("nl-NL", options)
+      ); // Yesterday
     }
 
     options.day = "numeric";
@@ -120,18 +125,18 @@ const HeroSongs = () => {
                           height={100}
                           width={100}
                         />
-<div className="flex flex-col">
-  <div className="flex items-center">
-    <MdMusicNote size={24} className="mr-2" /> {/* Larger music note */}
-    <div>
-      <p>{recentSong.titleParts.song}</p>
-      <span className="text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-        {recentSong.titleParts.artist}
-      </span>
-    </div>
-  </div>
-</div>
-
+                        <div className="flex flex-col">
+                          <div className="flex items-center">
+                            <MdMusicNote size={24} className="mr-2" />{" "}
+                            {/* Larger music note */}
+                            <div>
+                              <p>{recentSong.titleParts.song}</p>
+                              <span className="text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                                {recentSong.titleParts.artist}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                       <div
                         className={`py-2 px-4 rounded-full ${
