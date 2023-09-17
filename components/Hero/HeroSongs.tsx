@@ -78,7 +78,7 @@ const HeroSongs = () => {
             {recentTracks?.map((recentSong: any, i: any) => (
               <Fragment key={i}>
                 {i < 4 && (
-                  <div className="flex flex-col">
+                  <div key={"song"+i} className="flex flex-col">
                     <div className="flex items-center justify-between p-2">
                       <div className="flex space-x-3">
                         <Image

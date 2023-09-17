@@ -18,16 +18,36 @@ export const metadata: Metadata = {
     : "noindex, nofollow",
 };
 
+export const getRGBColor = (hex:any, type:any) => {
+  let color = hex.replace(/#/g, "")
+  // if shorthand notation is passed in
+  if (color.length !== 6) {
+    color = `${color}${color}`
+  }
+  // rgb values
+  var r = parseInt(color.substr(0, 2), 16)
+  var g = parseInt(color.substr(2, 2), 16)
+  var b = parseInt(color.substr(4, 2), 16)
+
+  return `--color-${type}: ${r}, ${g}, ${b};`
+}
+
+
+
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const themeData = await fetchThemeData();
+  console.log(themeData.attributes.BaseColor)
+  const primaryColor = getRGBColor(themeData.attributes.BaseColor, "primary")
 
   return (
     <html lang="nl">
       <body className={dosis.className}>
+              <style>:root {`{${primaryColor}}`}</style>
+
         <Providers>
           {themeData && (
             <>
