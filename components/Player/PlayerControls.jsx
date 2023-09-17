@@ -52,7 +52,7 @@ const PlayerControls = ({ currentTrack, audioElem, loading, themeData }) => {
           )}
         </>
         <div
-          className={`hidden sm:flex md::flex lg:flex xl:flex items-center justify-center p-2 rounded-lg bg-gradient-to-r from-[${themeData?.attributes?.BaseColor}] to-secondary text-white cursor-pointer`}
+          className={`hidden sm:flex md::flex lg:flex xl:flex items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white cursor-pointer`}
           onClick={() => dispatch(setPlay())}
         >
           {isPlaying ? (
