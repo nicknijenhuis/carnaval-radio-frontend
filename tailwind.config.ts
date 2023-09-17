@@ -1,9 +1,5 @@
 import type { Config } from "tailwindcss";
 
-function toVar(variableName: any) {
-  return `rgb(var(${variableName}))`;
-}
-
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: toVar("--color-primary"),
+        primary: "#FF9D00",
         primaryShade_1: "#FF9D0029",
         primaryShade_2: "#F2F4E6",
         primaryShade_3: "#FFFCF3",
