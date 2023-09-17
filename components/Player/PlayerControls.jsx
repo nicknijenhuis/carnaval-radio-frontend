@@ -134,13 +134,15 @@ const PlayerControls = ({ currentTrack, audioElem, loading, themeData }) => {
             className="text-4xl text-[#64748b] cursor-pointer"
           />
         )}
-        <Image
-          src={currentTrack.imageurl}
-          alt={currentTrack.title}
-          className="h-12 w-16 rounded-lg"
-          width={120}
-          height={70}
-        />
+        {!loading && (
+          <Image
+            src={currentTrack.imageurl}
+            alt={currentTrack.title}
+            className="h-12 w-16 rounded-lg"
+            width={120}
+            height={70}
+          />
+        )}
       </div>
     </div>
   );

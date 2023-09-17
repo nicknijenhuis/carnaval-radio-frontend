@@ -8,6 +8,7 @@ import Player from "@/components/Player/Player";
 import Footer from "@/components/Footer";
 import { fetchThemeData } from "@/GlobalState/ApiCalls/fetchTheme";
 import { dosis } from "./fonts/font";
+import { fetchThemeColors } from "@/GlobalState/ApiCalls/fetchColors";
 
 export const metadata: Metadata = {
   title: "Carnaval Radio | 24/7 Vasteloavend Muzieek",
@@ -23,6 +24,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const themeData = await fetchThemeData();
+
   return (
     <html lang="nl">
       <body className={dosis.className}>

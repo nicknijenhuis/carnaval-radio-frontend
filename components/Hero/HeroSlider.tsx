@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { slides } from "../../public/ProjectData/slides";
-import { fetchThemeData } from "@/GlobalState/ApiCalls/fetchTheme";
 
 function HeroSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);

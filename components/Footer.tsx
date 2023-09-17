@@ -61,7 +61,7 @@ const Footer = () => {
             ))}
         </div>
       </div>
-      <div className="flex flex-col-reverse md:flex-row pt-8 pb-28 sm:pb-16 md:pb-10 lg:pb-8 xl:pb-8 items-center justify-between px-10 gap-2 ">
+      <div className="flex flex-col-reverse md:flex-row pt-8 pb-0 sm:pb-16 md:pb-10 lg:pb-8 xl:pb-8 items-center justify-between px-10 gap-2">
         <p className=" text-sm sm:text-lg md:text-lg lg:text-lg xl:text-lg">
           2023 Copyright Carnaval-Radio. All rights Reserved.
         </p>

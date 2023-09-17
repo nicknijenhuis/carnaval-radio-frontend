@@ -9,7 +9,7 @@ import {
   MdBusiness,
 } from "react-icons/md";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setActiveTab } from "../../GlobalState/features/TabSlice";
 import Image from "next/image";
@@ -45,7 +45,7 @@ const SidebarLinks = ({ menu, toogleSideBar }: props) => {
     dispatch(setActiveTab(index));
     if (link !== "/" || index === 0) {
       router.push(`${link}`);
-      toogleSideBar();
+      toogleSideBar && toogleSideBar();
       setToggleMenu(null);
     } else if (index === 1 && !subMenu_one) {
       setToggleMenu_one(!subMenu_one);
