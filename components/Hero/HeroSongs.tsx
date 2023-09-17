@@ -7,49 +7,12 @@ import Link from "next/link";
 import axios from "axios";
 import RecentSongsLoading from "../LoadingSkeleten/RecentSongsLoading";
 import { Indie } from "@/app/fonts/font";
+import DateAndTime from "../DateAndTime";
 
 const HeroSongs = () => {
   const [recentTracks, setRecentTracks] = useState([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Boolean>(false);
-
-  const formatDateTime = (timestamp: number) => {
-    const CET_OFFSET = 6 * 3600; // 6 hours in seconds
-    const currentDate = new Date();
-    const formattedTimestamp = new Date((timestamp - CET_OFFSET) * 1000);
-
-    const options: Intl.DateTimeFormatOptions = {
-      hour: "numeric",
-      minute: "numeric",
-    };
-
-    const isToday =
-      currentDate.getDate() === formattedTimestamp.getDate() &&
-      currentDate.getMonth() === formattedTimestamp.getMonth() &&
-      currentDate.getFullYear() === formattedTimestamp.getFullYear();
-
-    if (isToday) {
-      return (
-        "Vandaag om " + formattedTimestamp.toLocaleTimeString("nl-NL", options)
-      ); // Today
-    }
-
-    const isYesterday =
-      currentDate.getDate() - 1 === formattedTimestamp.getDate() &&
-      currentDate.getMonth() === formattedTimestamp.getMonth() &&
-      currentDate.getFullYear() === formattedTimestamp.getFullYear();
-
-    if (isYesterday) {
-      return (
-        "Gisteren om " + formattedTimestamp.toLocaleTimeString("nl-NL", options)
-      ); // Yesterday
-    }
-
-    options.day = "numeric";
-    options.month = "long"; // Display full month name (e.g., "september")
-
-    return formattedTimestamp.toLocaleTimeString("nl-NL", options);
-  };
 
   const splitTitle = (title: string) => {
     const parts = title.split(" - ");
@@ -128,7 +91,6 @@ const HeroSongs = () => {
                         <div className="flex flex-col">
                           <div className="flex items-center">
                             <MdMusicNote size={24} className="mr-2" />{" "}
-                            {/* Larger music note */}
                             <div>
                               <p>{recentSong.titleParts.song}</p>
                               <span className="text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
@@ -150,7 +112,7 @@ const HeroSongs = () => {
                             i % 2 !== 0 ? "text-tertiary" : "text-secondary"
                           }`}
                         >
-                          {formatDateTime(recentSong.date)}
+                          <DateAndTime timestamp={recentSong.date} />
                         </p>
                       </div>
                     </div>

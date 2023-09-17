@@ -6,50 +6,14 @@ import { MdMusicNote } from "react-icons/md";
 import { BsFileMusicFill } from "react-icons/bs";
 import RecentSongsLoading from "@/components/LoadingSkeleten/RecentSongsLoading";
 import { Indie } from "../fonts/font";
+import DateAndTime from "@/components/DateAndTime";
 
 const page = () => {
   const [recentTracks, setRecentTracks] = useState([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Boolean>(false);
 
-  const formatDateTime = (timestamp: number) => {
-    const CET_OFFSET = 6 * 3600; // 6 hours in seconds
-    const currentDate = new Date();
-    const formattedTimestamp = new Date((timestamp - CET_OFFSET) * 1000);
-
-    const options: Intl.DateTimeFormatOptions = {
-      hour: "numeric",
-      minute: "numeric",
-    };
-
-    const isToday =
-      currentDate.getDate() === formattedTimestamp.getDate() &&
-      currentDate.getMonth() === formattedTimestamp.getMonth() &&
-      currentDate.getFullYear() === formattedTimestamp.getFullYear();
-
-    if (isToday) {
-      return (
-        "Vandaag om " + formattedTimestamp.toLocaleTimeString("nl-NL", options)
-      ); // Today
-    }
-
-    const isYesterday =
-      currentDate.getDate() - 1 === formattedTimestamp.getDate() &&
-      currentDate.getMonth() === formattedTimestamp.getMonth() &&
-      currentDate.getFullYear() === formattedTimestamp.getFullYear();
-
-    if (isYesterday) {
-      return (
-        "Gisteren om " + formattedTimestamp.toLocaleTimeString("nl-NL", options)
-      ); // Yesterday
-    }
-
-    options.day = "numeric";
-    options.month = "long"; // Display full month name (e.g., "september")
-
-    return formattedTimestamp.toLocaleTimeString("nl-NL", options);
-  };
-
+  
   const splitTitle = (title: string) => {
     const parts = title.split(" - ");
     let song;
@@ -110,8 +74,7 @@ const page = () => {
         {!loading ? (
           <>
             {recentTracks?.map((recentSong: any, i: any) => (
-              <Fragment key={i}>
-                <div className="flex flex-col">
+                <div key={i} className="flex flex-col">
                   <div className="flex items-center justify-between p-2">
                     <div className="flex space-x-3">
                       <Image
@@ -146,13 +109,12 @@ const page = () => {
                           i % 2 !== 0 ? "text-tertiary" : "text-secondary"
                         }`}
                       >
-                        {formatDateTime(recentSong.date)}
+                        <DateAndTime timestamp={recentSong.date} />
                       </p>
                     </div>
                   </div>
                   <div className="w-full h-[1px] bg-gray-200"></div>
                 </div>
-              </Fragment>
             ))}
           </>
         ) : (
