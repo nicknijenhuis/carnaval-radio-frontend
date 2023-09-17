@@ -21,8 +21,8 @@ const PlayerControls = ({ currentTrack, audioElem, loading, themeData }) => {
     }
   }, [volume, muted]);
   return (
-    <div className="flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row items-start sm:items-center gap-[2px] sm:gap-8 md:gap-8 lg:gap-8 xl:gap-8">
-      <div className="flex items-center space-x-6">
+    <div className="flex sm:flex-row md:flex-row lg:flex-row xl:flex-row items-start sm:items-center gap-[2px] sm:gap-8 md:gap-8 lg:gap-8 xl:gap-8 justify-between sm:justify-start md:justify-start lg:justify-start xl:justify-start">
+      <div className="flex items-center gap-2 sm:gap-8 md:gap-8 lg:gap-8 xl:gap-8">
         {!loading ? (
           <Image
             src={currentTrack.imageurl}
@@ -38,7 +38,7 @@ const PlayerControls = ({ currentTrack, audioElem, loading, themeData }) => {
           {!loading ? (
             <div className="flex items-start flex-col sm:hidden md::hidden lg:hidden xl:hidden">
               <h2
-                className={`text-xl font-semibold uppercase text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary`}
+                className={`text-lg font-semibold uppercase text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary`}
               >
                 {currentTrack.title}
               </h2>
@@ -107,7 +107,21 @@ const PlayerControls = ({ currentTrack, audioElem, loading, themeData }) => {
       </div>
 
       {/* for mobile view */}
-      <div className="flex items-start gap-4 sm:hidden md::hidden lg:hidden xl:hidden">
+      <div className="flex items-center gap-4 sm:hidden md::hidden lg:hidden xl:hidden">
+        {/* progress track and sound for mobile */}
+        {muted ? (
+          <GiSpeakerOff
+            onClick={() => dispatch(setMuted())}
+            onMouseMove={() => setShowVolume(!showVolume)}
+            className="text-4xl text-[#64748b] cursor-pointer"
+          />
+        ) : (
+          <GiSpeaker
+            onClick={() => dispatch(setMuted())}
+            onMouseMove={() => setShowVolume(!showVolume)}
+            className="text-4xl text-[#64748b] cursor-pointer"
+          />
+        )}
         {/* play button */}
         <div
           className="flex items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white cursor-pointer"
@@ -124,41 +138,6 @@ const PlayerControls = ({ currentTrack, audioElem, loading, themeData }) => {
               className="h-6 w-6 sm:h-8 md:h-8 lg:h-8 xl:h-8 sm:w-8 md:w-8 lg:w-8 xl:w-8"
             />
           )}
-        </div>
-
-        {/* progress track and sound for mobile */}
-        <div className="flex flex-col gap-2 mt-4">
-          <div className="flex items-center justify-between">
-            <div className="flex">
-              {muted ? (
-                <GiSpeakerOff
-                  onClick={() => dispatch(setMuted())}
-                  onMouseMove={() => setShowVolume(!showVolume)}
-                  className="text-2xl text-[#64748b] cursor-pointer"
-                />
-              ) : (
-                <GiSpeaker
-                  onClick={() => dispatch(setMuted())}
-                  onMouseMove={() => setShowVolume(!showVolume)}
-                  className="text-2xl text-[#64748b] cursor-pointer"
-                />
-              )}
-
-              <section className="">
-                <input
-                  className="cursor-pointer"
-                  type="range"
-                  min={0}
-                  max={100}
-                  step={0.02}
-                  value={volume}
-                  onChange={(event) => {
-                    setVolume(event.target.valueAsNumber);
-                  }}
-                />
-              </section>
-            </div>
-          </div>
         </div>
       </div>
     </div>
