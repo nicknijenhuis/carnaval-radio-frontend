@@ -24,13 +24,25 @@ const PlayerControls = ({ currentTrack, audioElem, loading, themeData }) => {
     <div className="flex sm:flex-row md:flex-row lg:flex-row xl:flex-row items-start sm:items-center gap-[2px] sm:gap-8 md:gap-8 lg:gap-8 xl:gap-8 justify-between sm:justify-start md:justify-start lg:justify-start xl:justify-start">
       <div className="flex items-center gap-2 sm:gap-8 md:gap-8 lg:gap-8 xl:gap-8">
         {!loading ? (
-          <Image
-            src={currentTrack.imageurl}
-            alt={currentTrack.title}
-            className="h-10 w-14 sm:h-16 md:h-16 lg:h-16 xl:h-16 sm:w-24 md:w-24 lg:w-24 xl:w-24 rounded-lg"
-            width={120}
-            height={70}
-          />
+          <>
+            <Image
+              src={currentTrack.imageurl}
+              alt={currentTrack.title}
+              className="hidden sm:block md:block lg:block xl:block sm:h-16 md:h-16 lg:h-16 xl:h-16 sm:w-24 md:w-24 lg:w-24 xl:w-24 rounded-lg"
+              width={120}
+              height={70}
+            />
+            <div
+              className="flex sm:hidden md:hidden lg:hidden xl:hidden items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white cursor-pointer"
+              onClick={() => dispatch(setPlay())}
+            >
+              {isPlaying ? (
+                <BsFillPauseFill size={35} className="h-7 w-7" />
+              ) : (
+                <BsFillPlayFill size={35} className="h-7 w-7" />
+              )}
+            </div>
+          </>
         ) : (
           <div className="h-16 w-24 rounded-lg animate-pulse bg-white"></div>
         )}
@@ -122,23 +134,13 @@ const PlayerControls = ({ currentTrack, audioElem, loading, themeData }) => {
             className="text-4xl text-[#64748b] cursor-pointer"
           />
         )}
-        {/* play button */}
-        <div
-          className="flex items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white cursor-pointer"
-          onClick={() => dispatch(setPlay())}
-        >
-          {isPlaying ? (
-            <BsFillPauseFill
-              size={35}
-              className="h-6 w-6 sm:h-8 md:h-8 lg:h-8 xl:h-8 sm:w-8 md:w-8 lg:w-8 xl:w-8"
-            />
-          ) : (
-            <BsFillPlayFill
-              size={35}
-              className="h-6 w-6 sm:h-8 md:h-8 lg:h-8 xl:h-8 sm:w-8 md:w-8 lg:w-8 xl:w-8"
-            />
-          )}
-        </div>
+        <Image
+          src={currentTrack.imageurl}
+          alt={currentTrack.title}
+          className="h-12 w-16 rounded-lg"
+          width={120}
+          height={70}
+        />
       </div>
     </div>
   );
