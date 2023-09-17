@@ -31,8 +31,9 @@ const IconMapping: any = {
 
 interface props {
   menu?: any;
+  toogleSideBar?: any;
 }
-const SidebarLinks = ({ menu }: props) => {
+const SidebarLinks = ({ menu, toogleSideBar }: props) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [toggleMenu, setToggleMenu] = useState(null);
@@ -44,6 +45,7 @@ const SidebarLinks = ({ menu }: props) => {
     dispatch(setActiveTab(index));
     if (link !== "/" || index === 0) {
       router.push(`${link}`);
+      toogleSideBar();
       setToggleMenu(null);
     } else if (index === 1 && !subMenu_one) {
       setToggleMenu_one(!subMenu_one);
@@ -109,6 +111,7 @@ const SidebarLinks = ({ menu }: props) => {
                     <Link
                       href={item.path}
                       key={index}
+                      onClick={toogleSideBar}
                       className="p-2 hover:bg-primaryShade_2"
                     >
                       {item.title}

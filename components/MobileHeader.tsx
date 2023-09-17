@@ -8,17 +8,9 @@ import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_THEME_DATA } from "@/GlobalState/ApiCalls/graphql/theme_queries";
 import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
 
-const MobileHeader = () => {
+const MobileHeader = ({ themeData }: any) => {
   const sideBarRef = useRef<HTMLDivElement>(null);
-  const [themeData, setThemeData] = useState<any>();
   const [menu, setMenu] = useState<any>();
-
-  const fetchTheme = async () => {
-    const { data } = await client.query({
-      query: GET_THEME_DATA,
-    });
-    setThemeData(data.theme.data);
-  };
 
   const fetchMenu = async () => {
     const { data } = await client.query({
@@ -29,7 +21,6 @@ const MobileHeader = () => {
   };
 
   useEffect(() => {
-    fetchTheme();
     fetchMenu();
   }, []);
 
@@ -38,16 +29,20 @@ const MobileHeader = () => {
       sideBarRef.current.classList.toggle("translate-y-0");
     }
   }
+
+  console.log(themeData);
   return (
     <div className="relative">
       <div className="bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9] md:hidden lg:hidden xl:hidden flex sm:flex justify-between p-2 pb-4 items-center sticky top-0 z-30">
-        <Image
-          src={themeData?.attributes?.Logo?.data?.attributes?.url}
-          className="h-24 w-44"
-          width={200}
-          height={200}
-          alt="Logo"
-        />
+        {themeData && (
+          <Image
+            src={themeData?.attributes?.Logo?.data?.attributes?.url}
+            className="h-24 w-44"
+            width={200}
+            height={200}
+            alt="Logo"
+          />
+        )}
         <button className="rounded" onClick={toogleSideBar}>
           <MdMenu size={50} />
         </button>
@@ -64,7 +59,7 @@ const MobileHeader = () => {
           </div>
         </div>
         <div className="mt-8 bg-white">
-          <SidebarLinks menu={menu} />
+          <SidebarLinks menu={menu} toogleSideBar={toogleSideBar} />
         </div>
         <Socials options="sidebar" />
       </div>

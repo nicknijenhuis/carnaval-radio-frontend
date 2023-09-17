@@ -29,7 +29,7 @@ export default async function RootLayout({
         <Providers>
           {themeData && (
             <>
-              <MobileHeader />
+              <MobileHeader themeData={themeData} />
               <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-6 gap-0">
                 <div className="col-span-1">
                   <SideBar />
@@ -38,7 +38,7 @@ export default async function RootLayout({
                 <div className="col-span-1 sm:col-span-1 md:col-span-4 lg:col-span-4 xl:col-span-5 pb-20">
                   {children}
                   <Footer />
-                  <Player />
+                  <Player themeData={themeData} />
                 </div>
               </div>
             </>

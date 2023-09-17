@@ -7,7 +7,7 @@ import { GiSpeaker, GiSpeakerOff } from "react-icons//gi";
 import { useDispatch, useSelector } from "react-redux";
 import { setPlay, setMuted } from "../../GlobalState/features/PlayerSlice";
 
-const PlayerControls = ({ currentTrack, audioElem, loading }) => {
+const PlayerControls = ({ currentTrack, audioElem, loading, themeData }) => {
   const dispatch = useDispatch();
   const { isPlaying, muted } = useSelector((state) => state.Player);
 
@@ -37,7 +37,9 @@ const PlayerControls = ({ currentTrack, audioElem, loading }) => {
         <>
           {!loading ? (
             <div className="flex items-start flex-col sm:hidden md::hidden lg:hidden xl:hidden">
-              <h2 className="text-xl font-semibold uppercase text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+              <h2
+                className={`text-xl font-semibold uppercase text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary`}
+              >
                 {currentTrack.title}
               </h2>
               <p className="text-xs">{currentTrack.artist}</p>
@@ -50,7 +52,7 @@ const PlayerControls = ({ currentTrack, audioElem, loading }) => {
           )}
         </>
         <div
-          className="hidden sm:flex md::flex lg:flex xl:flex items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white cursor-pointer"
+          className={`hidden sm:flex md::flex lg:flex xl:flex items-center justify-center p-2 rounded-lg bg-gradient-to-r from-[${themeData?.attributes?.BaseColor}] to-secondary text-white cursor-pointer`}
           onClick={() => dispatch(setPlay())}
         >
           {isPlaying ? (

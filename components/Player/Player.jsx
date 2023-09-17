@@ -1,12 +1,12 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import PlayerControls from "./PlayerControls";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_STREAM_DATA } from "@/GlobalState/ApiCalls/graphql/stream_queries";
 
-const Player = () => {
+const Player = ({ themeData }) => {
   const { isPlaying, muted } = useSelector((state) => state.Player);
   const [trackUrl, setTrackUrl] = useState(null);
   const [currentTrack, setCurrentTrack] = useState(null);
@@ -67,6 +67,7 @@ const Player = () => {
             audioElem={audioElem}
             currentTrack={currentTrack}
             loading={loading}
+            themeData={themeData}
           />
         </>
       )}
