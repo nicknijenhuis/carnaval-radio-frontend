@@ -32,3 +32,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Backlog (TODO):
+- The player still has the refresh issue, when going to sponsoren and then to home, but also going to a working page and then going to 'Over ons' for example (carnaval-radio.netlify.app)
+- The website sometimes seem to crash and then you have to wait very long for that everything is loaded
+- The sidebar player is not yet working
+- Using theme colors does not work
+- Not all news articles are equal in height, they should be per row I think, at least the first 3
+- The differentation in color between the player and the rest of the site is not good enough, perhaps we need more contrast there
+- The news from Limburg24 is not yet loaded
