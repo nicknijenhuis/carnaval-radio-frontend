@@ -9,7 +9,7 @@ const PostDetails = ({ post, i }: { post: Post; i: any }) => {
       <div
         className={`${
           i == 0
-            ? "bg-greenShade_2"
+            ? "bg-tertiaryShade_2"
             : i == 1
             ? "bg-secondayShade_2"
             : "bg-primaryShade_3"
@@ -29,7 +29,7 @@ const PostDetails = ({ post, i }: { post: Post; i: any }) => {
         <button
           className={`flex items-center justify-center bg-white w-full border-2 ${
             i == 0
-              ? "border-green text-green"
+              ? "border-tertiary text-tertiary"
               : i == 1
               ? "border-secondary text-secondary"
               : "border-primary text-primary"

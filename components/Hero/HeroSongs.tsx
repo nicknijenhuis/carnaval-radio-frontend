@@ -140,12 +140,14 @@ const HeroSongs = () => {
                       </div>
                       <div
                         className={`py-2 px-4 rounded-full ${
-                          i % 2 !== 0 ? "bg-greenShade_1" : "bg-secondayShade_1"
+                          i % 2 !== 0
+                            ? "bg-tertiaryShade_1"
+                            : "bg-secondayShade_1"
                         }`}
                       >
                         <p
                           className={`text-sm ${
-                            i % 2 !== 0 ? "text-green" : "text-secondary"
+                            i % 2 !== 0 ? "text-tertiary" : "text-secondary"
                           }`}
                         >
                           {formatDateTime(recentSong.date)}

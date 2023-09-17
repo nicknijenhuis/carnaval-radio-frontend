@@ -23,10 +23,10 @@ function HeroSlider() {
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
         className=" h-[40vh] md:w-full md:h-full rounded-2xl bg-center bg-cover duration-500"
       ></div>
-      <div className="absolute top-[50%] -translate-x-0 translate-y-[-50%] -left-5 text-2xl rounded-full p-2 text-white cursor-pointer bg-green border-4 border-white">
+      <div className="absolute top-[50%] -translate-x-0 translate-y-[-50%] -left-5 text-2xl rounded-full p-2 text-white cursor-pointer bg-tertiary border-4 border-white">
         <BsChevronCompactLeft onClick={prevSlide} size={25} />
       </div>
-      <div className="absolute top-[50%] -translate-x-0 translate-y-[-50%] -right-5 text-2xl rounded-full p-2  text-white cursor-pointer bg-green border-4 border-white">
+      <div className="absolute top-[50%] -translate-x-0 translate-y-[-50%] -right-5 text-2xl rounded-full p-2  text-white cursor-pointer bg-tertiary border-4 border-white">
         <BsChevronCompactRight onClick={nextSlide} size={25} />
       </div>
     </div>

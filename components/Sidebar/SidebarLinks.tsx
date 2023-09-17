@@ -43,7 +43,7 @@ const SidebarLinks = ({ menu, toogleSideBar }: props) => {
 
   const handleNavigate = (index: any, link: any) => {
     dispatch(setActiveTab(index));
-    if (link !== "/" || index === 0) {
+    if (index !== 1 || index !== 3) {
       router.push(`${link}`);
       toogleSideBar && toogleSideBar();
       setToggleMenu(null);

@@ -19,10 +19,9 @@ const config: Config = {
         heroBackground: "#f9f9f9",
         sideBbarBackground: "#fcfdfe",
         activeTab: "#f2f4e6",
-
-        green: "#0CAE12",
-        greenShade_1: "#1DC72429",
-        greenShade_2: "#F3FFF4",
+        tertiary: "#0CAE12",
+        tertiaryShade_1: "#1DC72429",
+        tertiaryShade_2: "#F3FFF4",
       },
     },
   },
