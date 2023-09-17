@@ -31,7 +31,7 @@ const PostCard = async () => {
           <>
             {posts &&
               posts.map((post: any, i: any) => (
-                <>{i < 3 && <PostDetails key={i} post={post} i={i} />}</>
+                <>{i < 3 && <PostDetails key={"post"+i} post={post} i={i} />}</>
               ))}
           </>
         ) : (

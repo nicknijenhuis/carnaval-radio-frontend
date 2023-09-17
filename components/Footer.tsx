@@ -48,11 +48,11 @@ const Footer = () => {
         <div className="flex flex-wrap items-start gap-14 sm:gap-16 md:gap-16 lg:gap-16 xl:gap-44 px-10">
           {footerMenu &&
             footerMenu.map((item: any, index: any) => (
-              <div key={index}>
+              <div key={"footerMenu"+index}>
                 <h2 className="font-bold mb-4">{item.title}</h2>
                 <ul className="text-sm flex flex-col gap-1">
                   {item.items.map((item: any, index: any) => (
-                    <li key={index}>
+                    <li key={"footerItem"+index}>
                       <Link href={item.path}>{item.title}</Link>
                     </li>
                   ))}

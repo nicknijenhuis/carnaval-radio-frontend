@@ -3,7 +3,7 @@ const RecentSongsLoading = () => {
   return (
     <>
       {arr.map((_, i) => (
-        <div key={i} className="flex flex-col">
+        <div key={"recentSongLoading"+i} className="flex flex-col">
           <div className="flex items-center justify-between p-2 bg-gray-200 animate-pulse">
             <div className="flex space-x-3">
               <div className="h-9 w-9 rounded-full bg-gray-100"></div>

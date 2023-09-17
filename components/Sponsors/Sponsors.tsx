@@ -43,7 +43,7 @@ const Sponsors = async () => {
         <div className="flex items-center gap-4 my-6 ">
           {arr.map((_, index) => (
             <div
-              key={index}
+              key={"sponsorCard"+index}
               className="h-[150px] w-[250px] bg-gray-300 rounded-lg animate-pulse"
             ></div>
           ))}

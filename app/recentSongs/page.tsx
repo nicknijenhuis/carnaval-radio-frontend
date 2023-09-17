@@ -13,7 +13,6 @@ const page = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Boolean>(false);
 
-  
   const splitTitle = (title: string) => {
     const parts = title.split(" - ");
     let song;
@@ -74,47 +73,45 @@ const page = () => {
         {!loading ? (
           <>
             {recentTracks?.map((recentSong: any, i: any) => (
-                <div key={i} className="flex flex-col">
-                  <div className="flex items-center justify-between p-2">
-                    <div className="flex space-x-3">
-                      <Image
-                        className="h-9 w-9 rounded-full"
-                        src={recentSong.enclosure.url}
-                        alt={recentSong.titleParts.song}
-                        height={100}
-                        width={100}
-                      />
-                      <div className="flex flex-col">
-                        <div className="flex items-center">
-                          <MdMusicNote size={24} className="mr-2" />{" "}
-                          {/* Larger music note */}
-                          <div>
-                            <p>{recentSong.titleParts.song}</p>
-                            <span className="text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-                              {recentSong.titleParts.artist}
-                            </span>
-                          </div>
+              <div key={"recentTrack"+i} className="flex flex-col">
+                <div className="flex items-center justify-between p-2">
+                  <div className="flex space-x-3">
+                    <Image
+                      className="h-9 w-9 rounded-full"
+                      src={recentSong.enclosure.url}
+                      alt={recentSong.titleParts.song}
+                      height={100}
+                      width={100}
+                    />
+                    <div className="flex flex-col">
+                      <div className="flex items-center">
+                        <MdMusicNote size={24} className="mr-2" />{" "}
+                        {/* Larger music note */}
+                        <div>
+                          <p>{recentSong.titleParts.song}</p>
+                          <span className="text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                            {recentSong.titleParts.artist}
+                          </span>
                         </div>
                       </div>
                     </div>
-                    <div
-                      className={`py-2 px-4 rounded-full ${
-                        i % 2 !== 0
-                          ? "bg-tertiaryShade_1"
-                          : "bg-secondayShade_1"
+                  </div>
+                  <div
+                    className={`py-2 px-4 rounded-full ${
+                      i % 2 !== 0 ? "bg-tertiaryShade_1" : "bg-secondayShade_1"
+                    }`}
+                  >
+                    <p
+                      className={`text-sm ${
+                        i % 2 !== 0 ? "text-tertiary" : "text-secondary"
                       }`}
                     >
-                      <p
-                        className={`text-sm ${
-                          i % 2 !== 0 ? "text-tertiary" : "text-secondary"
-                        }`}
-                      >
-                        <DateAndTime timestamp={recentSong.date} />
-                      </p>
-                    </div>
+                      <DateAndTime timestamp={recentSong.date} />
+                    </p>
                   </div>
-                  <div className="w-full h-[1px] bg-gray-200"></div>
                 </div>
+                <div className="w-full h-[1px] bg-gray-200"></div>
+              </div>
             ))}
           </>
         ) : (

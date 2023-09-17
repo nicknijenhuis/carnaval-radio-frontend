@@ -35,7 +35,7 @@ export default function SponsorCard({ sponsors }: Props) {
           return (
             x.Logo && (
               <div
-                key={i}
+                key={"sponsorCarousel"+i}
                 className="mx-5 my-10 max-w-[320px] p-8 bg-white rounded-xl"
               >
                 <a href={x.Link} target="_blank" key={x.Name}>

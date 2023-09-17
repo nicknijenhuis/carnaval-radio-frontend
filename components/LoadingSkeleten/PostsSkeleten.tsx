@@ -5,7 +5,7 @@ const PostsSkeleten = () => {
     <>
       {arr.map((_, i) => (
         <div
-          key={i}
+          key={"postSkeleton"+i}
           className={`${
             i == 0
               ? "bg-greenShade_2"

@@ -63,7 +63,7 @@ const SidebarLinks = ({ menu, toogleSideBar }: props) => {
           return (
             <div
               onClick={() => handleNavigate(index, item.path)}
-              key={index}
+              key={"sideBarLink"+index}
               className="relative cursor-pointer"
             >
               {index === activeTab.index && (
@@ -110,7 +110,7 @@ const SidebarLinks = ({ menu, toogleSideBar }: props) => {
                   {item.items.map((item: any, index: any) => (
                     <Link
                       href={item.path}
-                      key={index}
+                      key={"sideBarLink-Sub"+index}
                       onClick={toogleSideBar}
                       className="p-2 hover:bg-primaryShade_2"
                     >

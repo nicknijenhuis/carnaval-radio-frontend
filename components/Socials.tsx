@@ -35,7 +35,7 @@ const Socials = ({ options }: any) => {
         {socialsData.map((icon, i) => (
           <Link
             href="/"
-            key={i}
+            key={"socialLink"+i}
             className={`p-3 rounded-full ${
               options === "footer" ? "bg-[#eff0f2]" : "bg-white"
             } `}

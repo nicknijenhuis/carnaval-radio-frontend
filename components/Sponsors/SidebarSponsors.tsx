@@ -53,7 +53,7 @@ const SidebarSponsors = () => {
         >
           {sponsorsData.map((sponsor, i) => (
             <Image
-              key={i}
+              key={"sponsor"+i}
               width={100}
               height={100}
               className=" inline-block cursor-pointer"
