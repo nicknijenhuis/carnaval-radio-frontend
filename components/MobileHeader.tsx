@@ -5,8 +5,8 @@ import { MdMenu } from "react-icons/md";
 import SidebarLinks from "./Sidebar/SidebarLinks";
 import Socials from "./Socials";
 import { client } from "@/GlobalState/ApiCalls/api.config";
-import { GET_THEME_DATA } from "@/GlobalState/ApiCalls/graphql/theme_queries";
 import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
+import SidebarPlayer from "./Sidebar/SidebarPlayer";
 
 const MobileHeader = ({ themeData }: any) => {
   const sideBarRef = useRef<HTMLDivElement>(null);
@@ -36,9 +36,9 @@ const MobileHeader = ({ themeData }: any) => {
         {themeData && (
           <Image
             src={themeData?.attributes?.Logo?.data?.attributes?.url}
-            className="h-24 w-44"
-            width={200}
-            height={200}
+            className=""
+            width={120}
+            height={120}
             alt="Logo"
           />
         )}
@@ -57,6 +57,7 @@ const MobileHeader = ({ themeData }: any) => {
             <Image src="/radio.png" height={20} width={20} alt="radio" />
           </div>
         </div>
+        <SidebarPlayer />
         <div className="mt-8 bg-white">
           <SidebarLinks menu={menu} toogleSideBar={toogleSideBar} />
         </div>

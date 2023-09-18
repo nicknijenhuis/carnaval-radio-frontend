@@ -4,6 +4,7 @@ import Socials from "../Socials";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_THEME_DATA } from "@/GlobalState/ApiCalls/graphql/theme_queries";
 import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
+import SidebarPlayer from "./SidebarPlayer";
 
 const SideBar = async () => {
   const { data: themeDataStrapi } = await client.query({
@@ -20,16 +21,15 @@ const SideBar = async () => {
       <div className="flex flex-col p-4 bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9]">
         <div
           className="flex items-center
-    justify-between"
+    justify-center"
         >
           <Image
-            className="h-[100px] sm:h-[150px] md:h-[150px] lg:h-[120px] w-[150px] sm:w-[330px] md:w-[200px] lg:w-[200px] ml-2"
             src={
               themeDataStrapi?.theme?.data?.attributes?.Logo?.data?.attributes
                 ?.url
             }
-            width={200}
-            height={200}
+            width={150}
+            height={150}
             alt="Logo"
           />
         </div>
@@ -38,6 +38,7 @@ const SideBar = async () => {
           <Image src="/radio.png" height={20} width={20} alt="" />
         </div>
       </div>
+      <SidebarPlayer />
       <div className="mt-8">
         <SidebarLinks menu={data.renderNavigation} />
       </div>

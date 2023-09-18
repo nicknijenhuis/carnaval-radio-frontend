@@ -5,10 +5,15 @@ import Image from "next/image";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { GiSpeaker, GiSpeakerOff } from "react-icons//gi";
 import { useDispatch, useSelector } from "react-redux";
-import { setPlay, setMuted } from "../../GlobalState/features/PlayerSlice";
+import {
+  setPlay,
+  setMuted,
+  setsSongTitle,
+} from "../../GlobalState/features/PlayerSlice";
 
-const PlayerControls = ({ currentTrack, audioElem, loading, themeData }) => {
+const PlayerControls = ({ currentTrack, audioElem, loading }) => {
   const dispatch = useDispatch();
+  currentTrack && dispatch(setsSongTitle(currentTrack.title));
   const { isPlaying, muted } = useSelector((state) => state.Player);
 
   const [showVolume, setShowVolume] = useState(false);
