@@ -7,9 +7,7 @@ import { GET_ALL_SPONSORS } from "@/GlobalState/ApiCalls/graphql/sponsor_queries
 import { GraphQLSponsor } from "../../types/sponsorTypes";
 
 const Sponsors = async () => {
-  let isLoading = true;
-
-  const { loading, data: sponsorData } = await client.query({
+  const { data: sponsorData } = await client.query({
     query: GET_ALL_SPONSORS,
   });
 
@@ -30,25 +28,12 @@ const Sponsors = async () => {
     }
   );
 
-  isLoading = loading;
-
-  const arr = [1, 2, 3];
+  // console.log(sponsorData.sponsors.data);
 
   return (
     <div className="text-black py-2 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8 bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9]">
       <SectionTitle title="Sponsoren" icon={sponsors_icon} />
-      {!isLoading ? (
-        <> {sponsors && <SponsorCard sponsors={sponsors} />}</>
-      ) : (
-        <div className="flex items-center gap-4 my-6 ">
-          {arr.map((_, index) => (
-            <div
-              key={"sponsorCard"+index}
-              className="h-[150px] w-[250px] bg-gray-300 rounded-lg animate-pulse"
-            ></div>
-          ))}
-        </div>
-      )}
+      <SponsorCard sponsors={sponsors} />
     </div>
   );
 };

@@ -63,14 +63,15 @@ const Player = ({ themeData }) => {
       {trackUrl && (
         <>
           <audio src={trackUrl} ref={audioElem} muted={muted} />
-          <PlayerControls
-            audioElem={audioElem}
-            currentTrack={currentTrack}
-            loading={loading}
-            themeData={themeData}
-          />
         </>
       )}
+      <PlayerControls
+        trackUrl={trackUrl}
+        audioElem={audioElem}
+        currentTrack={currentTrack}
+        loading={loading}
+        themeData={themeData}
+      />
     </div>
   );
 };

@@ -7,7 +7,7 @@ import { GiSpeaker, GiSpeakerOff } from "react-icons//gi";
 import { useDispatch, useSelector } from "react-redux";
 import { setPlay, setMuted } from "../../GlobalState/features/PlayerSlice";
 
-const PlayerControls = ({ currentTrack, audioElem, loading, themeData }) => {
+const PlayerControls = ({ currentTrack, audioElem, loading, trackUrl }) => {
   const dispatch = useDispatch();
   const { isPlaying, muted } = useSelector((state) => state.Player);
 
@@ -15,7 +15,7 @@ const PlayerControls = ({ currentTrack, audioElem, loading, themeData }) => {
   const [volume, setVolume] = useState(30);
 
   useEffect(() => {
-    if (audioElem) {
+    if (trackUrl) {
       audioElem.current.volume = volume / 100;
       audioElem.current.mute = muted;
     }
@@ -32,20 +32,20 @@ const PlayerControls = ({ currentTrack, audioElem, loading, themeData }) => {
               width={120}
               height={70}
             />
-            <div
-              className="flex sm:hidden md:hidden lg:hidden xl:hidden items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white cursor-pointer"
-              onClick={() => dispatch(setPlay())}
-            >
-              {isPlaying ? (
-                <BsFillPauseFill size={35} className="h-7 w-7" />
-              ) : (
-                <BsFillPlayFill size={35} className="h-7 w-7" />
-              )}
-            </div>
           </>
         ) : (
           <div className="h-16 w-24 rounded-lg animate-pulse bg-white"></div>
         )}
+        <div
+          className="flex sm:hidden md:hidden lg:hidden xl:hidden items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white cursor-pointer"
+          onClick={() => dispatch(setPlay())}
+        >
+          {isPlaying ? (
+            <BsFillPauseFill size={35} className="h-7 w-7" />
+          ) : (
+            <BsFillPlayFill size={35} className="h-7 w-7" />
+          )}
+        </div>
         <>
           {!loading ? (
             <div className="flex items-start flex-col sm:hidden md::hidden lg:hidden xl:hidden">

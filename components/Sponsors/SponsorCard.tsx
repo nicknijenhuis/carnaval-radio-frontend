@@ -1,10 +1,11 @@
+"use client";
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Sponsor, SponsorType } from "../../types/sponsorTypes";
 
 interface Props {
-  sponsors: Sponsor[];
+  sponsors?: Sponsor[];
 }
 
 export default function SponsorCard({ sponsors }: Props) {
@@ -31,26 +32,27 @@ export default function SponsorCard({ sponsors }: Props) {
   return (
     <div className="md:max-w-[72vw] ">
       <Carousel showDots={true} responsive={responsive}>
-        {sponsors.map((x: any, i: any) => {
-          return (
-            x.Logo && (
-              <div
-                key={"sponsorCarousel"+i}
-                className="mx-5 my-10 max-w-[320px] p-8 bg-white rounded-xl"
-              >
-                <a href={x.Link} target="_blank" key={x.Name}>
-                  <Image
-                    className="inline-block cursor-pointer rounded-lg"
-                    src={x.Logo.Url}
-                    width={x.Logo.Width}
-                    height={x.Logo.Height}
-                    alt={`Logo van ${x.Name}`}
-                  />
-                </a>
-              </div>
-            )
-          );
-        })}
+        {sponsors &&
+          sponsors.map((x: any, i: any) => {
+            return (
+              x.Logo && (
+                <div
+                  key={"sponsorCarousel" + i}
+                  className="mx-5 my-10 max-w-[320px] p-8 bg-white rounded-xl"
+                >
+                  <a href={x.Link} target="_blank" key={x.Name}>
+                    <Image
+                      className="inline-block cursor-pointer rounded-lg"
+                      src={x.Logo.Url}
+                      width={x.Logo.Width}
+                      height={x.Logo.Height}
+                      alt={`Logo van ${x.Name}`}
+                    />
+                  </a>
+                </div>
+              )
+            );
+          })}
       </Carousel>
     </div>
   );
