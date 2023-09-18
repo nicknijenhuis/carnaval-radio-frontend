@@ -37,22 +37,16 @@ const SidebarLinks = ({ menu, toogleSideBar }: props) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [toggleMenu, setToggleMenu] = useState(null);
-  const [subMenu_one, setToggleMenu_one] = useState(false);
-  const [subMenu_two, setToggleMenu_two] = useState(false);
   const activeTab = useSelector((state: RootState) => state.Tab);
 
   const handleNavigate = (index: any, link: any) => {
     dispatch(setActiveTab(index));
-    if (index !== 1 || index !== 3) {
+    if (index == 1 || index == 3) {
+      setToggleMenu(index);
+    } else {
       router.push(`${link}`);
       toogleSideBar && toogleSideBar();
       setToggleMenu(null);
-    } else if (index === 1 && !subMenu_one) {
-      setToggleMenu_one(!subMenu_one);
-      setToggleMenu(index);
-    } else {
-      setToggleMenu(index);
-      setToggleMenu_two(!subMenu_two);
     }
   };
 
@@ -63,7 +57,7 @@ const SidebarLinks = ({ menu, toogleSideBar }: props) => {
           return (
             <div
               onClick={() => handleNavigate(index, item.path)}
-              key={"sideBarLink"+index}
+              key={"sideBarLink" + index}
               className="relative cursor-pointer"
             >
               {index === activeTab.index && (
@@ -110,7 +104,7 @@ const SidebarLinks = ({ menu, toogleSideBar }: props) => {
                   {item.items.map((item: any, index: any) => (
                     <Link
                       href={item.path}
-                      key={"sideBarLink-Sub"+index}
+                      key={"sideBarLink-Sub" + index}
                       onClick={toogleSideBar}
                       className="p-2 hover:bg-primaryShade_2"
                     >
