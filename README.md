@@ -34,10 +34,17 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Backlog (TODO):
-- The player still has the refresh issue, when going to sponsoren and then to home, but also going to a working page and then going to 'Over ons' for example (carnaval-radio.netlify.app)
+- ~~The player still has the refresh issue, when going to sponsoren and then to home, but also going to a working page and then going to 'Over ons' for example (carnaval-radio.netlify.app)~~
 - The website sometimes seem to crash and then you have to wait very long for that everything is loaded
-- The sidebar player is not yet working
+- ~~The sidebar player is not yet working~~
 - Using theme colors does not work
-- Not all news articles are equal in height, they should be per row I think, at least the first 3
-- The differentation in color between the player and the rest of the site is not good enough, perhaps we need more contrast there
+- ~~Not all news articles are equal in height, they should be per row I think, at least the first 3~~
+- ~~The differentation in color between the player and the rest of the site is not good enough, perhaps we need more contrast there~~
 - The news from Limburg24 is not yet loaded
+- Social media integration needs to be included
+    - Overview of latest intagram posts
+    - Overview of latest facebook posts
+    - Preferably mixed in between each other
+    - Somewhere on the website it should be possible to chat via facebook integration
+    - A like and follow button needs to be added
+- Twitch integration, on certain moments, it should be possible to replace the slider with Twitch
