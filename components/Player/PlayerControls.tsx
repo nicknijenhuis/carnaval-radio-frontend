@@ -6,10 +6,19 @@ import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { GiSpeaker, GiSpeakerOff } from "react-icons//gi";
 import { useDispatch, useSelector } from "react-redux";
 import { setPlay, setMuted } from "../../GlobalState/features/PlayerSlice";
+import { GlobalState } from "@/GlobalState/GlobalState";
+import { Track } from "@/types/trackTypes";
 
-const PlayerControls = ({ currentTrack, audioElem, loading, trackUrl }) => {
+interface Props { 
+  currentTrack: Track;
+  audioElem: any;
+  loading: boolean;
+  trackUrl: string;
+}
+
+const PlayerControls = ({ currentTrack, audioElem, loading, trackUrl }: Props) => {
   const dispatch = useDispatch();
-  const { isPlaying, muted } = useSelector((state) => state.Player);
+  const { isPlaying, muted } = useSelector((state: GlobalState) => state.Player);
 
   const [showVolume, setShowVolume] = useState(false);
   const [volume, setVolume] = useState(30);

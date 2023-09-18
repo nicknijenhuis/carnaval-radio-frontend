@@ -23,4 +23,6 @@ const PlayerSlice = createSlice({
 });
 
 export const { setMuted, setsSongTitle, setPlay } = PlayerSlice.actions;
+export type PlayerState = ReturnType<typeof PlayerSlice.reducer>;
+
 export default PlayerSlice.reducer;

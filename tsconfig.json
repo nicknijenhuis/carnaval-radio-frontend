@@ -28,10 +28,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/Player/PlayerControls.jsx",
-    "components/Player/Player.jsx",
+    "components/Player/PlayerControls.tsx",
+    "components/Player/Player.tsx",
     "app/articles/[slug]",
-    "components/Sidebar/SidebarPlayer.jsx"
+    "components/Sidebar/SidebarPlayer.tsx"
   ],
   "exclude": ["node_modules"]
 }

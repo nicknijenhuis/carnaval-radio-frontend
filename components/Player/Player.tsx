@@ -6,13 +6,15 @@ import axios from "axios";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_STREAM_DATA } from "@/GlobalState/ApiCalls/graphql/stream_queries";
 import { setsSongTitle } from "@/GlobalState/features/PlayerSlice";
+import { GlobalState } from "@/GlobalState/GlobalState";
+import { Track } from "@/types/trackTypes";
 
 const Player = () => {
   const dispatch = useDispatch();
-  const { isPlaying, muted } = useSelector((state) => state.Player);
-  const [trackUrl, setTrackUrl] = useState(null);
-  const [currentTrack, setCurrentTrack] = useState(null);
-  const audioElem = useRef();
+  const { isPlaying, muted } = useSelector((state: GlobalState) => state.Player);
+  const [trackUrl, setTrackUrl] = useState("");
+  const [currentTrack, setCurrentTrack] = useState<Track>({title: "Wete veer nog neet", artist: "Wete veer nog neet", imageurl: ""});
+  const audioElem = useRef<HTMLAudioElement>(null);
   const [loading, setLoading] = useState(true);
 
   const fetchStream = async () => {

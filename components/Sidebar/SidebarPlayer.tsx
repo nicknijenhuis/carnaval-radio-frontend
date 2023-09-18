@@ -2,15 +2,15 @@
 import React from "react";
 import { GiSpeaker, GiSpeakerOff } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/GlobalState/store";
 import { BsFillPauseFill, BsFillPlayFill } from "react-icons/bs";
 import { setMuted, setPlay } from "@/GlobalState/features/PlayerSlice";
+import { GlobalState } from "@/GlobalState/GlobalState";
 
 const SidebarPlayer = () => {
   const dispatch = useDispatch();
-  const { isPlaying, muted, songTitle } = useSelector((state) => state.Player);
+  const { isPlaying, muted, songTitle } = useSelector((state: GlobalState) => state.Player);
 
-  const updateSonTitle = (title) => {
+  const updateSonTitle = (title: string) => {
     const arr = title.split(" ");
     const titleArr = [arr[0], arr[1], arr[2]];
     const finalTitle = titleArr.join(" ");
