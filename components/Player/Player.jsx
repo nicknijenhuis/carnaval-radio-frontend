@@ -1,12 +1,14 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import PlayerControls from "./PlayerControls";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_STREAM_DATA } from "@/GlobalState/ApiCalls/graphql/stream_queries";
+import { setsSongTitle } from "@/GlobalState/features/PlayerSlice";
 
-const Player = ({ themeData }) => {
+const Player = () => {
+  const dispatch = useDispatch();
   const { isPlaying, muted } = useSelector((state) => state.Player);
   const [trackUrl, setTrackUrl] = useState(null);
   const [currentTrack, setCurrentTrack] = useState(null);
@@ -36,6 +38,7 @@ const Player = ({ themeData }) => {
         "https://ams1.reliastream.com/rpc/scarna00/streaminfo.get"
       );
       setCurrentTrack(response.data.data[0].track);
+      dispatch(setsSongTitle(response.data.data[0].track.title));
       setLoading(false);
     } catch (error) {
       console.log("something went wrong");
@@ -70,7 +73,6 @@ const Player = ({ themeData }) => {
         audioElem={audioElem}
         currentTrack={currentTrack}
         loading={loading}
-        themeData={themeData}
       />
     </div>
   );

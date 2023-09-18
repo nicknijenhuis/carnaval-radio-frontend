@@ -4,6 +4,7 @@ import Socials from "../Socials";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_THEME_DATA } from "@/GlobalState/ApiCalls/graphql/theme_queries";
 import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
+import SidebarPlayer from "./SidebarPlayer";
 
 const SideBar = async () => {
   const { data: themeDataStrapi } = await client.query({
@@ -37,6 +38,7 @@ const SideBar = async () => {
           <Image src="/radio.png" height={20} width={20} alt="" />
         </div>
       </div>
+      <SidebarPlayer />
       <div className="mt-8">
         <SidebarLinks menu={data.renderNavigation} />
       </div>

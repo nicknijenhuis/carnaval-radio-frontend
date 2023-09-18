@@ -6,6 +6,7 @@ import SidebarLinks from "./Sidebar/SidebarLinks";
 import Socials from "./Socials";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
+import SidebarPlayer from "./Sidebar/SidebarPlayer";
 
 const MobileHeader = ({ themeData }: any) => {
   const sideBarRef = useRef<HTMLDivElement>(null);
@@ -55,6 +56,7 @@ const MobileHeader = ({ themeData }: any) => {
             <Image src="/radio.png" height={20} width={20} alt="radio" />
           </div>
         </div>
+        <SidebarPlayer />
         <div className="mt-8 bg-white">
           <SidebarLinks menu={menu} toogleSideBar={toogleSideBar} />
         </div>
