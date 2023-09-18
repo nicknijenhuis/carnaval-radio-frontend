@@ -40,6 +40,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - Using theme colors does not work
 - ~~Not all news articles are equal in height, they should be per row I think, at least the first 3~~
 - ~~The differentation in color between the player and the rest of the site is not good enough, perhaps we need more contrast there~~
+- Sponsoren do not auto play, which gives more attention to the first sponsors then the others, they should get equal attention. Loading randomly an other tab each time would also work.
 - The news from Limburg24 is not yet loaded
 - Social media integration needs to be included
     - Overview of latest intagram posts
