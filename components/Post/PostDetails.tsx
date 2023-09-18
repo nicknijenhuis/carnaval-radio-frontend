@@ -22,9 +22,9 @@ const PostDetails = ({ post, i }: { post: Post; i: any }) => {
         />
         <p className="text-2xl font-bold">{post.attributes.Title}</p>
         <ReactMarkdown className="text-[#868986] mb-2">
-          {post.attributes?.Content?.length > 200
-            ? `${post.attributes.Content.substring(0, 200)}...`
-            : post.attributes?.Content?.substring(0, 200)}
+          {post.attributes?.Content?.length > 180
+            ? `${post.attributes.Content.substring(0, 180)}...`
+            : post.attributes?.Content?.substring(0, 180)}
         </ReactMarkdown>
         <button
           className={`flex items-center justify-center bg-white w-full border-2 ${

@@ -35,9 +35,8 @@ const MobileHeader = ({ themeData }: any) => {
         {themeData && (
           <Image
             src={themeData?.attributes?.Logo?.data?.attributes?.url}
-            className="h-24 w-44"
-            width={200}
-            height={200}
+            width={120}
+            height={120}
             alt="Logo"
           />
         )}

@@ -50,8 +50,6 @@ const SidebarLinks = ({ menu, toogleSideBar }: props) => {
     }
   };
 
-  console.log(menu);
-
   return (
     <div className="flex flex-col gap-3 text-[#9F9F9F]">
       {menu &&

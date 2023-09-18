@@ -20,16 +20,15 @@ const SideBar = async () => {
       <div className="flex flex-col p-4 bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9]">
         <div
           className="flex items-center
-    justify-between"
+    justify-center"
         >
           <Image
-            className="h-[100px] sm:h-[150px] md:h-[150px] lg:h-[120px] w-[150px] sm:w-[330px] md:w-[200px] lg:w-[200px] ml-2"
             src={
               themeDataStrapi?.theme?.data?.attributes?.Logo?.data?.attributes
                 ?.url
             }
-            width={200}
-            height={200}
+            width={150}
+            height={150}
             alt="Logo"
           />
         </div>
