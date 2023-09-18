@@ -6,6 +6,7 @@ import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_ALL_ARTICLES } from "@/GlobalState/ApiCalls/graphql/article_queries";
 import PostsSkeleten from "../LoadingSkeleten/PostsSkeleten";
 import Link from "next/link";
+import { Fragment } from "react";
 
 const PostCard = async () => {
   let isLoading = true;
@@ -31,7 +32,7 @@ const PostCard = async () => {
           <>
             {posts &&
               posts.map((post: any, i: any) => (
-                <>{i < 3 && <PostDetails key={"post"+i} post={post} i={i} />}</>
+                <Fragment key={"postFrag"+i}>{i < 3 && <PostDetails key={"post"+i} post={post} i={i} />}</Fragment>
               ))}
           </>
         ) : (
