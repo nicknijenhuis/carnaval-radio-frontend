@@ -1,4 +1,5 @@
 export type GraphQLSponsor = {
+  id: string;
   attributes: {
     Name: string;
     Logo: {
@@ -32,6 +33,7 @@ export interface SponsorType {
 }
 
 export interface Sponsor {
+  Id: string;
   Name: string;
   Logo?: Image;
   Link?: string;

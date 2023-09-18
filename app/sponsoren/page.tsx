@@ -53,14 +53,14 @@ const page = async () => {
     sponsor,
     logoSize,
   }: {
-    sponsor: any;
+    sponsor: Sponsor[];
     logoSize: string;
   }) => {
     const logoClassName = `${logoSizeMapping[logoSize]}`;
 
     return (
       <div className="flex flex-wrap gap-4 mt-5">
-        {sponsor.map((x: any) => {
+        {sponsor.map((x: Sponsor) => {
           return (
             <a
               href={x.Link}
