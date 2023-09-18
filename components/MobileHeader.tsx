@@ -5,7 +5,6 @@ import { MdMenu } from "react-icons/md";
 import SidebarLinks from "./Sidebar/SidebarLinks";
 import Socials from "./Socials";
 import { client } from "@/GlobalState/ApiCalls/api.config";
-import { GET_THEME_DATA } from "@/GlobalState/ApiCalls/graphql/theme_queries";
 import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
 
 const MobileHeader = ({ themeData }: any) => {
