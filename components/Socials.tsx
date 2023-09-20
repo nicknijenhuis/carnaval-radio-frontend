@@ -26,7 +26,7 @@ const Socials = ({ options }: any) => {
     <div
       className={`${
         options === "sidebar"
-          ? "ml-5 mt-8 mr-5 bg-[#f7f6f9] p-4 border-3 border-white rounded-lg"
+          ? "ml-5 mt-4 mr-5 bg-[#f7f6f9] p-4 border-3 border-white rounded-lg"
           : "mt-8"
       }`}
     >
@@ -35,7 +35,7 @@ const Socials = ({ options }: any) => {
         {socialsData.map((icon, i) => (
           <Link
             href="/"
-            key={"socialLink"+i}
+            key={"socialLink" + i}
             className={`p-3 rounded-full ${
               options === "footer" ? "bg-[#eff0f2]" : "bg-white"
             } `}

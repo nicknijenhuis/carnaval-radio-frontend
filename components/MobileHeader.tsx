@@ -7,8 +7,11 @@ import Socials from "./Socials";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
 import SidebarPlayer from "./Sidebar/SidebarPlayer";
+import { useSelector } from "react-redux";
+import { RootState } from "@/GlobalState/store";
 
-const MobileHeader = ({ themeData }: any) => {
+const MobileHeader = () => {
+  const themeData = useSelector((state: RootState) => state.Theme.themeData);
   const sideBarRef = useRef<HTMLDivElement>(null);
   const [menu, setMenu] = useState<any>();
 

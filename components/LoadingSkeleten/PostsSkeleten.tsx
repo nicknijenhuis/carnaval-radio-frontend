@@ -5,19 +5,19 @@ const PostsSkeleten = () => {
     <>
       {arr.map((_, i) => (
         <div
-          key={"postSkeleton"+i}
+          key={"postSkeleton" + i}
           className={`${
             i == 0
-              ? "bg-greenShade_2"
+              ? "bg-tertiaryShade_2"
               : i == 1
               ? "bg-secondayShade_2"
               : "bg-primaryShade_3"
-          } rounded-xl p-5 cursor-pointer overflow-hidden space-y-5 `}
+          } rounded-xl p-5 cursor-pointer overflow-hidden space-y-5 w-[370px]`}
         >
           <div
             className={`${
               i == 0
-                ? "bg-greenShade_1"
+                ? "bg-tertiaryShade_1"
                 : i == 1
                 ? "bg-secondayShade_1"
                 : "bg-primaryShade_1"
@@ -27,7 +27,7 @@ const PostsSkeleten = () => {
           <div
             className={`${
               i == 0
-                ? "bg-greenShade_2"
+                ? "bg-tertiaryShade_2"
                 : i == 1
                 ? "bg-secondayShade_2"
                 : "bg-primaryShade_3"
@@ -41,7 +41,7 @@ const PostsSkeleten = () => {
           <div
             className={`h-12 bg-white border-2 ${
               i == 0
-                ? "border-green"
+                ? "border-tertiary"
                 : i == 1
                 ? "border-secondary"
                 : "border-primary"

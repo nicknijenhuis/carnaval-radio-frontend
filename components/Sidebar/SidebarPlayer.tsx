@@ -8,7 +8,9 @@ import { GlobalState } from "@/GlobalState/GlobalState";
 
 const SidebarPlayer = () => {
   const dispatch = useDispatch();
-  const { isPlaying, muted, songTitle } = useSelector((state: GlobalState) => state.Player);
+  const { isPlaying, muted, songTitle } = useSelector(
+    (state: GlobalState) => state.Player
+  );
 
   const updateSonTitle = (title: string) => {
     const arr = title.split(" ");
@@ -21,7 +23,7 @@ const SidebarPlayer = () => {
   return (
     <>
       {true && (
-        <div className="flex items-center justify-between mt-4 border-[3px] border-white rounded-2xl  py-2 px-4 bg-gradient-to-r to-secondayShade_1 from-tertiaryShade_2 mx-2">
+        <div className="flex items-center justify-between mt-2 border-[3px] border-white rounded-2xl py-2 px-4 bg-gradient-to-r to-secondayShade_1 from-tertiaryShade_2 mx-2">
           {muted ? (
             <GiSpeakerOff
               onClick={() => dispatch(setMuted())}
