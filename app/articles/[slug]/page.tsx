@@ -13,7 +13,6 @@ import {
 import { HiMail } from "react-icons/hi";
 import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
-import ReactHtmlParser from "html-react-parser";
 
 const page = async ({ params }: { params: { slug?: string } }) => {
   const { data } = await client.query({
@@ -44,8 +43,7 @@ const page = async ({ params }: { params: { slug?: string } }) => {
             </h2>
             {formatDate(post.publishedAt)}
           </div>
-          {ReactHtmlParser(post.Content)}
-          {/* <ReactMarkdown>{post.Content}</ReactMarkdown> */}
+          <ReactMarkdown>{post.Content}</ReactMarkdown>
           <Image
             src={post.CoverImage.data.attributes.url}
             className="h-48 sm:h-64 md:h-96 lg:h-96 xl:h-96 w-full rounded-lg"

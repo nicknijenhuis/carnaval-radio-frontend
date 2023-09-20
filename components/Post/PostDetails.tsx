@@ -2,7 +2,6 @@ import Link from "next/link";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { Post } from "@/types/articleTypes";
-import ReactHtmlParser from "html-react-parser";
 
 const PostDetails = ({ post, i }: { post: Post; i: any }) => {
   return (
@@ -22,7 +21,11 @@ const PostDetails = ({ post, i }: { post: Post; i: any }) => {
           alt=""
         />
         <p className="text-2xl font-bold">{post.attributes.Title}</p>
-        {ReactHtmlParser(post?.attributes?.Content.substring(0, 180))}
+        <ReactMarkdown className="text-[#868986] mb-2">
+          {post.attributes?.Content?.length > 180
+            ? `${post.attributes.Content.substring(0, 180)}...`
+            : post.attributes?.Content?.substring(0, 180)}
+        </ReactMarkdown>
         <button
           className={`flex items-center justify-center bg-white w-full border-2 ${
             i == 0
