@@ -73,7 +73,7 @@ const page = () => {
         {!loading ? (
           <>
             {recentTracks?.map((recentSong: any, i: any) => (
-              <div key={"recentTrack"+i} className="flex flex-col">
+              <div key={"recentTrack" + i} className="flex flex-col">
                 <div className="flex items-center justify-between p-2">
                   <div className="flex space-x-3">
                     <Image
