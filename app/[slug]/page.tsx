@@ -12,8 +12,12 @@ const page = async ({ params }: { params: { slug: string } }) => {
   });
 
   let page: SingleContentPage;
-  page = data.pages.data[0].attributes;
+  page = data.pages.data?.[0]?.attributes ?? {
+    Title: "404",
+    Content: "Pagina niet gevonden",
+  };
 
+  
   return (
     <div className="py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8 bg-heroBackground">
       {!error && page && (
