@@ -51,10 +51,10 @@ const SideBar = () => {
           className="flex items-center
     justify-center"
         >
-          {!loading ? (
+          {!loading && themeData?.attributes?.Logo?.data?.attributes?.url ? (
             <div className="flex items-center justify-center">
               <Image
-                src={themeData?.attributes?.Logo?.data?.attributes?.url}
+                src={themeData.attributes.Logo.data.attributes.url}
                 width={200}
                 height={200}
                 alt="Logo"
@@ -62,12 +62,12 @@ const SideBar = () => {
             </div>
           ) : (
             <span className="flex items-center justify-center h-[100px] sm:h-[150px] md:h-[150px] lg:h-[120px] w-[150px] sm:w-[330px] md:w-[200px] lg:w-[200px] ml-2 bg-gray-300 animate-pulse rounded-lg">
-              laoding Logo
+              Aan het laden
             </span>
           )}
         </div>
         <div className="flex items-center justify-between mt-4 mx-2">
-          <p>Nu Op De Radio</p>
+          <p>Nu op de radio</p>
           <Image src="/radio.png" height={20} width={20} alt="" />
         </div>
       </div>

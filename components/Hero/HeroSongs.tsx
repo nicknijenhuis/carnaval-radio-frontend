@@ -127,7 +127,7 @@ const HeroSongs = () => {
         )}
       </div>
       <Link
-        href="/recentSongs"
+        href="/gedraaide-nummers"
         className="bg-gradient-to-r text-center from-primary to-secondary rounded-lg mt-8 py-3 px-4 text-white font-semibold"
       >
         Meer gedraaide nummers

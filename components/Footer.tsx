@@ -32,10 +32,10 @@ const Footer = () => {
     <footer className="pt-10 text-black">
       <div className="flex flex-col items-center md:flex-row py-10 md:px-10 gap-7">
         <div>
-          {themeData ? (
+          {themeData && (themeData?.attributes?.Logo?.data?.attributes?.url) ? (
             <Link href="/" className="flex items-center justify-center">
               <Image
-                src={themeData?.attributes?.Logo?.data?.attributes?.url}
+                src={themeData.attributes.Logo.data.attributes.url}
                 width={200}
                 height={200}
                 alt="Logo"

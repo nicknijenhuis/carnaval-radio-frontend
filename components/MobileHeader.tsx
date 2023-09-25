@@ -36,9 +36,9 @@ const MobileHeader = () => {
   return (
     <div className="relative">
       <div className="bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9] md:hidden lg:hidden xl:hidden flex sm:flex justify-between p-2 pb-4 items-center sticky top-0 z-30">
-        {themeData && (
+        {themeData && (themeData?.attributes?.Logo?.data?.attributes?.url) && (
           <Image
-            src={themeData?.attributes?.Logo?.data?.attributes?.url}
+            src={themeData.attributes.Logo.data.attributes.url}
             width={120}
             height={120}
             alt="Logo"

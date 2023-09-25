@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import axios from "axios";
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, useState } from "react";
 import { MdMusicNote } from "react-icons/md";
 import { BsFileMusicFill } from "react-icons/bs";
 import RecentSongsLoading from "@/components/LoadingSkeleten/RecentSongsLoading";
@@ -56,7 +56,7 @@ const page = () => {
     }
   };
   useEffect(() => {
-    document.title = "Recent Songs | 24/7 Vasteloavend Muzieek";
+    document.title = "Recente nummers | 24/7 Vasteloavend Muzieek";
     fetchTracks();
     const interval = setInterval(fetchTracks, 60000);
     return () => clearInterval(interval);

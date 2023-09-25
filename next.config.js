@@ -5,6 +5,18 @@ const nextConfig = {
   images: {
     domains: ["res.cloudinary.com", "ams1.reliastream.com"],
   },
+  async rewrites() { 
+    return [
+      {
+        source: "/verzoekjes",
+        destination: "/requests",
+      },
+      {
+        source: "/gedraaide-nummers",
+        destination: "/recentSongs",
+      },
+    ];
+  },
   async redirects() {
     return [
       {
