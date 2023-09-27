@@ -20,11 +20,10 @@ const page = async () => {
 
       {posts && (
         <div
-          className="flex justify-start flex-wrap
-          gap-3 md:gap-6 m-auto pt-2 sm:pt-2 md:pt-6 lg:pt-10 xl:pt-10"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-3 gap-4 md:gap-6 2xl:gap-10 pt-2 sm:pt-2 md:pt-6 lg:pt-10 xl:pt-10"
         >
           {posts.map((post: any, i: any) => (
-            <PostDetails key={"postDetail"+i} post={post} i={i} />
+            <PostDetails key={"postDetail"+i} post={post} colorIndex={i % 3} />
           ))}
         </div>
       )}

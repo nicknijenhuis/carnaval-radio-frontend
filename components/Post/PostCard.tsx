@@ -16,15 +16,12 @@ const PostCard = ({ posts }: props) => {
         <SectionTitle title="Nieuws" icon={news} />
       </div>
 
-      <div
-        className="flex justify-start flex-wrap
-       gap-3 md:gap-6 m-auto pt-2 sm:pt-2 md:pt-6 lg:pt-10 xl:pt-10 w-full"
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-3 gap-4 md:gap-6 2xl:gap-10 mt-auto pt-2 sm:pt-2 md:pt-6 lg:pt-10 xl:pt-10 w-full">
         <>
           {posts &&
             posts.map((post: any, i: any) => (
               <Fragment key={"postFrag" + i}>
-                {i < 3 && <PostDetails key={"post" + i} post={post} i={i} />}
+                {i < 3 && <PostDetails key={"post" + i} post={post} colorIndex={i % 3} />}
               </Fragment>
             ))}
         </>
