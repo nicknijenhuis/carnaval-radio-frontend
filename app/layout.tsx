@@ -6,6 +6,9 @@ import MobileHeader from "@/components/MobileHeader";
 import Player from "@/components/Player/Player";
 import Footer from "@/components/Footer";
 import { dosis } from "./fonts/font";
+import { client } from "@/GlobalState/ApiCalls/api.config";
+import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
+import { fetchThemeData } from "@/GlobalState/ApiCalls/fetchTheme";
 
 export const metadata: Metadata = {
   title: "Carnaval Radio | 24/7 Vasteloavend Muzieek",
@@ -15,23 +18,35 @@ export const metadata: Metadata = {
     : "noindex, nofollow",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { data, error } = await client.query({
+    query: GET_UI_NAVIGATION,
+    variables: { menuName: "footer" },
+  });
+
+  const { data: menu } = await client.query({
+    query: GET_UI_NAVIGATION,
+    variables: { menuName: "main" },
+  });
+
+  const themeData = await fetchThemeData();
+
   return (
     <html lang="en">
       <body className={dosis.className}>
         <Providers>
-          <MobileHeader />
+          <MobileHeader themeData={themeData} />
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-6 gap-0">
             <div className="col-span-1">
-              <SideBar />
+              <SideBar menu={menu.renderNavigation} themeData={themeData} />
             </div>
             <div className="col-span-1 sm:col-span-1 md:col-span-4 lg:col-span-4 xl:col-span-5 pb-20">
               {children}
-              <Footer />
+              <Footer data={data.renderNavigation} themeData={themeData} />
               <Player />
             </div>
           </div>

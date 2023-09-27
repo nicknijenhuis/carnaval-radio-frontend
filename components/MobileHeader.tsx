@@ -9,9 +9,13 @@ import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_que
 import SidebarPlayer from "./Sidebar/SidebarPlayer";
 import { useSelector } from "react-redux";
 import { RootState } from "@/GlobalState/store";
+import Link from "next/link";
 
-const MobileHeader = () => {
-  const themeData = useSelector((state: RootState) => state.Theme.themeData);
+interface props {
+  themeData: any;
+}
+
+const MobileHeader = ({ themeData }: props) => {
   const sideBarRef = useRef<HTMLDivElement>(null);
   const [menu, setMenu] = useState<any>();
 
@@ -36,14 +40,14 @@ const MobileHeader = () => {
   return (
     <div className="relative">
       <div className="bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9] md:hidden lg:hidden xl:hidden flex sm:flex justify-between p-2 pb-4 items-center sticky top-0 z-30">
-        {themeData && (themeData?.attributes?.Logo?.data?.attributes?.url) && (
+        <Link href="/">
           <Image
             src={themeData.attributes.Logo.data.attributes.url}
             width={120}
             height={120}
             alt="Logo"
           />
-        )}
+        </Link>
         <button className="rounded" onClick={toogleSideBar}>
           <MdMenu size={50} />
         </button>
