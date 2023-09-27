@@ -5,7 +5,10 @@ import ReactHtmlParser from "html-react-parser";
 
 const PostDetails = ({ post, i }: { post: Post; i: any }) => {
   return (
-    <Link href={`/articles/${post.attributes.Slug}`} className="w-[370px]">
+    <Link
+      href={`/articles/${post.attributes.Slug}`}
+      className="w-[370px] sm:w-[350px] md:[w-370px]"
+    >
       <div
         className={`${
           i == 0
@@ -21,7 +24,10 @@ const PostDetails = ({ post, i }: { post: Post; i: any }) => {
           alt=""
         />
         <p className="text-2xl font-bold">{post.attributes.Title}</p>
-        {ReactHtmlParser(post?.attributes?.Content.substring(0, 180))}
+        {ReactHtmlParser(
+          post?.attributes?.Content.substring(0, 180) +
+            (post?.attributes?.Content.length > 180 ? "..." : "")
+        )}
         <button
           className={`flex items-center justify-center bg-white w-full border-2 ${
             i == 0

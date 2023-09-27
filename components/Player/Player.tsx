@@ -11,9 +11,18 @@ import { Track } from "@/types/trackTypes";
 
 const Player = () => {
   const dispatch = useDispatch();
-  const { isPlaying, muted } = useSelector((state: GlobalState) => state.Player);
+  const { isPlaying, muted } = useSelector(
+    (state: GlobalState) => state.Player
+  );
   const [trackUrl, setTrackUrl] = useState("");
-  const [currentTrack, setCurrentTrack] = useState<Track>({title: "Wete veer nog neet", artist: "Wete veer nog neet", imageurl: ""});
+  const unknownSong = "Carnaval-Radio.nl";
+  const unknownArtist = "Carnaval-Radio.nl";
+
+  const [currentTrack, setCurrentTrack] = useState<Track>({
+    title: unknownSong,
+    artist: unknownArtist,
+    imageurl: "",
+  });
   const audioElem = useRef<HTMLAudioElement>(null);
   const [loading, setLoading] = useState(true);
 
@@ -27,10 +36,10 @@ const Player = () => {
 
   const updateTrackInfo = () => {
     if (currentTrack.artist === "Unknown") {
-      setCurrentTrack({ ...currentTrack, artist: "Wete veer neet" });
+      setCurrentTrack({ ...currentTrack, artist: unknownArtist });
     }
     if (currentTrack.title === "Unknown") {
-      setCurrentTrack({ ...currentTrack, title: "Wete veer neet" });
+      setCurrentTrack({ ...currentTrack, title: unknownSong });
     }
   };
 
@@ -60,6 +69,13 @@ const Player = () => {
       audioElem.current?.pause();
     }
   });
+
+  if (audioElem.current) {
+    audioElem.current.onplay = () => {
+      fetchTrackData();
+      currentTrack && updateTrackInfo();
+    };
+  }
 
   currentTrack && updateTrackInfo();
 

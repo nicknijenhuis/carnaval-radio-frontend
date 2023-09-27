@@ -4,7 +4,6 @@ import SectionTitle from "../constants/SectionTitle";
 import PostDetails from "./PostDetails";
 import news from "../../public/news.png";
 
-import PostsSkeleten from "../LoadingSkeleten/PostsSkeleten";
 import Link from "next/link";
 interface props {
   posts?: Post[];

@@ -14,11 +14,11 @@ export const splitTitle = (title: string) => {
     }
 
     if (song.artist === "Unknown") {
-      song.artist = "Wete veer neet";
+      song.artist = "Carnaval-Radio.nl";
     }
 
     if (song.song === "Unknown") {
-      song.song = "Wete veer neet";
+      song.song = "Carnaval-Radio.nl";
     }
 
     return song;
