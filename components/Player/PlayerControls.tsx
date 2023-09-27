@@ -37,13 +37,13 @@ const PlayerControls = ({ currentTrack, audioElem, loading, trackUrl }: Props) =
             <Image
               src={currentTrack.imageurl}
               alt={currentTrack.title}
-              className="hidden sm:block md:block lg:block xl:block sm:h-16 md:h-16 lg:h-16 xl:h-16 sm:w-24 md:w-24 lg:w-24 xl:w-24 rounded-lg"
+              className="hidden sm:block md:block lg:block xl:block sm:h-16 md:h-16 lg:h-16 xl:h-16 sm:w-16 md:w-16 lg:w-16 xl:w-16 rounded-md"
               width={120}
               height={70}
             />
           </>
         ) : (
-          <div className="h-16 w-24 rounded-lg animate-pulse bg-white"></div>
+          <div className="h-16 w-16 rounded-md animate-pulse bg-white"></div>
         )}
         <div
           className="flex sm:hidden md:hidden lg:hidden xl:hidden items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white cursor-pointer"
@@ -147,7 +147,7 @@ const PlayerControls = ({ currentTrack, audioElem, loading, trackUrl }: Props) =
           <Image
             src={currentTrack.imageurl}
             alt={currentTrack.title}
-            className="h-12 w-16 rounded-lg"
+            className="h-12 w-12 rounded-md"
             width={120}
             height={70}
           />

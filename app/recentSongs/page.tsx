@@ -7,37 +7,12 @@ import { BsFileMusicFill } from "react-icons/bs";
 import RecentSongsLoading from "@/components/LoadingSkeleten/RecentSongsLoading";
 import { Indie } from "../fonts/font";
 import DateAndTime from "@/components/DateAndTime";
+import { splitTitle } from "@/helpers/utils";
 
 const page = () => {
   const [recentTracks, setRecentTracks] = useState([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Boolean>(false);
-
-  const splitTitle = (title: string) => {
-    const parts = title.split(" - ");
-    let song;
-    if (parts.length === 2) {
-      song = {
-        artist: parts[0],
-        song: parts[1],
-      };
-    } else {
-      song = {
-        artist: "Unknown",
-        song: title,
-      };
-    }
-
-    if (song.artist === "Unknown") {
-      song.artist = "Wete veer neet";
-    }
-
-    if (song.song === "Unknown") {
-      song.song = "Wete veer neet";
-    }
-
-    return song;
-  };
 
   const fetchTracks = async () => {
     try {
@@ -69,7 +44,7 @@ const page = () => {
           Gedraaide nummers
         </h2>
       </div>{" "}
-      <div className="space-y-2">
+      <div>
         {!loading ? (
           <>
             {recentTracks?.map((recentSong: any, i: any) => (
@@ -77,7 +52,7 @@ const page = () => {
                 <div className="flex items-center justify-between p-2">
                   <div className="flex space-x-3">
                     <Image
-                      className="h-9 w-9 rounded-full"
+                      className="h-12 w-12 rounded-md"
                       src={recentSong.enclosure.url}
                       alt={recentSong.titleParts.song}
                       height={100}

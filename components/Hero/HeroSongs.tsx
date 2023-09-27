@@ -72,7 +72,7 @@ const HeroSongs = () => {
         </h2>
       </div>
 
-      <div className="space-y-2">
+      <div>
         {!loading ? (
           <>
             {recentTracks?.map((recentSong: any, i: any) => (
@@ -82,7 +82,7 @@ const HeroSongs = () => {
                     <div className="flex items-center justify-between p-2">
                       <div className="flex space-x-3">
                         <Image
-                          className="h-9 w-9 rounded-full"
+                          className="h-14 w-14 rounded-md"
                           src={recentSong.enclosure.url}
                           alt={recentSong.titleParts.song}
                           height={100}
