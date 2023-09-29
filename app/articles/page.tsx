@@ -15,7 +15,7 @@ const page = async () => {
   return (
     <div className="py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8">
       <div className="flex justify-between items-center">
-        <SectionTitle title="Nieuws" icon={news} />
+        <SectionTitle title="Nieuws" image={news} />
       </div>
 
       {posts && (

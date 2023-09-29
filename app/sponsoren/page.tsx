@@ -92,7 +92,7 @@ const page = async () => {
   return (
     <div className="py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8 bg-gray-100">
       <div className="flex justify-between items-center mb-4">
-        <SectionTitle title="Sponsoren" icon={sponsors_icon} />
+        <SectionTitle title="Sponsoren" image={sponsors_icon} />
       </div>
       {sponsorTypes?.map((st) => {
         const sponsorsPerType = sponsors?.filter((x) => x.TypeID === st.Id);

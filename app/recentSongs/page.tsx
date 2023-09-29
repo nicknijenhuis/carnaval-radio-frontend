@@ -46,7 +46,6 @@ const page = () => {
         </h2>
       </div>
       <RecentSongs loading={loading} recentTracks={recentTracks} />      
-
     </div>
   );
 };

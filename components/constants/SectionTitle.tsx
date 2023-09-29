@@ -1,10 +1,18 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import Image from "next/image";
 import { Indie } from "@/app/fonts/font";
-const SectionTitle = ({ title, icon }: { title: String; icon: any }) => {
+
+interface Props {
+  title: string;
+  image: any;
+  iconElement?: ReactElement;
+}
+
+const SectionTitle = ({ title, image, iconElement }: Props) => {
   return (
     <div className="flex space-x-4 items-center">
-      <Image src={icon} height={100} width={100} className="h-8 w-8" alt="" />
+      {image && <Image src={image} height={100} width={100} className="h-8 w-8" alt="" />}
+      {iconElement && iconElement}
       <h2 className={`text-3xl font-semibold ${Indie.className}`}>{title}</h2>
     </div>
   );

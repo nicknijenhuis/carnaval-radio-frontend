@@ -50,7 +50,7 @@ const Sponsors = () => {
 
   return (
     <div className="text-black px-10 py-2 bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9]">
-      <SectionTitle title="sponsoren" icon={sponsors_icon} />
+      <SectionTitle title="sponsoren" image={sponsors_icon} />
       {!loading ? (
         <> {sponsorsAll && <SponsorCard sponsors={sponsorsAll} />}</>
       ) : (
