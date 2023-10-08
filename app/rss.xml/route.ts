@@ -29,7 +29,7 @@ export async function GET() {
       link: site_url,
       image: `${site_url}/logo.png`,
       favicon: `${site_url}/favicon.png`,
-      copyright: `All rights reserved ${new Date().getFullYear()}, Ibas`,
+      copyright: `All rights reserved ${new Date().getFullYear()}, Carnaval-Radio.nl`,
       generator: 'Feed for Node.js',
       feedLinks: {
         rss2: `${site_url}/feed/rss.xml`,
