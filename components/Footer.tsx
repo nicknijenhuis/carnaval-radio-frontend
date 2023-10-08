@@ -45,16 +45,16 @@ const Footer = ({ data, themeData }: props) => {
         </p>
         <ul className="flex gap-2 text-xs sm:text-lg md:text-lg lg:text-lg xl:text-lg">
           <li>
-            <Link href="/privacy-beleid">Privacy Policy</Link>
+            <Link href="/privacy-beleid">Privacy beleid</Link>
           </li>
           <li>
-            <Link href="/" className="flex items-center justify-center">
-              <TbMinusVertical /> <p> Terms & Condition</p>
+            <Link href="/privacy-beleid" className="flex items-center justify-center">
+              <TbMinusVertical /> <p> Algemene voorwaarden</p>
             </Link>
           </li>
           <li>
-            <Link href="/" className="flex items-center justify-center">
-              <TbMinusVertical /> <p> Cookies Policy</p>
+            <Link href="/privacy-beleid" className="flex items-center justify-center">
+              <TbMinusVertical /> <p> Cookies</p>
             </Link>
           </li>
         </ul>

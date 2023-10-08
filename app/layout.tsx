@@ -9,6 +9,7 @@ import { dosis } from "./fonts/font";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
 import { fetchThemeData } from "@/GlobalState/ApiCalls/fetchTheme";
+import FeedbackForm from "./FeedbackForm";
 
 export const metadata: Metadata = {
   title: "Carnaval Radio | 24/7 Vasteloavend Muzieek",
@@ -51,6 +52,7 @@ export default async function RootLayout({
             </div>
           </div>
         </Providers>
+        <FeedbackForm />
       </body>
     </html>
   );
