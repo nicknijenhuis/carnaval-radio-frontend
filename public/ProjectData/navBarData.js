@@ -24,8 +24,8 @@ export const navBarData = [
         text: "Programma live-uitzendingen",
         src: "page/live-uitzendingen",
       },
-      { text: "Recente nummers", src: "page/recentenummers" },
-      { text: "Verzoekjes", src: "page/verzoekjes" },
+      { text: "Recente nummers", src: "recentSongs" },
+      { text: "Verzoekjes", src: "requests" },
     ],
   },
   {
