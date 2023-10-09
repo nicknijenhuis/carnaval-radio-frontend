@@ -30,7 +30,7 @@ export async function GET() {
       image: `${site_url}/logo.png`,
       favicon: `${site_url}/favicon.png`,
       copyright: `All rights reserved ${new Date().getFullYear()}, Carnaval-Radio.nl`,
-      generator: 'Feed for Node.js',
+      generator: 'Canaval Radio Website',
       feedLinks: {
         rss2: `${site_url}/feed/rss.xml`,
         // other feed formats

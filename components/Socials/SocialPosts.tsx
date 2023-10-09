@@ -1,8 +1,10 @@
 import { SocialPost } from "@/GlobalState/ApiCalls/fetchSocials";
 import Link from "next/link";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
+import ImageWithFallback from "../constants/ImageWithFallback";
 
 const SocialPosts = ({ posts }: { posts: SocialPost[] }) => {
+  
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-4 md:gap-6 2xl:gap-10 mt-auto pt-2 sm:pt-2 md:pt-3 lg:pt-4 xl:pt-4 w-full">
       {posts.map((post, i) => (
@@ -18,10 +20,11 @@ const SocialPosts = ({ posts }: { posts: SocialPost[] }) => {
               : "secondayShade_2"
           }`} rounded-xl p-5 cursor-pointer overflow-hidden space-y-5 w-full`}
         >
-          <img
+          <ImageWithFallback
+            fallbackSrc="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
             className="h-60 w-[98%] object-cover rounded-xl"
             src={post.image}
-            alt={post.text}
+            alt={`Foto van ${post.type} genomen op ${post.date.toLocaleDateString('nl-NL')}`}
           />
           <div className="px-2 flex  items-center text-xs text-gray-500">
             {post.type === "Facebook" ? (

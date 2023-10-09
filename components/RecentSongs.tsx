@@ -8,7 +8,7 @@ import { RecentSong } from "@/GlobalState/ApiCalls/fetchSongs";
 
 
 type RecentSongsProps = {
-  recentTracks: any[];
+  recentTracks: RecentSong[];
   loading: boolean;
   maxTracks?: number; // 10 is the default and the maximum
 };
