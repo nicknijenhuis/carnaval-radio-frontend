@@ -1,29 +1,18 @@
 "use client";
-import Image from "next/image";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { MdMusicNote } from "react-icons/md";
 import { BsFileMusicFill } from "react-icons/bs";
-import RecentSongsLoading from "@/components/LoadingSkeleten/RecentSongsLoading";
 import { Indie } from "../fonts/font";
-import DateAndTime from "@/components/DateAndTime";
-import { splitTitle } from "@/helpers/utils";
 import RecentSongs from "@/components/RecentSongs";
+import { RecentSong, fetchSongs } from "@/GlobalState/ApiCalls/fetchSongs";
 
 const page = () => {
-  const [recentTracks, setRecentTracks] = useState([]);
+  const [recentTracks, setRecentTracks] = useState<RecentSong[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Boolean>(false);
 
   const fetchTracks = async () => {
     try {
-      const response = await axios.get(
-        "https://ams1.reliastream.com/recentfeed/scarna00/json"
-      );
-      const modifiedTracks = response.data.items.map((item: any) => ({
-        ...item,
-        titleParts: splitTitle(item.title),
-      }));
+      const modifiedTracks = await fetchSongs()
 
       setRecentTracks(modifiedTracks);
       setLoading(false);

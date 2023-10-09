@@ -2,28 +2,20 @@
 import React, { useEffect, useState } from "react";
 import { BsFileMusicFill } from "react-icons/bs";
 import Link from "next/link";
-import axios from "axios";
 import { Indie } from "@/app/fonts/font";
 import RecentSongs from "../RecentSongs";
-import { splitTitle } from "@/helpers/utils";
+import { RecentSong, fetchSongs } from "@/GlobalState/ApiCalls/fetchSongs";
 
 const HeroSongs = () => {
-  const [recentTracks, setRecentTracks] = useState([]);
+  const [recentTracks, setRecentTracks] = useState<RecentSong[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Boolean>(false);
 
   const fetchTracks = async () => {
     try {
-      const response = await axios.get(
-        "https://ams1.reliastream.com/recentfeed/scarna00/json"
-      );
+      const response = await fetchSongs();
 
-      const modifiedTracks = response.data.items.map((item: any) => ({
-        ...item,
-        titleParts: splitTitle(item.title),
-      }));
-
-      setRecentTracks(modifiedTracks);
+      setRecentTracks(response);
       setLoading(false);
     } catch (error) {
       setError(true);

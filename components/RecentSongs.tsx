@@ -3,6 +3,9 @@ import Image from "next/image";
 import { MdMusicNote } from "react-icons/md";
 import DateAndTime from "./DateAndTime";
 import RecentSongsLoading from "./LoadingSkeleten/RecentSongsLoading";
+import { RecentSong } from "@/GlobalState/ApiCalls/fetchSongs";
+
+
 
 type RecentSongsProps = {
   recentTracks: any[];
@@ -15,7 +18,7 @@ const RecentSongs: React.FC<RecentSongsProps> = ({ recentTracks, loading = null,
     <div>
       {!loading ? (
         <>
-          {recentTracks?.map((recentSong: any, i: any) => (
+          {recentTracks?.map((recentSong: RecentSong, i: any) => (
             <Fragment key={"frag" + i}>
               {i < maxTracks && (
                 <div key={"div" + i} className="flex flex-col">
@@ -23,8 +26,8 @@ const RecentSongs: React.FC<RecentSongsProps> = ({ recentTracks, loading = null,
                     <div className="flex space-x-3">
                       <Image
                         className="h-14 w-14 rounded-md"
-                        src={recentSong.enclosure.url}
-                        alt={recentSong.titleParts.song}
+                        src={recentSong.url}
+                        alt={recentSong.artist}
                         height={100}
                         width={100}
                       />
@@ -32,9 +35,9 @@ const RecentSongs: React.FC<RecentSongsProps> = ({ recentTracks, loading = null,
                         <div className="flex items-center">
                           <MdMusicNote size={24} className="mr-2" />{" "}
                           <div>
-                            <p>{recentSong.titleParts.song}</p>
+                            <p>{recentSong.title}</p>
                             <span className="text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-                              {recentSong.titleParts.artist}
+                              {recentSong.artist}
                             </span>
                           </div>
                         </div>
