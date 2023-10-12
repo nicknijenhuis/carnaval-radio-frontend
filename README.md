@@ -36,7 +36,6 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 - Bug: There is a bug in the menu, the menu is not loading the latest state of what I have configured in Strapi for some reason
 - The website sometimes seem to crash and then you have to wait very long for that everything is loaded
 - ~~The sidebar player is not yet working~~
-- Using theme colors does not work
 - ~~Not all news articles are equal in height, they should be per row I think, at least the first 3~~
 - ~~The differentation in color between the player and the rest of the site is not good enough, perhaps we need more contrast there~~
 - Make sidebar SEO friendly and just use links for items
@@ -54,3 +53,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
     - Somewhere on the website it should be possible to chat via facebook integration
     - A like and follow button needs to be added
 - Twitch integration, on certain moments, it should be possible to replace the slider with Twitch
+- Using theme colors does not work
