@@ -33,6 +33,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Backlog (TODO):
 - ~~The player still has the refresh issue, when going to sponsoren and then to home, but also going to a working page and then going to 'Over ons' for example (carnaval-radio.netlify.app)~~
+- Bug: There is a bug in the menu, the menu is not loading the latest state of what I have configured in Strapi for some reason
 - The website sometimes seem to crash and then you have to wait very long for that everything is loaded
 - ~~The sidebar player is not yet working~~
 - Using theme colors does not work
