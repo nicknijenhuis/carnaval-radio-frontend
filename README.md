@@ -44,11 +44,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 - Re-use components where applicable
     - ~~Recent songs components, is exactly the same, except for displaying 10 or 4 songs. Not acceptable to duplicate code~~
 - Sponsoren do not auto play, which gives more attention to the first sponsors then the others, they should get equal attention. Loading randomly an other tab each time would also work.
+- Sliders/Banners from the CMS should autoplay
 - The news from Limburg24 is not yet loaded
 - Social media integration needs to be included
-    - Overview of latest intagram posts
-    - Overview of latest facebook posts
-    - Preferably mixed in between each other
+    - ~~Overview of latest intagram posts~~
+    - ~~Overview of latest facebook posts~~
+    - ~~Preferably mixed in between each other~~
     - Somewhere on the website it should be possible to chat via facebook integration
     - A like and follow button needs to be added
 - Twitch integration, on certain moments, it should be possible to replace the slider with Twitch
