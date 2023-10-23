@@ -46,12 +46,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 - ~~Not all news articles are equal in height, they should be per row I think, at least the first 3~~
 - ~~The differentation in color between the player and the rest of the site is not good enough, perhaps we need more contrast there~~
 - Make sidebar SEO friendly and just use links for items
-- Add correct page titles to every page
+- ~~Add correct page titles to every page~~
 - Add google analytics (example: Bundeling)
 - Re-use components where applicable
     - ~~Recent songs components, is exactly the same, except for displaying 10 or 4 songs. Not acceptable to duplicate code~~
-- Sponsoren do not auto play, which gives more attention to the first sponsors then the others, they should get equal attention. Loading randomly an other tab each time would also work.
-- Sliders/Banners from the CMS should autoplay
+- ~~Sponsoren do not auto play, which gives more attention to the first sponsors then the others, they should get equal attention. Loading randomly an other tab each time would also work.~~
+- ~~Sliders/Banners from the CMS should autoplay~~
 - The news from Limburg24 is not yet loaded
 - Social media integration needs to be included
     - ~~Overview of latest intagram posts~~
