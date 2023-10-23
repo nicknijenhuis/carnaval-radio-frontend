@@ -2,6 +2,12 @@ import { Indie } from "@/app/fonts/font";
 import SocialMediaFeed from "@/components/Socials/SocialFeed";
 import { FaInstagram } from "react-icons/fa";
 
+export async function generateMetadata() {
+  return {
+    title: `Instagram Feed | 24/7 Vasteloavend Muzieek`,
+  };
+}
+
 const InstagramOnlyPage = () => {
   const instagramAccessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
   const instagramId = process.env.NEXT_PUBLIC_INSTAGRAM_ID;
