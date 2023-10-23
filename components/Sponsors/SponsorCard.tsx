@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Sponsor, SponsorType } from "../../types/sponsorTypes";
+import { Sponsor } from "../../types/sponsorTypes";
 
 interface Props {
   sponsors?: Sponsor[];
@@ -30,8 +30,14 @@ export default function SponsorCard({ sponsors }: Props) {
   };
 
   return (
-    <div className="md:max-w-[72vw] ">
-      <Carousel showDots={true} responsive={responsive}>
+    <div className="md:max-w-[72vw]">
+      <Carousel
+        showDots={true}
+        responsive={responsive}
+        autoPlay={true}
+        autoPlaySpeed={2000}
+        infinite={true}
+      >
         {sponsors &&
           sponsors.map((x: any, i: any) => {
             return (

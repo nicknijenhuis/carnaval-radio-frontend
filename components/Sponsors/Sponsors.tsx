@@ -46,7 +46,7 @@ const Sponsors = () => {
     fetchSponsors();
   }, [error]);
 
-  const arr = [1, 2, 3];
+  const arr = [1, 2, 3, 4];
 
   return (
     <div className="text-black px-10 py-2 bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9]">

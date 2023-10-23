@@ -32,6 +32,11 @@ export default async function RootLayout({
   const { data: menu } = await client.query({
     query: GET_UI_NAVIGATION,
     variables: { menuName: "main" },
+    context: {
+      fetchOptions: {
+        next: { revalidate: 10 },
+      },
+    },
   });
 
   const themeData = await fetchThemeData();

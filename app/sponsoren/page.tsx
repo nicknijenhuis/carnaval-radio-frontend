@@ -20,6 +20,12 @@ const logoSizeMapping: {
   XXL: "w-48",
 };
 
+export async function generateMetadata() {
+  return {
+    title: `Sponsoren | 24/7 Vasteloavend Muzieek`,
+  };
+}
+
 const page = async () => {
   const { data } = await client.query({ query: GET_ALL_SPONSORS });
 
@@ -65,7 +71,7 @@ const page = async () => {
             <a
               href={x.Link}
               target="_blank"
-              key={"SponsorOnSponsorPage"+x.Id}
+              key={"SponsorOnSponsorPage" + x.Id}
               className="p-8 bg-white rounded-xl"
             >
               {x.Logo ? (
@@ -97,7 +103,7 @@ const page = async () => {
       {sponsorTypes?.map((st) => {
         const sponsorsPerType = sponsors?.filter((x) => x.TypeID === st.Id);
         return (
-          <div key={"SponsorePerType"+st.Id} className="mt-12">
+          <div key={"SponsorePerType" + st.Id} className="mt-12">
             <span className="p-2 bg-white rounded">
               <h2 className="text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary bg-white rounded inline">
                 {st.Name}

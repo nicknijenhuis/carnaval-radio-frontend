@@ -4,11 +4,24 @@ import { SingleContentPage } from "@/types/pageTypes";
 import ReactHtmlParser from "html-react-parser";
 import { Indie } from "@/app/fonts/font";
 
+export async function generateMetadata({ params }: any) {
+  const slug = params.slug;
+  const capitalize = (str: any) => str.charAt(0).toUpperCase() + str.slice(1);
+  return {
+    title: `${capitalize(slug)} | 24/7 Vasteloavend Muzieek`,
+  };
+}
+
 const page = async ({ params }: { params: { slug: string } }) => {
   const slug = params.slug;
   const { error, data } = await client.query({
     query: GET_SINGLE_PAGE,
     variables: { slugUrl: slug },
+    context: {
+      fetchOptions: {
+        next: { revalidate: 10 },
+      },
+    },
   });
 
   let page: SingleContentPage;
@@ -17,7 +30,6 @@ const page = async ({ params }: { params: { slug: string } }) => {
     Content: "Pagina niet gevonden",
   };
 
-  
   return (
     <div className="py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8 bg-heroBackground">
       {!error && page && (
