@@ -34,11 +34,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 ## Backlog (TODO):
 - ~~The player still has the refresh issue, when going to sponsoren and then to home, but also going to a working page and then going to 'Over ons' for example (carnaval-radio.netlify.app)~~
 - Bug: There is a bug in the menu, the menu is not loading the latest state of what I have configured in Strapi for some reason
-- When a song has no image configured (e.g the image is nocover.png) it should display a randomly colored block with a music note in it
+- When a song has no image configured (e.g the image is nocover.png) it should display a randomly colored block with the first two letter of the artist in it
     - The color should be selected from a preconfigured hard-coded list of colors
-    - The music note icon should be selected from a preconfigured hard-coded list of icons (which can contain only this one at first)
-    - The current extra music note for all songs can be removed.
     - The code should be in a way that it uses the same code for every place where the recent song image is shown
+    - This technique is often used for account avatars, there might be a library for it even
+    - Nice to have: the same artist should always have the same color (this can be done by not making it fully random but by using the artist initials in the random function)
 - ~~The website sometimes seem to crash and then you have to wait very long for that everything is loaded~~
 - ~~The sidebar player is not yet working~~
 - ~~Not all news articles are equal in height, they should be per row I think, at least the first 3~~
