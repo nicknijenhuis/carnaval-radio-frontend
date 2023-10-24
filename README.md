@@ -41,6 +41,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
     - This technique is often used for account avatars, there might be a library for it even
     - Other rules, for example nocover.png and artist is Carnaval-Radio.nl should come first
     - Nice to have: the same artist should always have the same color (this can be done by not making it not fully random but by using the artist initials in the random function)
+- UI issues with menu items
 - ~~The website sometimes seem to crash and then you have to wait very long for that everything is loaded~~
 - ~~The sidebar player is not yet working~~
 - ~~Not all news articles are equal in height, they should be per row I think, at least the first 3~~
