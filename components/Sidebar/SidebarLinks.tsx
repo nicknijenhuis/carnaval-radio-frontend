@@ -70,7 +70,7 @@ const SidebarLinks = ({ menu, toogleSideBar }: props) => {
                 />
               )}
               <div
-                className={`flex items-center justify-start w-[300px] sm:w-[350px] md:w-[190px] lg:w-[200px] xl:w-[200px] py-2 px-4 ml-7 mr-2 rounded-xl ${
+                className={`flex items-center justify-start p-4 sm:px-4 md:p-2 lg:p-2 xl:p-2 2xl:p-[10px] ml-7 mr-2 rounded-xl ${
                   index === activeTab.index && "bg-primaryShade_2"
                 }`}
               >
