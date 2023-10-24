@@ -32,7 +32,7 @@
     "components/Player/Player.tsx",
     "app/articles/[slug]",
     "components/Sidebar/SidebarPlayer.tsx",
-    "components/SongCover.jsx"
+    "components/SongCover.tsx"
   ],
   "exclude": ["node_modules"]
 }

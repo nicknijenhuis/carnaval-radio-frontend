@@ -9,7 +9,6 @@ import { setPlay, setMuted } from "../../GlobalState/features/PlayerSlice";
 import { GlobalState } from "@/GlobalState/GlobalState";
 import { Track } from "@/types/trackTypes";
 import SongCover from "../SongCover";
-
 interface Props {
   currentTrack: Track;
   audioElem: any;
@@ -46,13 +45,6 @@ const PlayerControls = ({
               url={currentTrack.imageurl}
               artist={currentTrack.artist}
             />
-            {/* <Image
-              src={currentTrack.imageurl}
-              alt={currentTrack.title}
-              className="sm:h-16 md:h-16 lg:h-16 xl:h-16 sm:w-16 md:w-16 lg:w-16 xl:w-16 rounded-md"
-              width={120}
-              height={70}
-            /> */}
           </div>
         ) : (
           <div className="h-16 w-16 rounded-md animate-pulse bg-white"></div>

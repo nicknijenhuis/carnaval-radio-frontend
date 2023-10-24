@@ -1,19 +1,25 @@
 import React from "react";
 import Image from "next/image";
-import { color } from "@/public/ProjectData/color";
-const SongCover = ({ url, artist, type = "hero" }) => {
+
+interface props {
+  url: string;
+  artist: string;
+  type?: string;
+}
+
+const SongCover = ({ url, artist, type = "hero" }: props) => {
   const nocover =
     "https://ams1.reliastream.com/static/scarna00/covers/nocover.png";
 
-  const words = artist.match(/\b\w+\b/g);
+  const words: any = artist.match(/\b\w+\b/g);
 
   const letters = words
     .slice(0, 2)
-    .map((word) => word[0])
+    .map((word: string) => word[0].toUpperCase())
     .join("");
 
-  const generateColor = (artist) => {
-    const hash = (artist) => {
+  const generateColor = (artist: string) => {
+    const hash = (artist: string) => {
       let hash = 0;
       for (let i = 0; i < artist.length; i++) {
         hash = artist.charCodeAt(i) + ((hash << 5) - hash);

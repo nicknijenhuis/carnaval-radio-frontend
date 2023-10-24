@@ -4,7 +4,6 @@ import { MdMusicNote } from "react-icons/md";
 import DateAndTime from "./DateAndTime";
 import RecentSongsLoading from "./LoadingSkeleten/RecentSongsLoading";
 import { RecentSong } from "@/GlobalState/ApiCalls/fetchSongs";
-
 import SongCover from "./SongCover";
 
 type RecentSongsProps = {
