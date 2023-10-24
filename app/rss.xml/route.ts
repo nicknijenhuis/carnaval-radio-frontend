@@ -46,7 +46,7 @@ export async function GET() {
         title: post.attributes.Title,
         id: post.id + '-' + post.attributes.Slug,
         link: `${site_url}/blog/${post.attributes.Slug}`,
-        description: post.attributes.Content,
+        description: '<img src="' + post.attributes.CoverImage?.data?.attributes?.url + '" />' + post.attributes.Content,        
         date: new Date(post.attributes.publishedAt),
       });
     });
