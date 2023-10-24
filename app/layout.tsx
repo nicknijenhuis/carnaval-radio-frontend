@@ -24,7 +24,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { data, error } = await client.query({
+  const { data } = await client.query({
     query: GET_UI_NAVIGATION,
     variables: { menuName: "footer" },
   });

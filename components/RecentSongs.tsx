@@ -5,7 +5,7 @@ import DateAndTime from "./DateAndTime";
 import RecentSongsLoading from "./LoadingSkeleten/RecentSongsLoading";
 import { RecentSong } from "@/GlobalState/ApiCalls/fetchSongs";
 
-
+import SongCover from "./SongCover";
 
 type RecentSongsProps = {
   recentTracks: RecentSong[];
@@ -13,7 +13,11 @@ type RecentSongsProps = {
   maxTracks?: number; // 10 is the default and the maximum
 };
 
-const RecentSongs: React.FC<RecentSongsProps> = ({ recentTracks, loading = null, maxTracks = 10 }) => {
+const RecentSongs: React.FC<RecentSongsProps> = ({
+  recentTracks,
+  loading = null,
+  maxTracks = 10,
+}) => {
   return (
     <div>
       {!loading ? (
@@ -24,12 +28,10 @@ const RecentSongs: React.FC<RecentSongsProps> = ({ recentTracks, loading = null,
                 <div key={"div" + i} className="flex flex-col">
                   <div className="flex items-center justify-between p-2">
                     <div className="flex space-x-3">
-                      <Image
-                        className="h-14 w-14 rounded-md"
-                        src={recentSong.url}
-                        alt={recentSong.artist}
-                        height={100}
-                        width={100}
+                      <SongCover
+                        url={recentSong.url}
+                        artist={recentSong.artist}
+                        type="hero"
                       />
                       <div className="flex flex-col">
                         <div className="flex items-center">

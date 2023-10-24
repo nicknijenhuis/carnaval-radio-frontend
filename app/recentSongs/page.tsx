@@ -12,7 +12,7 @@ const page = () => {
 
   const fetchTracks = async () => {
     try {
-      const modifiedTracks = await fetchSongs()
+      const modifiedTracks = await fetchSongs();
 
       setRecentTracks(modifiedTracks);
       setLoading(false);
@@ -34,7 +34,7 @@ const page = () => {
           Gedraaide nummers
         </h2>
       </div>
-      <RecentSongs loading={loading} recentTracks={recentTracks} />      
+      <RecentSongs loading={loading} recentTracks={recentTracks} />
     </div>
   );
 };

@@ -5,7 +5,7 @@ const nextConfig = {
   images: {
     domains: ["res.cloudinary.com", "ams1.reliastream.com"],
   },
-  async rewrites() { 
+  async rewrites() {
     return [
       {
         source: "/verzoekjes",

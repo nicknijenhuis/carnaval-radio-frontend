@@ -8,6 +8,12 @@ import Section from "@/components/Section";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 
+export async function generateMetadata() {
+  return {
+    title: `Carnaval Radio | 24/7 Vasteloavend Muzieek`,
+  };
+}
+
 const page = async () => {
   const facebookPageId = process.env.NEXT_PUBLIC_FACEBOOK_PAGE_ID;
   const facebookAccessToken = process.env.FACEBOOK_ACCESS_TOKEN;

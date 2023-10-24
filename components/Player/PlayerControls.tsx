@@ -8,17 +8,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPlay, setMuted } from "../../GlobalState/features/PlayerSlice";
 import { GlobalState } from "@/GlobalState/GlobalState";
 import { Track } from "@/types/trackTypes";
+import SongCover from "../SongCover";
 
-interface Props { 
+interface Props {
   currentTrack: Track;
   audioElem: any;
   loading: boolean;
   trackUrl: string;
 }
 
-const PlayerControls = ({ currentTrack, audioElem, loading, trackUrl }: Props) => {
+const PlayerControls = ({
+  currentTrack,
+  audioElem,
+  loading,
+  trackUrl,
+}: Props) => {
   const dispatch = useDispatch();
-  const { isPlaying, muted } = useSelector((state: GlobalState) => state.Player);
+  const { isPlaying, muted } = useSelector(
+    (state: GlobalState) => state.Player
+  );
 
   const [showVolume, setShowVolume] = useState(false);
   const [volume, setVolume] = useState(30);
@@ -33,15 +41,19 @@ const PlayerControls = ({ currentTrack, audioElem, loading, trackUrl }: Props) =
     <div className="flex sm:flex-row md:flex-row lg:flex-row xl:flex-row items-start sm:items-center gap-[2px] sm:gap-8 md:gap-8 lg:gap-8 xl:gap-8 justify-between sm:justify-start md:justify-start lg:justify-start xl:justify-start">
       <div className="flex items-center gap-2 sm:gap-8 md:gap-8 lg:gap-8 xl:gap-8">
         {!loading ? (
-          <>
-            <Image
+          <div className="hidden sm:block md:block lg:block xl:block">
+            <SongCover
+              url={currentTrack.imageurl}
+              artist={currentTrack.artist}
+            />
+            {/* <Image
               src={currentTrack.imageurl}
               alt={currentTrack.title}
-              className="hidden sm:block md:block lg:block xl:block sm:h-16 md:h-16 lg:h-16 xl:h-16 sm:w-16 md:w-16 lg:w-16 xl:w-16 rounded-md"
+              className="sm:h-16 md:h-16 lg:h-16 xl:h-16 sm:w-16 md:w-16 lg:w-16 xl:w-16 rounded-md"
               width={120}
               height={70}
-            />
-          </>
+            /> */}
+          </div>
         ) : (
           <div className="h-16 w-16 rounded-md animate-pulse bg-white"></div>
         )}
@@ -144,12 +156,10 @@ const PlayerControls = ({ currentTrack, audioElem, loading, trackUrl }: Props) =
           />
         )}
         {!loading && (
-          <Image
-            src={currentTrack.imageurl}
-            alt={currentTrack.title}
-            className="h-12 w-12 rounded-md"
-            width={120}
-            height={70}
+          <SongCover
+            url={currentTrack.imageurl}
+            artist={currentTrack.artist}
+            type="hero"
           />
         )}
       </div>
