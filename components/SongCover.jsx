@@ -11,12 +11,26 @@ const SongCover = ({ url, artist, type = "hero" }) => {
     .slice(0, 2)
     .map((word) => word[0])
     .join("");
-  // const result = letters.join("");
+
+  const generateColor = (artist) => {
+    const hash = (artist) => {
+      let hash = 0;
+      for (let i = 0; i < artist.length; i++) {
+        hash = artist.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      return hash;
+    };
+
+    const color = (hash(artist) & 0x00ffffff).toString(16).toUpperCase();
+
+    return `#${"00000".substring(0, 6 - color.length)}${color}`;
+  };
+
   return (
     <>
       {url == nocover ? (
         <div
-          style={{ backgroundColor: color[artist] }}
+          style={{ backgroundColor: generateColor(artist) }}
           className={`${
             type == "hero"
               ? "h-12 w-12 sm:h-14 md:h-14 lg:h-14 xl:h-14 sm:w-14 md:w-14 lg:w-14 xl:w-14"
