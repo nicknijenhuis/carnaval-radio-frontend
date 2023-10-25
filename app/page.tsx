@@ -67,7 +67,7 @@ const page = async () => {
         </div>
       </Section>
       <Section
-        title="Limburg Alaaf - Limburg24"
+        title="Limburg24 Nieuws"
         iconElement={<BiSolidNews className="h-8 w-8 text-secondary" />}
       >
         <Limburg24 />
