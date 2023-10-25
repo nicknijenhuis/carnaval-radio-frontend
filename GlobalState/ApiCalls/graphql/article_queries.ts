@@ -22,6 +22,7 @@ query{
         Slug
         Content
         publishedAt
+        Date
         CoverImage{
           data{
             attributes{
