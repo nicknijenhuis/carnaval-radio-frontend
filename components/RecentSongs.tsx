@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import Image from "next/image";
 import { MdMusicNote } from "react-icons/md";
 import DateAndTime from "./DateAndTime";
 import RecentSongsLoading from "./LoadingSkeleten/RecentSongsLoading";
@@ -34,7 +33,10 @@ const RecentSongs: React.FC<RecentSongsProps> = ({
                       />
                       <div className="flex flex-col">
                         <div className="flex items-center">
-                          <MdMusicNote size={24} className="mr-2" />{" "}
+                          <MdMusicNote
+                            size={24}
+                            className="mr-2 inline-block sm:inline-block md:inline-block lg:hidden xl:inline-block"
+                          />{" "}
                           <div>
                             <p>{recentSong.title}</p>
                             <span className="text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
