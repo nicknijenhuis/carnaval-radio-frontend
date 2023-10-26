@@ -48,10 +48,10 @@ export default function SponsorCard({ sponsors }: Props) {
                 >
                   <a href={x.Link} target="_blank" key={x.Name}>
                     <Image
-                      className="inline-block cursor-pointer rounded-lg"
+                      className="h-24 w-60 inline-block cursor-pointer rounded-lg"
                       src={x.Logo.Url}
-                      width={x.Logo.Width}
-                      height={x.Logo.Height}
+                      width={300}
+                      height={250}
                       alt={`Logo van ${x.Name}`}
                     />
                   </a>
