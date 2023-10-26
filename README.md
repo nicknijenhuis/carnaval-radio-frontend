@@ -33,6 +33,8 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Backlog (TODO):
 - ~~The player still has the refresh issue, when going to sponsoren and then to home, but also going to a working page and then going to 'Over ons' for example (carnaval-radio.netlify.app)~~
+- Limburg24 Niews should have a title
+- Styling of pages and articles that have basic HTML elements in strapi are not displayed correctly (perhaps see Bundeling as an example, here it works)
 - Bug: There is a bug in the menu, the menu is not loading the latest state of what I have configured in Strapi for some reason
 - Bug: Sponsoren display doesn't look very nice, they should be a bit bigger, always centered and same height
     - In slider
