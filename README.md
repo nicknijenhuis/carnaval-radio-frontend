@@ -33,6 +33,8 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Backlog (TODO):
 - ~~The player still has the refresh issue, when going to sponsoren and then to home, but also going to a working page and then going to 'Over ons' for example (carnaval-radio.netlify.app)~~
+- Change logo to old logo everywhere, it is decided we are not going to use the new one yet (available on request)
+- Make a page for Tickets. This is an Iframe loaded from a ticket organisation. Preferably this is set in Strapi, but if not possible, let's make a hard coded page with the iframe. 
 - Limburg24 Niews should have a title
 - Limburg24 dates should be in the dutch format
 - Styling of pages and articles that have basic HTML elements in strapi are not displayed correctly (perhaps see Bundeling as an example, here it works)

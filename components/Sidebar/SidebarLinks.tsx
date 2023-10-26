@@ -8,6 +8,7 @@ import {
   MdMusicNote,
   MdBusiness,
   MdKeyboardArrowDown,
+  MdCreditCard,
 } from "react-icons/md";
 
 import React, { useState } from "react";
@@ -27,6 +28,7 @@ const IconMapping: any = {
   "<MdAssignmentInd />": <MdAssignmentInd />,
   "<MdMusicNote />": <MdMusicNote />,
   "<MdBusiness />": <MdBusiness />,
+  "<MdCreditCard />": <MdCreditCard />
 };
 
 interface props {
