@@ -7,12 +7,18 @@ interface props {
   i: any;
 }
 
+export const formateDate = (isoDate: any) => {
+  const date = new Date(isoDate);
+
+  const day = date.getDate();
+  const month = date.getMonth() + 1; // Months are zero-based
+  const year = date.getFullYear();
+
+  const formatedDate = `${day.toString()}-${month.toString()}-${year}`;
+  return formatedDate;
+};
+
 const LimburgPost = ({ item, i }: props) => {
-  const formateDate = (pubDate: any) => {
-    const date = pubDate.split(" ");
-    const formatedDate = date.slice(0, 4).join(" ");
-    return formatedDate;
-  };
   return (
     <div
       className={`${`bg-${
@@ -25,8 +31,9 @@ const LimburgPost = ({ item, i }: props) => {
           : "secondayShade_2"
       }`} rounded-xl p-5 cursor-pointer overflow-hidden space-y-5 w-full`}
     >
+      <h2 className="text-xl font-semibold">{item.title}</h2>
       <div className="container">{ReactHtmlParser(item.content)}</div>
-      <p className="text-sm text-gray-500">{formateDate(item.pubDate)}</p>
+      <p className="text-sm text-gray-500">{formateDate(item.isoDate)}</p>
 
       <Link
         target="_blank"

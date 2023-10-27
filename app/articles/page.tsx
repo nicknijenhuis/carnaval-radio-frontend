@@ -8,9 +8,28 @@ import { Post } from "@/types/articleTypes";
 const page = async () => {
   const { data } = await client.query({
     query: GET_ALL_ARTICLES,
+    // context: {
+    //   fetchOptions: {
+    //     next: { revalidate: 5 },
+    //   },
+    // },
   });
   let posts: Post[];
   posts = data.articles.data;
+
+  function customSort(a: any, b: any) {
+    const dateA: any = a.attributes.Date
+      ? new Date(a.attributes.Date)
+      : new Date(a.attributes.publishedAt);
+    const dateB: any = b.attributes.Date
+      ? new Date(b.attributes.Date)
+      : new Date(b.attributes.publishedAt);
+
+    // Compare the parsed dates
+    return dateB - dateA;
+  }
+
+  const sortedPosts = [...posts].sort(customSort);
 
   return (
     <div className="py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8">
@@ -18,12 +37,14 @@ const page = async () => {
         <SectionTitle title="Nieuws" image={news} />
       </div>
 
-      {posts && (
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-3 gap-4 md:gap-6 2xl:gap-10 pt-2 sm:pt-2 md:pt-6 lg:pt-10 xl:pt-10"
-        >
-          {posts.map((post: any, i: any) => (
-            <PostDetails key={"postDetail"+i} post={post} colorIndex={i % 3} />
+      {sortedPosts && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-3 gap-4 md:gap-6 2xl:gap-10 pt-2 sm:pt-2 md:pt-6 lg:pt-10 xl:pt-10">
+          {sortedPosts.map((post: any, i: any) => (
+            <PostDetails
+              key={"postDetail" + i}
+              post={post}
+              colorIndex={i % 3}
+            />
           ))}
         </div>
       )}

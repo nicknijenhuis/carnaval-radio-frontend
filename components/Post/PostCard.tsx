@@ -9,12 +9,25 @@ interface props {
 }
 
 const PostCard = ({ posts }: props) => {
+  function customSort(a: any, b: any) {
+    const dateA: any = a.attributes.Date
+      ? new Date(a.attributes.Date)
+      : new Date(a.attributes.publishedAt);
+    const dateB: any = b.attributes.Date
+      ? new Date(b.attributes.Date)
+      : new Date(b.attributes.publishedAt);
+
+    // Compare the parsed dates
+    return dateB - dateA;
+  }
+
+  const sortedPosts = posts && [...posts].sort(customSort);
   return (
     <Section title="Nieuws" icon={news}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-3 gap-4 md:gap-6 2xl:gap-10 mt-auto pt-2 sm:pt-2 md:pt-3 lg:pt-4 xl:pt-4 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-4 md:gap-6 2xl:gap-10 mt-auto pt-2 sm:pt-2 md:pt-3 lg:pt-4 xl:pt-4 w-full">
         <>
-          {posts &&
-            posts.map((post: any, i: any) => (
+          {sortedPosts &&
+            sortedPosts.map((post: any, i: any) => (
               <Fragment key={"postFrag" + i}>
                 {i < 3 && (
                   <PostDetails

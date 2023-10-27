@@ -13,6 +13,7 @@ export interface Post {
     publishedAt: string;
     Slug: string;
     Content: string;
+    Date?: any;
   };
 }
 
