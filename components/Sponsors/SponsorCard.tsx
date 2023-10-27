@@ -9,6 +9,7 @@ interface Props {
 }
 
 export default function SponsorCard({ sponsors }: Props) {
+  const sponsorSorted = sponsors?.sort((a, b) => a.Order - b.Order);
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1024 },
@@ -38,8 +39,8 @@ export default function SponsorCard({ sponsors }: Props) {
         autoPlaySpeed={2000}
         infinite={true}
       >
-        {sponsors &&
-          sponsors.map((x: any, i: any) => {
+        {sponsorSorted &&
+          sponsorSorted.map((x: any, i: any) => {
             return (
               x.Logo && (
                 <div

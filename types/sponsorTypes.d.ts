@@ -37,7 +37,8 @@ export interface Sponsor {
   Name: string;
   Logo?: Image;
   Link?: string;
-  TypeID: string;
+  TypeID?: string;
+  Order: number;
 }
 
 export interface Image {

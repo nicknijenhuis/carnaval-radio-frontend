@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Sponsor } from "../../types/sponsorTypes";
+import { Sponsor, SponsorType } from "../../types/sponsorTypes";
 import SectionTitle from "../constants/SectionTitle";
 import SponsorCard from "./SponsorCard";
 import sponsors_icon from "../../public/sponsors.png";
@@ -12,7 +12,7 @@ import { GraphQLSponsor } from "../../types/sponsorTypes";
 const Sponsors = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>();
-  const [sponsorsAll, setSponsors] = useState<Sponsor[]>();
+  const [sponsorsAll, setSponsors] = useState<Sponsor[]>([]);
   const fetchSponsors = async () => {
     const {
       loading,
@@ -21,25 +21,38 @@ const Sponsors = () => {
     } = await client.query({
       query: GET_ALL_SPONSORS,
     });
-    const sponsors: Sponsor[] = sponsorData.sponsors.data.map(
-      (x: GraphQLSponsor) => {
-        return {
-          Name: x.attributes.Name,
-          Link: x.attributes.Link,
-          Logo: x.attributes.Logo?.data
-            ? {
-                Width: x.attributes.Logo.data.attributes.width,
-                Height: x.attributes.Logo.data.attributes.height,
-                Url: x.attributes.Logo.data.attributes.url,
-              }
-            : null,
-          TypeID: x.attributes.Type.data.id,
-        } as Sponsor;
-      }
-    );
+
+    const sponsorTypes: any = sponsorData.sponsorTypes.data.map((x: any) => {
+      return {
+        Id: x.id,
+        Name: x.attributes.Name,
+        Order: x.attributes.Order,
+        LogoSize: x.attributes.LogoSize,
+      } as SponsorType;
+    });
+
+    sponsorData.sponsors.data.map((x: GraphQLSponsor) => {
+      sponsorTypes.map((st: any) => {
+        if (st.Id == x.attributes.Type.data.id) {
+          const sponsorSingle = {
+            Name: x.attributes.Name,
+            Link: x.attributes.Link,
+            Logo: x.attributes.Logo?.data
+              ? {
+                  Width: x.attributes.Logo.data.attributes.width,
+                  Height: x.attributes.Logo.data.attributes.height,
+                  Url: x.attributes.Logo.data.attributes.url,
+                }
+              : null,
+            TypeID: x.attributes.Type.data.id,
+            Order: st.Order,
+          } as Sponsor;
+          setSponsors((sponsorsAll) => [...sponsorsAll, sponsorSingle]);
+        }
+      });
+    });
     setLoading(loading);
     setError(error);
-    setSponsors(sponsors);
   };
 
   useEffect(() => {
