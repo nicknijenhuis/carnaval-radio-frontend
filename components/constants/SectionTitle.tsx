@@ -4,7 +4,7 @@ import { Indie } from "@/app/fonts/font";
 
 interface Props {
   title: string;
-  image: any;
+  image?: any;
   iconElement?: ReactElement;
 }
 

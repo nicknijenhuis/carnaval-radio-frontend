@@ -34,7 +34,7 @@ export default async function RootLayout({
     variables: { menuName: "main" },
     context: {
       fetchOptions: {
-        next: { revalidate: 10 },
+        next: { revalidate: 5 },
       },
     },
   });
