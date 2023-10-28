@@ -25,3 +25,24 @@ h1 {
     background: #ffff;
   }
 }
+
+/* width */
+/* ::-webkit-scrollbar {
+  width: 4px;
+} */
+
+/* Track */
+/* ::-webkit-scrollbar-track {
+  background: #f6f6f6;
+} */
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+  background: #fcd290;
+  border-radius: 5px;
+} */
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #ff9d00;
+} */
