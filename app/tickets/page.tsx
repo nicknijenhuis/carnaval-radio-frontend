@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { MdCreditCard } from "react-icons/md";
 import { Indie } from "../fonts/font";
