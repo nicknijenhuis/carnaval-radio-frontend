@@ -4,7 +4,7 @@ import DateAndTime from "./DateAndTime";
 import RecentSongsLoading from "./LoadingSkeleten/RecentSongsLoading";
 import { RecentSong } from "@/GlobalState/ApiCalls/fetchSongs";
 import SongCover from "./SongCover";
-import FormateTitle from "./FormateTitle";
+import FormateTitle from "./FormatTitle";
 
 type RecentSongsProps = {
   recentTracks: RecentSong[];
