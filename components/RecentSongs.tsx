@@ -4,6 +4,7 @@ import DateAndTime from "./DateAndTime";
 import RecentSongsLoading from "./LoadingSkeleten/RecentSongsLoading";
 import { RecentSong } from "@/GlobalState/ApiCalls/fetchSongs";
 import SongCover from "./SongCover";
+import FormateTitle from "./FormateTitle";
 
 type RecentSongsProps = {
   recentTracks: RecentSong[];
@@ -35,13 +36,13 @@ const RecentSongs: React.FC<RecentSongsProps> = ({
                         <div className="flex items-center">
                           <MdMusicNote
                             size={24}
-                            className="mr-2 inline-block sm:inline-block md:inline-block lg:hidden xl:inline-block"
+                            className="mr-2 hidden sm:inline-block md:inline-block lg:hidden xl:inline-block"
                           />{" "}
                           <div>
-                            <p>{recentSong.title}</p>
-                            <span className="text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-                              {recentSong.artist}
-                            </span>
+                            <FormateTitle text={recentSong.title} />
+                            <div className="text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                              <FormateTitle text={recentSong.artist} />
+                            </div>
                           </div>
                         </div>
                       </div>
