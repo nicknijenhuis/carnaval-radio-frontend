@@ -16,6 +16,20 @@ h1 {
   @apply font-bold text-5xl;
 }
 
+.cms-content h1 {
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+.cms-content h2 {
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.cms-content a {
+  color:blue;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

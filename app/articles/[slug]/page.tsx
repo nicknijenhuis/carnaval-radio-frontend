@@ -43,7 +43,7 @@ const page = async ({ params }: { params: { slug?: string } }) => {
             </h2>
             {formatDate(post.publishedAt)}
           </div>
-          {ReactHtmlParser(post.Content)}
+          <div className="cms-content">{ReactHtmlParser(post.Content)}</div>
           <Image
             src={post.CoverImage.data.attributes.url}
             className="h-48 sm:h-64 md:h-96 lg:h-96 xl:h-96 w-full rounded-lg"

@@ -39,7 +39,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
           >
             {page.Title}
           </h2>
-          <div className="mb-4">{ReactHtmlParser(page.Content)}</div>
+          <div className="cms-content mb-4">{ReactHtmlParser(page.Content)}</div>
         </div>
       )}
     </div>
