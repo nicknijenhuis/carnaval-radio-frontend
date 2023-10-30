@@ -12,13 +12,8 @@ import {
   MdCreditCard,
   MdKeyboardArrowUp,
 } from "react-icons/md";
-import { useSelector, useDispatch } from "react-redux";
-import { setActiveTab } from "../../GlobalState/features/TabSlice";
 import Image from "next/image";
-
-import { RootState } from "../../GlobalState/store";
 import { usePathname, useRouter } from "next/navigation";
-import Link from "next/link";
 
 const IconMapping: any = {
   "<MdHome />": <MdHome />,
@@ -40,9 +35,7 @@ interface props {
 const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
   const path = usePathname();
   const router = useRouter();
-  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const activeTab = useSelector((state: RootState) => state.Tab);
 
   if (item.items.length == 0) {
     return (
@@ -141,14 +134,18 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
           }`}
         >
           {item.items.map((item: any, index: any) => (
-            <Link
-              href={item.path}
+            <div
+              onClick={() => {
+                const path = item.path.split("/");
+                const formatedPath = `${path[path.length - 1]}`;
+                router.push(formatedPath);
+                toogleSideBar && toogleSideBar();
+              }}
               key={"sideBarLink-Sub" + index}
-              onClick={toogleSideBar}
               className="p-2 hover:bg-primaryShade_2"
             >
               {item.title}
-            </Link>
+            </div>
           ))}
         </div>
       </div>

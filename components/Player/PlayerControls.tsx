@@ -9,6 +9,7 @@ import { setPlay, setMuted } from "../../GlobalState/features/PlayerSlice";
 import { GlobalState } from "@/GlobalState/GlobalState";
 import { Track } from "@/types/trackTypes";
 import SongCover from "../SongCover";
+import FormateTitle from "../FormatTitle";
 interface Props {
   currentTrack: Track;
   audioElem: any;
@@ -65,9 +66,11 @@ const PlayerControls = ({
               <h2
                 className={`text-lg font-semibold uppercase text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary`}
               >
-                {currentTrack.title}
+                <FormateTitle text={currentTrack.title} />
               </h2>
-              <p className="text-xs">{currentTrack.artist}</p>
+              <p className="text-xs">
+                <FormateTitle text={currentTrack.artist} />
+              </p>
             </div>
           ) : (
             <div className="flex items-start flex-col sm:hidden md::hidden lg:hidden xl:hidden">
