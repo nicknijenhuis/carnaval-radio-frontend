@@ -7,8 +7,6 @@ import Socials from "./Socials";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
 import SidebarPlayer from "./Sidebar/SidebarPlayer";
-import { useSelector } from "react-redux";
-import { RootState } from "@/GlobalState/store";
 import Link from "next/link";
 
 interface props {
@@ -33,7 +31,7 @@ const MobileHeader = ({ themeData }: props) => {
 
   function toogleSideBar() {
     if (sideBarRef.current) {
-      sideBarRef.current.classList.toggle("translate-y-0");
+      sideBarRef.current.classList.toggle("translate-y-[12%]");
     }
   }
 
@@ -54,8 +52,8 @@ const MobileHeader = ({ themeData }: props) => {
       </div>
       <div
         ref={sideBarRef}
-        className="w-ful absolute top-25 left-0 transform -translate-y-[120%] md:shadow-[0_35px_70px_-15px_rgba(0,0,0,0.1)]
-       z-50 transition duration-500 ease-in-out flex flex-col child:transition-all  bg-white w-full pb-2"
+        className="w-ful absolute top-0 left-0 transform -translate-y-[120%] md:shadow-[0_35px_70px_-15px_rgba(0,0,0,0.1)]
+       z-50 transition duration-500 ease-in-out flex flex-col child:transition-all  bg-white w-full pb-4"
       >
         <div className="flex flex-col p-4 bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9]">
           <div className="flex items-center justify-between mt-4 mx-2">

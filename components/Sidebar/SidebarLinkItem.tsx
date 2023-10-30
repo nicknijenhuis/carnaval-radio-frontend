@@ -17,7 +17,7 @@ import { setActiveTab } from "../../GlobalState/features/TabSlice";
 import Image from "next/image";
 
 import { RootState } from "../../GlobalState/store";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 
 const IconMapping: any = {
@@ -38,6 +38,7 @@ interface props {
 }
 
 const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
+  const path = usePathname();
   const router = useRouter();
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
@@ -48,13 +49,12 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
       <div
         onClick={() => {
           router.push(item.path);
-          dispatch(setActiveTab(index));
           toogleSideBar && toogleSideBar();
         }}
         key={"sideBarLink" + index}
         className="relative cursor-pointer"
       >
-        {index === activeTab.index && (
+        {path == item.path && (
           <Image
             className="h-10 w-2 absolute left-0 top-0 bottom-0 "
             src="/sideCone.png"
@@ -65,21 +65,19 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
         )}
         <div
           className={`flex items-center justify-start p-4 sm:px-4 md:p-2 lg:p-2 xl:p-2 2xl:p-[10px] ml-7 mr-2 rounded-xl ${
-            index === activeTab.index && "bg-primaryShade_2"
+            path == item.path && "bg-primaryShade_2"
           }`}
         >
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2">
               <span
-                className={`text-2xl ${
-                  index === activeTab.index && "text-secondary"
-                } `}
+                className={`text-2xl ${path == item.path && "text-secondary"} `}
               >
                 {item.Icon && IconMapping[item.Icon]}
               </span>
               <p
                 className={`text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary ${
-                  index === activeTab.index &&
+                  path == item.path &&
                   "font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
                 }`}
               >
@@ -94,13 +92,12 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
     return (
       <div
         onClick={() => {
-          dispatch(setActiveTab(index));
           setOpen(!open);
         }}
         key={"sideBarLink" + index}
         className="relative cursor-pointer"
       >
-        {index === activeTab.index && (
+        {path == item.path && (
           <Image
             className="h-10 w-2 absolute left-0 top-0 bottom-0 "
             src="/sideCone.png"
@@ -111,21 +108,19 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
         )}
         <div
           className={`flex items-center justify-start p-4 sm:px-4 md:p-2 lg:p-2 xl:p-2 2xl:p-[10px] ml-7 mr-2 rounded-xl ${
-            index === activeTab.index && "bg-primaryShade_2"
+            path == item.path && "bg-primaryShade_2"
           }`}
         >
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2">
               <span
-                className={`text-2xl ${
-                  index === activeTab.index && "text-secondary"
-                } `}
+                className={`text-2xl ${path == item.path && "text-secondary"} `}
               >
                 {item.Icon && IconMapping[item.Icon]}
               </span>
               <p
                 className={`text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary ${
-                  index === activeTab.index &&
+                  path == item.path &&
                   "font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
                 }`}
               >
