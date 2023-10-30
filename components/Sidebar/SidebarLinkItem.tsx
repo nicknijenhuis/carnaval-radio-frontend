@@ -57,7 +57,7 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
           />
         )}
         <div
-          className={`flex items-center justify-start p-4 sm:px-4 md:p-2 lg:p-2 xl:p-2 2xl:p-[10px] ml-7 mr-2 rounded-xl ${
+          className={`flex items-center justify-start p-4 sm:px-4 md:p-2 lg:p-2 xl:p-2 2xl:p-[10px] ml-7 mr-2 rounded-xl hover:bg-primaryShade_2 ${
             path == item.path && "bg-primaryShade_2"
           }`}
         >
@@ -100,7 +100,7 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
           />
         )}
         <div
-          className={`flex items-center justify-start p-4 sm:px-4 md:p-2 lg:p-2 xl:p-2 2xl:p-[10px] ml-7 mr-2 rounded-xl ${
+          className={`flex items-center justify-start p-4 sm:px-4 md:p-2 lg:p-2 xl:p-2 2xl:p-[10px] ml-7 mr-2 rounded-xl hover:bg-primaryShade_2 ${
             path == item.path && "bg-primaryShade_2"
           }`}
         >
