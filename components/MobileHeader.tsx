@@ -57,7 +57,7 @@ const MobileHeader = ({ themeData }: props) => {
       >
         <div className="flex flex-col p-4 bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9]">
           <div className="flex items-center justify-between mt-4 mx-2">
-            <p>Nu Op De Radio</p>
+            <p>Nu op de radio:</p>
             <Image src="/radio.png" height={20} width={20} alt="radio" />
           </div>
         </div>
