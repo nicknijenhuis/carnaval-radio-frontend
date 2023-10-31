@@ -8,11 +8,6 @@ import { Post } from "@/types/articleTypes";
 const page = async () => {
   const { data } = await client.query({
     query: GET_ALL_ARTICLES,
-    // context: {
-    //   fetchOptions: {
-    //     next: { revalidate: 5 },
-    //   },
-    // },
   });
   let posts: Post[];
   posts = data.articles.data;

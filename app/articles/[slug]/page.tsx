@@ -14,24 +14,40 @@ import { HiMail } from "react-icons/hi";
 import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import ReactHtmlParser from "html-react-parser";
 
+interface Post {
+  Title: string;
+  Content: string;
+  CoverImage: {
+    data: {
+      attributes: {
+        url: string;
+      };
+    };
+  };
+  publishedAt: string;
+}
+
 const page = async ({ params }: { params: { slug?: string } }) => {
   const { data } = await client.query({
     query: GET_SINGLE_POST,
     variables: { slugUrl: params.slug },
   });
 
-  let post = data.articles.data[0].attributes;
+  let post: Post = data.articles.data[0].attributes;
 
   const formatDate = (inputDate: any) => {
     const date = new Date(inputDate);
     const day = date.getUTCDate();
-    const month = date.toLocaleString("en-US", { month: "long" });
+    const month = date.toLocaleString("nl-NL", { month: "long" });
     const year = date.getUTCFullYear();
 
     const formattedDate = `${day} ${month}, ${year}`;
 
     return <span className="text-sm">{formattedDate}</span>;
   };
+
+  const siteBaseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.carnaval-radio.nl";
 
   return (
     <div className="py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8 bg-heroBackground">
@@ -56,30 +72,30 @@ const page = async ({ params }: { params: { slug?: string } }) => {
             <div className="flex space-x-4 items-center">
               {/* facebook site */}
               <FacebookShareButton
-                url={`https://carnavalsradio.nl/articles/${params.slug}`}
+                url={`${siteBaseUrl}/articles/${params.slug}`}
               >
                 <FaFacebook className="text-3xl text-blue-500" />
               </FacebookShareButton>
 
               {/* whatsapp */}
               <WhatsappShareButton
-                url={`https://carnavalsradio.nl/articles/${params.slug}`}
+                url={`${siteBaseUrl}/articles/${params.slug}`}
               >
                 <FaWhatsapp className="text-3xl text-green" />
               </WhatsappShareButton>
               {/* Twitter */}
               <TwitterShareButton
-                url={`https://carnavalsradio.nl/articles/${params.slug}`}
+                url={`${siteBaseUrl}/articles/${params.slug}`}
                 title={"WSSCs"}
               >
                 <FaTwitter className="text-3xl text-blue-400" />
               </TwitterShareButton>
               {/* email */}
               <EmailShareButton
-                url={`https://carnavalsradio.nl/articles/${params.slug}`}
+                url={`${siteBaseUrl}/articles/${params.slug}`}
                 subject={`Carnaval Radio Post ${params.slug}`}
                 body={
-                  "Hey there I am sharing a Carnaval Radio Post with you, have a look at it."
+                  "Hier een leuk artikel van Carnaval Radio, lees het eens en luister mee!"
                 }
               >
                 <HiMail className="text-4xl text-red-500" />
