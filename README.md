@@ -33,8 +33,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Backlog (TODO):
 - The old news should be displayed below the news from strapi. There is a JS file called allNewsArticles.js in projectData containing all the old news.
+  - Detail pages for old news articles
 - Slides on the homepage are not loaded from Strapi, but are hard-coded. It would be nice if we could get them from strapi and fallback to hardcoded data, when not in strapi
 - It should be supported to load HTML (for example scripts and iframes) that are set in Strapi HTML blocks
+- Make a detail page for Limburg24 nieuws, inside the detail page it should then link to Limburg24 instead of directly
+- Save all played songs to a storage somewhere (cron job every 10 min or something, probably not in NextJS)
+  - Then display all played songs instead of just 10
+- Make a detail page for Social nieuws, inside the detail page it should then link to the social instead of directly
+- Refactor so that all news overview pages and social post pages share more code
 - ~~The player still has the refresh issue, when going to sponsoren and then to home, but also going to a working page and then going to 'Over ons' for example (carnaval-radio.netlify.app)~~
 - ~~Change logo to old logo everywhere, it is decided we are not going to use the new one yet (available on request)~~
 - ~~Make a page for Tickets. This is an Iframe loaded from a ticket organisation. Preferably this is set in Strapi, but if not possible, let's make a hard coded page with the iframe.~~
