@@ -11,6 +11,7 @@ import {
   MdKeyboardArrowDown,
   MdCreditCard,
   MdKeyboardArrowUp,
+  MdOutlineArticle,
 } from "react-icons/md";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -24,6 +25,7 @@ const IconMapping: any = {
   "<MdMusicNote />": <MdMusicNote />,
   "<MdBusiness />": <MdBusiness />,
   "<MdCreditCard />": <MdCreditCard />,
+  "<MdOutlineArticle />": <MdOutlineArticle />,
 };
 
 interface props {

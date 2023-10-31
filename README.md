@@ -32,6 +32,7 @@ To learn more about Next.js, take a look at the following resources:
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Backlog (TODO):
+- The links in the menu are no actual links, but javascript push actions. We would like them to be actual links for SEO purposes.
 - Twitch integration, on certain moments, it should be possible to replace the slider with Twitch
 - Add google analytics (example: Bundeling)
 - Heavy caching issue on sponsors page, sometimes it shows latests, but sometimes it goes back to using old version. This could be due to vercel, cloudflare or next configuration
@@ -44,6 +45,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
   - Then display all played songs instead of just 10
 - Make a detail page for Social nieuws, inside the detail page it should then link to the social instead of directly
 - Refactor so that all news overview pages and social post pages share more code
+- Generate a sitemap.xml from the full website content, including pages and articles
 - ~~The player still has the refresh issue, when going to sponsoren and then to home, but also going to a working page and then going to 'Over ons' for example (carnaval-radio.netlify.app)~~
 - ~~Change logo to old logo everywhere, it is decided we are not going to use the new one yet (available on request)~~
 - ~~Make a page for Tickets. This is an Iframe loaded from a ticket organisation. Preferably this is set in Strapi, but if not possible, let's make a hard coded page with the iframe.~~

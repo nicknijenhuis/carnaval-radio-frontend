@@ -74,13 +74,13 @@ function enrichTitle(song: Song) {
 }
 
 function enrichCover(coverUrl: string, song: Song) {
-  if(song.artist !== DefaultCarnavalRadio) {
+  if (song.artist !== DefaultCarnavalRadio) {
     // only enrich our own songs
     return coverUrl;
   }
 
-  if(coverUrl === "https://ams1.reliastream.com/static/scarna00/covers/nocover.png") {
-    coverUrl = "https://res.cloudinary.com/dwzn0q9wj/image/upload/ar_1:1,c_lpad,g_center,w_311,x_0,y_0/v1693308193/large_carvinalnewlogo_b165df6fb7.webp";
+  if (coverUrl === "https://ams1.reliastream.com/static/scarna00/covers/nocover.png") {
+    coverUrl = "https://res.cloudinary.com/dwzn0q9wj/image/upload/c_scale,h_100,w_100/f_webp/logo_square_512_1_78657ec246.jpg";
   }
   return coverUrl;
 }

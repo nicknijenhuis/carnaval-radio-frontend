@@ -6,8 +6,8 @@ import { BiSolidNews } from "react-icons/bi";
 
 const page = async () => {
   const parser: Parser = new Parser();
-
   const feed = await parser.parseURL("https://limburg24.nl/limburg-alaaf/feed");
+  
   return (
     <div className="p-10">
       <div className="flex items-center gap-2 mb-4">
