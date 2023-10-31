@@ -9,6 +9,7 @@ import { setPlay, setMuted } from "../../GlobalState/features/PlayerSlice";
 import { GlobalState } from "@/GlobalState/GlobalState";
 import { Track } from "@/types/trackTypes";
 import SongCover from "../SongCover";
+import FormateTitle from "../FormatTitle";
 interface Props {
   currentTrack: Track;
   audioElem: any;
@@ -47,10 +48,10 @@ const PlayerControls = ({
             />
           </div>
         ) : (
-          <div className="h-16 w-16 rounded-md animate-pulse bg-white"></div>
+          <div className="hidden sm:block md:block lg:block xl:block h-14 w-14 rounded-md animate-pulse bg-white"></div>
         )}
         <div
-          className="flex sm:hidden md:hidden lg:hidden xl:hidden items-center justify-center p-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white cursor-pointer"
+          className="flex sm:hidden md:hidden lg:hidden xl:hidden items-center justify-center p-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white cursor-pointer"
           onClick={() => dispatch(setPlay())}
         >
           {isPlaying ? (
@@ -65,14 +66,16 @@ const PlayerControls = ({
               <h2
                 className={`text-lg font-semibold uppercase text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary`}
               >
-                {currentTrack.title}
+                <FormateTitle text={currentTrack.title} />
               </h2>
-              <p className="text-xs">{currentTrack.artist}</p>
+              <p className="text-xs">
+                <FormateTitle text={currentTrack.artist} />
+              </p>
             </div>
           ) : (
-            <div className="flex items-start flex-col sm:hidden md::hidden lg:hidden xl:hidden">
-              <span className="p-2 h-3 w-4 bg-white rounded-lg"></span>
-              <span className="p-2 h-2 w-2 bg-white rounded-lg"></span>
+            <div className="flex items-start flex-col gap-1 sm:hidden md::hidden lg:hidden xl:hidden">
+              <span className="p-2 h-3 w-24 bg-white rounded-lg"></span>
+              <span className="p-2 h-2 w-20 bg-white rounded-lg"></span>
             </div>
           )}
         </>
@@ -96,9 +99,9 @@ const PlayerControls = ({
             <p className="text-xs">{currentTrack.artist}</p>
           </div>
         ) : (
-          <div className="hidden items-start flex-col sm:flex md::flex lg:flex xl:flex">
-            <span className="p-2 h-3 w-4 bg-white rounded-lg"></span>
-            <span className="p-2 h-2 w-2 bg-white rounded-lg"></span>
+          <div className="hidden items-start flex-col gap-1 sm:flex md::flex lg:flex xl:flex">
+            <span className="p-2 h-6 w-24 bg-white rounded-md"></span>
+            <span className="p-2 h-4 w-20 bg-white rounded-md"></span>
           </div>
         )}
         <div className="hidden sm:flex md::flex lg:flex xl:flex items-center gap-8">
@@ -147,12 +150,14 @@ const PlayerControls = ({
             className="text-4xl text-[#64748b] cursor-pointer"
           />
         )}
-        {!loading && (
+        {!loading ? (
           <SongCover
             url={currentTrack.imageurl}
             artist={currentTrack.artist}
             type="hero"
           />
+        ) : (
+          <div className="inline-block sm:hidden md:hidden lg:hidden xl:hidden h-14 w-14 rounded-md animate-pulse bg-white"></div>
         )}
       </div>
     </div>

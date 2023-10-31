@@ -13,11 +13,11 @@ import sponsors_icon from "../../public/sponsors.png";
 const logoSizeMapping: {
   [id: string]: string;
 } = {
-  S: "w-16 h-8",
-  M: "w-28 h-16",
-  L: "w-32 h-18",
-  XL: "w-40 h-20",
-  XXL: "w-48 h-32",
+  S: "h-8",
+  M: "h-16",
+  L: "h-20",
+  XL: "h-24",
+  XXL: "h-32",
 };
 
 export async function generateMetadata() {
@@ -75,16 +75,16 @@ const page = async () => {
               target="_blank"
               key={"SponsorOnSponsorPage" + x.Id}
               className={`${
-                x.Logo ? "p-6" : "p-4"
-              } flex items-center h- justify-center bg-white rounded-xl`}
+                x.Logo ? "p-6" : "p-4 h-"
+              } flex items-center w-fit justify-center bg-white rounded-xl`}
             >
               {x.Logo ? (
                 <Image
                   key={x.Name}
-                  className={logoClassName}
+                  className={`${logoClassName} object-contain w-full`}
                   src={x.Logo.Url}
                   width={200}
-                  height={150}
+                  height={200}
                   alt={`Logo van ${x.Name}`}
                 />
               ) : (

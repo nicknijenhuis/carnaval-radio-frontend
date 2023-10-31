@@ -27,9 +27,9 @@ const FormateTitle = ({ text }: props) => {
 
   return (
     <>
-      {isTruncated && text.split(" ").length > 4 ? (
+      {isTruncated && text.length > 18 ? (
         <div>
-          {text.split(" ").slice(0, 4).join(" ")}
+          {text.slice(0, 18)}
           <button onClick={toggleText}>...</button>
         </div>
       ) : (
