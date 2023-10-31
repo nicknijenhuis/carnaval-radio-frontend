@@ -1,33 +1,19 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef } from "react";
 import { MdMenu } from "react-icons/md";
 import SidebarLinks from "./Sidebar/SidebarLinks";
 import Socials from "./Socials";
-import { client } from "@/GlobalState/ApiCalls/api.config";
-import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
 import SidebarPlayer from "./Sidebar/SidebarPlayer";
 import Link from "next/link";
 
 interface props {
   themeData: any;
+  menu: any;
 }
 
-const MobileHeader = ({ themeData }: props) => {
+const MobileHeader = ({ themeData, menu }: props) => {
   const sideBarRef = useRef<HTMLDivElement>(null);
-  const [menu, setMenu] = useState<any>();
-
-  const fetchMenu = async () => {
-    const { data } = await client.query({
-      query: GET_UI_NAVIGATION,
-      variables: { menuName: "main" },
-    });
-    setMenu(data.renderNavigation);
-  };
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
 
   function toogleSideBar() {
     if (sideBarRef.current) {

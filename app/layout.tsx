@@ -45,7 +45,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={dosis.className}>
         <Providers>
-          <MobileHeader themeData={themeData} />
+          <MobileHeader themeData={themeData} menu={menu.renderNavigation} />
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-0">
             <div className="col-span-1">
               <SideBar menu={menu.renderNavigation} themeData={themeData} />
