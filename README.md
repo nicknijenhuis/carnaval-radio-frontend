@@ -32,19 +32,21 @@ To learn more about Next.js, take a look at the following resources:
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Backlog (TODO):
-
+- The old news should be displayed below the news from strapi. There is a JS file called allNewsArticles.js in projectData containing all the old news.
+- Slides on the homepage are not loaded from Strapi, but are hard-coded. It would be nice if we could get them from strapi and fallback to hardcoded data, when not in strapi
+- It should be supported to load HTML (for example scripts and iframes) that are set in Strapi HTML blocks
 - ~~The player still has the refresh issue, when going to sponsoren and then to home, but also going to a working page and then going to 'Over ons' for example (carnaval-radio.netlify.app)~~
-- Change logo to old logo everywhere, it is decided we are not going to use the new one yet (available on request)
-- Make a page for Tickets. This is an Iframe loaded from a ticket organisation. Preferably this is set in Strapi, but if not possible, let's make a hard coded page with the iframe.
-- Limburg24 Niews should have a title
-- Limburg24 dates should be in the dutch format
-- Styling of pages and articles that have basic HTML elements in strapi are not displayed correctly (perhaps see Bundeling as an example, here it works)
+- ~~Change logo to old logo everywhere, it is decided we are not going to use the new one yet (available on request)~~
+- ~~Make a page for Tickets. This is an Iframe loaded from a ticket organisation. Preferably this is set in Strapi, but if not possible, let's make a hard coded page with the iframe.~~
+- ~~Limburg24 Niews should have a title~~
+- ~~Limburg24 dates should be in the dutch format~~
+- ~~Styling of pages and articles that have basic HTML elements in strapi are not displayed correctly (perhaps see Bundeling as an example, here it works)~~
 - Bug: There is a bug in the menu, the menu is not loading the latest state of what I have configured in Strapi for some reason
-- Bug: Sponsoren display doesn't look very nice, they should be a bit bigger, always centered and same height
-  - In slider
-  - On sponsor page
-- Bug/Feature: Articles are not sorted on any date. When the Date field is filled it should use that as the date, if it's not filled it should use publishedAt. On the combination of those two fields it should order all the custom news descending
-- Sponsors should be ordered based on the sponsors types it's order. So sponsors from type Prins should display first and Nar last.
+- Bug: ~~Sponsoren display doesn't look very nice, they should be a bit bigger, always centered and same height~~
+  - ~~In slider~~
+  - ~~On sponsor page~~
+- Bug/Feature: ~~Articles are not sorted on any date. When the Date field is filled it should use that as the date, if it's not filled it should use publishedAt. On the combination of those two fields it should order all the custom news descending~~
+- ~~Sponsors should be ordered based on the sponsors types it's order. So sponsors from type Prins should display first and Nar last.~~
 - Heavy caching issue on sponsors page, sometimes it shows latests, but sometimes it goes back to using old version. This could be due to vercel, cloudflare or next configuration
 - ~~When a song has no image configured (e.g the image is nocover.png) it should display a randomly colored block with the initials of the artist in it~~
   - The color should be selected from a preconfigured hard-coded list of colors

@@ -1,8 +1,6 @@
 "use client";
-
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_SINGLE_POST } from "@/GlobalState/ApiCalls/graphql/article_queries";
-
 import Image from "next/image";
 import {
   FacebookShareButton,
