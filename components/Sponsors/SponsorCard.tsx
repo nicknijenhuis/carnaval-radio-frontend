@@ -18,7 +18,7 @@ export default function SponsorCard({ sponsors }: Props) {
     },
     desktop: {
       breakpoint: { max: 1024, min: 800 },
-      items: 4,
+      items: 2,
     },
     tablet: {
       breakpoint: { max: 800, min: 464 },
@@ -45,11 +45,11 @@ export default function SponsorCard({ sponsors }: Props) {
               x.Logo && (
                 <div
                   key={"sponsorCarousel" + i}
-                  className="mx-5 my-10 max-w-[320px] p-8 bg-white rounded-xl"
+                  className="mx-5 my-10 max-w-fit p-6 bg-white rounded-xl"
                 >
                   <a href={x.Link} target="_blank" key={x.Name}>
                     <Image
-                      className="h-24 w-60 inline-block cursor-pointer rounded-lg"
+                      className="h-24 object-contain max-w-full inline-block cursor-pointer rounded-lg"
                       src={x.Logo.Url}
                       width={300}
                       height={250}
