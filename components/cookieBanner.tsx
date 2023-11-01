@@ -32,12 +32,13 @@ export default function CookieBanner() {
       } my-10 mx-auto max-w-max md:max-w-screen-sm fixed bottom-12 left-0 right-0 flex px-3 md:px-4 py-3 justify-between items-center flex-col sm:flex-row gap-4 bg-white rounded-lg shadow`}
     >
       <div className="text-center">
-        <Link href="/info/cookies">
-          <p>
-            We use <span className="font-bold text-sky-400">cookies</span> on
-            our site.
-          </p>
-        </Link>
+        <p>
+          Wij gebruiken{" "}
+          <Link href="/privacy-beleid" className="font-bold text-sky-400">
+            cookies
+          </Link>{" "}
+          on op onze site
+        </p>
       </div>
 
       <div className="flex gap-2">
@@ -45,13 +46,13 @@ export default function CookieBanner() {
           className="px-5 py-2 text-gray-500 rounded-md border-gray-900"
           onClick={() => setCookieConsent(false)}
         >
-          Decline
+          Weigeren
         </button>
         <button
           className="bg-gradient-to-r from-primary to-secondary rounded-lg py-2 px-4 text-white font-semibold"
           onClick={() => setCookieConsent(true)}
         >
-          Allow Cookies
+          Accepteren
         </button>
       </div>
     </div>

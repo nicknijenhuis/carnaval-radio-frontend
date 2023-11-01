@@ -42,11 +42,12 @@ export default async function RootLayout({
   });
 
   const themeData = await fetchThemeData();
+  const G_ID = process.env.GOOGLE_ANALYTICS_ID ?? "G-0000000000";
 
   return (
     <html lang="en">
       <body className={dosis.className}>
-        <GoogleAnalytics GA_MEASUREMENT_ID="G-0000000000" />
+        <GoogleAnalytics GA_MEASUREMENT_ID={G_ID} />
         <Providers>
           <MobileHeader themeData={themeData} menu={menu.renderNavigation} />
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-0">
