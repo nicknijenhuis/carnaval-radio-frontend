@@ -14,7 +14,8 @@ import {
   MdOutlineArticle,
 } from "react-icons/md";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const IconMapping: any = {
   "<MdHome />": <MdHome />,
@@ -36,52 +37,61 @@ interface props {
 
 const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
   const path = usePathname();
-  const router = useRouter();
   const [open, setOpen] = useState(false);
+
+  const formatPath = (p: string) => {
+    const path = p.split("/");
+    return `${path[path.length - 1]}`;
+  };
 
   if (item.items.length == 0) {
     return (
-      <div
+      <Link
+        href={item.path}
         onClick={() => {
-          router.push(item.path);
           toogleSideBar && toogleSideBar();
         }}
         key={"sideBarLink" + index}
-        className="relative cursor"
+        className="relative"
+        legacyBehavior
       >
-        {path == item.path && (
-          <Image
-            className="h-10 w-2 absolute left-0 top-0 bottom-0 "
-            src="/sideCone.png"
-            height={100}
-            width={20}
-            alt=""
-          />
-        )}
-        <div
-          className={`flex items-center justify-start p-4 sm:px-4 md:p-2 lg:p-2 xl:p-2 2xl:p-[10px] ml-7 mr-2 rounded-xl hover:bg-primaryShade_2 ${
-            path == item.path && "bg-primaryShade_2"
-          }`}
-        >
-          <div className="flex items-center justify-between w-full">
-            <div className="flex items-center gap-2">
-              <span
-                className={`text-2xl ${path == item.path && "text-secondary"} `}
-              >
-                {item.Icon && IconMapping[item.Icon]}
-              </span>
-              <p
-                className={`text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary ${
-                  path == item.path &&
-                  "font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
-                }`}
-              >
-                {item.title}
-              </p>
+        <a>
+          {path == item.path && (
+            <Image
+              className="h-10 w-2 absolute left-0 top-0 bottom-0 "
+              src="/sideCone.png"
+              height={100}
+              width={20}
+              alt=""
+            />
+          )}
+          <div
+            className={`flex items-center justify-start p-4 sm:px-4 md:p-2 lg:p-2 xl:p-2 2xl:p-[10px] ml-7 mr-2 rounded-xl hover:bg-primaryShade_2 ${
+              path == item.path && "bg-primaryShade_2"
+            }`}
+          >
+            <div className="flex items-center justify-between w-full">
+              <div className="flex items-center gap-2">
+                <span
+                  className={`text-2xl ${
+                    path == item.path && "text-secondary"
+                  } `}
+                >
+                  {item.Icon && IconMapping[item.Icon]}
+                </span>
+                <p
+                  className={`text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary ${
+                    path == item.path &&
+                    "font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
+                  }`}
+                >
+                  {item.title}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </a>
+      </Link>
     );
   } else {
     return (
@@ -122,8 +132,12 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
                 {item.title}
               </p>
             </div>
-            <span className="text-2xl">
-              {open ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
+            <span
+              className={`text-2xl ${
+                open ? "rotate-180 duration-150" : "rotate-0 duration-150"
+              }`}
+            >
+              <MdKeyboardArrowDown />
             </span>
           </div>
         </div>
@@ -136,18 +150,16 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
           }`}
         >
           {item.items.map((item: any, index: any) => (
-            <div
+            <Link
+              href={formatPath(item.path)}
               onClick={() => {
-                const path = item.path.split("/");
-                const formatedPath = `${path[path.length - 1]}`;
-                router.push(formatedPath);
                 toogleSideBar && toogleSideBar();
               }}
               key={"sideBarLink-Sub" + index}
               className="p-2 hover:bg-primaryShade_2"
             >
               {item.title}
-            </div>
+            </Link>
           ))}
         </div>
       </div>
