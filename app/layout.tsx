@@ -10,6 +10,8 @@ import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
 import { fetchThemeData } from "@/GlobalState/ApiCalls/fetchTheme";
 import FeedbackForm from "./FeedbackForm";
+import GoogleAnalytics from "@/components/GoogleAnaltytics";
+import CookieBanner from "@/components/cookieBanner";
 
 export const metadata: Metadata = {
   title: "Carnaval Radio | 24/7 Vasteloavend Muzieek",
@@ -44,6 +46,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={dosis.className}>
+        <GoogleAnalytics GA_MEASUREMENT_ID="G-0000000000" />
         <Providers>
           <MobileHeader themeData={themeData} menu={menu.renderNavigation} />
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-0">
@@ -52,6 +55,7 @@ export default async function RootLayout({
             </div>
             <div className="col-span-1 sm:col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-5 pb-20">
               {children}
+              <CookieBanner />
               <Footer data={footer.renderNavigation} themeData={themeData} />
               <Player />
             </div>

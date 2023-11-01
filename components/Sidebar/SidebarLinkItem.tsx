@@ -48,14 +48,15 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
     return (
       <Link
         href={item.path}
-        onClick={() => {
-          toogleSideBar && toogleSideBar();
-        }}
         key={"sideBarLink" + index}
         className="relative"
         legacyBehavior
       >
-        <a>
+        <a
+          onClick={() => {
+            toogleSideBar && toogleSideBar();
+          }}
+        >
           {path == item.path && (
             <Image
               className="h-10 w-2 absolute left-0 top-0 bottom-0 "
