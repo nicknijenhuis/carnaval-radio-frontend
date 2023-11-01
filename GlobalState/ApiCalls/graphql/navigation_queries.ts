@@ -19,7 +19,6 @@ export const GET_UI_NAVIGATION = gql`
       }
 } 
 
-
   query ($menuName: String!) {
     renderNavigation(
       navigationIdOrSlug: $menuName

@@ -24,7 +24,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { data } = await client.query({
+  const { data: footer } = await client.query({
     query: GET_UI_NAVIGATION,
     variables: { menuName: "footer" },
   });
@@ -52,7 +52,7 @@ export default async function RootLayout({
             </div>
             <div className="col-span-1 sm:col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-5 pb-20">
               {children}
-              <Footer data={data.renderNavigation} themeData={themeData} />
+              <Footer data={footer.renderNavigation} themeData={themeData} />
               <Player />
             </div>
           </div>
