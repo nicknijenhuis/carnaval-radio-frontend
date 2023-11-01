@@ -46,16 +46,12 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
 
   if (item.items.length == 0) {
     return (
-      <Link
-        href={item.path}
-        key={"sideBarLink" + index}
-        className="relative"
-        legacyBehavior
-      >
+      <Link href={item.path} key={"sideBarLink" + index} legacyBehavior>
         <a
           onClick={() => {
             toogleSideBar && toogleSideBar();
           }}
+          className="relative"
         >
           {path == item.path && (
             <Image
