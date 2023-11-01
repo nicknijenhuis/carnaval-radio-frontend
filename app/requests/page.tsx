@@ -3,10 +3,11 @@ import { Indie } from "../fonts/font";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Verzoekjes | Carnaval Radio | 24/7 Vasteloavend Muzieek",
-    description: "Doe nu je eigen verzoekje! De vastelaoves Radio | 24/7 Vastelaovend Muzieek",
-  };
-  
+  title: "Verzoekjes | Carnaval Radio | 24/7 Vasteloavend Muzieek",
+  description:
+    "Doe nu je eigen verzoekje! De vastelaoves Radio | 24/7 Vastelaovend Muzieek",
+};
+
 const RequestsPage = () => {
   return (
     <>
@@ -104,7 +105,7 @@ const RequestsPage = () => {
             </div>
             <div className="flex items-center justify-between py-2">
               <input
-                className="w-full input rounded-lg bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer"
+                className="w-full input rounded-lg bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline cursor-pointer"
                 type="button"
                 value="Verstuur aanvraag"
                 data-type="submit"

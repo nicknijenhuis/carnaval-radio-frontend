@@ -6,18 +6,17 @@ const socialsData = [
   {
     iconImg: "/icons/facebook.png",
     iconName: "Facebook",
+    link: "https://www.facebook.com/carnavalradio/",
   },
   {
     iconImg: "/icons/instagram.png",
     iconName: "Instagram",
-  },
-  {
-    iconImg: "/icons/twitter.png",
-    iconName: "Twitter",
+    link: "https://www.instagram.com/carnavalradio",
   },
   {
     iconImg: "/icons/youtube.png",
     iconName: "Youtube",
+    link: "https://www.youtube.com/carnavalsradio",
   },
 ];
 
@@ -34,14 +33,16 @@ const Socials = ({ options }: any) => {
       <div className="mt-3 flex items-center justify-between gap-1">
         {socialsData.map((icon, i) => (
           <Link
-            href="/"
+            href={icon.link}
             key={"socialLink" + i}
             className={`p-3 rounded-full ${
               options === "footer" ? "bg-[#eff0f2]" : "bg-white"
             } `}
           >
             <Image
-              className={`${options === "footer" && "filter grayscale"}`}
+              className={`${
+                options === "footer" && "filter grayscale"
+              } hover:scale-95`}
               src={icon.iconImg}
               alt={icon.iconName}
               width={25}

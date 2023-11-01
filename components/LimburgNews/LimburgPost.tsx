@@ -29,7 +29,7 @@ const LimburgPost = ({ item, i }: props) => {
           : i % 4 === 2
           ? "primaryShade_3"
           : "secondayShade_2"
-      }`} rounded-xl p-5 cursor-pointer overflow-hidden space-y-5 w-full`}
+      }`} rounded-xl p-5 overflow-hidden space-y-5 w-full`}
     >
       <h2 className="text-xl font-semibold">{item.title}</h2>
       <div className="container">{ReactHtmlParser(item.content)}</div>

@@ -47,7 +47,7 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
           toogleSideBar && toogleSideBar();
         }}
         key={"sideBarLink" + index}
-        className="relative cursor-pointer"
+        className="relative cursor"
       >
         {path == item.path && (
           <Image
