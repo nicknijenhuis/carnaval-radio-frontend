@@ -56,7 +56,7 @@ const SidebarSponsors = () => {
               key={"sponsorImage" + i}
               width={100}
               height={100}
-              className=" inline-block"
+              className=" inline-block cursor-pointer"
               src={sponsor.sponsorImage}
               alt={sponsor.sponsorName}
             />

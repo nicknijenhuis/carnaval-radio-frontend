@@ -12,7 +12,7 @@ const PostsSkeleten = () => {
               : i == 1
               ? "bg-secondayShade_2"
               : "bg-primaryShade_3"
-          } rounded-xl p-5 overflow-hidden space-y-5 w-[370px]`}
+          } rounded-xl p-5 cursor-pointer overflow-hidden space-y-5 w-[370px]`}
         >
           <div
             className={`${

@@ -32,20 +32,18 @@ To learn more about Next.js, take a look at the following resources:
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Backlog (Now):
-
-- ~~On articles when you hover the cursor is pointer for the full article, but only the button is clickable~~
-  - ~~Please check full site for this unwanted behaviour~~
-  - ~~Only show cursor pointer on things that are actually clickable~~
-- ~~Social links not working in menu and footer (make configurable somewhere, no duplicate config in two places)~~
-  - ~~https://www.facebook.com/carnavalradio/~~
-  - ~~https://www.instagram.com/carnavalradio~~
-  - ~~https://www.youtube.com/carnavalsradio~~
-  - ~~remove twitter~~
-- ~~The links in the menu are no actual links, but javascript push actions. We would like them to be actual links for SEO purposes.~~
+- On articles when you hover the cursor is pointer for the full article, but only the button is clickable
+  - Please check full site for this unwanted behaviour
+  - Only show cursor pointer on things that are actually clickable
+- Social links not working in menu and footer (make configurable somewhere, no duplicate config in two places)
+  - https://www.facebook.com/carnavalradio/
+  - https://www.instagram.com/carnavalradio
+  - https://www.youtube.com/carnavalsradio
+  - remove twitter
+- The links in the menu are no actual links, but javascript push actions. We would like them to be actual links for SEO purposes.
 - Add google analytics (example: Bundeling)
 
 ### Backlog (Upcoming)
-
 - Twitch integration, on certain moments, it should be possible to replace the slider with Twitch
 - Heavy caching issue on sponsors page, sometimes it shows latests, but sometimes it goes back to using old version. This could be due to vercel, cloudflare or next configuration
 - The old news should be displayed below the news from strapi. There is a JS file called allNewsArticles.js in projectData containing all the old news.
