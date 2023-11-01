@@ -14,7 +14,8 @@ import {
   MdOutlineArticle,
 } from "react-icons/md";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const IconMapping: any = {
   "<MdHome />": <MdHome />,
@@ -36,18 +37,22 @@ interface props {
 
 const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
   const path = usePathname();
-  const router = useRouter();
   const [open, setOpen] = useState(false);
+
+  const formatPath = (path: any) => {
+    const newPath = path.split("/");
+    return newPath[newPath.length - 1];
+  };
 
   if (item.items.length == 0) {
     return (
-      <div
+      <Link
+        href={item.path}
         onClick={() => {
-          router.push(item.path);
           toogleSideBar && toogleSideBar();
         }}
         key={"sideBarLink" + index}
-        className="relative cursor-pointer"
+        className="relative"
       >
         {path == item.path && (
           <Image
@@ -81,7 +86,7 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     );
   } else {
     return (
@@ -122,8 +127,12 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
                 {item.title}
               </p>
             </div>
-            <span className="text-2xl">
-              {open ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
+            <span
+              className={`text-2xl ${
+                open ? "rotate-180 duration-200" : "rotate-0 duration-200"
+              }`}
+            >
+              <MdKeyboardArrowDown />
             </span>
           </div>
         </div>
@@ -131,23 +140,21 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
         <div
           className={` ${
             open
-              ? "flex flex-col bg-gray-50 rounded-md ml-8 mr-2 pl-8 pt-2 overflow-hidden"
-              : "hidden"
+              ? "flex flex-col h-auto bg-gray-50 rounded-md ml-8 mr-2 pl-8 pt-2 overflow-hidden duration-150"
+              : "h-0 invisible "
           }`}
         >
           {item.items.map((item: any, index: any) => (
-            <div
+            <Link
+              href={formatPath(item.path)}
               onClick={() => {
-                const path = item.path.split("/");
-                const formatedPath = `${path[path.length - 1]}`;
-                router.push(formatedPath);
                 toogleSideBar && toogleSideBar();
               }}
               key={"sideBarLink-Sub" + index}
               className="p-2 hover:bg-primaryShade_2"
             >
               {item.title}
-            </div>
+            </Link>
           ))}
         </div>
       </div>
