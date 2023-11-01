@@ -32,6 +32,11 @@ To learn more about Next.js, take a look at the following resources:
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Backlog (TODO):
+- Social links not working in menu and footer (make configurable somewhere, no duplicate config in two places)
+  - https://www.facebook.com/carnavalradio/
+  - https://www.instagram.com/carnavalradio
+  - https://www.youtube.com/carnavalsradio
+  - remove twitter
 - The links in the menu are no actual links, but javascript push actions. We would like them to be actual links for SEO purposes.
 - Twitch integration, on certain moments, it should be possible to replace the slider with Twitch
 - Add google analytics (example: Bundeling)
