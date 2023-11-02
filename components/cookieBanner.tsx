@@ -21,9 +21,6 @@ export default function CookieBanner() {
     });
 
     setLocalStorage("cookie_consent", cookieConsent);
-
-    //For Testing
-    console.log("Cookie Consent: ", cookieConsent);
   }, [cookieConsent]);
   return (
     <div

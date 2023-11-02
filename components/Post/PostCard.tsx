@@ -43,7 +43,7 @@ const PostCard = ({ posts }: props) => {
 
       <div className="flex items-center justify-center pt-8">
         <Link
-          href="/articles"
+          href="/nieuwsberichten"
           className="bg-gradient-to-r from-primary to-secondary rounded-lg py-2 px-4 text-white font-semibold"
         >
           Meer nieuws

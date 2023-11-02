@@ -37,7 +37,7 @@ const PostDetails = ({
           (post?.attributes?.Content.length > 180 ? "..." : "")
       )}
       <Link
-        href={`/articles/${post.attributes.Slug}`}
+        href={`/nieuwsberichten/${post.attributes.Slug}`}
         className={`flex items-center justify-center bg-white w-full border-2 ${
           colorIndex === 0
             ? "border-tertiary text-tertiary"

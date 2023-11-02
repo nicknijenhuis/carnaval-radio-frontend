@@ -15,6 +15,14 @@ const nextConfig = {
         source: "/gedraaide-nummers",
         destination: "/recentSongs",
       },
+      {
+        source: '/nieuwsberichten',
+        destination: '/articles',
+      },
+      {
+        source: '/nieuwsberichten/:path*',
+        destination: '/articles/:path*',
+      },
     ];
   },
   async redirects() {

@@ -33,6 +33,7 @@ const page = async () => {
 
   const sponsors: Sponsor[] = data.sponsors.data.map((x: GraphQLSponsor) => {
     return {
+      Id: x.id,
       Name: x.attributes.Name,
       Link: x.attributes.Link,
       Logo: x.attributes.Logo.data

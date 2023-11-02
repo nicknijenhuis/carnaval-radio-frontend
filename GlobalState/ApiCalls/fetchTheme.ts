@@ -8,6 +8,6 @@ export const fetchThemeData = async () => {
     });
     return data.theme.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };

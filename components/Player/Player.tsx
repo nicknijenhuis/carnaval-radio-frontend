@@ -52,7 +52,7 @@ const Player = () => {
       dispatch(setsSongTitle(response.data.data[0].track.title));
       setLoading(false);
     } catch (error) {
-      console.log("something went wrong");
+      console.error("something went wrong");
     }
   };
   useEffect(() => {
