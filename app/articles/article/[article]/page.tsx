@@ -48,27 +48,27 @@ const page = ({ params }: { params: { article: string } }) => {
             <div className="flex space-x-4 items-center">
               {/* facebook site */}
               <FacebookShareButton
-                url={`${siteBaseUrl}/articles/article/${params.article}`}
+                url={`${siteBaseUrl}/nieuwsberichten/article/${params.article}`}
               >
                 <FaFacebook className="text-3xl text-blue-500" />
               </FacebookShareButton>
 
               {/* whatsapp */}
               <WhatsappShareButton
-                url={`${siteBaseUrl}/articles/article/${params.article}`}
+                url={`${siteBaseUrl}/nieuwsberichten/article/${params.article}`}
               >
                 <FaWhatsapp className="text-3xl text-green" />
               </WhatsappShareButton>
               {/* Twitter */}
               <TwitterShareButton
-                url={`${siteBaseUrl}/articles/article/${params.article}`}
+                url={`${siteBaseUrl}/nieuwsberichten/article/${params.article}`}
                 title={"WSSCs"}
               >
                 <FaTwitter className="text-3xl text-blue-400" />
               </TwitterShareButton>
               {/* email */}
               <EmailShareButton
-                url={`${siteBaseUrl}/articles/article/${params.article}`}
+                url={`${siteBaseUrl}/nieuwsberichten/article/${params.article}`}
                 subject={`Carnaval Radio Post ${params.article}`}
                 body={
                   "Hier een leuk artikel van Carnaval Radio, lees het eens en luister mee!"

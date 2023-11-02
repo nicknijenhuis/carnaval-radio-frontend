@@ -12,10 +12,9 @@ const PostDetails = ({
   colorIndex: number;
 }) => {
   const sanitizeHtml = (html: any) => {
-    const newHtml = html.replace(
-      /<img[^>]*\/>|<iframe[^>]*>[\s\S]*?<\/iframe>/g,
-      ""
-    );
+    const newHtml = html
+      .replace(/<img[^>]*\/>|<iframe[^>]*>[\s\S]*?<\/iframe>/g, "")
+      .replace(/<[^>]*>/g, "");
     const HtmlString =
       newHtml.substring(0, 200) + (newHtml.length > 200 ? "..." : "");
     return HtmlString;
