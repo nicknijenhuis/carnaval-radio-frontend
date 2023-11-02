@@ -39,7 +39,7 @@ const Footer = ({ data, themeData }: props) => {
             ))}
         </div>
       </div>
-      <div className="flex flex-col-reverse md:flex-row pt-8 pb-0 sm:pb-16 md:pb-10 lg:pb-8 xl:pb-8 items-center justify-between px-10 gap-2">
+      <div className="flex flex-col-reverse md:flex-row pt-8 pb-0 sm:pb-8 md:pb-6 lg:pb-4 xl:pb-4 items-center justify-between px-10 gap-2">
         <p className=" text-sm sm:text-lg md:text-lg lg:text-lg xl:text-lg">
           {new Date().getFullYear()} - Copyright Stichting Carnaval-Radio.nl. Alle rechten voorbehouden.
         </p>
@@ -58,6 +58,11 @@ const Footer = ({ data, themeData }: props) => {
             </Link>
           </li>
         </ul>
+      </div>
+      <div className="flex flex-col-reverse md:flex-row pb-6 sm:pb-8 md:pb-6 lg:pb-6 xl:pb-6 items-center justify-between px-10 gap-2">
+        <p className="text-sm sm:text-lg md:text-lg lg:text-lg xl:text-lg text-right">
+            Made by <a href="http://www.novana.nl" target="_blank" className="text-[#FF5733]">Novana</a>
+        </p>
       </div>
     </footer>
   );
