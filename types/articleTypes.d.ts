@@ -15,6 +15,10 @@ export interface Post {
     Content: string;
     Date?: any;
   };
+  title?: string;
+  description?: any;
+  slug?: any;
+  pubDate?: any;
 }
 
 export interface singlePost {

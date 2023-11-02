@@ -4,6 +4,7 @@ import PostDetails from "@/components/Post/PostDetails";
 import SectionTitle from "@/components/constants/SectionTitle";
 import news from "../../public/news.png";
 import { Post } from "@/types/articleTypes";
+import { oldArticles } from "@/public/ProjectData/allNewsArticles";
 
 const page = async () => {
   const { data } = await client.query({
@@ -26,15 +27,17 @@ const page = async () => {
 
   const sortedPosts = [...posts].sort(customSort);
 
+  const allPosts = [...sortedPosts, ...oldArticles];
+
   return (
     <div className="py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8">
       <div className="flex justify-between items-center">
         <SectionTitle title="Nieuws" image={news} />
       </div>
 
-      {sortedPosts && (
+      {allPosts && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-3 gap-4 md:gap-6 2xl:gap-10 pt-2 sm:pt-2 md:pt-6 lg:pt-10 xl:pt-10">
-          {sortedPosts.map((post: any, i: any) => (
+          {allPosts.map((post: any, i: any) => (
             <PostDetails
               key={"postDetail" + i}
               post={post}
