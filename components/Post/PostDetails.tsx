@@ -11,6 +11,16 @@ const PostDetails = ({
   post: Post;
   colorIndex: number;
 }) => {
+  const sanitizeHtml = (html: any) => {
+    const newHtml = html.replace(
+      /<img[^>]*\/>|<iframe[^>]*>[\s\S]*?<\/iframe>/g,
+      ""
+    );
+    const HtmlString =
+      newHtml.substring(0, 250) + (newHtml.length > 250 ? "..." : "");
+    return HtmlString;
+  };
+
   if (post.title) {
     return (
       <div
@@ -29,10 +39,7 @@ const PostDetails = ({
         /> */}
         <p className="text-sm text-gray-500">{formateDate(post.pubDate)}</p>
         <p className="text-2xl font-bold">{post.title}</p>
-        {ReactHtmlParser(
-          post.description.substring(0, 250) +
-            (post.description.length > 250 ? "..." : "")
-        )}
+        {ReactHtmlParser(sanitizeHtml(post.description))}
         <Link
           href={`/nieuwsberichten/article/${post.title
             .replace(/[^a-zA-Z0-9\s]/g, "")
