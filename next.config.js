@@ -21,6 +21,10 @@ const nextConfig = {
           destination: '/articles',
         },
         {
+          source: '/nieuws',
+          destination: '/articles',
+        },
+        {
           source: '/nieuwsberichten/:path*',
           destination: '/articles/:path*',
         },
