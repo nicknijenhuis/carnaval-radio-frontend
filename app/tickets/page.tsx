@@ -24,8 +24,8 @@ const page = () => {
           {<MdCreditCard />} <span>Tickets</span>
         </h2>
         <p>Tickets zijn verkraagbaar na 11 november, bereid je goed voor, sla deze pagina alvast op 
-          en houdt facebook en instagram in de gaten.</p>
-        <p>
+          en houd facebook en instagram in de gaten.</p>
+        <p className="my-2">
           <Link
             className="py-2 px-4 text-blue-500 font-semibold underline"
             href="https://shop.eventix.io/1b1b8dc1-710e-4824-81bf-621949e15148/tickets"
