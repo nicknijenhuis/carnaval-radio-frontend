@@ -17,7 +17,7 @@ const PostDetails = ({
       ""
     );
     const HtmlString =
-      newHtml.substring(0, 250) + (newHtml.length > 250 ? "..." : "");
+      newHtml.substring(0, 200) + (newHtml.length > 200 ? "..." : "");
     return HtmlString;
   };
 
@@ -78,10 +78,7 @@ const PostDetails = ({
             : formateDate(post.attributes?.publishedAt)}
         </p>
         <p className="text-2xl font-bold">{post.attributes.Title}</p>
-        {ReactHtmlParser(
-          post?.attributes?.Content.substring(0, 180) +
-            (post?.attributes?.Content.length > 180 ? "..." : "")
-        )}
+        {ReactHtmlParser(sanitizeHtml(post?.attributes?.Content))}
         <Link
           href={`/nieuwsberichten/${post.attributes.Slug}`}
           className={`flex items-center justify-center bg-white w-full border-2 ${
