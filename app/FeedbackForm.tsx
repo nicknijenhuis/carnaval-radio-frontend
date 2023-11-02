@@ -4,7 +4,6 @@ import './feedback.css'
 
 
 const FeedbackForm = () => {
-
   return <>
     <Script src="https://form.jotform.com/static/feedback2.js" strategy='beforeInteractive' />
     <Script src="/assets/js/feedback.js" strategy='beforeInteractive' />

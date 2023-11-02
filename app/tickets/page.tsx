@@ -23,6 +23,8 @@ const page = () => {
         >
           {<MdCreditCard />} <span>Tickets</span>
         </h2>
+        <p>Tickets zijn verkraagbaar na 11 november, bereid je goed voor, sla deze pagina alvast op 
+          en houdt facebook en instagram in de gaten.</p>
         <p>
           <Link
             className="py-2 px-4 text-blue-500 font-semibold underline"
