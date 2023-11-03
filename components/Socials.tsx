@@ -11,7 +11,7 @@ const socialsData = [
   {
     iconImg: "/icons/instagram.png",
     iconName: "Instagram",
-    link: "https://www.instagram.com/carnavalradio",
+    link: "https://www.instagram.com/carnaval.radio",
   },
   {
     iconImg: "/icons/youtube.png",
