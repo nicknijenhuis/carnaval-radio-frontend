@@ -4,7 +4,7 @@ import PostDetails from "@/components/Post/PostDetails";
 import SectionTitle from "@/components/constants/SectionTitle";
 import news from "../../public/news.png";
 import { Post } from "@/types/articleTypes";
-import { oldArticles } from "@/public/ProjectData/allNewsArticles";
+import { oldArticles } from "@/data/allNewsArticles"
 
 const page = async () => {
   const { data } = await client.query({
@@ -26,7 +26,6 @@ const page = async () => {
   }
 
   const sortedPosts = [...posts].sort(customSort);
-
   const allPosts = [...sortedPosts, ...oldArticles];
 
   return (

@@ -1,8 +1,18 @@
 import { client } from "@/GlobalState/ApiCalls/api.config";
-import { GET_SINGLE_PAGE } from "@/GlobalState/ApiCalls/graphql/page_queries";
+import { GET_ALL_SLUGS_FOR_CONTENT_PAGES, GET_SINGLE_PAGE } from "@/GlobalState/ApiCalls/graphql/page_queries";
 import { SingleContentPage } from "@/types/pageTypes";
 import ReactHtmlParser from "html-react-parser";
 import { Indie } from "@/app/fonts/font";
+
+export async function generateStaticParams() {
+  const { data } = await client.query({
+    query: GET_ALL_SLUGS_FOR_CONTENT_PAGES
+  });
+
+  return data.pages.data.map((page: any) => {
+    slug: page.attributes.slug
+  });
+}
 
 export async function generateMetadata({ params }: any) {
   const slug = params.slug;

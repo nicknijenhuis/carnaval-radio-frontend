@@ -1,4 +1,3 @@
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
 export interface Post {
   id: string;
   attributes: {

@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { Post } from "@/types/articleTypes";
 import ReactHtmlParser from "html-react-parser";
-import { formateDate } from "../LimburgNews/LimburgPost";
+import { formatDate } from "@/helpers/formatDate";
 
 const PostDetails = ({
   post,
@@ -36,7 +36,7 @@ const PostDetails = ({
           src={post?.attributes?.CoverImage?.data?.attributes?.url}
           alt=""
         /> */}
-        <p className="text-sm text-gray-500">{formateDate(post.pubDate)}</p>
+        <p className="text-sm text-gray-500">{formatDate(post.pubDate)}</p>
         <p className="text-2xl font-bold">{post.title}</p>
         {ReactHtmlParser(sanitizeHtml(post.description))}
         <Link
@@ -73,8 +73,8 @@ const PostDetails = ({
         />
         <p className="text-sm text-gray-500">
           {post.attributes?.Date
-            ? formateDate(post.attributes?.Date)
-            : formateDate(post.attributes?.publishedAt)}
+            ? formatDate(post.attributes?.Date)
+            : formatDate(post.attributes?.publishedAt)}
         </p>
         <p className="text-2xl font-bold">{post.attributes.Title}</p>
         {ReactHtmlParser(sanitizeHtml(post?.attributes?.Content))}

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.carnaval-radio.nl
+
+# Sitemaps
+Sitemap: https://www.carnaval-radio.nl/sitemap.xml

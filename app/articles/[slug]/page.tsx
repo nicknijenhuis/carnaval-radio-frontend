@@ -1,16 +1,8 @@
-"use client";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_SINGLE_POST } from "@/GlobalState/ApiCalls/graphql/article_queries";
 import Image from "next/image";
-import {
-  FacebookShareButton,
-  WhatsappShareButton,
-  TwitterShareButton,
-  EmailShareButton,
-} from "react-share";
-import { HiMail } from "react-icons/hi";
-import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import ReactHtmlParser from "html-react-parser";
+import ShareButtons from "@/components/Socials/ShareButtons";
 
 interface Post {
   Title: string;
@@ -26,10 +18,19 @@ interface Post {
 }
 
 const page = async ({ params }: { params: { slug?: string } }) => {
+  
+  if(!params.slug) {
+    return null;
+  }
+  
   const { data } = await client.query({
     query: GET_SINGLE_POST,
     variables: { slugUrl: params.slug },
   });
+
+  if(!data.articles?.data?.[0]) {
+    return null;
+  }
 
   let post: Post = data.articles.data[0].attributes;
 
@@ -43,9 +44,6 @@ const page = async ({ params }: { params: { slug?: string } }) => {
 
     return <span className="text-sm">{formattedDate}</span>;
   };
-
-  const siteBaseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.carnaval-radio.nl";
 
   return (
     <div className="py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8 bg-heroBackground">
@@ -65,41 +63,7 @@ const page = async ({ params }: { params: { slug?: string } }) => {
             height={1000}
             alt={post.Title}
           />
-          <div className="flex items-center gap-4">
-            <h3 className="text-lg font-semibold">Share:</h3>
-            <div className="flex space-x-4 items-center">
-              {/* facebook site */}
-              <FacebookShareButton
-                url={`${siteBaseUrl}/articles/${params.slug}`}
-              >
-                <FaFacebook className="text-3xl text-blue-500" />
-              </FacebookShareButton>
-
-              {/* whatsapp */}
-              <WhatsappShareButton
-                url={`${siteBaseUrl}/articles/${params.slug}`}
-              >
-                <FaWhatsapp className="text-3xl text-green" />
-              </WhatsappShareButton>
-              {/* Twitter */}
-              <TwitterShareButton
-                url={`${siteBaseUrl}/articles/${params.slug}`}
-                title={"WSSCs"}
-              >
-                <FaTwitter className="text-3xl text-blue-400" />
-              </TwitterShareButton>
-              {/* email */}
-              <EmailShareButton
-                url={`${siteBaseUrl}/articles/${params.slug}`}
-                subject={`Carnaval Radio Post ${params.slug}`}
-                body={
-                  "Hier een leuk artikel van Carnaval Radio, lees het eens en luister mee!"
-                }
-              >
-                <HiMail className="text-4xl text-red-500" />
-              </EmailShareButton>
-            </div>
-          </div>
+          <ShareButtons slug={`nieuwsberichten/${params.slug}`} />
         </div>
       )}
     </div>

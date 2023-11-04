@@ -1,22 +1,12 @@
 import React from "react";
 import ReactHtmlParser from "html-react-parser";
 import Link from "next/link";
+import { formatDate } from "@/helpers/formatDate";
 
 interface props {
   item: any;
   i: any;
 }
-
-export const formateDate = (isoDate: any) => {
-  const date = new Date(isoDate);
-
-  const day = date.getDate();
-  const month = date.getMonth() + 1; // Months are zero-based
-  const year = date.getFullYear();
-
-  const formatedDate = `${day.toString()}-${month.toString()}-${year}`;
-  return formatedDate;
-};
 
 const LimburgPost = ({ item, i }: props) => {
   return (
@@ -33,7 +23,7 @@ const LimburgPost = ({ item, i }: props) => {
     >
       <h2 className="text-xl font-semibold">{item.title}</h2>
       <div className="container">{ReactHtmlParser(item.content)}</div>
-      <p className="text-sm text-gray-500">{formateDate(item.isoDate)}</p>
+      <p className="text-sm text-gray-500">{formatDate(item.isoDate)}</p>
 
       <Link
         target="_blank"

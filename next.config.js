@@ -3,8 +3,18 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   images: {
-    domains: ["res.cloudinary.com", "ams1.reliastream.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.cloudinary.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.reliastream.com',
+      },
+    ],
   },
+
   async rewrites() {
     return {
       beforeFiles: [
