@@ -46,7 +46,7 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
 
   if (item.items.length == 0) {
     return (
-      <Link href={item.path} key={"sideBarLink" + index} legacyBehavior>
+      <Link href={`/${item.path}`} key={"sideBarLink" + index} legacyBehavior>
         <a
           onClick={() => {
             toogleSideBar && toogleSideBar();
@@ -148,7 +148,7 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
         >
           {item.items.map((item: any, index: any) => (
             <Link
-              href={formatPath(item.path)}
+              href={`/${formatPath(item.path)}`}
               onClick={() => {
                 toogleSideBar && toogleSideBar();
               }}
