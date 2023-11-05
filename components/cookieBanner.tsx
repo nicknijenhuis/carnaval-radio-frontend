@@ -15,10 +15,11 @@ export default function CookieBanner() {
 
   useEffect(() => {
     const newValue = cookieConsent ? "granted" : "denied";
-
-    window.gtag("consent", "update", {
-      analytics_storage: newValue,
-    });
+    if (typeof window !== 'undefined') {
+      window.gtag("consent", "update", {
+        analytics_storage: newValue,
+      });
+    }
 
     setLocalStorage("cookie_consent", cookieConsent);
   }, [cookieConsent]);
@@ -26,7 +27,7 @@ export default function CookieBanner() {
     <div
       className={` ${
         cookieConsent != null ? "hidden" : "flex"
-      } my-10 mx-auto max-w-max md:max-w-screen-sm fixed bottom-12 left-0 right-0 flex px-3 md:px-4 py-3 justify-between items-center flex-col sm:flex-row gap-4 bg-white rounded-lg shadow`}
+      } z-50 my-10 mx-auto max-w-max md:max-w-screen-sm fixed bottom-12 left-0 md:left-1/4 right-0 flex px-3 md:px-4 py-3 justify-between items-center flex-col sm:flex-row gap-4 bg-white rounded-lg shadow`}
     >
       <div className="text-center">
         <p>

@@ -8,6 +8,8 @@ interface ShareButtonsProps {
     slug: string;
 }
 
+export const ShareButtonsFallback = () => null;
+
 const ShareButtons: React.FC<ShareButtonsProps> = ({ slug }) => {
     
   const siteBaseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.carnaval-radio.nl";

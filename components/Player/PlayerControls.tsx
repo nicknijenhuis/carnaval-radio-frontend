@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { GiSpeaker, GiSpeakerOff } from "react-icons//gi";
 import { useDispatch, useSelector } from "react-redux";
@@ -68,9 +67,9 @@ const PlayerControls = ({
               >
                 <FormateTitle text={currentTrack.title} />
               </h2>
-              <p className="text-xs">
+              <div className="text-xs">
                 <FormateTitle text={currentTrack.artist} />
-              </p>
+              </div>
             </div>
           ) : (
             <div className="flex items-start flex-col gap-1 sm:hidden md::hidden lg:hidden xl:hidden">

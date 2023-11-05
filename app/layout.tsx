@@ -1,5 +1,5 @@
-import { Providers } from "@/GlobalState/Providers";
 import "./globals.css";
+import { Providers } from "@/GlobalState/Providers";
 import type { Metadata } from "next";
 import SideBar from "@/components/Sidebar/SideBar";
 import MobileHeader from "@/components/MobileHeader";
@@ -12,6 +12,7 @@ import { fetchThemeData } from "@/GlobalState/ApiCalls/fetchTheme";
 import FeedbackForm from "./FeedbackForm";
 import GoogleAnalytics from "@/components/GoogleAnaltytics";
 import CookieBanner from "@/components/cookieBanner";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Carnaval Radio | 24/7 Vasteloavend Muzieek",
@@ -20,6 +21,8 @@ export const metadata: Metadata = {
     ? "index, follow"
     : "noindex, nofollow",
 };
+
+const GoogleAnalyticsFallback = () => null;
 
 export default async function RootLayout({
   children,
@@ -47,7 +50,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={dosis.className}>
-        <GoogleAnalytics GA_MEASUREMENT_ID={G_ID} />
+        <Suspense fallback={<GoogleAnalyticsFallback />}>
+          <GoogleAnalytics GA_MEASUREMENT_ID={G_ID} />
+          <CookieBanner />
+        </Suspense>
         <Providers>
           <MobileHeader themeData={themeData} menu={menu.renderNavigation} />
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-0">
@@ -56,7 +62,6 @@ export default async function RootLayout({
             </div>
             <div className="col-span-1 sm:col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-5 pb-20">
               {children}
-              <CookieBanner />
               <Footer data={footer.renderNavigation} themeData={themeData} />
               <Player />
             </div>

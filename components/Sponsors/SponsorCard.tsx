@@ -1,14 +1,18 @@
 "use client";
+import "react-multi-carousel/lib/styles.css";
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import { Sponsor } from "../../types/sponsorTypes";
+import { useEffect, useState } from "react";
+import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
+import SponsorsSkeleton from "../LoadingSkeleten/SponsorsSkeleton";
 
 interface Props {
   sponsors?: Sponsor[];
 }
 
 export default function SponsorCard({ sponsors }: Props) {
+  const [loaded, setLoaded] = useState(false);
   const sponsorSorted = sponsors?.sort((a, b) => a.Order - b.Order);
   const responsive = {
     superLargeDesktop: {
@@ -31,14 +35,32 @@ export default function SponsorCard({ sponsors }: Props) {
     },
   };
 
+  useEffect(() => { 
+    setLoaded(true);
+  }, []);
+
   return (
-    <div className="md:max-w-[72vw]">
+    !loaded ? <SponsorsSkeleton /> : <div className="md:max-w-[72vw]">
       <Carousel
         showDots={true}
         responsive={responsive}
         autoPlay={true}
         autoPlaySpeed={2000}
         infinite={true}
+        customLeftArrow={
+          <ArrowFix>
+            <div className="absolute top-[50%] -translate-x-0 translate-y-[-50%] left-0 text-2xl rounded-full p-2 text-white cursor-pointer bg-tertiary border-4 border-white opacity-70">
+              <BsChevronCompactLeft size={25} />
+            </div>
+          </ArrowFix>
+        }
+        customRightArrow={
+          <ArrowFix>
+            <div className="absolute top-[50%] -translate-x-0 translate-y-[-50%] text-2xl rounded-full p-2 right-0 text-white cursor-pointer bg-tertiary border-4 border-white opacity-70">
+              <BsChevronCompactRight size={25} />
+            </div>
+          </ArrowFix>
+        }
       >
         {sponsorSorted &&
           sponsorSorted.map((x: any, i: any) => {
@@ -65,3 +87,8 @@ export default function SponsorCard({ sponsors }: Props) {
     </div>
   );
 }
+
+const ArrowFix = (arrowProps: any) => { 
+  const {carouselState, rtl, fetchPriority, children, ...restArrowProps} = arrowProps; 
+  return ( <span {...restArrowProps}> {children} </span> ); 
+};

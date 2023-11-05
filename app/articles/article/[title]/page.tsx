@@ -1,7 +1,8 @@
 import ReactHtmlParser from "html-react-parser";
 import { oldArticles } from "@/data/allNewsArticles";
-import ShareButtons from "@/components/Socials/ShareButtons";
+import ShareButtons, { ShareButtonsFallback } from "@/components/Socials/ShareButtons";
 import { formatDate } from "@/helpers/formatDate";
+import { Suspense } from "react";
 
 export async function generateStaticParams() {
   return oldArticles.map((post) => ({
@@ -42,7 +43,9 @@ const page = ({ params }: { params: { title: string } }) => {
         height={1000}
         alt={foundPost[0].title}
       /> */}
-          <ShareButtons slug={`nieuwsberichten/article/${params.title}`} />
+          <Suspense fallback={<ShareButtonsFallback />}>
+            <ShareButtons slug={`nieuwsberichten/article/${params.title}`} />
+          </Suspense>
         </div>
       )}
     </div>

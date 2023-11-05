@@ -25,6 +25,8 @@ const page = async () => {
   const { data } = await client.query({
     query: GET_ALL_ARTICLES,
   });
+
+ 
   return (
     <section className="flex-grow">
       <Hero />

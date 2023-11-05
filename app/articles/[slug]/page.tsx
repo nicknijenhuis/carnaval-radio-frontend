@@ -2,7 +2,8 @@ import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_SINGLE_POST } from "@/GlobalState/ApiCalls/graphql/article_queries";
 import Image from "next/image";
 import ReactHtmlParser from "html-react-parser";
-import ShareButtons from "@/components/Socials/ShareButtons";
+import ShareButtons, { ShareButtonsFallback } from "@/components/Socials/ShareButtons";
+import { Suspense } from "react";
 
 interface Post {
   Title: string;
@@ -63,7 +64,9 @@ const page = async ({ params }: { params: { slug?: string } }) => {
             height={1000}
             alt={post.Title}
           />
-          <ShareButtons slug={`nieuwsberichten/${params.slug}`} />
+          <Suspense fallback={<ShareButtonsFallback />}>
+            <ShareButtons slug={`nieuwsberichten/${params.slug}`} />
+          </Suspense>
         </div>
       )}
     </div>
