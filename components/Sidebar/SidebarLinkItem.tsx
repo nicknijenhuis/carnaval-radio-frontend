@@ -148,12 +148,13 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
         >
           {item.items.map((item: any, index: any) => (
             <Link
-              href={formatPath(item.path)}
+              href={`/${formatPath(item.path)}`}
               onClick={() => {
                 toogleSideBar && toogleSideBar();
               }}
               key={"sideBarLink-Sub" + index}
               className="p-2 hover:bg-primaryShade_2"
+              replace
             >
               {item.title}
             </Link>
