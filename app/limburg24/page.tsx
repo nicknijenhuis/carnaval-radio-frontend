@@ -4,10 +4,16 @@ import Parser from "rss-parser";
 import LimburgPost from "@/components/LimburgNews/LimburgPost";
 import { BiSolidNews } from "react-icons/bi";
 
+export async function generateMetadata() {
+  return {
+    title: `Limburg24 | Carnaval Radio | 24/7 Vasteloavend Muzieek`,
+  };
+}
+
 const page = async () => {
   const parser: Parser = new Parser();
   const feed = await parser.parseURL("https://limburg24.nl/limburg-alaaf/feed");
-  
+
   return (
     <div className="p-10">
       <div className="flex items-center gap-2 mb-4">

@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_SINGLE_POST } from "@/GlobalState/ApiCalls/graphql/article_queries";
 import Image from "next/image";
@@ -11,6 +11,15 @@ import {
 import { HiMail } from "react-icons/hi";
 import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import ReactHtmlParser from "html-react-parser";
+
+// TODO rename to generateMetadata, remove "use client" and make it work
+export async function shouldGenerateMetadata({ params }: any) {
+  const articleTitle = params.slug;
+  const capitalize = (str: any) => str.charAt(0).toUpperCase() + str.slice(1);
+  return {
+    title: `${capitalize(articleTitle)} | Carnaval Radio | 24/7 Vasteloavend Muzieek`,
+  };
+}
 
 interface Post {
   Title: string;

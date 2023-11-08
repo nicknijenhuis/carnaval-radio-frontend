@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import {
   FacebookShareButton,
   WhatsappShareButton,
@@ -11,6 +10,15 @@ import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import ReactHtmlParser from "html-react-parser";
 import { formateDate } from "@/components/LimburgNews/LimburgPost";
 import { oldArticles } from "@/public/ProjectData/allNewsArticles";
+
+// TODO rename to generateMetadata, remove "use client" and make it work
+export async function shouldGenerateMetadata({ params }: any) {
+  const articleTitle = params.article;
+  const capitalize = (str: any) => str.charAt(0).toUpperCase() + str.slice(1);
+  return {
+    title: `${capitalize(articleTitle)} | Carnaval Radio | 24/7 Vasteloavend Muzieek`,
+  };
+}
 
 const page = ({ params }: { params: { article: string } }) => {
   const foundPost: any = oldArticles.filter(

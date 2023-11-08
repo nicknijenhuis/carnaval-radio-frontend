@@ -2,7 +2,7 @@ import SocialMediaFeed from "@/components/Socials/SocialFeed";
 
 export async function generateMetadata() {
   return {
-    title: `Instagram Feed | 24/7 Vasteloavend Muzieek`,
+    title: `Social Feed | Carnaval Radio | 24/7 Vasteloavend Muzieek`,
   };
 }
 

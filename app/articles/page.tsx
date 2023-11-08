@@ -6,6 +6,12 @@ import news from "../../public/news.png";
 import { Post } from "@/types/articleTypes";
 import { oldArticles } from "@/public/ProjectData/allNewsArticles";
 
+export async function generateMetadata() {
+  return {
+    title: `Nieuws | Carnaval Radio | 24/7 Vasteloavend Muzieek`,
+  };
+}
+
 const page = async () => {
   const { data } = await client.query({
     query: GET_ALL_ARTICLES,

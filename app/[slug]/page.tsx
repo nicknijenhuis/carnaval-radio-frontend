@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: any) {
   const slug = params.slug;
   const capitalize = (str: any) => str.charAt(0).toUpperCase() + str.slice(1);
   return {
-    title: `${capitalize(slug)} | 24/7 Vasteloavend Muzieek`,
+    title: `${capitalize(slug)} | Carnaval Radio | 24/7 Vasteloavend Muzieek`,
   };
 }
 
