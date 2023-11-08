@@ -12,8 +12,8 @@ import { HiMail } from "react-icons/hi";
 import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import ReactHtmlParser from "html-react-parser";
 
-// TODO rename to generateMetadata, remove "use client" and make it work
-export async function shouldGenerateMetadata({ params }: any) {
+// TODO rename to generateMetadata and add export, remove "use client" and make it work
+async function shouldGenerateMetadata({ params }: any) {
   const articleTitle = params.slug;
   const capitalize = (str: any) => str.charAt(0).toUpperCase() + str.slice(1);
   return {

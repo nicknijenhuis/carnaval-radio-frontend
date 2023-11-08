@@ -11,8 +11,8 @@ import ReactHtmlParser from "html-react-parser";
 import { formateDate } from "@/components/LimburgNews/LimburgPost";
 import { oldArticles } from "@/public/ProjectData/allNewsArticles";
 
-// TODO rename to generateMetadata, remove "use client" and make it work
-export async function shouldGenerateMetadata({ params }: any) {
+// TODO rename to generateMetadata and add export, remove "use client" and make it work
+async function shouldGenerateMetadata({ params }: any) {
   const articleTitle = params.article;
   const capitalize = (str: any) => str.charAt(0).toUpperCase() + str.slice(1);
   return {
