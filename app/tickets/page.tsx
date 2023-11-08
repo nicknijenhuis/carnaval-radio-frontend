@@ -13,11 +13,9 @@ const page = () => {
       // message that was passed from iframe page
       const message = e.data;
 
-      console.log(message);
-
       if (iframe === null) return;
 
-      iframe.style.height = message.height + 100 + 'px';
+      iframe.style.height = message.height + 'px';
       iframe.style.width = message.width + 'px';
     };
 
@@ -37,16 +35,16 @@ const page = () => {
         >
           {<MdCreditCard />} <span>Tickets</span>
         </h2>
-        <p>Klaar voor het feest? Carnaval Radio tickets beschikbaar op zondag 12 november om 13:00 uur! Wachtrij opent om 12:49 uur. Let op: het heeft geen zin om eerder in de wachtrij te staan. Wees er op tijd bij.</p>
+        <p>Klaar voor het feest? Carnaval Radio tickets zijn beschikbaar op zondag 12 november om 13:00 uur! Wachtrij opent om 12:49 uur. Let op: het heeft geen zin om eerder in de wachtrij te staan. Wees er op tijd bij.</p>
 
         <iframe id="child-iframe" src="https://www.ticketcrew.nl/tickets/carnaval-radio?embed=true" width="100%" frameBorder="0" scrolling="no" style={{ overflow: 'hidden' }} allowFullScreen={true}></iframe>
 
         <p className="my-2">
           Zie je hier geen tickets? Check de link: <Link
-            className="py-2 px-4 text-blue-500 font-semibold underline"
+            className="text-blue-500 font-semibold underline"
             href="https://www.ticketcrew.nl/tickets/carnaval-radio"
             target="_blank"
-          >www.ticketcrew.nl/tickets/carnaval-radio
+          >ticketcrew.nl/tickets/carnaval-radio
           </Link>
         </p>
       </div>
