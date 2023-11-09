@@ -3,6 +3,7 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 export interface ContentPage {
   attributes: {
     Slug: string;
+    publishedAt: string;
   }
 }
 

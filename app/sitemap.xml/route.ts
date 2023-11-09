@@ -56,10 +56,11 @@ async function getSitemapUrls() {
         priority: "0.9",
     }));
 
-    const posts = sortedPosts.map(x => {
+    const posts = sortedPosts.map(x => {        
+        const date = x?.attributes?.Date || x?.attributes?.publishedAt || '2011-11-11';
         return ({
             url: `${URL}/nieuwsberichten/${x?.attributes?.Slug}`,
-            lastModified: new Date(x?.attributes?.Date || x?.attributes?.publishedAt)?.toISOString(),
+            lastModified: new Date(date)?.toISOString(),
             changeFreq: "weekly",
             priority: "0.7",
         });
@@ -68,9 +69,11 @@ async function getSitemapUrls() {
     let sortedPages = await getPages();
 
     const pages = sortedPages.map(x => {
+        const date = x?.attributes?.publishedAt || '2011-11-11';
+
         return ({
             url: `${URL}/${x?.attributes?.Slug}`,
-            lastModified: new Date(x?.attributes?.publishedAt)?.toISOString(),
+            lastModified: new Date(date)?.toISOString(),
             changeFreq: "weekly",
             priority: "0.8",
         });
@@ -78,9 +81,10 @@ async function getSitemapUrls() {
 
 
     const oldArticlesUrls = oldArticles.map(x => {
+        const date = x.pubDate || '2011-11-11';
         return ({
             url: `${URL}/nieuwsberichten/article/${x.title.replace(/[^a-zA-Z0-9\s]/g, "").replaceAll(" ", "-")}`,
-            lastModified: new Date(x.pubDate)?.toISOString(),
+            lastModified: new Date(date)?.toISOString(),
             changeFreq: "never",
         });
     });
