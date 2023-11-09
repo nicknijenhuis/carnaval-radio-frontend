@@ -20,4 +20,7 @@ export const slides = [
   {
     url: "/assets/showcase-10.jpg",
   },
+  {
+    url: "/assets/showcase-tickets.jpg",
+  },
 ];
