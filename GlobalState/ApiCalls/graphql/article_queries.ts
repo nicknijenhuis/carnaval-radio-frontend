@@ -14,9 +14,9 @@ query{
 
 export const GET_ALL_ARTICLES = gql`
 query{
-  articles{
+  articles(sort: "Date:desc"){
     data{
-      id,
+      id
       attributes{
         Title
         Slug
