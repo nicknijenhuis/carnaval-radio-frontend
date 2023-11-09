@@ -4,7 +4,7 @@ This is the frontend of Carnaval-Radio.nl, built with Next.JS
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2ee00722-68c7-4cbf-a9d9-813ae8882cf2/deploy-status)](https://app.netlify.com/sites/carnaval-radio/deploys)
 
-![Vercel](https://vercelbadge.vercel.app/api/[carnaval-radio]/[carnaval-radio-frontend])
+![Vercel](https://vercelbadge.vercel.app/api/carnaval-radio/carnaval-radio-frontend)
 
 
 ## Getting Started
