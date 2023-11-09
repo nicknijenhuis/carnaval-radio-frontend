@@ -59,7 +59,7 @@ async function getSitemapUrls() {
     const posts = sortedPosts.map(x => {
         return ({
             url: `${URL}/nieuwsberichten/${x?.attributes?.Slug}`,
-            lastModified: x?.attributes?.Date || x?.attributes?.publishedAt,
+            lastModified: new Date(x?.attributes?.Date || x?.attributes?.publishedAt)?.toISOString(),
             changeFreq: "weekly",
             priority: "0.7",
         });
@@ -70,7 +70,7 @@ async function getSitemapUrls() {
     const pages = sortedPages.map(x => {
         return ({
             url: `${URL}/${x?.attributes?.Slug}`,
-            lastModified: x?.attributes?.Date || x?.attributes?.publishedAt,
+            lastModified: new Date(x?.attributes?.publishedAt)?.toISOString(),
             changeFreq: "weekly",
             priority: "0.8",
         });
@@ -80,7 +80,7 @@ async function getSitemapUrls() {
     const oldArticlesUrls = oldArticles.map(x => {
         return ({
             url: `${URL}/nieuwsberichten/article/${x.title.replace(/[^a-zA-Z0-9\s]/g, "").replaceAll(" ", "-")}`,
-            lastModified: x.pubDate,
+            lastModified: new Date(x.pubDate)?.toISOString(),
             changeFreq: "never",
         });
     });
@@ -101,7 +101,7 @@ async function getPages() {
     const { data } = await client.query({
         query: GET_ALL_SLUGS_FOR_CONTENT_PAGES,
     });
-    let sortedPages: Post[];
+    let sortedPages: { attributes: { Slug: string, publishedAt: string } }[];
     sortedPages = data?.pages?.data;
     return sortedPages;
 }
