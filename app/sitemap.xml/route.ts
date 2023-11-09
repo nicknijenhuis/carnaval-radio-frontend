@@ -6,16 +6,26 @@ import { oldArticles } from "@/public/ProjectData/allNewsArticles";
 
 const URL = process.env.NEXT_PUBLIC_SITE_URL;
 
-function generateSiteMap(sitemapItems: { url: string; lastModified: string }[]) {
+function generateSiteMap(sitemapItems: { url: string; lastModified: string, changeFreq?: string, priority?: string }[]) {
     return `<?xml version="1.0" encoding="UTF-8"?>
+    
    <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+        <loc>${URL}/</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>always</changefreq>
+        <priority>1.0</priority>
+    </url>
      ${sitemapItems
-            .map(({ url, lastModified }) => {
+            .map((x) => {
                 return `
            <url>
-               <loc>${url}</loc>
+               <loc>${x.url}</loc>
+               <lastmod>${x.lastModified}</lastmod>
+               <changefreq>${x.changeFreq ?? "daily"}</changefreq>
+               <priority>${x.priority ?? "0.7"}</priority>
            </url>
-           <lastmod>${lastModified}</lastmod>
+
          `;
             })
             .join("")}
@@ -39,15 +49,19 @@ export async function GET() {
 async function getSitemapUrls() {
     let sortedPosts = await getPosts();
 
-    const routes = ["", "/nieuws", "/sponsoren", "/social", "/recente-nummers", "/Limburg24", "/verzoekjes", "/tickets"].map((route) => ({
+    const routes = ["/nieuws", "/sponsoren", "/social", "/recente-nummers", "/Limburg24", "/verzoekjes", "/tickets"].map((route) => ({
         url: `${URL}${route}`,
         lastModified: new Date().toISOString(),
+        changeFreq: "daily",
+        priority: "0.9",
     }));
 
     const posts = sortedPosts.map(x => {
         return ({
             url: `${URL}/nieuwsberichten/${x?.attributes?.Slug}`,
             lastModified: x?.attributes?.Date || x?.attributes?.publishedAt,
+            changeFreq: "weekly",
+            priority: "0.7",
         });
     });
 
@@ -57,6 +71,8 @@ async function getSitemapUrls() {
         return ({
             url: `${URL}/${x?.attributes?.Slug}`,
             lastModified: x?.attributes?.Date || x?.attributes?.publishedAt,
+            changeFreq: "weekly",
+            priority: "0.8",
         });
     });
 
@@ -64,8 +80,8 @@ async function getSitemapUrls() {
     const oldArticlesUrls = oldArticles.map(x => {
         return ({
             url: `${URL}/nieuwsberichten/article/${x.title.replace(/[^a-zA-Z0-9\s]/g, "").replaceAll(" ", "-")}`,
-            lastModified: x.pubDate
-
+            lastModified: x.pubDate,
+            changeFreq: "never",
         });
     });
 
