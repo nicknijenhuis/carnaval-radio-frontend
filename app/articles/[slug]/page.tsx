@@ -69,9 +69,10 @@ const page = async ({ params }: { params: { slug?: string } }) => {
           <div className="cms-content">{ReactHtmlParser(post.Content)}</div>
           <Image
             src={post.CoverImage.data.attributes.url}
-            className="h-48 sm:h-64 md:h-96 lg:h-96 xl:h-96 w-full rounded-lg"
             width={1000}
             height={1000}
+            sizes="100vw"
+            style={{ width: '100%', height: 'auto' }}
             alt={post.Title}
           />
           <div className="flex items-center gap-4">
