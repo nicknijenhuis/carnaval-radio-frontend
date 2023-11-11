@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { MdCreditCard } from "react-icons/md";
 import { Indie } from "../fonts/font";
 import Link from "next/link";
