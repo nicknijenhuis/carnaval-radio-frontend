@@ -36,7 +36,8 @@ const nextConfig = {
       {
         source: "/beheer",
         destination: process.env.NEXT_PUBLIC_STRAPI_URL + "/admin",
-        
+        permanent: false,
+        basePath: false,
       },
       {
          source: "/start-verkoop",
