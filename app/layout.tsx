@@ -10,8 +10,10 @@ import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_UI_NAVIGATION } from "@/GlobalState/ApiCalls/graphql/navigation_queries";
 import { fetchThemeData } from "@/GlobalState/ApiCalls/fetchTheme";
 import FeedbackForm from "./FeedbackForm";
-import GoogleAnalytics from "@/components/GoogleAnaltytics";
+import GoogleAnalytics from "@/components/Analytics/GoogleAnalytics";
 import CookieBanner from "@/components/cookieBanner";
+import GoogleAnalyticsPageView from "@/components/Analytics/GoogleAnalyticsPageView";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Carnaval Radio | 24/7 Vasteloavend Muzieek",
@@ -42,12 +44,19 @@ export default async function RootLayout({
   });
 
   const themeData = await fetchThemeData();
-  const G_ID = process.env.GOOGLE_ANALYTICS_ID ?? "G-0000000000";
-
+  const GA_MEASUREMENT_ID = process.env.GOOGLE_ANALYTICS_ID;
   return (
     <html lang="en">
       <body className={dosis.className}>
-        <GoogleAnalytics GA_MEASUREMENT_ID={G_ID} />
+        {GA_MEASUREMENT_ID && (
+          <>
+            <GoogleAnalytics GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
+            <Suspense fallback={null}>
+              <GoogleAnalyticsPageView GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
+            </Suspense>
+          </>
+          )
+        }
         <Providers>
           <MobileHeader themeData={themeData} menu={menu.renderNavigation} />
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-0">
