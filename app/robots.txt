@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+Disallow: /_vercel/insights/view
+Sitemap: https://www.carnaval-radio.nl/sitemap.xml
