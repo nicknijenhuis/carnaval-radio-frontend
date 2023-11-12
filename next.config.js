@@ -36,7 +36,12 @@ const nextConfig = {
       {
         source: "/beheer",
         destination: process.env.NEXT_PUBLIC_STRAPI_URL + "/admin",
-        permanent: false,
+        
+      },
+      {
+         source: "/start-verkoop",
+         destination: "https://www.ticketcrew.nl/tickets/carnaval-radio",
+permanent: false,
         basePath: false,
       },
     ];
