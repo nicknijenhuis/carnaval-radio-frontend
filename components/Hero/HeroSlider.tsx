@@ -48,8 +48,8 @@ function HeroSlider() {
             loading="lazy"
             src={item.url}
             className="h-[40vh] sm:h-[50vh] md:h-[50vh] lg:h-[450px] xl:h-[500px] rounded-2xl object-cover max-w-full"
-            height={2000}
-            width={2000}
+            height={1000}
+            width={1000}
             alt={item.url}
           />
         ))}
