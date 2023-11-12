@@ -48,7 +48,7 @@ export default function SponsorCard({ sponsors }: Props) {
                   key={"sponsorCarousel" + i}
                   className="mx-5 my-10 max-w-fit p-6 bg-white rounded-xl"
                 >
-                  <a href={x.Link} target="_blank" key={x.Name}>
+                  <a href={x.Link || '#'} target="_blank" key={x.Name}>
                     <Image
                       className="h-24 object-contain max-w-full inline-block cursor-pointer rounded-lg"
                       src={x.Logo.Url}
