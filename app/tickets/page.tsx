@@ -20,10 +20,7 @@ const page = () => {
         >
           {<MdCreditCard />} <span>Tickets</span>
         </h2>
-        <p>Klaar voor het feest? Carnaval Radio tickets zijn beschikbaar op zondag 12 november om 13:00 uur! Wachtrij opent om 12:49 uur. Let op: het heeft geen zin om eerder in de wachtrij te staan. Wees er op tijd bij.</p>
-
-        <IframeComponent src="https://www.ticketcrew.nl/tickets/carnaval-radio?embed=true" />
-
+        <p>Reguliere Carnaval Radio tickets zijn niet meer beschikbaar.</p>
         <p className="my-2">
           Zie je hier geen tickets? Check de link: <Link
             className="text-blue-500 font-semibold underline"
