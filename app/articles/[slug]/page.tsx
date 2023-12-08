@@ -11,6 +11,7 @@ import {
 import { HiMail } from "react-icons/hi";
 import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import ReactHtmlParser from "html-react-parser";
+import NotFoundPage from "@/components/NotFoundPage";
 
 // TODO rename to generateMetadata and add export, remove "use client" and make it work
 async function shouldGenerateMetadata({ params }: any) {
@@ -40,7 +41,10 @@ const page = async ({ params }: { params: { slug?: string } }) => {
     variables: { slugUrl: params.slug },
   });
 
-  let post: Post = data.articles.data[0].attributes;
+  let post: Post = data.articles?.data?.[0]?.attributes;
+
+  if(!post) 
+    return <NotFoundPage />;
 
   const formatDate = (inputDate: any) => {
     const date = new Date(inputDate);

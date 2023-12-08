@@ -10,6 +10,7 @@ import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import ReactHtmlParser from "html-react-parser";
 import { formateDate } from "@/components/LimburgNews/LimburgPost";
 import { oldArticles } from "@/public/ProjectData/allNewsArticles";
+import { useRouter } from "next/router";
 
 // TODO rename to generateMetadata and add export, remove "use client" and make it work
 async function shouldGenerateMetadata({ params }: any) {
@@ -26,23 +27,32 @@ const page = ({ params }: { params: { article: string } }) => {
       p.title.replace(/[^a-zA-Z0-9\s]/g, "").replaceAll(" ", "-") ===
       params.article
   );
+  const post = foundPost[0];
+
+  const router = useRouter();
+  
+  if(!post) 
+  {
+    router.push("/niewsberichten")
+  }
 
   const siteBaseUrl =
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.carnaval-radio.nl";
+
   return (
     <div className="py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8 bg-heroBackground">
-      {foundPost[0] && (
+      {post && (
         <div className="flex flex-col gap-4 max-w-3xl p-4 rounded-3xl bg-white">
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-semibold text-primary">
-              {foundPost[0].title}
+              {post.title}
             </h2>
             <div className="w-1/4 text-right">
-              {formateDate(foundPost[0].pubDate)}
+              {formateDate(post.pubDate)}
             </div>
           </div>
           <div className="cms-content">
-            {ReactHtmlParser(foundPost[0].description)}
+            {ReactHtmlParser(post.description)}
           </div>
           {/* <Image
         src={foundPost[0].CoverImage.url}

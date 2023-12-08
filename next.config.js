@@ -34,6 +34,31 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/post/:path*.aspx',
+        destination: '/nieuwsberichten/article/:path*',
+        permanent: false,
+      },
+      {
+        source: '/:path*.aspx',
+        destination: '/:path*',
+        permanent: false,
+      },
+      {
+        source: '/audioplayer',
+        destination: '/luisteren',
+        permanent: false,
+      },
+      {
+        source: '/recente-nummers',
+        destination: '/gedraaide-nummers',
+        permanent: false,
+      },
+      {
+        source: '/recentenummers',
+        destination: '/gedraaide-nummers',
+        permanent: false,
+      },
+      {
         source: "/beheer",
         destination: process.env.NEXT_PUBLIC_STRAPI_URL + "/admin",
         permanent: false,
@@ -42,7 +67,7 @@ const nextConfig = {
       {
          source: "/start-verkoop",
          destination: "https://www.ticketcrew.nl/tickets/carnaval-radio",
-permanent: false,
+        permanent: false,
         basePath: false,
       },
     ];

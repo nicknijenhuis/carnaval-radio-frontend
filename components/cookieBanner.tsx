@@ -16,6 +16,9 @@ export default function CookieBanner() {
   useEffect(() => {
     const newValue = cookieConsent ? "granted" : "denied";
 
+
+    if(typeof window === "undefined" || !window.gtag ) return;
+
     window.gtag("consent", "update", {
       analytics_storage: newValue,
     });
