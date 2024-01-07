@@ -1,18 +1,17 @@
-"use client"
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_SINGLE_POST } from "@/GlobalState/ApiCalls/graphql/article_queries";
 import Image from "next/image";
 import ReactHtmlParser from "html-react-parser";
 import NotFoundPage from "@/components/NotFoundPage";
 
-// TODO rename to generateMetadata and add export, remove "use client" and make it work
-async function shouldGenerateMetadata({ params }: any) {
+export async function generateMetadata({ params }: any) {
   const articleTitle = params.slug;
   const capitalize = (str: any) => str.charAt(0).toUpperCase() + str.slice(1);
   return {
     title: `${capitalize(articleTitle)} | Carnaval Radio | 24/7 Vasteloavend Muzieek`,
   };
 }
+
 import ShareButtons, { ShareButtonsFallback } from "@/components/Socials/ShareButtons";
 import { Suspense } from "react";
 

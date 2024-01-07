@@ -21,6 +21,7 @@ export const fetchSponsors = async () => {
         sponsorTypes.map((st: any) => {
             if (st.Id == x.attributes.Type.data.id) {
                 const sponsorSingle = {
+                    Id: x.id,
                     Name: x.attributes.Name,
                     Link: x.attributes.Link,
                     Logo: x.attributes.Logo?.data

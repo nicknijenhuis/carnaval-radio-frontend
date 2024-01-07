@@ -15,6 +15,7 @@ export const GET_ALL_SPONSORS = gql`
     # filters: { ActiveFrom: { gt: $now }, ActiveUntil: { lt: $now } }
     sponsors(pagination: { limit: 100 }) {
       data {
+        id
         attributes {
           Name
           Link
