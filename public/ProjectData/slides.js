@@ -1,7 +1,7 @@
 const cloudinaryUrl = "https://res.cloudinary.com/dwzn0q9wj/image/upload/w_1000/q_auto/f_auto/";
 export const slides = [
   {
-    url: cloudinaryUrl + "showcase/yaha5xetrhyx7bjr9vpy.jpg",
+    url: cloudinaryUrl + "showcase/soohskjyjuompkwrowfa.jpg",
   },
   {
     url: cloudinaryUrl + "showcase/czvwhrwbbwfuonsswzsp.jpg",
