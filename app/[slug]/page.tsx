@@ -3,6 +3,7 @@ import { GET_ALL_SLUGS_FOR_CONTENT_PAGES, GET_SINGLE_PAGE } from "@/GlobalState/
 import { SingleContentPage } from "@/types/pageTypes";
 import ReactHtmlParser from "html-react-parser";
 import { Indie } from "@/app/fonts/font";
+import NotFoundPage from "@/components/NotFoundPage";
 
 export async function generateStaticParams() {
   const { data } = await client.query({
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: any) {
   const slug = params.slug;
   const capitalize = (str: any) => str.charAt(0).toUpperCase() + str.slice(1);
   return {
-    title: `${capitalize(slug)} | 24/7 Vasteloavend Muzieek`,
+    title: `${capitalize(slug)} | Carnaval Radio | 24/7 Vasteloavend Muzieek`,
   };
 }
 
@@ -35,10 +36,10 @@ const page = async ({ params }: { params: { slug: string } }) => {
   });
 
   let page: SingleContentPage;
-  page = data.pages.data?.[0]?.attributes ?? {
-    Title: "404",
-    Content: "Pagina niet gevonden",
-  };
+  page = data.pages.data?.[0]?.attributes;
+
+  if (!page)
+    return <NotFoundPage />;
 
   return (
     <div className="py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8 bg-heroBackground">

@@ -1,19 +1,16 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { MdCreditCard } from "react-icons/md";
 import { Indie } from "../fonts/font";
-import Script from "next/script";
 import Link from "next/link";
+import IframeComponent from "@/components/constants/Iframe";
+
+export async function generateMetadata() {
+  return {
+    title: `Tickets | Carnaval-Radio.nl`,
+  };
+}
 
 const page = () => {
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
 
   return (
     <div className="py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8 bg-heroBackground">
@@ -23,30 +20,15 @@ const page = () => {
         >
           {<MdCreditCard />} <span>Tickets</span>
         </h2>
-        <p>Tickets zijn verkraagbaar na 11 november, bereid je goed voor, sla deze pagina alvast op 
-          en houd facebook en instagram in de gaten.</p>
+        <p>Reguliere Carnaval Radio tickets zijn niet meer beschikbaar.</p>
         <p className="my-2">
-          <Link
-            className="py-2 px-4 text-blue-500 font-semibold underline"
-            href="https://shop.eventix.io/1b1b8dc1-710e-4824-81bf-621949e15148/tickets"
+          Zie je hier geen tickets? Check de link: <Link
+            className="text-blue-500 font-semibold underline"
+            href="https://www.ticketcrew.nl/tickets/carnaval-radio"
             target="_blank"
-          >
-            Klik hier om de ticketshop in een nieuw tabblad te openen.
+          >ticketcrew.nl/tickets/carnaval-radio
           </Link>
         </p>
-        <>
-          <div
-            id="shop-frame"
-            className="max-w-[600px] my-0 mx-auto"
-            data-url="https://shop.eventix.io/1b1b8dc1-710e-4824-81bf-621949e15148"
-          >
-            &nbsp;
-          </div>
-          <Script
-            strategy="afterInteractive"
-            src="https://shop.eventix.io/build/integrate.js"
-          ></Script>
-        </>
       </div>
     </div>
   );

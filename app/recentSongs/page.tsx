@@ -21,7 +21,7 @@ const page = () => {
     }
   };
   useEffect(() => {
-    document.title = "Recente nummers | 24/7 Vasteloavend Muzieek";
+    document.title = "Recente nummers | Carnaval Radio | 24/7 Vasteloavend Muzieek";
     fetchTracks();
     const interval = setInterval(fetchTracks, 60000);
     return () => clearInterval(interval);

@@ -17,13 +17,33 @@ h1 {
 }
 
 .cms-content h1 {
+  padding-top:5px;
   font-size: 16pt;
   font-weight: bold;
 }
 
 .cms-content h2 {
+  padding-top:5px;
   font-size: 14pt;
   font-weight: bold;
+}
+
+.cms-content h3 {
+  padding-top:5px;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.cms-content > ul
+{
+    list-style: initial;
+    margin: initial;
+    padding-left:40px;
+}
+
+.cms-content > li
+{
+    display: list-item;
 }
 
 .cms-content a {

@@ -1,6 +1,7 @@
 export interface ContentPage {
   attributes: {
     Slug: string;
+    publishedAt: string;
   }
 }
 

@@ -31,7 +31,9 @@ const Player = () => {
       query: GET_STREAM_DATA,
     });
 
-    setTrackUrl(data.streams.data[0].attributes.Link);
+    const streamLink = data?.streams?.data?.[0]?.attributes?.Link;
+
+    setTrackUrl(streamLink ?? process.env.NEXT_PUBLIC_STREAM_FALLBACK);
   };
 
   const updateTrackInfo = () => {

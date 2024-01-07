@@ -1,7 +1,18 @@
+"use client"
 import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_SINGLE_POST } from "@/GlobalState/ApiCalls/graphql/article_queries";
 import Image from "next/image";
 import ReactHtmlParser from "html-react-parser";
+import NotFoundPage from "@/components/NotFoundPage";
+
+// TODO rename to generateMetadata and add export, remove "use client" and make it work
+async function shouldGenerateMetadata({ params }: any) {
+  const articleTitle = params.slug;
+  const capitalize = (str: any) => str.charAt(0).toUpperCase() + str.slice(1);
+  return {
+    title: `${capitalize(articleTitle)} | Carnaval Radio | 24/7 Vasteloavend Muzieek`,
+  };
+}
 import ShareButtons, { ShareButtonsFallback } from "@/components/Socials/ShareButtons";
 import { Suspense } from "react";
 
@@ -33,7 +44,10 @@ const page = async ({ params }: { params: { slug?: string } }) => {
     return null;
   }
 
-  let post: Post = data.articles.data[0].attributes;
+  let post: Post = data.articles?.data?.[0]?.attributes;
+
+  if(!post) 
+    return <NotFoundPage />;
 
   const formatDate = (inputDate: any) => {
     const date = new Date(inputDate);
@@ -59,9 +73,10 @@ const page = async ({ params }: { params: { slug?: string } }) => {
           <div className="cms-content">{ReactHtmlParser(post.Content)}</div>
           <Image
             src={post.CoverImage.data.attributes.url}
-            className="h-48 sm:h-64 md:h-96 lg:h-96 xl:h-96 w-full rounded-lg"
             width={1000}
             height={1000}
+            sizes="100vw"
+            style={{ width: '100%', height: 'auto' }}
             alt={post.Title}
           />
           <Suspense fallback={<ShareButtonsFallback />}>

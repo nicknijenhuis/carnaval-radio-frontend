@@ -22,7 +22,7 @@ const logoSizeMapping: {
 
 export async function generateMetadata() {
   return {
-    title: `Sponsoren | 24/7 Vasteloavend Muzieek`,
+    title: `Sponsoren | Carnaval Radio | 24/7 Vasteloavend Muzieek`,
   };
 }
 
@@ -38,10 +38,10 @@ const page = async () => {
       Link: x.attributes.Link,
       Logo: x.attributes.Logo.data
         ? {
-            Width: x.attributes.Logo.data.attributes.width,
-            Height: x.attributes.Logo.data.attributes.height,
-            Url: x.attributes.Logo.data.attributes.url,
-          }
+          Width: x.attributes.Logo.data.attributes.width,
+          Height: x.attributes.Logo.data.attributes.height,
+          Url: x.attributes.Logo.data.attributes.url,
+        }
         : null,
       TypeID: x.attributes.Type.data.id,
     } as Sponsor;
@@ -75,9 +75,8 @@ const page = async () => {
               href={x.Link}
               target="_blank"
               key={"SponsorOnSponsorPage" + x.Id}
-              className={`${
-                x.Logo ? "p-6" : "p-4 h-"
-              } flex items-center w-fit justify-center bg-white rounded-xl`}
+              className={`${x.Logo ? "p-6" : "p-4 h-"
+                } flex items-center w-fit justify-center bg-white rounded-xl`}
             >
               {x.Logo ? (
                 <Image

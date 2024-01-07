@@ -6,6 +6,7 @@ export const GET_ALL_SLUGS_FOR_CONTENT_PAGES = gql`
       data {
         attributes {
           Slug
+          publishedAt
         }
       }
     }

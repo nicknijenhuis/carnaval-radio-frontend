@@ -4,7 +4,7 @@ import { FaFacebook } from "react-icons/fa";
 
 export async function generateMetadata() {
   return {
-    title: `Facebook Feed | 24/7 Vasteloavend Muzieek`,
+    title: `Facebook Feed | Carnaval Radio | 24/7 Vasteloavend Muzieek`,
   };
 }
 
