@@ -25,6 +25,10 @@ const nextConfig = {
           destination: '/articles',
         },
         {
+          source: '/socials',
+          destination: '/social',
+        },
+        {
           source: '/nieuwsberichten/:path*',
           destination: '/articles/:path*',
         },
