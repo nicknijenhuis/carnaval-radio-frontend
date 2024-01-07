@@ -2,7 +2,7 @@ import { client } from "@/GlobalState/ApiCalls/api.config";
 import { GET_ALL_ARTICLES } from "@/GlobalState/ApiCalls/graphql/article_queries";
 import { GET_ALL_SLUGS_FOR_CONTENT_PAGES } from "@/GlobalState/ApiCalls/graphql/page_queries";
 import { Post } from "@/types/articleTypes";
-import { oldArticles } from "@/public/ProjectData/allNewsArticles";
+import { oldArticles } from "@/data/allNewsArticles";
 
 const URL = process.env.NEXT_PUBLIC_SITE_URL;
 
