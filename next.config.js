@@ -39,6 +39,10 @@ const nextConfig = {
           destination: '/social',
         },
         {
+          source: '/nieuwsberichten/o/:path*',
+          destination: '/articles/article/:path*',
+        },
+        {
           source: '/nieuwsberichten/:path*',
           destination: '/articles/:path*',
         },

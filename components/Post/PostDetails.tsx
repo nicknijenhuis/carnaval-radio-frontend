@@ -40,7 +40,7 @@ const PostDetails = ({
         <p className="text-2xl font-bold">{post.title}</p>
         {ReactHtmlParser(sanitizeHtml(post.description))}
         <Link
-          href={`/nieuwsberichten/article/${post.title
+          href={`/nieuwsberichten/o/${post.title
             .replace(/[^a-zA-Z0-9\s]/g, "")
             .replaceAll(" ", "-")}`}
           className={`flex items-center justify-center bg-white w-full border-2 ${

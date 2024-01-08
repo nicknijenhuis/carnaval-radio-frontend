@@ -83,7 +83,7 @@ async function getSitemapUrls() {
     const oldArticlesUrls = oldArticles.map(x => {
         const date = x.pubDate || '2011-11-11';
         return ({
-            url: `${URL}/nieuwsberichten/article/${x.title.replace(/[^a-zA-Z0-9\s]/g, "").replaceAll(" ", "-")}`,
+            url: `${URL}/nieuwsberichten/o/${x.title.replace(/[^a-zA-Z0-9\s]/g, "").replaceAll(" ", "-")}`,
             lastModified: new Date(date)?.toISOString(),
             changeFreq: "never",
         });

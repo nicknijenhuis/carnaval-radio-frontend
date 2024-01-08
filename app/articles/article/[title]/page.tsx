@@ -44,7 +44,7 @@ const page = ({ params }: { params: { title: string } }) => {
         alt={foundPost[0].title}
       /> */}
           <Suspense fallback={<ShareButtonsFallback />}>
-            <ShareButtons slug={`nieuwsberichten/article/${params.title}`} />
+            <ShareButtons slug={`nieuwsberichten/o/${params.title}`} />
           </Suspense>
         </div>
       )}
