@@ -20,7 +20,7 @@ const nextConfig = {
       beforeFiles: [
         {
           source: "/verzoekjes",
-          destination: "/requests",
+          destination: "/requests/whatsapp",
         },
         {
           source: "/gedraaide-nummers",
