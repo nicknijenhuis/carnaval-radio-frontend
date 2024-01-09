@@ -114,7 +114,7 @@ const RequestForm: React.FC = () => {
                     Artiest
                 </label>
                 <input
-                    className="w-full input border-2 border-black rounded-lg  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="bg-white w-full input border-2 border-black rounded-lg  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="artist"
                     type="text"
                     name="request[artist]"
@@ -131,7 +131,7 @@ const RequestForm: React.FC = () => {
                     Titel *
                 </label>
                 <input
-                    className="w-full input border-2 border-black rounded-lg  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="bg-white w-full input border-2 border-black rounded-lg  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="title"
                     type="text"
                     required
@@ -150,7 +150,7 @@ const RequestForm: React.FC = () => {
                     Je naam
                 </label>
                 <input
-                    className="w-full input border-2 border-black rounded-lg  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="bg-white w-full input border-2 border-black rounded-lg  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="sender"
                     type="text"
                     name="request[sender]"
@@ -167,7 +167,7 @@ const RequestForm: React.FC = () => {
                     Voor wie of waarom wil je dit nummer aanvragen?
                 </label>
                 <textarea
-                    className="w-full input border-2 border-black rounded-lg  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="bg-white w-full input border-2 border-black rounded-lg  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="dedication"
                     name="request[dedication]"
                     maxLength={200}
