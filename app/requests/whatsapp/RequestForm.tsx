@@ -92,6 +92,8 @@ const RequestForm: React.FC = () => {
                     <p className="text-gray-700 text-sm mb-4">
                         Optioneel: Als je ons wilt steunen, kun je een donatie doen. 
                         Carnaval Radio wordt volledig gerund door vrijwilligers en elke bijdrage wordt zeer gewaardeerd!
+                        De knop hieronder brengt je naar een betaalverzoek.
+                        Bedankt!
                     </p>
                     <button className="button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg flex items-center"
                         onClick={openPayment}>
