@@ -23,22 +23,27 @@ interface RadioTrackItem {
 
 
 export async function fetchSongs(): Promise<RecentSong[]> {
-  const response = await axios.get(
-    "https://ams1.reliastream.com/recentfeed/scarna00/json"
-  );
-  const modifiedTracks: RecentSong[] = response.data.items.map((item: RadioTrackItem) => {
-    const song = splitTitle(item.title);
-    const modifiedSong = enrichTitle(song);
-    const modifiedCover = enrichCover(item.enclosure.url, song);
+  try {
+    const response = await axios.get(
+      "https://ams1.reliastream.com/recentfeed/scarna00/json"
+    );
+    const modifiedTracks: RecentSong[] = response.data.items.map((item: RadioTrackItem) => {
+      const song = splitTitle(item.title);
+      const modifiedSong = enrichTitle(song);
+      const modifiedCover = enrichCover(item.enclosure.url, song);
 
-    return {
-      ...modifiedSong,
-      date: item.date,
-      url: modifiedCover,
-    };
-  });
+      return {
+        ...modifiedSong,
+        date: item.date,
+        url: modifiedCover,
+      };
+    });
 
-  return modifiedTracks;
+    return modifiedTracks;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 }
 
 export function splitTitle(title: string) {

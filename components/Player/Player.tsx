@@ -27,13 +27,17 @@ const Player = () => {
   const [loading, setLoading] = useState(true);
 
   const fetchStream = async () => {
-    const { data } = await client.query({
-      query: GET_STREAM_DATA,
-    });
+    try {
+      const { data } = await client.query({
+        query: GET_STREAM_DATA,
+      });
 
-    const streamLink = data?.streams?.data?.[0]?.attributes?.Link;
+      const streamLink = data?.streams?.data?.[0]?.attributes?.Link;
 
-    setTrackUrl(streamLink ?? process.env.NEXT_PUBLIC_STREAM_FALLBACK);
+      setTrackUrl(streamLink || process.env.NEXT_PUBLIC_STREAM_FALLBACK);
+    } catch (error) {
+      console.error("Failed to fetch stream:", error);
+    }
   };
 
   const updateTrackInfo = () => {
@@ -54,9 +58,17 @@ const Player = () => {
       dispatch(setsSongTitle(response.data.data[0].track.title));
       setLoading(false);
     } catch (error) {
-      console.error("something went wrong");
+      setCurrentTrack({
+        title: 'Veer hubbe un issue',
+        artist: unknownArtist,
+        imageurl: "https://res.cloudinary.com/dwzn0q9wj/image/upload/c_thumb,w_200,g_face/v1672311200/logo_square_512_1_78657ec246.png"
+      });
+      dispatch(setsSongTitle("Veer hubbe un issue"));
+      console.error("Failed to fetch track data:", error);
+      setLoading(false);
     }
   };
+
   useEffect(() => {
     fetchStream();
     fetchTrackData();
@@ -66,7 +78,9 @@ const Player = () => {
 
   useEffect(() => {
     if (isPlaying) {
-      audioElem.current?.play();
+      audioElem.current?.play().catch((error) => {
+        console.error("Failed to play audio:", error);
+      });
     } else {
       audioElem.current?.pause();
     }
