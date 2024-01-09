@@ -22,6 +22,7 @@ export type GraphQLSponsorType = {
     Name: string;
     Order: number;
     LogoSize: string;
+    ShowOnHomePage: boolean;
   };
 };
 
@@ -39,6 +40,7 @@ export interface Sponsor {
   Link?: string;
   TypeID?: string;
   Order: number;
+  ShowOnHomePage: boolean;
 }
 
 export interface Image {

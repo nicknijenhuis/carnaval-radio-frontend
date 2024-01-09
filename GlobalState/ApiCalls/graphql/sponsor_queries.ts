@@ -9,6 +9,7 @@ export const GET_ALL_SPONSORS = gql`
           Name
           Order
           LogoSize
+          ShowOnHomePage
         }
       }
     }

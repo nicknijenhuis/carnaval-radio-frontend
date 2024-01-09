@@ -11,6 +11,7 @@ export const fetchSponsors = async () => {
         return {
             Id: x.id,
             Name: x.attributes.Name,
+            ShowOnHomePage: x.attributes.ShowOnHomePage,
             Order: x.attributes.Order,
             LogoSize: x.attributes.LogoSize,
         };
@@ -32,6 +33,7 @@ export const fetchSponsors = async () => {
                         }
                         : null,
                     TypeID: x.attributes.Type.data.id,
+                    ShowOnHomePage: st.ShowOnHomePage,
                     Order: st.Order,
                 } as Sponsor;
                 sponsorsAll = [...sponsorsAll, sponsorSingle];

@@ -13,7 +13,9 @@ interface Props {
 
 export default function SponsorCard({ sponsors }: Props) {
   const [loaded, setLoaded] = useState(false);
-  const sponsorSorted = sponsors?.sort((a, b) => a.Order - b.Order);
+  const sponsorFiltered = sponsors?.filter((x) => x.ShowOnHomePage);
+  const sponsorSorted = sponsorFiltered?.sort((a, b) => a.Order - b.Order);
+  
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1250 },
