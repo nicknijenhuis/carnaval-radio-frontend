@@ -88,6 +88,12 @@ const nextConfig = {
         permanent: false,
         basePath: false,
       },
+      {
+        source: "/donatie",
+        destination: process.env.NEXT_PUBLIC_PAYMENT_LINK,
+        permanent: false,
+        basePath: false,
+     },
     ];
   },
 };

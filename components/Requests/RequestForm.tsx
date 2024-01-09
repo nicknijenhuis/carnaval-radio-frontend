@@ -21,7 +21,11 @@ const RequestForm: React.FC = () => {
     };
 
     const constructMessage = () => {
-        const message = `Liedje: ${artist} - ${title}\nAanvrager: ${sender}\n${dedication}`;
+        const message = `Liedje: ${artist && (artist + " - ")} ${title}
+            ${sender && "\nAanvrager:" + sender}
+            ${dedication && "\n" + dedication}
+            `;
+
         return message;
     };
 
@@ -52,11 +56,16 @@ const RequestForm: React.FC = () => {
             <div className="rounded-lg bg-slate-50 p-4 mb-4">
                 <div className="flex justify-left">
                     <div className="bg-[#d9fdd3] rounded-tl-lg rounded-bl-lg text-[#111b21] shadow-sm rounded-br-lg user px-4 py-2">
-                        Liedje: {artist} - {title}
-                        <br />
-                        Aanvrager: {sender}
-                        <br />
-                        {dedication}
+                        Liedje: {artist && <>{artist} -</>} {title}
+                        {sender && <>
+                            <br />
+                            Aanvrager: {sender}
+                        </>}
+                        {dedication && <>
+                            <br />
+                            <br />
+                            {dedication}
+                        </>}
                     </div>
                     <span>
                         <svg className="user-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 13" width="8" height="13">
@@ -66,13 +75,31 @@ const RequestForm: React.FC = () => {
                 </div>
             </div>
             <button
-                    className={`${title ? "bg-emerald-500" : "bg-emerald-200"} text-white py-2 px-4 rounded-lg flex items-center`}
-                    onClick={requestSongOnWhatsapp}
-                    disabled={!title}
-                >
-                    <FaWhatsapp className="mr-2" />
-                    Nu aanvragen via WhatsApp
+                className={`${title ? "bg-emerald-500" : "bg-emerald-200"} text-white py-2 px-4 rounded-lg flex items-center`}
+                onClick={requestSongOnWhatsapp}
+                disabled={!title}
+            >
+                <FaWhatsapp className="mr-2" />
+                Nu aanvragen via WhatsApp
+            </button>
+            <div className="mt-8 p-8 rounded-3xl bg-blue-50 max-w-3xl">
+                <div className="mb-4">
+                    <h2 className="text-gray-700 text-l font-bold mb-2">
+                        Wil je ons steunen?
+                    </h2>
+                </div>
+                <p className="text-gray-700 text-sm mb-4">
+                    Optioneel: Als je ons wilt steunen, kun je een donatie doen.
+                    Carnaval Radio wordt volledig gerund door vrijwilligers en elke bijdrage wordt zeer gewaardeerd!
+                    De knop hieronder brengt je naar een betaalverzoek.
+                    Bedankt!
+                </p>
+                <button className="button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg flex items-center"
+                    onClick={openPayment}>
+                    <FaHandshake className="mr-2" />
+                    Doneer
                 </button>
+            </div>
             <div className="rounded-lg px-4 py-3 my-4" role="alert">
                 <ul className="px-2 list-disc">
                     <li>Verzoekjes worden alleen gedraaid tijdens live uitzendingen</li>
@@ -83,24 +110,6 @@ const RequestForm: React.FC = () => {
                 <FaArrowLeft className="mr-2" />
                 Terug naar het formulier
             </button>
-                <div className="mt-8 p-8 rounded-3xl bg-blue-50 max-w-3xl">
-                    <div className="mb-4">
-                        <h2 className="text-gray-700 text-l font-bold mb-2">
-                            Wil je ons steunen?
-                        </h2>
-                    </div>
-                    <p className="text-gray-700 text-sm mb-4">
-                        Optioneel: Als je ons wilt steunen, kun je een donatie doen. 
-                        Carnaval Radio wordt volledig gerund door vrijwilligers en elke bijdrage wordt zeer gewaardeerd!
-                        De knop hieronder brengt je naar een betaalverzoek.
-                        Bedankt!
-                    </p>
-                    <button className="button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg flex items-center"
-                        onClick={openPayment}>
-                        <FaHandshake className="mr-2" />
-                        Doneer
-                    </button>
-                </div>
         </div>
     )
 
