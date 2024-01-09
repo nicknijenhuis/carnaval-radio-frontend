@@ -6,6 +6,7 @@ import SidebarLinks from "./Sidebar/SidebarLinks";
 import Socials from "./Socials";
 import SidebarPlayer from "./Sidebar/SidebarPlayer";
 import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
 
 interface props {
   themeData: any;
@@ -32,9 +33,14 @@ const MobileHeader = ({ themeData, menu }: props) => {
             alt="Logo"
           />
         </Link>
+        <div className="flex gap-4">
+        <a className="rounded m-auto" href="verzoekjes">
+          <FaWhatsapp size={40} />
+        </a>
         <button className="rounded" onClick={toogleSideBar}>
           <MdMenu size={50} />
         </button>
+        </div>
       </div>
       <div
         ref={sideBarRef}
