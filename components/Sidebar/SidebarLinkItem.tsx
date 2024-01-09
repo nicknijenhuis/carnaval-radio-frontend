@@ -10,8 +10,8 @@ import {
   MdBusiness,
   MdKeyboardArrowDown,
   MdCreditCard,
-  MdKeyboardArrowUp,
   MdOutlineArticle,
+  MdInsertComment,
 } from "react-icons/md";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -27,6 +27,7 @@ const IconMapping: any = {
   "<MdBusiness />": <MdBusiness />,
   "<MdCreditCard />": <MdCreditCard />,
   "<MdOutlineArticle />": <MdOutlineArticle />,
+  "<MdInsertComment />": <MdInsertComment />,
 };
 
 interface props {
