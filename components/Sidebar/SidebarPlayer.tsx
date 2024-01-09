@@ -12,7 +12,7 @@ const SidebarPlayer = () => {
     (state: GlobalState) => state.Player
   );
 
-  const updateSonTitle = (title: string) => {
+  const updateSongTitle = (title: string) => {
     const arr = title.split(" ");
     const titleArr = [arr[0], arr[1], arr[2]];
     const finalTitle = titleArr.join(" ");
@@ -35,7 +35,7 @@ const SidebarPlayer = () => {
               className="text-3xl text-black cursor-pointer"
             />
           )}
-          {songTitle && updateSonTitle(songTitle)}
+          {songTitle && updateSongTitle(songTitle)}
           <div
             onClick={() => dispatch(setPlay())}
             className="sm:flex md::flex lg:flex xl:flex items-center justify-center p-[2px] bg-black rounded-full text-seconday text-secondary cursor-pointer"
