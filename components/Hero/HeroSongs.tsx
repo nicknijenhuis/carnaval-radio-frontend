@@ -21,7 +21,7 @@ const HeroSongs = () => {
       setError(true);
     }
   };
-  
+
   useEffect(() => {
     fetchTracks();
     const interval = setInterval(fetchTracks, 30000);
@@ -36,13 +36,17 @@ const HeroSongs = () => {
           Gedraaide nummers
         </h2>
       </div>
-      <RecentSongs loading={loading} recentTracks={recentTracks} maxTracks={4} />      
-      <Link
-        href="/gedraaide-nummers"
-        className="bg-gradient-to-r text-center from-primary to-secondary rounded-lg mt-8 py-3 px-4 text-white font-semibold"
-      >
-        Meer gedraaide nummers
-      </Link>
+      {error ? <p>Helaas ondervinden wij problemen met het ophalen van de gedraaide nummers.</p>
+        : (
+          <>
+            <RecentSongs loading={loading} recentTracks={recentTracks} maxTracks={4} />
+            <Link
+              href="/gedraaide-nummers"
+              className="bg-gradient-to-r text-center from-primary to-secondary rounded-lg mt-8 py-3 px-4 text-white font-semibold"
+            >
+              Meer gedraaide nummers
+            </Link>
+          </>)}
     </div>
   );
 };
