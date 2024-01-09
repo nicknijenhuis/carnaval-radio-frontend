@@ -35,7 +35,7 @@ const MobileHeader = ({ themeData, menu }: props) => {
         </Link>
         <div className="flex gap-4">
         <a className="rounded m-auto" href="verzoekjes">
-          <FaWhatsapp size={40} />
+          <FaWhatsapp className="text-emerald-500" size={40} />
         </a>
         <button className="rounded" onClick={toogleSideBar}>
           <MdMenu size={50} />
