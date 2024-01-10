@@ -7,6 +7,7 @@ const RequestForm: React.FC = () => {
     const [title, setTitle] = useState("");
     const [dedication, setDedication] = useState("");
     const [sender, setSender] = useState("");
+    const [city, setCity] = useState("");
     const [submitted, setSubmitted] = useState(false);
     const [shouldClearForm, setShouldClearForm] = useState(false);
 
@@ -16,6 +17,7 @@ const RequestForm: React.FC = () => {
             setTitle("");
             setDedication("");
             setSender("");
+            setCity("");
         }
         setSubmitted(false);
     };
@@ -23,7 +25,8 @@ const RequestForm: React.FC = () => {
     const constructMessage = () => {
         const message = `Liedje: ${artist && (artist + " - ")} ${title}
             ${sender && "\nAanvrager:" + sender}
-            ${dedication && "\n" + dedication}
+            ${city && "\nWoonplaats:" + city}
+            ${dedication && "\n" + dedication}            
             `;
 
         return message;
@@ -60,6 +63,10 @@ const RequestForm: React.FC = () => {
                         {sender && <>
                             <br />
                             Aanvrager: {sender}
+                        </>}
+                        {city && <>
+                            <br />
+                            Woonplaats: {city}
                         </>}
                         {dedication && <>
                             <br />
@@ -166,6 +173,23 @@ const RequestForm: React.FC = () => {
                     maxLength={50}
                     value={sender}
                     onChange={(e) => setSender(e.target.value)}
+                />
+            </div>
+            <div className="mb-4">
+                <label
+                    className="block text-gray-700 text-l font-bold mb-2"
+                    htmlFor="city"
+                >
+                    Woonplaats
+                </label>
+                <input
+                    className="bg-white w-full input border-2 border-black rounded-lg  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="city"
+                    type="text"
+                    name="request[city]"
+                    maxLength={50}
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
                 />
             </div>
             <div className="mb-4">
