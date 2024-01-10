@@ -13,7 +13,7 @@ const RequestsPage = ({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
-  const token = searchParams["token"] ?? ""; 
+  const token = searchParams?.["token"] ?? ""; 
   const validToken = process.env.VALID_TOKEN;
 
   if (token !== validToken) {
@@ -94,11 +94,12 @@ const RequestsPage = ({
               <input
                 className="w-full input border-2 border-black rounded-lg  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="dedication"
+                defaultValue={"Voor ons gewoon, tuup!"}
                 type="text"
                 name="request[dedication]"
                 maxLength={127}
               />
-            </div>
+            </div>            
             <div className="mb-4">
               <label
                 className="block text-gray-700 text-l font-bold mb-2"
@@ -110,25 +111,12 @@ const RequestsPage = ({
                 className="w-full input border-2 border-black rounded-lg  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="sender"
                 type="text"
+                defaultValue={"Zo ene die de plaatjes draaie doet"}
                 name="request[sender]"
                 maxLength={127}
               />
             </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-l font-bold mb-2"
-                htmlFor="email"
-              >
-                Jouw e-mail adres
-              </label>
-              <input
-                className="w-full input border-2 border-black rounded-lg  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="email"
-                type="text"
-                name="request[email]"
-                maxLength={127}
-              />
-            </div>
+            <input className="hidden" readOnly type="text" name="request[email]" value="muziek@carnaval-radio.nl" />
             <div className="flex items-center justify-between py-2">
               <input
                 className="w-full input rounded-lg bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline cursor-pointer"
