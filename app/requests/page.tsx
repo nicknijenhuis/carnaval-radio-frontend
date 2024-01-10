@@ -27,8 +27,7 @@ const RequestsPage = ({
               Verzoekjes
             </h2>
             <p className="text-lg text-gray-700 mb-5">
-              Je hebt geen toegang tot deze pagina. Neem contact op met de
-              beheerder van deze website.
+              Je hebt geen toegang tot deze pagina. 
             </p>
           </div>
         </div>
