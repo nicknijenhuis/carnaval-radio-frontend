@@ -26,5 +26,26 @@ export const slides = [
   },
   {
     url: cloudinaryUrl + "showcase/z1ardqrj21jskg1oxg37.jpg",
-  }
+  },
+  {
+    url: cloudinaryUrl + "showcase/artists/u60fhrbimyzvtzklxcsk.jpg",
+  },
+  {
+    url: cloudinaryUrl + "showcase/artists/ixlawspt2rtrnnpjeklf.jpg",
+  },
+  {
+    url: cloudinaryUrl + "showcase/artists/nyez6yb7uv93yitjrkal.jpg",
+  },
+  {
+    url: cloudinaryUrl + "showcase/artists/b4k26dnbjix4ldtybhog.jpg",
+  },
+  {
+    url: cloudinaryUrl + "showcase/artists/ihcz2r90tmjspitocbtm.jpg",
+  },
+  {
+    url: cloudinaryUrl + "showcase/artists/qtvjqokkpndeeme7hmea.jpg",
+  },
+  {
+    url: cloudinaryUrl + "showcase/artists/opeppammdhycxaoufmpt.jpg",
+  },
 ];
