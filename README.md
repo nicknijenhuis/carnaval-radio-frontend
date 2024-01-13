@@ -9,6 +9,9 @@ This is the frontend of Carnaval-Radio.nl, built with Next.JS
 
 ## Getting Started
 
+- Create `.env.local` in the root
+- Copy the `.env.example` file into the `.env.local` file.
+
 First, run the development server:
 
 ```bash
