@@ -12,9 +12,9 @@ export const slides = [
   {
     url: cloudinaryUrl + "showcase/icp4mv7b3eiqr1l2jkwh.jpg",
   },
-  {
-    url: cloudinaryUrl + "showcase/a0z6ln89efaq36phjofx.jpg",
-  },
+  // {
+  //   url: cloudinaryUrl + "showcase/a0z6ln89efaq36phjofx.jpg", even geen petertje
+  // },
   {
     url: cloudinaryUrl + "showcase/m6mprkb3b3kh2ivcv4xt.jpg",
   },
