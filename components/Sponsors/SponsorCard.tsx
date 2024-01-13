@@ -47,7 +47,8 @@ export default function SponsorCard({ sponsors }: Props) {
         showDots={true}
         responsive={responsive}
         autoPlay={true}
-        autoPlaySpeed={2000}
+        autoPlaySpeed={3000}
+        shouldResetAutoplay={false}
         infinite={true}
         customLeftArrow={
           <ArrowFix>

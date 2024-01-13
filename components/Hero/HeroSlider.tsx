@@ -28,8 +28,9 @@ function HeroSlider() {
     <div className="min-w-[35vw] h-full w-full relative group px-2">
       <Carousel
         autoPlay={true}
-        autoPlaySpeed={3000}
+        autoPlaySpeed={4000}
         infinite={true}
+        shouldResetAutoplay={false}
         responsive={responsive}
         customLeftArrow={
           <ArrowFix>
