@@ -1,3 +1,4 @@
+"use client";
 import Script from "next/script";
 import { FaTwitch } from "react-icons/fa";
 
@@ -9,7 +10,8 @@ const HeroTwitch = () => {
             <div className="flex items-center justify-center h-full text-white mt-4"><FaTwitch className="h-10 w-10 animate-spin" /></div>
           </div>
         </div>
-        <Script src="https://widgets.sociablekit.com/twitch-live-videos/widget.js" strategy="afterInteractive" />
+          <Script src="https://widgets.sociablekit.com/twitch-live-videos/widget.js" strategy="afterInteractive" />
+        
       </>
     );
   };
