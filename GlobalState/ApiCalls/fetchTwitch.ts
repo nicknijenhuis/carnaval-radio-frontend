@@ -1,6 +1,10 @@
 
 export async function fetchTwitch(): Promise<boolean> {
   try {
+    if (!process.env.TWITCH_URL) {
+      return false;
+    }
+
     const response = await fetch(
       process.env.TWITCH_URL + "?no-reload=true",
       { next: { revalidate: 10 } }
