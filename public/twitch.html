@@ -1,14 +1,23 @@
-<html>
-    <head>
-    </head>
-    <body>
-        <div class='sk-ww-twitch-live-videos' data-embed-id='2534506'>
-          <div class="flex items-center justify-center h-full text-white mt-4">
-            <!-- <FaTwitch class="h-10 w-10 animate-spin" /></div> -->
-        </div>
-        <script src="https://widgets.sociablekit.com/twitch-live-videos/widget.js"></script>        
-    </body>
-</html>
+<!-- Add a placeholder for the Twitch embed -->
+<div id="twitch-embed"></div>
 
+<!-- Load the Twitch embed script -->
+<script src="https://embed.twitch.tv/embed/v1.js"></script>
 
+<!-- Create a Twitch.Embed object that will render within the "twitch-embed" element. -->
+<script type="text/javascript">
+  var embed = new Twitch.Embed("twitch-embed", {
+    width: '100%',
+    height: '100%',
+    channel: "carnavalradio",
+    layout: "video",
+    autoplay: false,
+    parent: ["carnaval-radio.nl", "carnaval.radio", "www.carnaval-radio.nl", "www.carnaval.radio"]
+  });
 
+  embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+    var player = embed.getPlayer();
+    player.setVolume(0);
+    player.play();
+  });
+</script>
