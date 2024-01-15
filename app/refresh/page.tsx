@@ -1,6 +1,6 @@
 import { Indie } from "../fonts/font";
 import { Metadata } from "next";
-import { revalidatePath, revalidateTag } from "next/cache";
+import action from "./actions";
 
 export const metadata: Metadata = {
   title: "Refresh | Carnaval Radio | 24/7 Vasteloavend Muzieek",
@@ -35,14 +35,7 @@ const RevalidatePage = ({
     );
   }
 
-  revalidatePath("/");
-  revalidatePath("/sponsoren");
-  revalidatePath("/sitemap.xml");
-  revalidatePath("/articles");  
-  revalidatePath("/limburg24");
-  revalidateTag("articles");
-  revalidateTag("pages");
-  revalidateTag("sponsors");
+  action();
 
   return (
     <>
