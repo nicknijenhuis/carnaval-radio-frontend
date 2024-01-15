@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Doe nu je eigen verzoekje! De vastelaoves Radio | 24/7 Vastelaovend Muzieek",
 };
 
-const RevalidatePage = ({
+const RevalidatePage = async ({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -35,7 +35,7 @@ const RevalidatePage = ({
     );
   }
 
-  action();
+  await action();
 
   return (
     <>
