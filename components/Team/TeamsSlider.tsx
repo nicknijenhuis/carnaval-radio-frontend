@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper";
-import { Team } from "@/types/types";
-import TeamMember from "./TeamMember";
+import { Navigation, Pagination } from "swiper/modules";
+import TeamMemberComponent from "./TeamMember";
 import { Swiper as SwiperType } from "swiper";
+import { TeamMember } from "@/types/teamTypes";
 
 export const TeamsSlider = ({ data }: any) => {
     const swiperSecondRef = useRef<SwiperType>();
@@ -38,8 +38,8 @@ export const TeamsSlider = ({ data }: any) => {
                 }}
                 className="xl:w-80% w-90% max-w-1560 h-auto teams_swiper "
             >
-                {data.map((item: Team) => <SwiperSlide key={item.attributes.name}>
-                    <TeamMember showDetailedInformation data={item} />
+                {data.map((item: TeamMember) => <SwiperSlide key={item.attributes.Name}>
+                    <TeamMemberComponent showDetailedInformation data={item} />
                 </SwiperSlide>
                 )}
             </Swiper>
