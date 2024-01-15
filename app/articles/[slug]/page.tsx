@@ -37,6 +37,11 @@ const page = async ({ params }: { params: { slug?: string } }) => {
   const { data } = await client.query({
     query: GET_SINGLE_POST,
     variables: { slugUrl: params.slug },
+    context: {
+      fetchOptions: {
+        next: { revalidate: 60, tags: ["articles"] },
+      },
+    },
   });
 
   if(!data.articles?.data?.[0]) {

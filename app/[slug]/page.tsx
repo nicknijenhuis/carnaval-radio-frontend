@@ -30,7 +30,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
     variables: { slugUrl: slug },
     context: {
       fetchOptions: {
-        next: { revalidate: 10 },
+        next: { revalidate: 60, tags: ["pages"] },
       },
     },
   });

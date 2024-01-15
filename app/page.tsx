@@ -24,6 +24,11 @@ const page = async () => {
 
   const { data } = await client.query({
     query: GET_ALL_ARTICLES,
+    context: {
+      fetchOptions: {
+        next: { tags: ["articles"] },
+      },
+    },
   });
 
  
