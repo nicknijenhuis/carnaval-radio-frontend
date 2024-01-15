@@ -4,6 +4,10 @@ export async function fetchTwitch(): Promise<boolean> {
     if (process.env.FORCE_SHOW_TWITCH === "true") {
       return true;
     }
+
+    if (process.env.FORCE_DISABLE_TWITCH === "true") {
+      return false;
+    }
     
     if (!process.env.TWITCH_URL) {
       return false;
