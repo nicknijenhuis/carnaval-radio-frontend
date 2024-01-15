@@ -1,28 +1,19 @@
  
-  export interface TeamPage {
-    teampage: {
-       data: {
-        attributes: {
-          title: string
-          desc: string
-          seo: Seo
-        }
-      }
-    }
-    teams: {
-      data: Team[]
-    }
-  }
-  
-  export interface Team {
+
+  export interface TeamMember {
     attributes: {
-      name: string
-      email: string
-      phone: string
-      bigRegistrationNumber: string,
-      desc: string
-      url: string
-      img: {
+      Name: string
+      NickName: string
+      DateJoined: string
+      Birthdate: string
+      Email: string      
+      Phone: string
+      Slug: string
+      Role: string
+      City: string
+      Color: string
+      Story: string
+      Photo: {
         data: {
           attributes: {
             url: string

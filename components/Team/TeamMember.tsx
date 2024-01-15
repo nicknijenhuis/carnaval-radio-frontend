@@ -1,13 +1,13 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-
 import HTMLReactParser from "html-react-parser";
 import { useState } from "react";
-import { Team } from "@/types/teamTypes";
+import { TeamMember } from "@/types/teamTypes";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
 
 interface Props {
-  data: Team;
+  data: TeamMember;
   showDetailedInformation?: boolean;
 }
 
@@ -27,25 +27,25 @@ function getInitials(fullName: string) {
 const TeamMember = ({ data, showDetailedInformation = false }: Props) => {
   const teamMemberImage = (
     <div className="member-wrapper h-auto aspect-square flex items-center justify-center p-2 w-full max-h-[405px] relative max-w-[405px] overflow-hidden mx-auto">
-      {data.attributes.img.data?.attributes ? (
+      {data.attributes.Photo.data?.attributes ? (
         <Image
-          id={generateTeamId(data.attributes.url)}
+          id={generateTeamId(data.attributes.Slug)}
           width="0"
           height="0"
-          src={data.attributes.img.data?.attributes.url}
-          alt={data.attributes.name}
+          src={data.attributes.Photo.data?.attributes.url}
+          alt={data.attributes.Name}
           sizes="404px"
           priority
           className="object-cover w-full h-full rounded-full"
-          blurDataURL={data.attributes.img.data?.attributes.url}
+          blurDataURL={data.attributes.Photo.data?.attributes.url}
         />
       ) : (
         <div
-          id={generateTeamId(data.attributes.url)}
+          id={generateTeamId(data.attributes.Slug)}
           className="relative inline-flex items-center justify-center w-4/6 h-4/6 overflow-hidden bg-[#827CB1] rounded-full"
         >
           <span className="text-gray-900 text-7xl font-semibold ease-linear tracking-widest	">
-            {getInitials(data.attributes.name)}
+            {getInitials(data.attributes.Name)}
           </span>
         </div>
       )}
@@ -55,21 +55,21 @@ const TeamMember = ({ data, showDetailedInformation = false }: Props) => {
   return (
     <div className="lg:pb-[60px] pb-[45px] team-member">
       {showDetailedInformation ? (
-        <Link href={`team#${data.attributes.url}`}>{teamMemberImage}</Link>
+        <Link href={`team#${data.attributes.Slug}`}>{teamMemberImage}</Link>
       ) : (
         <>{teamMemberImage}</>
       )}
       <div className="w-full bg-dark-purple font-semibold ease-linear duration-300 items-center justify-between p-3 mt-6 rounded-full pr-2 pl-8 normal-case h-auto inline-flex gap-5 2xl:text-[30px] text-lg text-white">
         {showDetailedInformation ? (
-          <Link href={`team#${data.attributes.url}`}>
-            {data.attributes.name}
+          <Link href={`team#${data.attributes.Slug}`}>
+            {data.attributes.Name}
           </Link>
         ) : (
-          data.attributes.name
+          data.attributes.Name
         )}
         <div className="flex gap-x-3">
           <a
-            href={`tel:${data.attributes.phone}`}
+            href={`tel:${data.attributes.Phone}`}
             className="block p-3 bg-white rounded-full"
           >
             <FaPhone
@@ -79,7 +79,7 @@ const TeamMember = ({ data, showDetailedInformation = false }: Props) => {
             />
           </a>
           <a
-            href={`mailto:${data.attributes.email}`}
+            href={`mailto:${data.attributes.Email}`}
             className="block p-3 bg-white rounded-full"
           >
             <FaEnvelope
@@ -93,17 +93,24 @@ const TeamMember = ({ data, showDetailedInformation = false }: Props) => {
       {!showDetailedInformation && (
         <>
           <ContactTable
-            email={data.attributes.email}
-            phone={data.attributes.phone}
-            bigRegistrationNumber={data.attributes.bigRegistrationNumber}
+            email={data.attributes.Email}
+            phone={data.attributes.Phone}
           />
           <div
             className="mt-5 text-lg team-desc"
-            data-id={data.attributes.url.slice(
-              data.attributes.url.indexOf("#") + 1
+            data-id={data.attributes.Slug.slice(
+              data.attributes.Slug.indexOf("#") + 1
             )}
           >
-            {HTMLReactParser(data.attributes.desc)}
+
+            <div
+              className="mt-5 text-lg team-desc"
+              data-id={data.attributes.Slug.slice(
+                data.attributes.Slug.indexOf("#") + 1
+              )}
+            >
+              {JSON.stringify(data.attributes.Story)}
+            </div>
           </div>
         </>
       )}
@@ -120,13 +127,11 @@ export default TeamMember;
 interface ContactTableProps {
   email?: string;
   phone?: string;
-  bigRegistrationNumber?: string;
 }
 
 const ContactTable = ({
   email,
   phone,
-  bigRegistrationNumber,
 }: ContactTableProps) => {
   const [showTable, setShowTable] = useState(false);
 
@@ -174,14 +179,6 @@ const ContactTable = ({
                 >
                   {phone}
                 </a>
-              </div>
-            </>
-          )}
-          {bigRegistrationNumber && (
-            <>
-              <div>BIG nr.:</div>
-              <div className="col-span-1 md:col-span-2 lg:col-span-3">
-                {bigRegistrationNumber}
               </div>
             </>
           )}

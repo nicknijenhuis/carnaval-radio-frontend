@@ -1,5 +1,5 @@
-import TeamMember from "@/components/Team/TeamMember";
-import { Team } from "@/types/teamTypes";
+import TeamMemberComponent from "@/components/Team/TeamMember";
+import { TeamMember } from "@/types/teamTypes";
 import { GET_TEAM_DATA } from "@/GlobalState/ApiCalls/graphql/team_queries";
 import { client } from "@/GlobalState/ApiCalls/api.config";
 
@@ -19,7 +19,11 @@ const page = async () => {
     },
   });
   
-  const teamMembers: Team[] = data;
+  const teamMembers: TeamMember[] | undefined = data?.team?.data;
+
+  if(!teamMembers) {
+    return null;
+  }
   
   return (
     <>
@@ -27,7 +31,7 @@ const page = async () => {
         <div className="relative xl:w-80% w-90% max-w-1560 h-auto mx-auto">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 xl:grid-cols-3">
             {teamMembers.map((item) =>
-              <TeamMember key={item.attributes.name} data={item} />
+              <TeamMemberComponent key={item.attributes.Name} data={item} />
             )}
           </div>
         </div>
