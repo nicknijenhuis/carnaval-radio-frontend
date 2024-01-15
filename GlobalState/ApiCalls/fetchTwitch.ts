@@ -1,7 +1,7 @@
 
 export async function fetchTwitch(): Promise<boolean> {
   try {
-    if(process.env.FORCE_SHOW_TWITCH === "true") {
+    if (process.env.FORCE_SHOW_TWITCH === "true") {
       return true;
     }
     
@@ -16,9 +16,7 @@ export async function fetchTwitch(): Promise<boolean> {
     
     const body = await response.text();
 
-    // This checks the HTML response from twitch to contain the string "isLiveBroadcast":true. 
-    // If a stream is not live this is not there.
-    if (body?.includes("isLiveBroadcast=\"true")) { 
+    if (body?.match(/isLiveBroadcast.{0,5}true/)) { 
       return true;
     }
     return false;
