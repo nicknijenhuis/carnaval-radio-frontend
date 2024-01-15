@@ -95,6 +95,11 @@ async function getSitemapUrls() {
 async function getPosts() {
     const { data } = await client.query({
         query: GET_ALL_ARTICLES,
+        context: {
+            fetchOptions: {
+                next: { tags: ["articles"] },
+            },
+        },
     });
     let sortedPosts: Post[];
     sortedPosts = data?.articles?.data;
@@ -104,6 +109,11 @@ async function getPosts() {
 async function getPages() {
     const { data } = await client.query({
         query: GET_ALL_SLUGS_FOR_CONTENT_PAGES,
+        context: {
+            fetchOptions: {
+                next: { tags: ["pages"] },
+            },
+        },
     });
     let sortedPages: { attributes: { Slug: string, publishedAt: string } }[];
     sortedPages = data?.pages?.data;

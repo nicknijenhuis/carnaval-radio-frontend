@@ -29,6 +29,11 @@ export async function generateMetadata() {
 const page = async () => {
   const { data } = await client.query({
     query: GET_ALL_SPONSORS,
+    context: {
+      fetchOptions: {
+        next: { tags: ["sponsors"] },
+      },
+    },
   });
 
   const sponsors: Sponsor[] = data.sponsors.data.map((x: GraphQLSponsor) => {

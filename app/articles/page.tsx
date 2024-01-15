@@ -15,6 +15,11 @@ export async function generateMetadata() {
 const page = async () => {
   const { data } = await client.query({
     query: GET_ALL_ARTICLES,
+    context: {
+      fetchOptions: {
+        next: { tags: ["articles"] },
+      },
+    },
   });
   let posts: Post[];
   posts = data.articles.data;

@@ -5,6 +5,11 @@ import { GET_ALL_SPONSORS } from "./graphql/sponsor_queries";
 export const fetchSponsors = async () => {
     const { data: sponsorData } = await client.query({
         query: GET_ALL_SPONSORS,
+        context: {
+            fetchOptions: {
+                next: { tags: ["sponsors"] },
+            },
+        },
     });
 
     const sponsorTypes: SponsorType[] = sponsorData.sponsorTypes.data.map((x: GraphQLSponsorType) => {
