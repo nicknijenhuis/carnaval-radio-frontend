@@ -12,12 +12,12 @@
     channel: "carnavalradio",
     layout: "video",
     autoplay: false,
+    muted: true,
     parent: ["carnaval-radio.nl", "carnaval.radio", "www.carnaval-radio.nl", "www.carnaval.radio"]
   });
 
   embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
     var player = embed.getPlayer();
-    player.setVolume(0);
     player.play();
   });
 </script>
