@@ -16,7 +16,7 @@ const EventsList: React.FC<EventsProps> = ({ events, loading = null }) => {
         <>
           {events?.map((event: Event, i: any) => (
             <Fragment key={"frag" + i}>
-              <div className="grid grid-cols-12 gap-2 max-w-3xl py-2">
+              <div className="grid grid-cols-12 gap-4 max-w-4xl py-2">
                 <div className="col-span-3 flex items-center">
                   <MdEvent
                     size={24}
@@ -37,14 +37,14 @@ const EventsList: React.FC<EventsProps> = ({ events, loading = null }) => {
                   </div>
                 </div>
 
-                <div className="col-span-5">
+                <div className={`col-span-6 ${event.IsHighlighted ? 'font-bold' : ''}`}>
                   <FormatTitle text={event.Title} />
                 </div>
-                <div className="col-span-4 text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                <div className="col-span-3 text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
                   <FormatTitle text={event.Address} />
                 </div>
               </div>
-                <div className="w-full h-[1px] bg-gray-100"></div>
+                <div className="w-full h-[1px]  bg-gray-100"></div>
             </Fragment>
           ))}
         </>
