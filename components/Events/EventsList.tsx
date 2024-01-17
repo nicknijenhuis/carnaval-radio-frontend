@@ -20,7 +20,7 @@ const EventsList: React.FC<EventsProps> = ({ events, loading = null }) => {
                 <div className="col-span-10 md:col-span-3 flex items-center">
                   <MdEvent
                     size={24}
-                    className="mr-2 hidden sm:inline-block md:inline-block xl:inline-block"
+                    className="mr-2"
                   />
                   <div
                     className={`py-2 px-4 rounded-full ${
