@@ -1,7 +1,14 @@
-const DateAndTime = ({ timestamp }: { timestamp: number }) => {
-  const CET_OFFSET = 6 * 3600; // 6 hours in seconds
+const DateAndTime = ({ timestamp, date }: { timestamp?: number, date?: Date }) => {
+  
+
   const currentDate = new Date();
-  const formattedTimestamp = new Date((timestamp - CET_OFFSET) * 1000);
+  let formattedTimestamp = new Date();
+  if(timestamp) {
+    const CET_OFFSET = 6 * 3600; // 6 hours in seconds
+    formattedTimestamp = new Date((timestamp - CET_OFFSET) * 1000);
+  } else if(date) {
+    formattedTimestamp = date;
+  }
 
   const options: Intl.DateTimeFormatOptions = {
     hour: "numeric",

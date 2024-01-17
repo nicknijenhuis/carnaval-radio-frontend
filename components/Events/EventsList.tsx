@@ -33,7 +33,7 @@ const EventsList: React.FC<EventsProps> = ({ events, loading = null }) => {
                         i % 2 !== 0 ? "text-tertiary" : "text-secondary"
                       }`}
                     >
-                      <DateAndTime timestamp={Date.parse(event.Date) / 1000} />
+                        <DateAndTime date={new Date(event.Date)} />
                     </p>
                   </div>
                 </div>
