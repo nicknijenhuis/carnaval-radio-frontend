@@ -3,6 +3,7 @@ import { BsFileMusicFill } from "react-icons/bs";
 import { Indie } from "../fonts/font";
 import EventsList from "@/components/Events/EventsList";
 import { fetchEvents } from "@/GlobalState/ApiCalls/fetchEvents";
+import Link from "next/link";
 
 const page = async () => {
   const events = await fetchEvents();
@@ -16,6 +17,9 @@ const page = async () => {
         </h2>
       </div>
       <EventsList events={events} />
+      <p className="p-10">
+        Wil je jouw evenement hier ook tussen hebben staan? Neem dan <Link href="contact">contact</Link> op
+      </p>
     </div>
   );
 };
