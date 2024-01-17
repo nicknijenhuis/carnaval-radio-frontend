@@ -3,6 +3,7 @@ import { MdEvent } from "react-icons/md";
 import { Event } from "@/GlobalState/ApiCalls/fetchEvents";
 import FormatTitle from "../FormatTitle";
 import DateAndTime from "../DateAndTime";
+import Image from "next/image";
 
 type EventsProps = {
   events: Event[];
@@ -37,14 +38,30 @@ const EventsList: React.FC<EventsProps> = ({ events, loading = null }) => {
                   </div>
                 </div>
 
-                <div className={`col-span-6 ${event.IsHighlighted ? 'font-bold' : ''}`}>
-                  <FormatTitle text={event.Title} />
+                <div
+                  className={`col-span-6 ${
+                    event.IsHighlighted ? "font-bold" : ""
+                  }`}
+                >
+                  <p>{event.Title}</p>
                 </div>
-                <div className="col-span-3 text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                <div className="col-span-1">
+                  {event.IsHighlighted && (
+                    <div className="w-32 mr-4">
+                      <Image
+                        width={32}
+                        height={32}
+                        src="https://res.cloudinary.com/dwzn0q9wj/image/upload/w_32,h_32/logo_square_512_1_78657ec246"
+                        alt={event.Title}
+                      />
+                    </div>
+                  )}
+                </div>
+                <div className="col-span-2 text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
                   <FormatTitle text={event.Address} />
                 </div>
               </div>
-                <div className="w-full h-[1px]  bg-gray-100"></div>
+              <div className="w-full h-[1px]  bg-gray-100"></div>
             </Fragment>
           ))}
         </>

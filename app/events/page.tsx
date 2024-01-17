@@ -18,7 +18,7 @@ const page = async () => {
       </div>
       <EventsList events={events} />
       <p className="p-10">
-        Wil je jouw evenement hier ook tussen hebben staan? Neem dan <Link href="contact">contact</Link> op
+        Wil je jouw evenement hier ook tussen hebben staan? Neem dan <Link className="text-secondary" href="contact">contact</Link> op
       </p>
     </div>
   );
