@@ -28,9 +28,6 @@ export const slides = [
     url: cloudinaryUrl + "showcase/hedb6vh4izk3akqxx0i5.jpg", // carnaval radio group image
   },
   {
-    url: cloudinaryUrl + "showcase/artists/nyez6yb7uv93yitjrkal.jpg",
-  },
-  {
     url: cloudinaryUrl + "showcase/czvwhrwbbwfuonsswzsp.jpg",
   },
   {
