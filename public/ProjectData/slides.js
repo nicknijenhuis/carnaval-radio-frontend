@@ -37,7 +37,7 @@ export const slides = [
     url: cloudinaryUrl + "showcase/v34fqyghopq7jizffbxb", // promilaasj
   },
   {
-    url: cloudinaryUrl + "showcase/artists/qtvjqokkpndeeme7hmea.jpg",
+    url: cloudinaryUrl + "showcase/artists/nyez6yb7uv93yitjrkal.jpg",
   },
   {
     url: cloudinaryUrl + "showcase/icp4mv7b3eiqr1l2jkwh.jpg",
