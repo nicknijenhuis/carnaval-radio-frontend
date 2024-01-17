@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { MdEvent } from "react-icons/md";
 import { Event } from "@/GlobalState/ApiCalls/fetchEvents";
-import FormatTitle from "../FormatTitle";
 import DateAndTime from "../DateAndTime";
 import Image from "next/image";
 
@@ -17,7 +16,7 @@ const EventsList: React.FC<EventsProps> = ({ events, loading = null }) => {
         <>
           {events?.map((event: Event, i: any) => (
             <Fragment key={"frag" + i}>
-              <div className="grid grid-cols-12 gap-4 max-w-4xl py-2">
+              <div className="w-full grid grid-cols-12 gap-4 py-2">
                 <div className="col-span-10 md:col-span-3 flex items-center">
                   <MdEvent
                     size={24}
@@ -39,7 +38,7 @@ const EventsList: React.FC<EventsProps> = ({ events, loading = null }) => {
                 </div>
                 <div className="col-span-2 md:col-span-1">
                   {event.IsHighlighted && (
-                    <div className="w-32 mr-4">
+                    <div className="mr-4 w-10">
                       <Image
                         width={32}
                         height={32}
