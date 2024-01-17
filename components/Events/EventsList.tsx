@@ -18,10 +18,10 @@ const EventsList: React.FC<EventsProps> = ({ events, loading = null }) => {
           {events?.map((event: Event, i: any) => (
             <Fragment key={"frag" + i}>
               <div className="grid grid-cols-12 gap-4 max-w-4xl py-2">
-                <div className="col-span-3 flex items-center">
+                <div className="col-span-10 md:col-span-3 flex items-center">
                   <MdEvent
                     size={24}
-                    className="mr-2 hidden sm:inline-block md:inline-block lg:hidden xl:inline-block"
+                    className="mr-2 hidden sm:inline-block md:inline-block xl:inline-block"
                   />
                   <div
                     className={`py-2 px-4 rounded-full ${
@@ -33,19 +33,11 @@ const EventsList: React.FC<EventsProps> = ({ events, loading = null }) => {
                         i % 2 !== 0 ? "text-tertiary" : "text-secondary"
                       }`}
                     >
-                        <DateAndTime date={new Date(event.Date)} />
+                      <DateAndTime date={new Date(event.Date)} />
                     </p>
                   </div>
                 </div>
-
-                <div
-                  className={`col-span-6 ${
-                    event.IsHighlighted ? "font-bold" : ""
-                  }`}
-                >
-                  <p>{event.Title}</p>
-                </div>
-                <div className="col-span-1">
+                <div className="col-span-2 md:col-span-1">
                   {event.IsHighlighted && (
                     <div className="w-32 mr-4">
                       <Image
@@ -57,8 +49,15 @@ const EventsList: React.FC<EventsProps> = ({ events, loading = null }) => {
                     </div>
                   )}
                 </div>
-                <div className="col-span-2 text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-                  <FormatTitle text={event.Address} />
+                <div
+                  className={`col-span-12 md:col-span-6 ${
+                    event.IsHighlighted ? "font-bold" : ""
+                  }`}
+                >
+                  <p>{event.Title}</p>
+                </div>
+                <div className="col-span-12 md:col-span-2 text-[16px] hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary hover:to-secondary font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                  {event.Address}
                 </div>
               </div>
               <div className="w-full h-[1px]  bg-gray-100"></div>
