@@ -4,20 +4,14 @@ export const slides = [
     url: cloudinaryUrl + "showcase/soohskjyjuompkwrowfa.jpg", // limburgse avond image
   },
   {
-    url: cloudinaryUrl + "showcase/erpqa1pwgru9oezle5jd.jpg", // marjolein
+    url: cloudinaryUrl + "showcase/tfxjfedqtrunkcmim4v3.jpg", // 2023 - party image
   },
   {
-    url: cloudinaryUrl + "showcase/czvwhrwbbwfuonsswzsp.jpg",
+    url: cloudinaryUrl + "showcase/erpqa1pwgru9oezle5jd.jpg", // marjolein
   },
   {
     url: cloudinaryUrl + "showcase/y7fjasaarcfakdqioxtl.jpg",
   },
-  {
-    url: cloudinaryUrl + "showcase/artists/ihcz2r90tmjspitocbtm.jpg",
-  },
-  {
-    url: cloudinaryUrl + "showcase/icp4mv7b3eiqr1l2jkwh.jpg",
-  },  
   {
     url: cloudinaryUrl + "showcase/artists/ixlawspt2rtrnnpjeklf.jpg",
   },
@@ -37,7 +31,7 @@ export const slides = [
     url: cloudinaryUrl + "showcase/artists/nyez6yb7uv93yitjrkal.jpg",
   },
   {
-    url: cloudinaryUrl + "showcase/tfxjfedqtrunkcmim4v3.jpg", // 2023 - party image
+    url: cloudinaryUrl + "showcase/czvwhrwbbwfuonsswzsp.jpg",
   },
   {
     url: cloudinaryUrl + "showcase/artists/u60fhrbimyzvtzklxcsk.jpg",
@@ -47,5 +41,8 @@ export const slides = [
   },
   {
     url: cloudinaryUrl + "showcase/artists/qtvjqokkpndeeme7hmea.jpg",
-  }
+  },
+  {
+    url: cloudinaryUrl + "showcase/icp4mv7b3eiqr1l2jkwh.jpg",
+  },  
 ];
