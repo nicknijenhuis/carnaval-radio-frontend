@@ -12,6 +12,7 @@ import {
   MdCreditCard,
   MdOutlineArticle,
   MdInsertComment,
+  MdEvent,
 } from "react-icons/md";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -28,6 +29,7 @@ const IconMapping: any = {
   "<MdCreditCard />": <MdCreditCard />,
   "<MdOutlineArticle />": <MdOutlineArticle />,
   "<MdInsertComment />": <MdInsertComment />,
+  "<MdEvent />": <MdEvent />,
 };
 
 interface props {
