@@ -8,6 +8,7 @@ const DateAndTime = ({ timestamp, date }: { timestamp?: number, date?: Date }) =
     formattedTimestamp = new Date((timestamp - CET_OFFSET) * 1000);
   } else if(date) {
     formattedTimestamp = date;
+    formattedTimestamp.setHours(formattedTimestamp.getHours() + 1);
   }
 
   const options: Intl.DateTimeFormatOptions = {
