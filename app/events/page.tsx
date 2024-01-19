@@ -7,6 +7,17 @@ import Link from "next/link";
 
 const page = async () => {
   const events = await fetchEvents();
+  const currentDate = new Date();
+
+  const upcomingEvents = events.filter((event) => {
+    const eventDate = new Date(event.Date);
+    return eventDate >= currentDate;
+  });
+
+  const pastEvents = events.filter((event) => {
+    const eventDate = new Date(event.Date);
+    return eventDate < currentDate;
+  }).reverse();
 
   return (
     <div className="p-10">
@@ -16,9 +27,19 @@ const page = async () => {
           Evenementen
         </h2>
       </div>
-      <EventsList events={events} />
+
+      <h3 className="text-xl font-semibold">Aankomende evenementen:</h3>
+      <EventsList events={upcomingEvents} />
+
+      <h3 className="text-xl font-semibold">Eerdere evenementen</h3>
+      <EventsList events={pastEvents} />
+
       <p className="p-10">
-        Wil je jouw evenement hier ook tussen hebben staan? Neem dan <Link className="text-secondary" href="contact">contact</Link> op
+        Wil je jouw evenement hier ook tussen hebben staan? Neem dan{" "}
+        <Link className="text-secondary" href="contact">
+          contact
+        </Link>{" "}
+        op
       </p>
     </div>
   );
