@@ -28,10 +28,10 @@ const page = async () => {
         </h2>
       </div>
 
-      <h3 className="text-xl font-semibold">Aankomende evenementen:</h3>
+      <h3 className={`text-xl font-semibold mt-4 mb-1 ${Indie.className}`}>Aankomende evenementen</h3>
       <EventsList events={upcomingEvents} />
 
-      <h3 className="text-xl font-semibold">Eerdere evenementen</h3>
+      <h3 className={`text-xl font-semibold mt-8 mb-1 ${Indie.className}`}>Eerdere evenementen</h3>
       <EventsList events={pastEvents} />
 
       <p className="p-10">
