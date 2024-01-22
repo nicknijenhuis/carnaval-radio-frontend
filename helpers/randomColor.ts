@@ -23,9 +23,9 @@ const cheerfulColors = [
   
   export const getInitials = (artist: string) =>
     artist
-      .split(" ")
+      ?.split(" ")
       .slice(0, 2)
-      .map((word) => word[0].toUpperCase())
+      .map((word) => word[0]?.toUpperCase())
       .join("");
   
 export const getRandomColor = (artist: string) => {
