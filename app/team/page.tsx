@@ -9,7 +9,7 @@ export async function generateMetadata() {
   };
 }
 
-const page = async () => { 
+const page = async () => {
   const { data } = await client.query({
     query: GET_TEAM_DATA,
     context: {
@@ -18,26 +18,35 @@ const page = async () => {
       },
     },
   });
-  
+
   const teamMembers: TeamMember[] | undefined = data?.team?.data;
 
-  if(!teamMembers) {
+  if (!teamMembers) {
     return null;
   }
-  
+
   return (
     <>
-      <section className="xl:bg-[url('/team_bgr.svg')] bg-[url('/team_bgr_mob.svg')] bg-no-repeat bg-top md:bg-cover bg-contain relative md:pt-[85px] pt-[67px] md:mt-[27px] mt-2 pb-10">
-        <div className="relative xl:w-80% w-90% max-w-1560 h-auto mx-auto">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 xl:grid-cols-3">
-            {teamMembers.map((item) =>
-              <TeamMemberComponent key={item.attributes.Name} data={item} />
-            )}
-          </div>
+<div className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
+        <div className="mx-auto max-w-2xl">
+          <h2 className="text-3xl font-bold tracking-tight text-black sm:text-4xl">Ons team</h2>
+          <p className="mt-4 text-lg leading-8 text-gray-400">
+            Ontmoet de mensen achter Carnaval Radio. We zijn een team van vrijwilligers die zich inzetten voor de vastelaovend.
+          </p>
         </div>
-      </section>      
+        <ul
+          role="list"
+          className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-8"
+        >
+            {teamMembers.map((item, i) => (
+              <TeamMemberComponent key={item.attributes.Name} data={item} index={i} />
+            ))}
+        </ul>
+      </div>
+    </div>      
     </>
   );
-}
+};
 
 export default page;

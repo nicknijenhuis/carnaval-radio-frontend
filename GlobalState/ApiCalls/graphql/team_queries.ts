@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const GET_TEAM_DATA = gql`
 query {
-    team (sort: "DateJoined", pagination: { limit: 100 }) {
+    team (sort: ["DateJoined:asc", "id:asc"], pagination: { limit: 100 }) {
         data {
           attributes {
             Name
