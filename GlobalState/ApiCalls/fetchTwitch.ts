@@ -1,3 +1,4 @@
+import fs from 'fs';
 
 export async function fetchTwitch(): Promise<boolean> {
   try {
@@ -13,17 +14,12 @@ export async function fetchTwitch(): Promise<boolean> {
       return false;
     }
 
-    const response = await fetch(
-      process.env.TWITCH_URL + "?no-reload=true",
-      { next: { revalidate: 60 } }
-    );
-    
-    const body = await response.text();
+    const filePath = 'public/showTwitch.json';
+    const fileData = fs.readFileSync(filePath, 'utf8');
+    const jsonData = JSON.parse(fileData);
+    const showTwitch = jsonData.showTwitch;
 
-    if (body?.match(/isLiveBroadcast.{0,5}true/)) { 
-      return true;
-    }
-    return false;
+    return showTwitch;
   } catch (error) {
     console.error(error);
     return false;
