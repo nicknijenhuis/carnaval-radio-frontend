@@ -1,5 +1,3 @@
-import fs from 'fs';
-
 export async function fetchTwitch(): Promise<boolean> {
   try {
     if (process.env.FORCE_SHOW_TWITCH === "true") {
@@ -14,12 +12,9 @@ export async function fetchTwitch(): Promise<boolean> {
       return false;
     }
 
-    const filePath = 'public/showTwitch.json';
-    const fileData = fs.readFileSync(filePath, 'utf8');
-    const jsonData = JSON.parse(fileData);
-    const showTwitch = jsonData.showTwitch;
-
-    return showTwitch;
+    const response = await fetch(process.env.API_URL + 'api/feature-toggle', { next: { tags: ["twitch"] } });
+    const data = await response.json();
+    return data?.attributes?.ShowTwitch ?? false;
   } catch (error) {
     console.error(error);
     return false;

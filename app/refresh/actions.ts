@@ -8,6 +8,7 @@ export default async function action() {
     revalidateTag("sponsors");
     revalidateTag("team");
     revalidateTag("events");
+    revalidateTag("twitch");
     revalidatePath("/");
     revalidatePath("/sponsoren");
     revalidatePath("/sitemap.xml");
