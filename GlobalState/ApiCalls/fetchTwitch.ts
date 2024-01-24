@@ -12,7 +12,7 @@ export async function fetchTwitch(): Promise<boolean> {
       return false;
     }
 
-    const response = await fetch(process.env.API_URL + 'api/feature-toggle', { next: { tags: ["twitch"] } });
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + 'api/feature-toggle', { next: { tags: ["twitch"] } });
     const data = await response.json();
     return data?.attributes?.ShowTwitch ?? false;
   } catch (error) {
