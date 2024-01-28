@@ -13,9 +13,6 @@ export const slides = [
     url: cloudinaryUrl + "showcase/y7fjasaarcfakdqioxtl.jpg",
   },
   {
-    url: cloudinaryUrl + "showcase/artists/ixlawspt2rtrnnpjeklf.jpg",
-  },
-  {
     url: cloudinaryUrl + "showcase/tb8msxyp80k8jbo6e7i0.jpg", // pruuf mer
   },
   {
