@@ -15,6 +15,7 @@ import CookieBanner from "@/components/cookieBanner";
 import GoogleAnalyticsPageView from "@/components/Analytics/GoogleAnalyticsPageView";
 import { Suspense } from "react";
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   title: "Carnaval Radio | 24/7 Vasteloavend Muzieek",
@@ -76,6 +77,7 @@ export default async function RootLayout({
         </Providers>
         <FeedbackForm />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
