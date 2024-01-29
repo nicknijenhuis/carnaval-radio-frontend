@@ -12,7 +12,17 @@ export async function generateMetadata() {
 
 const page = async () => {
   const parser: Parser = new Parser();
-  const feed = await parser.parseURL("https://limburg24.nl/limburg-alaaf/feed");
+  
+  let feed: null | any = null;
+  try {
+    feed = await parser.parseURL("https://limburg24.nl/limburg-alaaf/feed");
+  } catch (error) {
+    feed = null;
+  }
+
+  if(!feed) {
+    return null;
+  }
 
   return (
     <div className="p-10">

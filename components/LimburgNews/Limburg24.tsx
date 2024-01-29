@@ -12,8 +12,11 @@ const Limburg24 = async () => {
     feed = null;
   }
 
+  if(!feed) {
+    return null;
+  }
+
   return (
-    feed && (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-3 gap-4 md:gap-6 2xl:gap-10 mt-auto pt-2 sm:pt-2 md:pt-3 lg:pt-4 xl:pt-4 w-full">
         {feed.items.map((item: any, i: any) => (
           <Fragment key={item.title + i}>
@@ -21,8 +24,7 @@ const Limburg24 = async () => {
           </Fragment>
         ))}
       </div>
-    )
-  );
+    );  
 };
 
 export default Limburg24;
