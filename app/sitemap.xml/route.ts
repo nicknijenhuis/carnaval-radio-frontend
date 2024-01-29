@@ -53,7 +53,7 @@ async function getSitemapUrls() {
         url: `${URL}${route}`,
         lastModified: new Date().toISOString(),
         changeFreq: "daily",
-        priority: "0.9",
+        priority: "0.8",
     }));
 
     const posts = sortedPosts.map(x => {        
@@ -62,7 +62,7 @@ async function getSitemapUrls() {
             url: `${URL}/nieuwsberichten/${x?.attributes?.Slug}`,
             lastModified: new Date(date)?.toISOString(),
             changeFreq: "hourly",
-            priority: "0.7",
+            priority: "0.9",
         });
     });
 
