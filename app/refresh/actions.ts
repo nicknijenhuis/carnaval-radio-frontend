@@ -9,11 +9,11 @@ export default async function action() {
     revalidateTag("team");
     revalidateTag("events");
     revalidateTag("twitch");
-    revalidatePath("/");
+    revalidateTag("slides");
     revalidatePath("/sponsoren");
     revalidatePath("/sitemap.xml");
     revalidatePath("/articles");  
-    revalidatePath("/limburg24");
     revalidatePath("/team");
     revalidatePath("/events");
+    revalidatePath("/");
 }

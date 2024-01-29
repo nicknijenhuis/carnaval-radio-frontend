@@ -2,8 +2,9 @@
 import { useState, useEffect } from "react";
 import HeroSlider from "./HeroSlider";
 import HeroTwitch from "./HeroTwitch";
+import { Slide } from "@/types/slideTypes";
 
-const HeroTwitchOrSliderClientSide = () => {
+const HeroTwitchOrSliderClientSide = async ({slides} : {slides:  Slide[]}) => {
     const [showSlider, setShowSlider] = useState(false);
     const [showTwitch, setShowTwitch] = useState(true);
 
@@ -23,7 +24,7 @@ const HeroTwitchOrSliderClientSide = () => {
         <>
             {showTwitch && <HeroTwitch />}
             <div className={`${showSlider ? "block" : "md:hidden"}`}>
-                <HeroSlider />
+                <HeroSlider slides={slides} />
             </div>
         </>
     );

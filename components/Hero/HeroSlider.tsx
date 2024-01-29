@@ -1,11 +1,11 @@
 "use client";
 import "react-multi-carousel/lib/styles.css";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
-import { slides } from "../../public/ProjectData/slides";
 import Carousel from "react-multi-carousel";
 import Image from "next/image";
+import { Slide } from "@/types/slideTypes";
 
-function HeroSlider() {
+const HeroSlider = async ({slides} : {slides:  Slide[]}) => {
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1024 },
@@ -47,15 +47,15 @@ function HeroSlider() {
           </ArrowFix>
         }
       >
-        {slides.map((item: any, i: any) => (
+        {slides.map((item: Slide, i: any) => (
           <Image
             key={i}
             loading="lazy"
-            src={item.url}
+            src={item.Image.Url}
             className="h-[40vh] sm:h-[50vh] md:h-[50vh] lg:h-[450px] xl:h-[500px] rounded-2xl object-cover max-w-full"
             height={1000}
             width={1000}
-            alt={item.url}
+            alt={item.Image.Url}
           />
         ))}
       </Carousel>
