@@ -20,10 +20,6 @@ const page = async () => {
     feed = null;
   }
 
-  if(!feed) {
-    return null;
-  }
-
   return (
     <div className="p-10">
       <div className="flex items-center gap-2 mb-4">
@@ -33,7 +29,8 @@ const page = async () => {
         </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-3 gap-4 md:gap-6 2xl:gap-10 mt-auto pt-2 sm:pt-2 md:pt-3 lg:pt-4 xl:pt-4 w-full">
-        {feed.items.map((item: any, i: any) => (
+        {!feed && <span>Helaas is Limburg24 gestopt met hun activiteiten en kunnen wij hun nieuws niet meer brengen.</span>}
+        {feed && feed.items.map((item: any, i: any) => (
           <Fragment key={item.title + i}>
             <LimburgPost item={item} i={i} />
           </Fragment>

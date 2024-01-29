@@ -37,20 +37,6 @@ const page = async () => {
       <Hero />
       <Sponsors />
       {data && <PostCard posts={data.articles.data} />}
-      <Section
-        title="Limburg24 Nieuws"
-        iconElement={<BiSolidNews className="h-8 w-8 text-secondary" />}
-      >
-        <Limburg24 />
-        <div className="flex items-center justify-center pt-8">
-          <Link
-            href="/limburg24"
-            className="bg-gradient-to-r from-primary to-secondary rounded-lg py-2 px-4 text-white font-semibold"
-          >
-            Meer van Limburg24
-          </Link>
-        </div>
-      </Section>
       {facebookPageId && (
         <Section
           title="Facebook"
