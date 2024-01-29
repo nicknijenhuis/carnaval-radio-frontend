@@ -61,7 +61,7 @@ async function getSitemapUrls() {
         return ({
             url: `${URL}/nieuwsberichten/${x?.attributes?.Slug}`,
             lastModified: new Date(date)?.toISOString(),
-            changeFreq: "weekly",
+            changeFreq: "hourly",
             priority: "0.7",
         });
     });
