@@ -1,14 +1,7 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
-import HTMLReactParser from "html-react-parser";
-import { useState } from "react";
 import { TeamMember } from "@/types/teamTypes";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
-import {
-  BlocksRenderer,
-  type BlocksContent,
-} from "@strapi/blocks-react-renderer";
 import { getInitials, getRandomColor } from "@/helpers/randomColor";
 
 interface Props {

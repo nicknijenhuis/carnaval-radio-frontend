@@ -4,7 +4,7 @@ import HeroSlider from "./HeroSlider";
 import HeroTwitch from "./HeroTwitch";
 import { Slide } from "@/types/slideTypes";
 
-const HeroTwitchOrSliderClientSide = async ({slides} : {slides:  Slide[]}) => {
+const HeroTwitchOrSliderClientSide = ({slides} : {slides:  Slide[]}) => {
     const [showSlider, setShowSlider] = useState(false);
     const [showTwitch, setShowTwitch] = useState(true);
 

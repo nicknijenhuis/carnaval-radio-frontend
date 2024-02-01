@@ -5,7 +5,7 @@ import Carousel from "react-multi-carousel";
 import Image from "next/image";
 import { Slide } from "@/types/slideTypes";
 
-const HeroSlider = async ({slides} : {slides:  Slide[]}) => {
+const HeroSlider = ({slides} : {slides:  Slide[]}) => {
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1024 },

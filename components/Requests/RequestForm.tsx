@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { FaArrowLeft, FaBackward, FaDonate, FaHandshake, FaWhatsapp } from "react-icons/fa";
+import { FaArrowLeft, FaDonate, FaHandshake, FaWhatsapp } from "react-icons/fa";
 
 const RequestForm: React.FC = () => {
     const [artist, setArtist] = useState("");

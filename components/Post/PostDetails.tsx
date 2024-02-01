@@ -77,7 +77,8 @@ const PostDetails = ({
         )}
         {/* if video */}
         {post?.attributes?.CoverVideo?.data?.attributes?.url && (
-          <div className="h-60 rounded-xl flex"><Video
+          <div className="h-60 rounded-xl flex">
+          <Video
             className="h-60 w-[98%] object-cover rounded-xl"
             src={post?.attributes?.CoverVideo?.data?.attributes?.url}
           /></div>
