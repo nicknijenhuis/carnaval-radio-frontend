@@ -1,13 +1,16 @@
 import ReactHtmlParser from "html-react-parser";
 import { oldArticles } from "@/data/allNewsArticles";
-import ShareButtons, { ShareButtonsFallback } from "@/components/Socials/ShareButtons";
+import ShareButtons, {
+  ShareButtonsFallback,
+} from "@/components/Socials/ShareButtons";
 import { formatDate } from "@/helpers/formatDate";
 import { Suspense } from "react";
+import Image from "next/image";
 
 export async function generateStaticParams() {
   return oldArticles.map((post) => ({
     slug: post.title.replace(/[^a-zA-Z0-9\s]/g, "").replaceAll(" ", "-"),
-  }))
+  }));
 }
 
 const page = ({ params }: { params: { title: string } }) => {
@@ -17,7 +20,7 @@ const page = ({ params }: { params: { title: string } }) => {
       params.title
   );
 
-  if(foundPost.length === 0) {
+  if (foundPost.length === 0) {
     return null;
   }
 
@@ -36,13 +39,6 @@ const page = ({ params }: { params: { title: string } }) => {
           <div className="cms-content">
             {ReactHtmlParser(foundPost[0].description)}
           </div>
-          {/* <Image
-        src={foundPost[0].CoverImage.url}
-        className="h-48 sm:h-64 md:h-96 lg:h-96 xl:h-96 w-full rounded-lg"
-        width={1000}
-        height={1000}
-        alt={foundPost[0].title}
-      /> */}
           <Suspense fallback={<ShareButtonsFallback />}>
             <ShareButtons slug={`nieuwsberichten/o/${params.title}`} />
           </Suspense>

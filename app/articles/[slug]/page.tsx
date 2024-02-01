@@ -3,6 +3,7 @@ import { GET_SINGLE_POST } from "@/GlobalState/ApiCalls/graphql/article_queries"
 import Image from "next/image";
 import ReactHtmlParser from "html-react-parser";
 import NotFoundPage from "@/components/NotFoundPage";
+import Video from "@/components/Video";
 
 export async function generateMetadata({ params }: any) {
   const articleTitle = params.slug;
@@ -19,6 +20,13 @@ interface Post {
   Title: string;
   Content: string;
   CoverImage: {
+    data: {
+      attributes: {
+        url: string;
+      };
+    };
+  };
+  CoverVideo: {
     data: {
       attributes: {
         url: string;
@@ -68,6 +76,12 @@ const page = async ({ params }: { params: { slug?: string } }) => {
     <div className="py-8 px-4 sm:px-4 md:px-8 lg:px-8 xl:px-8 bg-heroBackground">
       {post && (
         <div className="flex flex-col gap-4 max-w-3xl p-4 rounded-3xl bg-white">
+          {post.CoverVideo?.data?.attributes?.url && (
+            <Video
+              src={post.CoverVideo.data.attributes.url}
+              className="rounded-xl"
+            />
+          )}
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-semibold text-primary">
               {post.Title}
@@ -80,6 +94,7 @@ const page = async ({ params }: { params: { slug?: string } }) => {
             width={1000}
             height={1000}
             sizes="100vw"
+            className="rounded-xl"
             style={{ width: '100%', height: 'auto' }}
             alt={post.Title}
           />

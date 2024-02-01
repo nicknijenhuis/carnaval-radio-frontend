@@ -52,6 +52,13 @@ query($slugUrl: String!)
             }
           }
         }
+        CoverVideo{
+          data{
+            attributes{
+              url
+            }
+          }
+        }
       }
     }
   }
