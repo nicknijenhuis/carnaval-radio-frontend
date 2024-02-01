@@ -30,6 +30,13 @@ query{
             }
           }
         }
+        CoverVideo{
+          data{
+            attributes{
+              url
+            }
+          }
+        }
       }
     }
   }

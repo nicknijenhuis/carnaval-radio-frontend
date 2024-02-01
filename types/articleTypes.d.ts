@@ -8,6 +8,13 @@ export interface Post {
         };
       };
     };
+    CoverVideo: {
+      data: {
+        attributes: {
+          url: string;
+        };
+      };
+    };
     Title: string;
     publishedAt: string;
     Slug: string;

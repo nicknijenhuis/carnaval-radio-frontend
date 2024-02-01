@@ -3,6 +3,7 @@ import React from "react";
 import { Post } from "@/types/articleTypes";
 import ReactHtmlParser from "html-react-parser";
 import { formatDate } from "@/helpers/formatDate";
+import Video from "../Video";
 
 const PostDetails = ({
   post,
@@ -66,11 +67,21 @@ const PostDetails = ({
             : "primaryShade_3"
         }`}  rounded-xl p-5 overflow-hidden space-y-3`}
       >
-        <img
-          className="h-60 w-[98%] object-cover rounded-xl"
-          src={post?.attributes?.CoverImage?.data?.attributes?.url}
-          alt=""
-        />
+        {/* if no video */}
+        {!post?.attributes?.CoverVideo?.data?.attributes?.url && (
+          <img
+            className="h-60 w-[98%] object-cover rounded-xl"
+            src={post?.attributes?.CoverImage?.data?.attributes?.url}
+            alt=""
+          />
+        )}
+        {/* if video */}
+        {post?.attributes?.CoverVideo?.data?.attributes?.url && (
+          <div className="h-60 rounded-xl flex"><Video
+            className="h-60 w-[98%] object-cover rounded-xl"
+            src={post?.attributes?.CoverVideo?.data?.attributes?.url}
+          /></div>
+        )}
         <p className="text-sm text-gray-500">
           {post.attributes?.Date
             ? formatDate(post.attributes?.Date)
