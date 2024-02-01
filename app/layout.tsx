@@ -75,7 +75,6 @@ export default async function RootLayout({
             </div>
           </div>
         </Providers>
-        <FeedbackForm />
         <Analytics />
         <SpeedInsights />
       </body>
