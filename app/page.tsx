@@ -9,6 +9,7 @@ import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { BiSolidNews } from "react-icons/bi";
 import Link from "next/link";
 import Limburg24 from "@/components/LimburgNews/Limburg24";
+import { fetchPosts } from "@/GlobalState/ApiCalls/fetchPosts";
 
 export async function generateMetadata() {
   return {
@@ -22,21 +23,13 @@ const page = async () => {
   const instagramAccessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
   const instagramId = process.env.NEXT_PUBLIC_INSTAGRAM_ID;
 
-  const { data } = await client.query({
-    query: GET_ALL_ARTICLES,
-    context: {
-      fetchOptions: {
-        next: { tags: ["articles"] },
-      },
-    },
-  });
-
+  const posts = await fetchPosts();
  
   return (
     <section className="flex-grow">
       <Hero />
       <Sponsors />
-      {data && <PostCard posts={data.articles.data} />}
+      {posts && <PostCard posts={posts} />}
       {facebookPageId && (
         <Section
           title="Facebook"

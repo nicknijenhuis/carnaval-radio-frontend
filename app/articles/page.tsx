@@ -1,10 +1,8 @@
-import { client } from "@/GlobalState/ApiCalls/api.config";
-import { GET_ALL_ARTICLES } from "@/GlobalState/ApiCalls/graphql/article_queries";
 import PostDetails from "@/components/Post/PostDetails";
 import SectionTitle from "@/components/constants/SectionTitle";
 import news from "../../public/news.png";
-import { Post } from "@/types/articleTypes";
 import { oldArticles } from "@/data/allNewsArticles"
+import { fetchPosts } from "@/GlobalState/ApiCalls/fetchPosts";
 
 export async function generateMetadata() {
   return {
@@ -13,16 +11,7 @@ export async function generateMetadata() {
 }
 
 const page = async () => {
-  const { data } = await client.query({
-    query: GET_ALL_ARTICLES,
-    context: {
-      fetchOptions: {
-        next: { tags: ["articles"] },
-      },
-    },
-  });
-  let posts: Post[];
-  posts = data.articles.data;
+  const posts = await fetchPosts();
 
   function customSort(a: any, b: any) {
     const dateA: any = a.attributes.Date

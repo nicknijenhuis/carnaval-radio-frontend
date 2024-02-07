@@ -20,7 +20,7 @@ export const fetchSlides = async () => {
           ? {
               Width: x.attributes.Image.data.attributes.width,
               Height: x.attributes.Image.data.attributes.height,
-              Url: x.attributes.Image.data.attributes.url,
+              Url: MapUrl(x.attributes.Image.data.attributes.url),
             }
           : null,
         Title: x.attributes.Title,
@@ -42,3 +42,9 @@ export const fetchSlides = async () => {
     return fallBackSlides;
   }
 };
+
+function MapUrl(url: string) {
+  var cloudinaryBaseUrlPart = "https://res.cloudinary.com/dwzn0q9wj/image/upload/";
+  return url.replace(cloudinaryBaseUrlPart, cloudinaryBaseUrlPart + "q_auto/f_auto/")
+}
+
