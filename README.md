@@ -14,7 +14,7 @@ This is the frontend of Carnaval-Radio.nl, built with Next.JS
 
 First, run the development server:
 
-```bash
+```bash 
 npm run dev
 # or
 yarn dev
