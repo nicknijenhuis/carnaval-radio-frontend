@@ -10,6 +10,9 @@ export default async function action(refreshTags: string[]) {
         revalidateTag("events");
         revalidateTag("twitch");
         revalidateTag("slides");
+        revalidateTag("navigation");
+        revalidateTag("social");
+
         revalidatePath("/sponsoren");
         revalidatePath("/sitemap.xml");
         revalidatePath("/articles");  

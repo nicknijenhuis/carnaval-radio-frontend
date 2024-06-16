@@ -42,7 +42,7 @@ export default async function RootLayout({
     variables: { menuName: "main" },
     context: {
       fetchOptions: {
-        next: { revalidate: 60 },
+        next: { revalidate: 3600, tags: ["navigation"]},
       },
     },
   });
