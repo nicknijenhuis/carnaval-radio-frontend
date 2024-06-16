@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
-import { TeamMember } from "@/types/teamTypes";
+import { TeamMember as TeamMemberType } from "@/types/teamTypes";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
 import { getInitials, getRandomColor } from "@/helpers/randomColor";
 
 interface Props {
-  data: TeamMember;
+  data: TeamMemberType;
   showDetailedInformation?: boolean;
   index?: number;
 }

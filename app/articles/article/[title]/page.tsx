@@ -5,11 +5,10 @@ import ShareButtons, {
 } from "@/components/Socials/ShareButtons";
 import { formatDate } from "@/helpers/formatDate";
 import { Suspense } from "react";
-import Image from "next/image";
 
 export async function generateStaticParams() {
   return oldArticles.map((post) => ({
-    slug: post.title.replace(/[^a-zA-Z0-9\s]/g, "").replaceAll(" ", "-"),
+    title: post.title.replace(/[^a-zA-Z0-9\s]/g, "").replaceAll(" ", "-"),
   }));
 }
 
