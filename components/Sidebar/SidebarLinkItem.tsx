@@ -35,10 +35,10 @@ const IconMapping: any = {
 interface props {
   item: any;
   index: any;
-  toogleSideBar: any;
+  toggleSidebar: any;
 }
 
-const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
+const SidebarLinkItem = ({ item, index, toggleSidebar }: props) => {
   const path = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -52,7 +52,7 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
       <Link href={item.path} key={"sideBarLink" + index} legacyBehavior>
         <a
           onClick={() => {
-            toogleSideBar && toogleSideBar();
+            toggleSidebar && toggleSidebar();
           }}
           className="relative"
         >
@@ -153,7 +153,7 @@ const SidebarLinkItem = ({ item, index, toogleSideBar }: props) => {
             <Link
               href={`/${formatPath(item.path)}`}
               onClick={() => {
-                toogleSideBar && toogleSideBar();
+                toggleSidebar && toggleSidebar();
               }}
               key={"sideBarLink-Sub" + index}
               className="p-2 hover:bg-primaryShade_2"

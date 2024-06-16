@@ -2,9 +2,9 @@ import SidebarLinkItem from "./SidebarLinkItem";
 
 interface props {
   menu?: any;
-  toogleSideBar?: any;
+  toggleSidebar?: any;
 }
-const SidebarLinks = ({ menu, toogleSideBar }: props) => {
+const SidebarLinks = ({ menu, toggleSidebar }: props) => {
   return (
     <div className="flex flex-col gap-3 text-[#9F9F9F]">
       {menu &&
@@ -14,7 +14,7 @@ const SidebarLinks = ({ menu, toogleSideBar }: props) => {
               key={index}
               item={item}
               index={index}
-              toogleSideBar={toogleSideBar}
+              toggleSidebar={toggleSidebar}
             />
           );
         })}

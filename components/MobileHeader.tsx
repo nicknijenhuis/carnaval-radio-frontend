@@ -16,16 +16,22 @@ interface props {
 const MobileHeader = ({ themeData, menu }: props) => {
   const sideBarRef = useRef<HTMLDivElement>(null);
 
-  function toogleSideBar() {
+  function toggleSidebar() {
     if (sideBarRef.current) {
       sideBarRef.current.classList.toggle("translate-y-[12%]");
+    }
+  }
+
+  function closeSidebar() {
+    if (sideBarRef.current) {
+      sideBarRef.current.classList.remove("translate-y-[12%]");
     }
   }
 
   return (
     <div className="relative">
       <div className="bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9] md:hidden lg:hidden xl:hidden flex sm:flex justify-between p-2 pb-4 items-center sticky top-0 z-30">
-        <Link href="/">
+        <Link href="/" onClick={closeSidebar}>
           <Image
             src={themeData.attributes.Logo.data.attributes.url}
             width={120}
@@ -37,7 +43,7 @@ const MobileHeader = ({ themeData, menu }: props) => {
         <Link className="rounded m-auto" href="verzoekjes">
           <FaWhatsapp className="text-emerald-500" size={40} />
         </Link>
-        <button className="rounded" onClick={toogleSideBar}>
+        <button className="rounded" onClick={toggleSidebar}>
           <MdMenu size={50} />
         </button>
         </div>
@@ -55,7 +61,7 @@ const MobileHeader = ({ themeData, menu }: props) => {
         </div>
         <SidebarPlayer />
         <div className="mt-8 bg-white">
-          <SidebarLinks menu={menu} toogleSideBar={toogleSideBar} />
+          <SidebarLinks menu={menu} toggleSidebar={toggleSidebar} />
         </div>
         <Socials options="sidebar" />
       </div>
