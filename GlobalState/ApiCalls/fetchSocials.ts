@@ -16,7 +16,8 @@ export const fetchFacebookPosts = async (
     const facebookResponse = await fetch(
       `https://graph.facebook.com/v18.0/${facebookPageId}/posts?access_token=${facebookAccessToken}&fields=id,message,created_time,full_picture,permalink_url${
         limit ? `&limit=${limit}` : ""
-      }`
+      }`,
+      { next: { tags: ["social"] } }
     );
     const facebookData = await facebookResponse.json();
     return facebookData.data.map((post: any) => ({
@@ -42,7 +43,8 @@ export const fetchInstagramPosts = async (
     const instagramResponse = await fetch(
       `https://graph.facebook.com/v18.0/${instagramId}/media?fields=id,caption,media_type,media_url,permalink,timestamp&access_token=${instagramAccessToken}${
         limit ? `&limit=${limit}` : ""
-      }`
+      }`,
+      { next: { tags: ["social"] } }
     );
     const instagramData = await instagramResponse.json();
     return instagramData.data.map((post: any) => ({
