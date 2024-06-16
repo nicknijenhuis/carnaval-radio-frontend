@@ -13,7 +13,9 @@ const RevalidatePage = async ({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
-  const token = searchParams?.["token"] ?? ""; 
+  const token = searchParams?.["token"] ?? "";
+  const tags = searchParams?.["tags"] ?? "";
+  const refreshTags = tags ? typeof tags === "string" ? tags.split(",") : tags : [];
   const validToken = process.env.VALID_TOKEN;
 
   if (token !== validToken) {
@@ -35,7 +37,7 @@ const RevalidatePage = async ({
     );
   }
 
-  await action();
+  await action(refreshTags);
 
   return (
     <>
