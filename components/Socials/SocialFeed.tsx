@@ -1,6 +1,8 @@
 import { SocialPost, fetchFacebookPosts, fetchInstagramPosts } from "@/GlobalState/ApiCalls/fetchSocials";
 import SocialPosts from "./SocialPosts";
 
+export const revalidate = 3600 * 24; // 24 hours
+
 interface Props {
     facebookPageId?: string;
     instagramId?: string;
