@@ -18,7 +18,6 @@ export async function fetchTwitch(): Promise<boolean> {
     const response = await fetch(process.env.NEXT_PUBLIC_API_URL + 'api/feature-toggle', { next: { tags: ["twitch"] } });
     const responseData = await response.json();
     const isTwitchVisible = responseData?.data?.attributes?.ShowTwitch;
-    console.info('showTwitch:', isTwitchVisible);
     return isTwitchVisible ?? false;
   } catch (error) {
     console.error(error);
