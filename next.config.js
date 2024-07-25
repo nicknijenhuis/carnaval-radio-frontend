@@ -39,10 +39,6 @@ const nextConfig = {
           destination: '/articles',
         },
         {
-          source: '/team',
-          destination: '/team/standaard',
-        },
-        {
           source: '/socials',
           destination: '/social',
         },
@@ -102,6 +98,11 @@ const nextConfig = {
         permanent: false,
         basePath: false,
      },
+     {
+        source: '/team',
+        destination: '/team/standaard',
+        permanent: false,
+      },
     ];
   },
 };
