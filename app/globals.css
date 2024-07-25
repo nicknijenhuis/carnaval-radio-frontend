@@ -58,6 +58,9 @@ h1 {
     color: black;
     background: #ffff;
   }
+  select {
+    background: white;
+  }
 }
 
 .sidebar-navigation::-webkit-scrollbar {
