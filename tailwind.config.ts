@@ -1,5 +1,8 @@
 import type { Config } from "tailwindcss";
+import { getThemeOrDefault } from "./themes.config";
 
+const theme = getThemeOrDefault(process.env.NEXT_PUBLIC_THEME);
+console.log("theme", theme);
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,21 +11,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        primary: "#FF9D00",
-        primaryShade_1: "#FF9D0029",
-        primaryShade_2: "#F2F4E6",
-        primaryShade_3: "#FFFCF3",
-        secondary: "#FF1809",
-        secondayShade_1: "#FFEFEB",
-        secondayShade_2: "#FFF9F8",
-        heroBackground: "#f9f9f9",
-        sideBbarBackground: "#fcfdfe",
-        activeTab: "#f2f4e6",
-        tertiary: "#0CAE12",
-        tertiaryShade_1: "#1DC72429",
-        tertiaryShade_2: "#F3FFF4",
-      },
+      colors: theme.colors,
     },
   },
   plugins: [require("tailwind-scrollbar-hide")],
