@@ -3,6 +3,7 @@ import SidebarLinks from "./SidebarLinks";
 import Socials from "../Socials";
 import SidebarPlayer from "./SidebarPlayer";
 import Link from "next/link";
+import { log } from "console";
 
 interface props {
   menu: any;
@@ -10,6 +11,16 @@ interface props {
 }
 
 const SideBar = ({ menu, themeData }: props) => {
+  let logoUrl = themeData.attributes.Logo.data.attributes.url;
+
+  if(process.env.THEME === "oktoberfest") {
+    logoUrl = undefined; // Set later
+  }
+
+  if(!logoUrl) { 
+    logoUrl = "https://res.cloudinary.com/dwzn0q9wj/image/upload/f_auto,q_auto:eco/v1698585479/Kopie_van_logo_2_lines_e530be4393.png";
+  }
+
   return (
     <div className="sidebar-navigation max-h-screen md:sticky md:top-0 z-50 h-full bg-white flex-col hidden sm:hidden md:flex lg:flex xl:flex sm:w-0 md:w-[100%] lg:w-[100%] xl:w-[100%] absolute left-0 md:shadow-[0_35px_70px_-15px_rgba(0,0,0,0.05)] md:max-h-screen md:min-h-screen overflow-y-auto">
       <div className="flex flex-col p-4 bg-gradient-to-r from-[#FFF8F9] to-[#F8FFF9]">
@@ -19,7 +30,7 @@ const SideBar = ({ menu, themeData }: props) => {
         >
           <Link href="/" className="flex items-center justify-center">
             <Image
-              src={themeData.attributes.Logo.data.attributes.url}
+              src={logoUrl}
               width={200}
               height={200}
               alt="Logo"

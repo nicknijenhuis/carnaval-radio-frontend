@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 import { getThemeOrDefault } from "./themes.config";
 
-const theme = getThemeOrDefault(process.env.NEXT_PUBLIC_THEME);
+const theme = getThemeOrDefault(process.env.THEME);
 console.log("theme", theme);
 const config: Config = {
   content: [
