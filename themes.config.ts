@@ -1,4 +1,3 @@
-// Defining the Theme type
 type Theme = {
     slug: string;
     name: string;
@@ -20,7 +19,6 @@ type Theme = {
     };
 };
 
-// Carnaval Radio theme
 const carnavalRadio: Theme = {
     slug: "carnaval",
     name: "Carnaval Radio",
@@ -42,7 +40,6 @@ const carnavalRadio: Theme = {
     },
 };
 
-// Oktoberfest Radio theme (adapted to shades of blue)
 const oktoberfestRadio: Theme = {
     slug: "oktoberfest",
     name: "Oktoberfest Radio",
@@ -64,7 +61,6 @@ const oktoberfestRadio: Theme = {
     },
 };
 
-// Array of themes
 const themes: Theme[] = [carnavalRadio, oktoberfestRadio];
 
 export function getThemeOrDefault(slug?: string): Theme {
