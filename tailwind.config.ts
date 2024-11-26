@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 import { getThemeOrDefault } from "./themes.config";
 
 const theme = getThemeOrDefault(process.env.THEME);
-console.log("theme", theme);
+
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",

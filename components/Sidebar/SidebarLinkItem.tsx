@@ -43,14 +43,17 @@ const SidebarLinkItem = ({ item, index, toggleSidebar }: props) => {
   const [open, setOpen] = useState(false);
 
   const formatPath = (p: string) => {
-    const path = p.split("/");
-    return `${path[path.length - 1]}`;
+    if (!p) return "";
+    const segments = p.split("/").filter(Boolean);
+    return segments.length > 0 ? segments[segments.length - 1] : "";
   };
 
-  if (item.items.length == 0) {
+  console.log(item);
+
+  if (!item?.items || item?.items?.length === 0) {
     return (
       <Link href={item.path} key={"sideBarLink" + index} legacyBehavior>
-        <a
+        <a target={item.path?.includes('https://') ? "_blank" : undefined}
           onClick={() => {
             toggleSidebar && toggleSidebar();
           }}

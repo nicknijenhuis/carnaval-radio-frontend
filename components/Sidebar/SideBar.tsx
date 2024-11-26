@@ -3,7 +3,6 @@ import SidebarLinks from "./SidebarLinks";
 import Socials from "../Socials";
 import SidebarPlayer from "./SidebarPlayer";
 import Link from "next/link";
-import { log } from "console";
 
 interface props {
   menu: any;

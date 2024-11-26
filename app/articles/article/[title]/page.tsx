@@ -19,7 +19,7 @@ const page = ({ params }: { params: { title: string } }) => {
       params.title
   );
 
-  if (foundPost.length === 0) {
+  if (!foundPost || foundPost.length === 0) {
     return null;
   }
 
