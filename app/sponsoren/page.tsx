@@ -86,7 +86,7 @@ const page = async () => {
               {x.Logo ? (
                 <Image
                   key={x.Name}
-                  className={`${logoClassName} object-contain w-full`}
+                  className={`${logoClassName} object-contain w-full max-w-48`}
                   src={x.Logo.Url}
                   width={200}
                   height={200}

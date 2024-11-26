@@ -17,7 +17,7 @@ const SideBar = ({ menu, themeData }: props) => {
   }
 
   if(!logoUrl) { 
-    logoUrl = "https://res.cloudinary.com/dwzn0q9wj/image/upload/f_auto,q_auto:eco/v1698585479/Kopie_van_logo_2_lines_e530be4393.png";
+    logoUrl = "https://res.cloudinary.com/dwzn0q9wj/image/upload/f_auto,q_auto:eco/v1698585479/carnavalradiologo.png";
   }
 
   return (
