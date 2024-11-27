@@ -9,6 +9,8 @@ import {
 } from "../../types/sponsorTypes";
 import SectionTitle from "@/components/constants/SectionTitle";
 import sponsors_icon from "../../public/sponsors.png";
+import { MdAdd } from "react-icons/md";
+import Link from "next/link";
 
 const logoSizeMapping: {
   [id: string]: string;
@@ -100,6 +102,9 @@ const page = async () => {
             </a>
           );
         })}
+        <Link href="sponsorprogramma-radio-reclame" className="flex items-center border-4 border-dotted border-gray-300 bg-transparent bg-opacity-50 w-fit justify-center cursor-pointer text-gray-300  rounded-xl hover:border-gray-600 hover:text-gray-600">
+          <MdAdd size={40} className={`${logoClassName} object-contain w-full max-w-48 p-2 min-w-16`} />
+        </Link>
       </div>
     );
   };

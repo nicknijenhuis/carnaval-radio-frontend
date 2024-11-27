@@ -29,7 +29,7 @@ export const fetchSlides = async () => {
     });
     return slides;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     const fallBackSlides = FallbackSlides.map((x) => {
       return {
         Image: {

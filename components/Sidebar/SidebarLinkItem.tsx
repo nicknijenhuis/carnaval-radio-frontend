@@ -48,8 +48,6 @@ const SidebarLinkItem = ({ item, index, toggleSidebar }: props) => {
     return segments.length > 0 ? segments[segments.length - 1] : "";
   };
 
-  console.log(item);
-
   if (!item?.items || item?.items?.length === 0) {
     return (
       <Link href={item.path} key={"sideBarLink" + index} legacyBehavior>
