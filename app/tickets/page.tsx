@@ -20,7 +20,8 @@ const page = () => {
         >
           {<MdCreditCard />} <span>Tickets</span>
         </h2>
-        <p>Reguliere Carnaval Radio tickets zijn niet meer beschikbaar.</p>
+        <p className="my-2">De kaartverkoop start 3 december 2024 om 20:11 uur.</p>
+        <IframeComponent src="https://www.ticketcrew.nl/tickets/carnaval-radio" />
         <p className="my-2">
           Zie je hier geen tickets? Check de link: <Link
             className="text-blue-500 font-semibold underline"

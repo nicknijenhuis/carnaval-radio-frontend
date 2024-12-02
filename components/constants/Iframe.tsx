@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 
-const IframeComponent = ({ src }: { src: string }) => {
+const IframeComponent = ({ src, height = 2000 }: { src: string, height?: number }) => {
     const iframeId = `ticket-iframe-${Math.floor(Math.random() * 10000)}`;
 
     useEffect(() => {
@@ -28,9 +28,7 @@ const IframeComponent = ({ src }: { src: string }) => {
             id={iframeId}
             src={src}
             width="100%"
-            frameBorder="0"
-            scrolling="no"
-            style={{ overflow: 'hidden' }}
+            height={height}
             allowFullScreen={true}
         ></iframe>
     );
