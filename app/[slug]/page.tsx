@@ -7,7 +7,12 @@ import NotFoundPage from "@/components/NotFoundPage";
 
 export async function generateStaticParams() {
   const { data } = await client.query({
-    query: GET_ALL_SLUGS_FOR_CONTENT_PAGES
+    query: GET_ALL_SLUGS_FOR_CONTENT_PAGES,     
+    context: {
+      fetchOptions: {
+        next: { revalidate: 60, tags: ["pages"] },
+      },
+    },
   });
 
   return data.pages.data.map((page: any) => {
