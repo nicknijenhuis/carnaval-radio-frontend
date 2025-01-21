@@ -16,7 +16,7 @@ export async function generateStaticParams() {
   });
 
   return data.pages.data.map((page: any) => {
-    slug: page.attributes.slug
+    page.attributes.slug
   });
 }
 
