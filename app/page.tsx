@@ -1,14 +1,10 @@
 import Hero from "@/components/Hero/Hero";
 import Sponsors from "@/components/Sponsors/Sponsors";
 import PostCard from "@/components/Post/PostCard";
-import { GET_ALL_ARTICLES } from "@/GlobalState/ApiCalls/graphql/article_queries";
-import { client } from "@/GlobalState/ApiCalls/api.config";
 import SocialMediaFeed from "@/components/Socials/SocialFeed";
 import Section from "@/components/Section";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
-import { BiSolidNews } from "react-icons/bi";
 import Link from "next/link";
-import Limburg24 from "@/components/LimburgNews/Limburg24";
 import { fetchPosts } from "@/GlobalState/ApiCalls/fetchPosts";
 
 export async function generateMetadata() {
