@@ -4,8 +4,9 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import Carousel from "react-multi-carousel";
 import Image from "next/image";
 import { Slide } from "@/types/slideTypes";
+import Link from "next/link";
 
-const HeroSlider = ({slides} : {slides:  Slide[]}) => {
+const HeroSlider = ({ slides }: { slides: Slide[] }) => {
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1024 },
@@ -47,25 +48,35 @@ const HeroSlider = ({slides} : {slides:  Slide[]}) => {
           </ArrowFix>
         }
       >
-        {slides.map((item: Slide, i: any) => (
-          <Image
-            key={i}
-            loading="lazy"
-            src={item.Image.Url}
-            className="h-[40vh] sm:h-[50vh] md:h-[50vh] lg:h-[450px] xl:h-[500px] rounded-2xl object-cover max-w-full"
-            height={1000}
-            width={1000}
-            alt={item.Image.Url}
-          />
-        ))}
+        {slides.map(({ Link: slideLink, Image: { Url } }: Slide, i: number) => {
+          const imageElement = (
+            <Image
+              loading="lazy"
+              src={Url}
+              className="h-[40vh] sm:h-[50vh] md:h-[50vh] lg:h-[450px] xl:h-[500px] rounded-2xl object-cover max-w-full"
+              height={1000}
+              width={1000}
+              alt={Url}
+            />
+          );
+
+          return slideLink ? (
+            <Link key={i} href={slideLink}>
+              {imageElement}
+            </Link>
+          ) : (
+            <div key={i}>{imageElement}</div>
+          );
+        })}
       </Carousel>
     </div>
   );
-}
+};
 
-const ArrowFix = (arrowProps: any) => { 
-  const {carouselState, rtl, fetchPriority, children, ...restArrowProps} = arrowProps; 
-  return ( <span {...restArrowProps}> {children} </span> ); 
+const ArrowFix = (arrowProps: any) => {
+  const { carouselState, rtl, fetchPriority, children, ...restArrowProps } =
+    arrowProps;
+  return <span {...restArrowProps}> {children} </span>;
 };
 
 export default HeroSlider;
