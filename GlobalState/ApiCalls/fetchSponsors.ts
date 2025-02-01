@@ -24,9 +24,9 @@ export const fetchSponsors = async () => {
 
     let sponsorsAll: Sponsor[] = [];
     sponsorData.sponsors.data.map((x: GraphQLSponsor) => {
-        sponsorTypes.map((st: any) => {
+        sponsorTypes.map((st) => {
             if (st.Id == x.attributes.Type.data.id) {
-                const sponsorSingle = {
+                const sponsorSingle: Sponsor = {
                     Id: x.id,
                     Name: x.attributes.Name,
                     Link: x.attributes.Link,
@@ -36,11 +36,11 @@ export const fetchSponsors = async () => {
                             Height: x.attributes.Logo.data.attributes.height,
                             Url: x.attributes.Logo.data.attributes.url,
                         }
-                        : null,
+                        : undefined,
                     TypeID: x.attributes.Type.data.id,
                     ShowOnHomePage: st.ShowOnHomePage,
-                    Order: st.Order,
-                } as Sponsor;
+                    Order: (st.Order * 10000) + (x.attributes.DisplayPriority ?? 1000),
+                };
                 sponsorsAll = [...sponsorsAll, sponsorSingle];
             }
         });

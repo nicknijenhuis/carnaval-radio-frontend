@@ -29,6 +29,7 @@ export const GET_ALL_SPONSORS = gql`
               }
             }
           }
+          DisplayPriority
           Type {
             data {
               id

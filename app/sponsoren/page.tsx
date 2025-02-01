@@ -51,6 +51,7 @@ const page = async () => {
         }
         : null,
       TypeID: x.attributes.Type.data.id,
+      Order: x.attributes.DisplayPriority ?? Number.MAX_SAFE_INTEGER,
     } as Sponsor;
   });
 
@@ -73,10 +74,11 @@ const page = async () => {
     logoSize: string;
   }) => {
     const logoClassName = `${logoSizeMapping[logoSize]}`;
+    const sortedSponsors = sponsor.sort((a, b) => a.Order - b.Order);
 
     return (
       <div className="flex flex-wrap gap-4 mt-5">
-        {sponsor.map((x: Sponsor) => {
+        {sortedSponsors.map((x: Sponsor) => {
           return (
             <a
               href={x.Link}

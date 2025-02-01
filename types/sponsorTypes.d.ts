@@ -12,6 +12,7 @@ export type GraphQLSponsor = {
       };
     };
     Link: string;
+    DisplayPriority?: number;
     Type: { data: { id: string } };
   };
 };
@@ -31,6 +32,7 @@ export interface SponsorType {
   Name: string;
   Order: number;
   LogoSize: string;
+  ShowOnHomePage: boolean;
 }
 
 export interface Sponsor {
